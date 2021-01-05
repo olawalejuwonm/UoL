@@ -113,34 +113,23 @@ function draw() {
 		ellipse(clouds[i].x_pos, clouds[i].y_pos, clouds[i].size, clouds[i].size);
 		ellipse(clouds[i].x_pos - 40, clouds[i].y_pos, clouds[i].size - 20, clouds[i].size - 20);
 		ellipse(clouds[i].x_pos + 40, clouds[i].y_pos, clouds[i].size - 20, clouds[i].size - 20);
-		// console.log(scrollPos)
-		// console.log(scrollPos, clouds[0])
 
-		// if ((scrollPos + clouds[i].x_pos) < -1000) {
-		// 	clouds[i].x_pos = (-scrollPos) + random(0, width) + width;
-
-		// }
-		// console.log(gameChar_x)
-		// if (scrollPos <= -5000 ) {
-		// 	console.log(scrollPos, turnHighLeft)
-
-		// }
 		if ((scrollPos + clouds[i].x_pos) < -width) {
 			console.log("first")
-			clouds[i].x_pos = (-scrollPos) + random(0, width) + width; 
+			clouds[i].x_pos = (-scrollPos) + random(0, width) + width;
 		}
-		else if ((isLeft && gameChar_x >= width * 0.2 && scrollPos < turnHighLeft)) {
-			//do nothing
-			console.log("o wrong",scrollPos, highLeft);
-			scrollPos = -width;
-			console.log("after",scrollPos);
+		// else if ((isLeft && gameChar_x >= width * 0.2 && scrollPos < turnHighLeft)) {
+		// 	//do nothing
+		// 	console.log("o wrong", scrollPos, highLeft);
+		// 	scrollPos = -width;
+		// 	console.log("after", scrollPos);
 
-		}
+		// }
 		else if (scrollPos > highLeft[i]) {
 			console.log("doing here")
 			clouds[i].x_pos = - (scrollPos - random(0, width) + width);
 			highLeft[i] = scrollPos + width * 2.4;
-			turnHighLeft -= highLeft[i];
+			// turnHighLeft -= highLeft[i];
 		}
 
 
@@ -149,13 +138,11 @@ function draw() {
 	// Draw mountains.
 	for (var i = 0; i < mountains.length; i++) {
 		fill(155);
-		triangle(min(mountains[i].x_pos, 400), mountains[i].y_pos,
-			min((mountains[i].x_pos * 1.73) + mountains[i].size, 453), mountains[i].y_pos, min((mountains[i].x_pos * 1.45) + mountains[i].size, 453), mountains[i].y_pos / 2);
-		fill(105, 105, 105, 50)
-		triangle(min(mountains[i].x_pos, 400), mountains[i].y_pos,
-			min((mountains[i].x_pos * 1.73) + mountains[i].size, 453), mountains[i].y_pos, min((mountains[i].x_pos * 1.45) + mountains[i].size, 453), mountains[i].y_pos * 1.4);
-		triangle(min(mountains[i].x_pos, 400), mountains[i].y_pos,
-			min((mountains[i].x_pos * 1.73) + mountains[i].size, 453), mountains[i].y_pos, min((mountains[i].x_pos * 1.45) + mountains[i].size, 453), mountains[i].y_pos - 60);
+
+		triangle(mountains[i].x_pos, floorPos_y,
+			mountains[i].x_pos + (mountains[i].size / 2), mountains[i].y_pos,
+			mountains[i].x_pos + mountains[i].size, floorPos_y);
+
 
 		// if ((scrollPos + mountains[i].x_pos) < -300) {
 		// 	mountains[i].x_pos = (-scrollPos) + random(0, width) + width;
@@ -183,18 +170,6 @@ function draw() {
 			-200 / 4 + floorPos_y
 		);
 
-		// if ((scrollPos + trees_x[i]) < -300) {
-		// 	trees_x[i] = (-scrollPos) + random(0, width) + width;
-		// }
-
-		// if (scrollPos < highRight[i]) {
-		// 	trees_x[i].x_pos = (-scrollPos) + random(0, width) + width;
-		// 	highRight[i] = scrollPos + width + 300;
-		// }
-		// else if (scrollPos > 800 && scrollPos > highLeft[i]) {
-		// 	trees_x[i].x_pos = - (scrollPos - random(0, width) + width);
-		// 	highLeft[i] = scrollPos + width + 300;
-		// }
 
 	}
 
@@ -265,14 +240,8 @@ function keyPressed() {
 
 	if (key == 'D' || keyCode == 39) {
 		isRight = true;
-		// turnHighLeft = scrollPos;
 	}
-	// console.log(gameChar_x, width, scrollPos, clouds)
 
-	// if (scrollPos == -505) {
-
-	// 	console.log(clouds, "clouds changed")
-	// }
 
 }
 
