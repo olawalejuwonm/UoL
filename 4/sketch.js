@@ -18,9 +18,7 @@ var mountains;
 var trees_x;
 var collectables;
 var canyons;
-var highRight;
 var highLeft;
-var turnHighLeft;
 
 function setup() {
 	createCanvas(1024, 576);
@@ -34,6 +32,7 @@ function setup() {
 
 	// Variable to control the background scrolling.
 	scrollPos = 0;
+	highLeft = [width, width, width, width, width, width]
 
 	// Initialise arrays of scenery objects.
 	trees_x = [100, 300, 500, 1000];
@@ -41,57 +40,65 @@ function setup() {
 		{
 			x_pos: 105,
 			y_pos: 200,
-			size: 100
+			size: 100,
+			left: width
 		}, {
 			x_pos: 600,
 			y_pos: 140,
-			size: 100
+			size: 100,
+			left: width
 		}, {
 			x_pos: 800,
 			y_pos: 50,
-			size: 100
+			size: 100,
+			left: width
 		}];
 	mountains = [
 		{
 			x_pos: 200,
 			y_pos: 226,
-			size: 100
+			size: 100,
+			left: width
 		},
 		{
 			x_pos: 300,
 			y_pos: 150,
-			size: 100
+			size: 100,
+			left: width
 		},
 		{
 			x_pos: 100,
 			y_pos: 270,
-			size: 100
+			size: 100,
+			left: width
 		}
 	];
 	collectables = [
 		{
 			x_pos: 100,
 			y_pos: floorPos_y,
-			size: 50, isFound: false
+			size: 50, isFound: false,
+			left: width
 		},
 		{
 			x_pos: 822,
 			y_pos: floorPos_y,
-			size: 50, isFound: false
+			size: 50, isFound: false,
+			left: width
 		}
 	]
 	canyons = [
 		{
 			x_pos: 120,
-			width: 100
+			width: 100,
+			left: width
 		},
 		{
 			x_pos: 500,
-			width: 100
+			width: 100,
+			left: width
 		}
 	]
-	highLeft = [width, width, width, width, width, width]
-	highRight = [-width, -width, -width, -width, -width, -width]
 
 }
 
@@ -109,27 +116,19 @@ function draw() {
 	for (var i = 0; i < clouds.length; i++) {
 		fill(255, 255, 255);
 
-
 		ellipse(clouds[i].x_pos, clouds[i].y_pos, clouds[i].size, clouds[i].size);
 		ellipse(clouds[i].x_pos - 40, clouds[i].y_pos, clouds[i].size - 20, clouds[i].size - 20);
 		ellipse(clouds[i].x_pos + 40, clouds[i].y_pos, clouds[i].size - 20, clouds[i].size - 20);
 
+		//Logic to add off screen items when moving right
 		if ((scrollPos + clouds[i].x_pos) < -width) {
-			console.log("first")
 			clouds[i].x_pos = (-scrollPos) + random(0, width) + width;
 		}
-		// else if ((isLeft && gameChar_x >= width * 0.2 && scrollPos < turnHighLeft)) {
-		// 	//do nothing
-		// 	console.log("o wrong", scrollPos, highLeft);
-		// 	scrollPos = -width;
-		// 	console.log("after", scrollPos);
 
-		// }
-		else if (scrollPos > highLeft[i]) {
-			console.log("doing here")
+		//Logic to add off screen items when moving left
+		else if (scrollPos > clouds[i].left) {
 			clouds[i].x_pos = - (scrollPos - random(0, width) + width);
-			highLeft[i] = scrollPos + width * 2.4;
-			// turnHighLeft -= highLeft[i];
+			clouds[i].left = scrollPos + width * 2.4;
 		}
 
 
@@ -144,9 +143,16 @@ function draw() {
 			mountains[i].x_pos + mountains[i].size, floorPos_y);
 
 
-		// if ((scrollPos + mountains[i].x_pos) < -300) {
-		// 	mountains[i].x_pos = (-scrollPos) + random(0, width) + width;
-		// }
+
+		if ((scrollPos + mountains[i].x_pos) < -width) {
+			mountains[i].x_pos = (-scrollPos) + random(0, width) + width;
+		}
+
+		else if (scrollPos > mountains[i].left) {
+			mountains[i].x_pos = - (scrollPos - random(0, width) + width);
+			mountains[i].left = scrollPos + width * 2.4;
+		}
+
 
 
 	}
@@ -170,6 +176,15 @@ function draw() {
 			-200 / 4 + floorPos_y
 		);
 
+		if ((scrollPos + trees_x[i]) < -width) {
+			highLeft[i] = (-scrollPos) + random(0, width) + width;
+		}
+
+		else if (scrollPos > highLeft[i]) {
+			trees_x[i] = - (scrollPos - random(0, width) + width);
+			highLeft[i] = scrollPos + width * 2.4;
+		}
+
 
 	}
 
@@ -182,6 +197,12 @@ function draw() {
 			canyons[i].x_pos = (-scrollPos) + random(0, width) + width;
 		}
 
+
+		else if (scrollPos > canyons[i].left) {
+			canyons[i].x_pos = - (scrollPos - random(0, width) + width);
+			canyons[i].left = scrollPos + width * 2.4;
+		}
+
 	}
 
 	// Draw collectable items
@@ -191,6 +212,11 @@ function draw() {
 
 		if ((scrollPos + collectables[i].x_pos) < -300) {
 			collectables[i].x_pos = (-scrollPos) + random(0, width) + width;
+		}
+
+		else if (scrollPos > collectables[i].left) {
+			collectables[i].x_pos = - (scrollPos - random(0, width) + width);
+			collectables[i].left = scrollPos + width * 2.4;
 		}
 
 	}
