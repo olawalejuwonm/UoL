@@ -440,17 +440,7 @@ function drawCollectable(t_collectable) {
 	fill(241, 190, 44);
 	ellipse(t_collectable.x_pos, t_collectable.y_pos - 20, t_collectable.size);
 
-	if ((scrollPos + t_collectable.x_pos) < -300) {
-		t_collectable.x_pos = (-scrollPos) + random(0, width) + width;
-		t_collectable.isFound == false;
 
-	}
-
-	else if (scrollPos > t_collectable.left) {
-		t_collectable.x_pos = - (scrollPos - random(0, width) + width);
-		t_collectable.left = scrollPos + width * 2.4;
-		t_collectable.isFound == false;
-	}
 }
 
 // Function to check character has collected an item.
@@ -460,6 +450,18 @@ function checkCollectable(t_collectable) {
 	// console.log(gameChar_x, t_collectable.x_pos)
 	if (dist(gameChar_world_x, gameChar_y, t_collectable.x_pos, t_collectable.y_pos) < 20) {
 		t_collectable.isFound = true;
+	}
+
+	if ((scrollPos + t_collectable.x_pos) < -width) {
+		t_collectable.x_pos = (-scrollPos) + random(0, width) + width;
+		t_collectable.isFound = false;
+
+	}
+
+	else if (scrollPos > t_collectable.left) {
+		t_collectable.x_pos = - (scrollPos - random(0, width) + width);
+		t_collectable.left = scrollPos + width * 2.4;
+		t_collectable.isFound = false;
 	}
 	// if (t_collectable.isFound == false) {
 	// 	fill(241, 190, 44);
