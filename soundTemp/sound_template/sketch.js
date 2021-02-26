@@ -67,11 +67,12 @@ function setup()
 
     floorPos_y = height * 3 / 4;
 	player = {
-		lives: 3
+		lives: 3,
+		level: 1
 	}
 
 
-	startGame();
+	startGame(player.level);
 
 }
 
@@ -134,7 +135,7 @@ function draw() {
 			{
 				enemySound.play();
 				player.lives -= 1;
-				startGame();
+				startGame(player.level);
 				break;
 			}
 		}
@@ -162,7 +163,7 @@ function draw() {
         backgroundSound.stop();
         winSound.play();
         noLoop();
-		return text("Level complete. Press space to continue", width / 2, height / 2);
+		return text("Level " + player.level + " complete. Press space to continue", width / 2, height / 2);
         
 	}
 	drawGameChar();
@@ -218,11 +219,12 @@ function draw() {
 	gameChar_world_x = gameChar_x - scrollPos;
 }
 
-function startGame() {
+function startGame(level) {
     winSound.stop();
     backgroundSound.stop();
     backgroundSound.loop();
 
+	console.log(level)
 	// floorPos_y = height * 3 / 4;
 	gameChar_x = width / 2;
 	gameChar_y = floorPos_y;
@@ -312,7 +314,7 @@ function startGame() {
 	player.game_score = 0;
 	flagpole = {
 		isReached: false,
-		x_pos: 4000
+		x_pos: 1500*level
 	}
 
 	enemies = [];
@@ -345,10 +347,10 @@ function keyPressed() {
             if (player.lives <= 0) {
                 player.lives = 3;
             }
-            startGame();
+			player.level += 1;
+            startGame(player.level);
             loop();
-            
-
+        
         }
 	}
 
@@ -608,7 +610,7 @@ function checkPlayerDie() {
 
 		}
 		else {
-			startGame();
+			startGame(player.level);
 		}
 	}
 
