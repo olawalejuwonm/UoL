@@ -224,7 +224,6 @@ function startGame(level) {
     backgroundSound.stop();
     backgroundSound.loop();
 
-	console.log(level)
 	// floorPos_y = height * 3 / 4;
 	gameChar_x = width / 2;
 	gameChar_y = floorPos_y;
@@ -314,7 +313,7 @@ function startGame(level) {
 	player.game_score = 0;
 	flagpole = {
 		isReached: false,
-		x_pos: 1500*level
+		x_pos: 1700*level
 	}
 
 	enemies = [];
@@ -346,6 +345,7 @@ function keyPressed() {
         if (flagpole.isReached || player.lives <= 0 ) {
             if (player.lives <= 0) {
                 player.lives = 3;
+				player.level = -1;
             }
 			player.level += 1;
             startGame(player.level);
