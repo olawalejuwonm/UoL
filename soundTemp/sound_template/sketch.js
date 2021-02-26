@@ -16,6 +16,7 @@ var fallingSound;
 var backgroundSound;
 var winSound;
 var looseSound;
+var enemySound;
 
 var soundLoop;
 
@@ -38,20 +39,22 @@ var highLeft;
 var collectables;
 var canyons;
 
-var game_score;
 var flagpole;
-var lives;
+var player;
+var enemies;
+
 function preload()
 {
     soundFormats('mp3','wav');
     
     //load your sounds here
-    jumpSound = loadSound('assets/jump.wav');
-    backgroundSound = loadSound('assets/background.wav');
-    coinSound = loadSound('assets/coins.wav');
-    winSound = loadSound('assets/success.wav');
-    fallingSound = loadSound('assets/fall.wav');
-    looseSound = loadSound('assets/loose.wav')
+    jumpSound = loadSound('assets/jump.mp3');
+    backgroundSound = loadSound('assets/background.mp3');
+    coinSound = loadSound('assets/coins.mp3');
+    winSound = loadSound('assets/success.mp3');
+    fallingSound = loadSound('assets/fall.mp3');
+	enemySound = loadSound('assets/enemy.mp3');
+    looseSound = loadSound('assets/loose.mp3');
     jumpSound.setVolume(0.25);
     fallingSound.setVolume(0.25);
     backgroundSound.setVolume(0.2);
@@ -63,8 +66,10 @@ function setup()
 	createCanvas(1024, 576);
 
     floorPos_y = height * 3 / 4;
+	player = {
+		lives: 3
+	}
 
-	lives = 3;
 
 	startGame();
 
@@ -115,10 +120,28 @@ function draw() {
 	}
 
 	// Draw game character.
-	renderFlagpole()
+	renderFlagpole();
+
+	for(var i = 0; i < enemies.length; i++)
+	{
+		enemies[i].draw();
+
+		var isContact = enemies[i].checkContact(gameChar_world_x, gameChar_y);
+
+		if (isContact == true)
+		{
+			if (player.lives > 0)
+			{
+				enemySound.play();
+				player.lives -= 1;
+				startGame();
+				break;
+			}
+		}
+	}
 	pop();
 
-	if (lives <= 0) {
+	if (player.lives <= 0) {
 		fill(0);
 		rect((width / 2) - 60, (height / 2) - 20, (width / 2) - 200, (height / 2) - 250);
 		fill(255);
@@ -146,7 +169,7 @@ function draw() {
 
 	fill(255);
 	noStroke();
-	text("score: " + game_score, 100, 20)
+	text("score: " + player.game_score, 100, 20)
 
 
 
@@ -286,11 +309,14 @@ function startGame() {
 		}
 	]
 
-	game_score = 0;
+	player.game_score = 0;
 	flagpole = {
 		isReached: false,
-		x_pos: 1500
+		x_pos: 4000
 	}
+
+	enemies = [];
+	enemies.push(new Enemy(100, floorPos_y - 10, 100))
 }
 
 
@@ -308,16 +334,16 @@ function keyPressed() {
 		isRight = true;
 	}
 	if (keyCode == 32) {
-        if (!isFalling ) {
+        if (!isFalling && (gameChar_y == floorPos_y)) {
             gameChar_y -= 100;
             if (soundLoop) {
                 jumpSound.play();
 
             }
         }
-        if (flagpole.isReached || lives <= 0 ) {
-            if (lives <= 0) {
-                lives = 3;
+        if (flagpole.isReached || player.lives <= 0 ) {
+            if (player.lives <= 0) {
+                player.lives = 3;
             }
             startGame();
             loop();
@@ -569,16 +595,16 @@ function checkFlagpole() {
 
 function checkPlayerDie() {
 
-	if (lives >= 0) {
+	if (player.lives >= 0) {
 		fill(255);
 		noStroke();
-		text("Lives: " + lives, 500, 20)
+		text("Lives: " + player.lives, 500, 20)
 	}
 
 
 	if (gameChar_y > height * 1.5) {
-		lives -= 1;
-		if (lives <= 0) {
+		player.lives -= 1;
+		if (player.lives <= 0) {
 
 		}
 		else {
@@ -612,7 +638,7 @@ function checkCollectable(t_collectable) {
 	if (dist(gameChar_world_x, gameChar_y, t_collectable.x_pos, t_collectable.y_pos) < t_collectable.size) {
 		t_collectable.isFound = true;
         coinSound.play();
-		game_score += 1;
+		player.game_score += 1;
 
 	}
 
@@ -630,7 +656,45 @@ function checkCollectable(t_collectable) {
 
 }
 
+function Enemy(x, y, range)
+{
+	this.x = x;
+	this.y = y;
+	this.range = range;
 
+	this.currentX = x;
+	this.inc = 1;
+
+	this.update = function() {
+		this.currentX += this.inc;
+
+		if (this.currentX >= this.x + this.range) {
+			this.inc = -1;
+		}
+		else if (this.currentX < this.x)
+		{
+			this.inc = 1;
+		}
+	}
+
+	this.draw = function() {
+		this.update();
+		fill(255, 0, 0);
+		ellipse(this.currentX, this.y, 20, 20);
+	}
+
+	this.checkContact = function(gc_x, gc_y)
+	{
+		var d = dist(gc_x, gc_y, this.currentX, this.y);
+
+		if (d < 20)
+		{
+			return true;
+		}
+
+		return false;
+	}
+}
 // function keyPressed()
 // {
 //     jumpSound.play();
