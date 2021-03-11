@@ -33,6 +33,7 @@ var isPlummeting;
 
 
 var trees_x;
+var enemies_x;
 var clouds;
 var mountains;
 var highLeft;
@@ -55,6 +56,8 @@ function preload()
     fallingSound = loadSound('assets/fall.mp3');
 	enemySound = loadSound('assets/enemy.mp3');
     looseSound = loadSound('assets/loose.mp3');
+
+	//set volume
     jumpSound.setVolume(0.25);
     fallingSound.setVolume(0.25);
     backgroundSound.setVolume(0.2);
@@ -111,7 +114,6 @@ function draw() {
 	for (var i = 0; i < collectables.length; i++) {
 		if (collectables[i].isFound === false) {
 			drawCollectable(collectables[i]);
-			// console.log("collectable drawn", collectables[i])
 			checkCollectable(collectables[i]);
 
 		}
@@ -120,9 +122,10 @@ function draw() {
 
 	}
 
-	// Draw game character.
+
 	renderFlagpole();
 
+	//enemies
 	for(var i = 0; i < enemies.length; i++)
 	{
 		enemies[i].draw();
@@ -139,6 +142,13 @@ function draw() {
 				break;
 			}
 		}
+
+		// Logic to add off screen
+		if ((scrollPos + enemies_x[i]) < -width) {
+			enemies_x[i] = (-scrollPos) + random(0, width) + width;
+			enemies.push(new Enemy(enemies_x[i], floorPos_y - 10, random(100, 200)*player.level/2));
+		}
+
 	}
 	pop();
 
@@ -245,6 +255,7 @@ function startGame(level) {
 
 	// Initialise arrays of scenery objects.
 	trees_x = [100, 300, 500, 1000];
+	enemies_x = [100, 400, 650, 800];
 	highLeft = [width, width, width, width, width, width];
 	collectables = [
 		{
@@ -317,7 +328,7 @@ function startGame(level) {
 	}
 
 	enemies = [];
-	enemies.push(new Enemy(100, floorPos_y - 10, 100))
+	createEnemies();
 }
 
 
@@ -538,6 +549,11 @@ function drawTrees() {
 	}
 }
 
+function createEnemies() {
+	for(var i = 0; i < enemies_x.length; i++) {
+		enemies.push(new Enemy(enemies_x[i], floorPos_y - 10, random(100, 200)*player.level/2));
+	}
+}
 // ---------------------------------
 // Canyon render and check functions
 // ---------------------------------
@@ -600,7 +616,8 @@ function checkPlayerDie() {
 	if (player.lives >= 0) {
 		fill(255);
 		noStroke();
-		text("Lives: " + player.lives, 500, 20)
+		text("Lives: " + player.lives, 500, 20);
+		text("Level: " + player.level, 900, 20 );
 	}
 
 
