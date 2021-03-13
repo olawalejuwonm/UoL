@@ -18,6 +18,7 @@ var winSound;
 var looseSound;
 var enemySound;
 
+var start;
 var soundLoop;
 
 var gameChar_x;
@@ -44,39 +45,32 @@ var flagpole;
 var player;
 var enemies;
 
-function preload()
-{
-    soundFormats('mp3','wav');
-    
-    //load your sounds here
-    jumpSound = loadSound('assets/jump.mp3');
-    backgroundSound = loadSound('assets/background.mp3');
-    coinSound = loadSound('assets/coins.mp3');
-    winSound = loadSound('assets/success.mp3');
-    fallingSound = loadSound('assets/fall.mp3');
+function preload() {
+	soundFormats('mp3', 'wav');
+	//load your sounds here
+	jumpSound = loadSound('assets/jump.mp3');
+	backgroundSound = loadSound('assets/background.mp3');
+	coinSound = loadSound('assets/coins.mp3');
+	winSound = loadSound('assets/success.mp3');
+	fallingSound = loadSound('assets/fall.mp3');
 	enemySound = loadSound('assets/enemy.mp3');
-    looseSound = loadSound('assets/loose.mp3');
+	looseSound = loadSound('assets/loose.mp3');
 
 	//set volume
-    jumpSound.setVolume(0.25);
-    fallingSound.setVolume(0.25);
-    backgroundSound.setVolume(0.2);
+	backgroundSound.setVolume(0.2);
 }
 
 
-function setup()
-{
+function setup() {
 	createCanvas(1024, 576);
 
-    floorPos_y = height * 3 / 4;
+	floorPos_y = height * 3 / 4;
 	player = {
 		lives: 3,
 		level: 1
 	}
 
-
-	startGame(player.level);
-
+	start = false;
 }
 
 
@@ -88,15 +82,25 @@ function draw() {
 	background(100, 155, 255); // fill the sky blue
 
 	noStroke();
-	fill(0, 155, 0);
+	fill(76,31,94);
 	rect(0, floorPos_y, width, height / 4); // draw some green ground
 	push();
 	translate(scrollPos, 0);
 
 
-    if (!soundLoop) {
-        backgroundSound.stop();
-    }
+	if (!soundLoop) {
+		backgroundSound.stop();
+	}
+	if(!start) {
+		fill(100);
+		rect(300, 150, 400, 200);
+		fill(255)
+		textSize(20)
+		text( "Welcome To Uol Game \n Use Left & Right Arrow For Movement \
+		\n Use The Space Key To Jump\n Press Space To Continue", 345, 220)
+		
+		return;
+	}
 	// Draw clouds.
 	drawClouds();
 	// Draw mountains.
@@ -126,16 +130,13 @@ function draw() {
 	renderFlagpole();
 
 	//enemies
-	for(var i = 0; i < enemies.length; i++)
-	{
+	for (var i = 0; i < enemies.length; i++) {
 		enemies[i].draw();
 
 		var isContact = enemies[i].checkContact(gameChar_world_x, gameChar_y);
 
-		if (isContact == true)
-		{
-			if (player.lives > 0)
-			{
+		if (isContact == true) {
+			if (player.lives > 0) {
 				enemySound.play();
 				player.lives -= 1;
 				startGame(player.level);
@@ -146,35 +147,31 @@ function draw() {
 		// Logic to add off screen
 		if ((scrollPos + enemies_x[i]) < -width) {
 			enemies_x[i] = (-scrollPos) + random(0, width) + width;
-			enemies.push(new Enemy(enemies_x[i], floorPos_y - 10, random(100, 200)*player.level/2));
+			enemies.push(new Enemy(enemies_x[i], floorPos_y - 10, random(100, 200) * player.level / 2, player.level));
 		}
 
 	}
 	pop();
 
 	if (player.lives <= 0) {
-		fill(0);
-		rect((width / 2) - 60, (height / 2) - 20, (width / 2) - 200, (height / 2) - 250);
 		fill(255);
 		noStroke();
-        soundLoop = false;
-        backgroundSound.stop();
-        looseSound.play();
-        noLoop();
-		return text("Game over. Press space to continue.", width / 2, height / 2);
+		soundLoop = false;
+		backgroundSound.stop();
+		looseSound.play();
+		noLoop();
+		return text("Game over. Press space to continue.", 350, 220);
 	}
 	if (flagpole.isReached) {
 
-		fill(0);
-		rect((width / 2) - 60, (height / 2) - 20, (width / 2) - 200, (height / 2) - 250);
 		fill(255);
 		noStroke();
-        soundLoop = false;
-        backgroundSound.stop();
-        winSound.play();
-        noLoop();
-		return text("Level " + player.level + " complete. Press space to continue", width / 2, height / 2);
-        
+		soundLoop = false;
+		backgroundSound.stop();
+		winSound.play();
+		noLoop();
+		return text("Level " + player.level + " complete. Press space to continue", 350, 220);
+
 	}
 	drawGameChar();
 
@@ -215,8 +212,8 @@ function draw() {
 	}
 	if (isPlummeting == true) {
 		gameChar_y += 10;
-        backgroundSound.stop();
-        fallingSound.play();        
+		backgroundSound.stop();
+		fallingSound.play();
 	}
 
 	if (flagpole.isReached == false) {
@@ -230,15 +227,19 @@ function draw() {
 }
 
 function startGame(level) {
-    winSound.stop();
-    backgroundSound.stop();
-    backgroundSound.loop();
+	winSound.stop();
+	backgroundSound.stop();
+	backgroundSound.loop();
 
-	// floorPos_y = height * 3 / 4;
+	if (level <= 0) { //prevent level from going below 0
+		level = 1;
+	}
+
+	player.level = level;
 	gameChar_x = width / 2;
 	gameChar_y = floorPos_y;
 
-    soundLoop = true;
+	soundLoop = true;
 
 	// Variable to control the background scrolling.
 	scrollPos = 0;
@@ -324,7 +325,7 @@ function startGame(level) {
 	player.game_score = 0;
 	flagpole = {
 		isReached: false,
-		x_pos: 1700*level
+		x_pos: 1700 * level
 	}
 
 	enemies = [];
@@ -346,23 +347,31 @@ function keyPressed() {
 		isRight = true;
 	}
 	if (keyCode == 32) {
-        if (!isFalling && (gameChar_y == floorPos_y)) {
-            gameChar_y -= 100;
-            if (soundLoop) {
-                jumpSound.play();
+		if (!start) {
+			startGame(player.level);
+			start = true;
+			return;
+		}
+		if (!isFalling && (gameChar_y == floorPos_y)) {
+			gameChar_y -= 100;
+			if (soundLoop) {
+				jumpSound.play();
 
-            }
-        }
-        if (flagpole.isReached || player.lives <= 0 ) {
-            if (player.lives <= 0) {
-                player.lives = 3;
+			}
+		}
+		if (flagpole.isReached || player.lives <= 0) {
+			if (player.lives <= 0) {
+				player.lives = 3;
 				player.level = -1;
-            }
+			}
 			player.level += 1;
-            startGame(player.level);
-            loop();
-        
-        }
+
+			startGame(player.level);
+
+
+			loop();
+
+		}
 	}
 
 }
@@ -393,7 +402,7 @@ function drawGameChar() {
 		// add your jumping-left code
 		fill(255, 150, 150);
 		ellipse(gameChar_x, gameChar_y - 50, 35);
-		fill(255, 0, 0);
+		fill(247,138,4);
 		rect(gameChar_x - 2, gameChar_y - 35, 5, 20);
 		quad(gameChar_x - 20, gameChar_y - 18, gameChar_x, gameChar_y - 35, gameChar_x - 3, gameChar_y - 26);
 		quad(gameChar_x + 2, gameChar_y - 32, gameChar_x + 22, gameChar_y - 40, gameChar_x + 3, gameChar_y - 28);
@@ -405,7 +414,7 @@ function drawGameChar() {
 		// add your jumping-right code
 		fill(255, 150, 150);
 		ellipse(gameChar_x, gameChar_y - 50, 35);
-		fill(255, 0, 0);
+		fill(247,138,4);
 		rect(gameChar_x - 2, gameChar_y - 35, 5, 20);
 		quad(gameChar_x - 20, gameChar_y - 18, gameChar_x, gameChar_y - 35, gameChar_x - 3, gameChar_y - 26);
 		quad(gameChar_x + 2, gameChar_y - 32, gameChar_x + 22, gameChar_y - 40, gameChar_x + 3, gameChar_y - 28);
@@ -419,7 +428,7 @@ function drawGameChar() {
 		// add your walking left code
 		fill(0);
 		rect(gameChar_x - 12, gameChar_y - 10, 15, 10);
-		fill(255, 0, 0);
+		fill(247,138,4);
 		rect(gameChar_x - 10, gameChar_y - 55, 20, 50);
 		fill(255, 0, 0);
 		ellipse(gameChar_x, gameChar_y - 55, 25, 40);
@@ -431,7 +440,7 @@ function drawGameChar() {
 		// add your walking right code
 		fill(0);
 		rect(gameChar_x, gameChar_y - 10, 15, 10);
-		fill(255, 0, 0);
+		fill(247,138,4);
 		rect(gameChar_x - 10, gameChar_y - 55, 20, 50);
 		fill(255, 150, 150);
 		ellipse(gameChar_x, gameChar_y - 55, 25, 40);
@@ -440,7 +449,7 @@ function drawGameChar() {
 	}
 	else if (isFalling || isPlummeting) {
 		// add your jumping facing forwards code
-		fill(255, 0, 0);
+		fill(247,138,4);
 		rect(gameChar_x - 10, gameChar_y - 50, 20, 40);
 		fill(255, 150, 150);
 		ellipse(gameChar_x, gameChar_y - 50, 35);
@@ -456,10 +465,10 @@ function drawGameChar() {
 		fill(200, 150, 150);
 		ellipse(gameChar_x, gameChar_y - 50, 35);
 
-		fill(255, 0, 0);
+		fill(247,138,4);
 		rect(gameChar_x - 13, gameChar_y - 35, 26, 30);
 
-		fill(0);
+		fill(1,48,78);
 		rect(gameChar_x - 15, gameChar_y - 5, 10, 10);
 		rect(gameChar_x + 5, gameChar_y - 5, 10, 10);
 
@@ -550,8 +559,8 @@ function drawTrees() {
 }
 
 function createEnemies() {
-	for(var i = 0; i < enemies_x.length; i++) {
-		enemies.push(new Enemy(enemies_x[i], floorPos_y - 10, random(100, 200)*player.level/2));
+	for (var i = 0; i < enemies_x.length; i++) {
+		enemies.push(new Enemy(enemies_x[i], floorPos_y - 10, random(50*player.level, 100*player.level) * (player.level) / 2, player.level));
 	}
 }
 // ---------------------------------
@@ -617,7 +626,7 @@ function checkPlayerDie() {
 		fill(255);
 		noStroke();
 		text("Lives: " + player.lives, 500, 20);
-		text("Level: " + player.level, 900, 20 );
+		text("Level: " + player.level, 900, 20);
 	}
 
 
@@ -631,9 +640,6 @@ function checkPlayerDie() {
 		}
 	}
 
-	// for (lives; lives > 1;) {
-
-	// }
 
 
 }
@@ -656,7 +662,7 @@ function checkCollectable(t_collectable) {
 
 	if (dist(gameChar_world_x, gameChar_y, t_collectable.x_pos, t_collectable.y_pos) < t_collectable.size) {
 		t_collectable.isFound = true;
-        coinSound.play();
+		coinSound.play();
 		player.game_score += 1;
 
 	}
@@ -675,46 +681,45 @@ function checkCollectable(t_collectable) {
 
 }
 
-function Enemy(x, y, range)
-{
+function Enemy(x, y, range, inc) {
 	this.x = x;
 	this.y = y;
 	this.range = range;
 
 	this.currentX = x;
-	this.inc = 1;
+	this.inc = inc;
+	this.level = inc;
 
 	this.update = function() {
 		this.currentX += this.inc;
 
 		if (this.currentX >= this.x + this.range) {
-			this.inc = -1;
+			this.inc = -this.level;
 		}
 		else if (this.currentX < this.x)
 		{
-			this.inc = 1;
+			this.inc = random(1, this.level);
 		}
 	}
 
-	this.draw = function() {
+	this.draw = function () {
 		this.update();
 		fill(255, 0, 0);
-		ellipse(this.currentX, this.y, 20, 20);
+		ellipse(this.currentX, this.y, 30, 50);
+		fill(0);
+		ellipse(this.currentX + 9, this.y-5, 5, 5);
+		ellipse(this.currentX - 3, this.y-5, 5, 5);
+		fill(155);
+		rect(this.currentX - 2, this.y + 5, random(10, this.inc), random(5, this.inc));
 	}
 
-	this.checkContact = function(gc_x, gc_y)
-	{
+	this.checkContact = function (gc_x, gc_y) {
 		var d = dist(gc_x, gc_y, this.currentX, this.y);
 
-		if (d < 20)
-		{
+		if (d < 20) {
 			return true;
 		}
 
 		return false;
 	}
 }
-// function keyPressed()
-// {
-//     jumpSound.play();
-// }
