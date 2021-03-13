@@ -1,14 +1,19 @@
-/*
+//Extension 1: Add sound
+//I added sound to most common activities of the game, a sound is played:
+//Continuously when the player start the game, when the player jump,
+// hit an enemy, plummet, completed a level, lost all lives(game over).
+//the bit i found difficult is playing sound in the draw function because the draw
+//function is called continuously, the sound tends to loop instead of playing oncep.
+//i was able to solve this by creating a variable called soundLoop to determine how
+//sound should be called in the draw function.
+//Finally i learnt about noLoop() in p5js which stop draw function from running
+//continously
 
-- Copy your game project code into this file
-- for the p5.Sound library look here https://p5js.org/reference/#/libraries/p5.sound
-- for finding cool sounds perhaps look here
-https://freesound.org/
 
-
-*/
-
-
+//Extension 2: Create enemies
+//I was able to create enemies with eyeball and talking mouth, it was demanding
+//understanding how constructor works. Finally, i was able to understand how it
+//work and i was able to manipulate it.
 
 var jumpSound;
 var coinSound;
@@ -58,6 +63,12 @@ function preload() {
 
 	//set volume
 	backgroundSound.setVolume(0.2);
+	jumpSound.setVolume(0.3);
+	coinSound.setVolume(0.3);
+	winSound.setVolume(0.3);
+	fallingSound.setVolume(0.3);
+	enemySound.setVolume(0.3);
+	looseSound.setVolume(0.3);
 }
 
 
