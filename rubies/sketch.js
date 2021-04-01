@@ -104,7 +104,7 @@ function draw() {
 		rect(300, 150, 400, 200);
 		fill(255)
 		textSize(20)
-		text( "Welcome To Cephas Digital Game \n Use Left & Right Arrow For Movement \
+		text( "Welcome To Rubies Kids Game \n Use Left & Right Arrow For Movement \
 		\n Use The Space Key To Jump\n Press Space To Continue", 345, 220)
 		
 		return;
