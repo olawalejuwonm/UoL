@@ -1,2 +1,4 @@
-__MACOSX/
-_DS_Store
+__MACOSX*/
+_DS_Store*
+*.zip
+.vscode/*
