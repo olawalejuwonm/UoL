@@ -45,7 +45,7 @@ function setup() {
 			height: 400,
 		};
     
-	for (var i = 0; i < lines.length i++) {
+	for (var i = 0; i < lines.length; i++) {
 		var l = lines[i]
 
 		shopStock.addStock(l.name, l.imageFile, l.weight, l.price, l.quantity,
@@ -100,7 +100,7 @@ function mousePressed() {
 
 function Stock() {
 	//an array to hold the stock
-	this.stock;
+	this.stock = [];
 
 	//add a chocolate bar to the array each item has a chocolate bar object and a
 	//quantity
@@ -169,7 +169,7 @@ function ChocolateBar(name, imageFile, weight, price, display) {
 	//draw the chocolate bars image to the values set in the display object
 	//also display the price and price per 100grams
 	this.draw = function() {
-		image(image, this.display.x, this.display.y, this.display.width,
+ 		image(this.image, this.display.x, this.display.y, this.display.width,
 			this.display.height);
 		var pricePer100g = price / weight * 100;
 		var priceString = "£" + price + "p ( £" + pricePer100g +
