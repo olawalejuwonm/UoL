@@ -1,17 +1,25 @@
 var myRobot;
+// var transmitButton;
+// var rotationSlider;
+// var nameText;
+// var colorSelect;
 
 function setup() {
 	// put setup code here
 	createCanvas(500, 500);
 	myRobot = new Robot("grey", false, "marvin", 0);
+	angleMode(DEGREES)
 
-	//add dom controls
+	
 
 }
 
 function draw() {
 	// put drawing code here
 	background(50);
+	// myRobot.colour = colorSelect.selected();
+	// myRobot.rotation = rotationSlider.value();
+	// myRobot.name = nameText.value();
 	myRobot.drawRobot();
 }
 
@@ -21,8 +29,40 @@ function Robot(colour, transmitting, name, rotation) {
 	this.transmitting = transmitting;
 	this.name = name;
 
+	var controlsDiv = select('#robotControls')
+	//add dom controls
+	var self = this;
+	var transmitButton = createButton("transmit");
+
+	var rotationSlider = createSlider(0, 360, 0);
+	var rotationUpdate = function () {
+		self.rotation = this.value();
+	}
+	rotationSlider.input(rotationUpdate);
+	var nameText = createInput("Micheal");
+	nameText.input(function() {
+		self.name = this.value();
+	})
+	var colorSelect = createSelect();
+	var colorOptions = ["grey", "brown", "red", "green", "yellow", "purple"];
+	for (var i=0; i < colorOptions.length; i++) {
+		colorSelect.option(colorOptions[i]);
+	}
+
+	colorSelect.input(function() {
+		self.colour = this.value();
+	})
+
+	transmitButton.parent(controlsDiv);
+	transmitButton.mousePressed(function() {
+		self.transmitting = !self.transmitting
+	})
+	rotationSlider.parent(controlsDiv);
+	nameText.parent(controlsDiv);
+	colorSelect.parent(controlsDiv);
 	this.drawRobot = function() {
 		translate(width / 2, height / 2);
+		rotate(this.rotation);
 		//robots head
 		fill(this.colour);
 		strokeWeight(4);
@@ -67,5 +107,11 @@ function Robot(colour, transmitting, name, rotation) {
 		vertex(50, 120);
 		vertex(75, 90);
 		endShape();
+
+		//robots name
+		textAlign(CENTER);
+		textSize(48);
+		fill(0);
+		text(this.name, 0, 200);
 	}
 }
