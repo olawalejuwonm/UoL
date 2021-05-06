@@ -67,14 +67,16 @@ function ColourPalette() {
 
     select(".colourSwatches").style("border", "2px solid blue");
 
-    var color = select(".color");
+    
+  };
+
+  var color = select("#color");
     color.input(function () {
       var c = color.value();
       self.selectedColour = c;
       fill(c);
       stroke(c);
     });
-  };
   //call the loadColours function now it is declared
-  this.loadColours();
+  // this.loadColours();
 }

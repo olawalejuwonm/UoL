@@ -12,7 +12,8 @@ function EraserTool() {
   };
 
   this.unselectTool = function () {
-    fill(0);
-    stroke(0);
+    var color = select("#color");
+    fill(color.value());
+    stroke(color.value());
   };
 }
