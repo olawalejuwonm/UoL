@@ -5,22 +5,20 @@ function EditableShapeTool() {
   var editButton;
   var finishButton;
   var currentShape = [];
- 
-
 
   //   input = createFileInput(handleFile);
   //   input.position(0, 0);
   this.populateOptions = function () {
-      noFill()
+    noFill();
     loadPixels();
     editButton = createButton("edit shape");
 
     finishButton = createButton("finish shape");
     // print(ss)
-    finishButton.mousePressed(function() {
-        loadPixels()
-        currentShape = []
-    })
+    finishButton.mousePressed(function () {
+      loadPixels();
+      currentShape = [];
+    });
     finishButton.parent(ss);
     editButton.parent(ss);
   };
@@ -31,20 +29,17 @@ function EditableShapeTool() {
   };
   this.draw = function () {
     if (mouseIsPressed) {
-       
-
       currentShape.push({
-          x: mouseX,
-          y: mouseY
-      })
+        x: mouseX,
+        y: mouseY,
+      });
 
-      beginShape()
+      beginShape();
       for (var i = 0; i < currentShape.length; i++) {
-          vertex(currentShape[i].x, currentShape[i].y)
+        vertex(currentShape[i].x, currentShape[i].y);
       }
 
-
-      endShape()
+      endShape();
       // image(star, mouseX, mouseY, starSize);
     }
   };

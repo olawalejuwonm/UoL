@@ -3,6 +3,12 @@ function EraserTool() {
   this.icon = "assets/eraser.jpg";
   this.name = "eraser";
 
+  console.log(Gopt)
+  this.populateOptions = function () {
+    noFill();
+    loadPixels();
+    // var slider = createSlider(50, max, [value], [step])
+  }
   this.draw = function () {
     if (mouseIsPressed) {
       stroke(255);

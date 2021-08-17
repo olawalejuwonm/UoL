@@ -38,3 +38,6 @@ In the helperFunctions constructor, two event handlers are created to handle the
 Some other things to do when you have finished:
 Take a look at the mirror tool. It’s a bit more complex than the others we have seen; see if you can work out how it works.
 Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
+
+
+

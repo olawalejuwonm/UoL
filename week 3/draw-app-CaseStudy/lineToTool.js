@@ -13,10 +13,12 @@ function LineToTool(){
 				startMouseX = mouseX;
 				startMouseY = mouseY;
 				drawing = true;
+				// console.log(pixels)
 				loadPixels();
 			}
 
 			else{
+
 				updatePixels();
 				line(startMouseX, startMouseY, mouseX, mouseY);
 			}

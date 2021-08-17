@@ -3,7 +3,7 @@
 var toolbox = null;
 var colourP = null;
 var helpers = null;
-
+var Gopt;
 function setup() {
   //create a canvas to fill the content div from index.html
   canvasContainer = select("#content");
@@ -11,6 +11,7 @@ function setup() {
     canvasContainer.size().width,
     canvasContainer.size().height
   );
+  Gopt = select(".options") //Global Function
   c.parent("content");
 
   //create helper functions and the colour palette
@@ -27,8 +28,8 @@ function setup() {
   toolbox.addTool(new mirrorDrawTool());
   toolbox.addTool(new EraserTool());
   toolbox.addTool(new RectangleTool());
-  toolbox.addTool(new StampTool())
-  toolbox.addTool(new EditableShapeTool())
+  toolbox.addTool(new StampTool());
+  toolbox.addTool(new EditableShapeTool());
   background(255);
 }
 
