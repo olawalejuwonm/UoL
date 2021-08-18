@@ -4,7 +4,6 @@ function EraserTool() {
   this.icon = "assets/eraser.jpg";
   this.name = "eraser";
 
-  console.log(Gopt)
   var slider;
   this.populateOptions = function () {
     noFill();
