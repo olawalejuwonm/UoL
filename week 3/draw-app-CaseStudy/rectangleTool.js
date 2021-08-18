@@ -6,6 +6,8 @@ function RectangleTool() {
   var startMouseX = -1;
   var startMouseY = -1;
   var drawing = false;
+  var pos = 1;
+
   var color = select("#color");
   this.draw = function () {
     // mousePressed(function () {
@@ -21,8 +23,15 @@ function RectangleTool() {
         loadPixels();
       } else {
         updatePixels();
-        fill(255);
-        // noFill();
+        if (pos === 1) {
+          noFill();
+
+
+        }
+        if (pos === 2) {
+          fill(255);
+
+        }
         stroke(color.value());
         rect(
           startMouseX,
@@ -57,7 +66,6 @@ function RectangleTool() {
   };
 
   this.populateOptions = function () {
-    var pos;
     var pg = createGraphics(width / 3, 100);
     pg.background(100);
     // pg.noStroke();
@@ -68,16 +76,16 @@ function RectangleTool() {
     pg.noFill();
     pg.rect(45, 50, 40, 20);
     pg.rect(15, 35, 50, 50).mousePressed(() => {
-      console.log("hi ");
 
       if (pos === 1) {
         // console.log(pg.mouseX);
         pg.fill(60, 120, 216);
         pg.rect(15, 35, 50, 50)
-
         pg.noFill()
 
         pg.rect(45, 50, 40, 20);
+
+
       } else  {
         pg.fill(100);
         pg.rect(15, 35, 50, 50)
