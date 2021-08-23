@@ -48,4 +48,5 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 - Local Storage Saving
 - History
 
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array

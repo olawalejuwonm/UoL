@@ -86,6 +86,7 @@ function setup() {
   toolbox.addTool(new RectangleTool());
   toolbox.addTool(new StampTool());
   toolbox.addTool(new EditableShapeTool());
+  toolbox.addTool(new PolygonTool())
   background(255);
 }
 
@@ -99,4 +100,10 @@ function draw() {
   } else {
     alert("it doesn't look like your tool has a draw method!");
   }
+}
+
+function mouseReleased() {
+  if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
+    toolbox.selectedTool.mouseReleased();
+  } 
 }
