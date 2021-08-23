@@ -113,26 +113,26 @@ function RectangleTool() {
     //   console.log("hi ")
     // });
     pg.canvas.style.display = "block";
-    console.log(
       pg.mousePressed(() => {
-        console.log(
-          "pmouseX",
-          pmouseX,
-          "pmouseY",
-          pmouseY,
-          "dist",
-          dist(256, 669, pmouseX, pmouseY)
-        );
+        // console.log(
+        //   "pmouseX",
+        //   pmouseX,
+        //   "pmouseY",
+        //   pmouseY,
+        //   "dist",
+        //   dist(256, 669, pmouseX, pmouseY),
+        //   "pos", pos
+        // );
 
-        if (dist(256, 669, pmouseX, pmouseY) <= 65) {
+        if (dist(256, 669, pmouseX, pmouseY) <= 120) {
           pos = 1;
-        } else if (dist(384, 670, pmouseX, pmouseY) <= 65) {
+        } else if (dist(384, 670, pmouseX, pmouseY) <= 120) {
           pos = 2;
-        } else if (pmouseX >= 256) {
-          pos = null;
-        }
-      })
-    );
+        } 
+        // else if (pmouseX >= 256) {
+        //   pos = null;
+        // }
+      });
 
     Gopt.child(pg);
     // image(pg, 50, 50);

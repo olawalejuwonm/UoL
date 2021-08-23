@@ -19,6 +19,9 @@ function Toolbox() {
 		//call loadPixels to make sure most recent changes are saved to pixel array
 		loadPixels();
 
+
+		
+
 	}
 
 	//add a new tool icon to the html page

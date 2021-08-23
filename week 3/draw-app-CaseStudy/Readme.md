@@ -42,3 +42,10 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 
 # Todo
 - Cursor Image
+- Add info about each tool
+- Save drawing to local storage
+- Text Tool
+- Local Storage Saving
+- History
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
