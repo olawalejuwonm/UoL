@@ -31,42 +31,10 @@ function PolygonTool() {
     //   }
     } else if (drawing) {
       drawing = false;
-      // startMouseX = -1;
-      // startMouseY = -1;
+
     }
 
-    // else {
-    // 	drawing = false;
-    // 	startMouseX = mouseX;
-    // 		startMouseY = mouseY;
-    // }
-    // else {
-    //     startMouseX = mouseX;
-    // 		startMouseY = mouseY;
-    // }
-
-    // if(mouseIsPressed){
-    // if(startMouseX == -1){
-    // 	startMouseX = mouseX;
-    // 	startMouseY = mouseY;
-    // 	drawing = true;
-    // 	// console.log(pixels)
-    // 	loadPixels();
-    // }
-
-    // 	else{
-
-    // 		updatePixels();
-    // 		line(startMouseX, startMouseY, mouseX, mouseY);
-    // 	}
-
-    // }
-
-    // else if(drawing){
-    // 	drawing = false;
-    	// startMouseX = -1;
-    	// startMouseY = -1;
-    // }
+    
   };
 
   this.mouseReleased = function mouseReleased() {
