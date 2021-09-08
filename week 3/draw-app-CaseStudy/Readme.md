@@ -47,6 +47,7 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 - Text Tool
 - Local Storage Saving
 - History
+- Upload Drawing
 
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
