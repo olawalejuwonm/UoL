@@ -8,7 +8,6 @@ class EraserTool {
     var slider;
     this.populateOptions = function () {
       noFill();
-      loadPixels();
       slider = createSlider(50, 200, 5);
       createP("Eraser Intensity: ").parent(Gopt);
       slider.parent(Gopt);
