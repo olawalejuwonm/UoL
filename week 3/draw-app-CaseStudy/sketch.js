@@ -86,7 +86,8 @@ function setup() {
   toolbox.addTool(new RectangleTool());
   toolbox.addTool(new StampTool());
   toolbox.addTool(new EditableShapeTool());
-  toolbox.addTool(new PolygonTool())
+  // toolbox.addTool(new PolygonTool())
+  toolbox.addTool(new BucketFillTool())
   background(255);
 }
 
@@ -102,8 +103,16 @@ function draw() {
   }
 }
 
+function mousePressed() {
+  if (toolbox.selectedTool.hasOwnProperty("mousePressed")) {
+    toolbox.selectedTool.mousePressed();
+  } 
+}
+
 function mouseReleased() {
   if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
     toolbox.selectedTool.mouseReleased();
   } 
 }
+
+
