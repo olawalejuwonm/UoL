@@ -49,6 +49,13 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 - History
 - Upload Drawing
 - Offline usage
+- Rectangle Tool
+- Hand Tool
+- Cloning Tool
+- Shape Tool
+- Text Tool
+- Layers
+- 3D
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 https://en.wikipedia.org/wiki/Flood_fill
