@@ -67,7 +67,7 @@ class RectangleTool {
     };
 
     this.populateOptions = function () {
-      var pg = createGraphics(width / 3, 100);
+      var pg = createGraphics(windowWidth / 3, 100);
       pg.background(100);
       // pg.noStroke();
       pg.fill(255);

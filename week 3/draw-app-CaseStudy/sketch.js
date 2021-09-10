@@ -17,20 +17,19 @@ function setup() {
     canvasContainer.size().height
   );
   c.parent("content");
-  c.mousePressed(function () {
-    undoArr.push(get());
-    select("#undoButton").removeAttribute("disabled");
-  });
-  pixelDensity(1)
-  Gopt = select(".options"); //Global Function
 
 
   //create helper functions and the colour palette
   helpers = new HelperFunctions();
   colourP = new ColourPalette();
-  imageB = new CanvasImage()
+  imageB = new CanvasImage();
 
 
+  c.mousePressed(function () {
+    helpers.getPixels()
+  });
+  pixelDensity(1);
+  Gopt = select(".options"); //Global Function
   //create a toolbox for storing the tools
   toolbox = new Toolbox();
 
