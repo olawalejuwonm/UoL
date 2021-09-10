@@ -6,7 +6,8 @@ function HelperFunctions() {
   //event handler for the clear button event. Clears the screen
   select("#clearButton").mouseClicked(function () {
     background(255, 255, 255);
-
+    select("#img").elt.value = null;
+    imageB.img = null;
     //call loadPixels to update the drawing state
     //this is needed for the mirror tool
     loadPixels();
