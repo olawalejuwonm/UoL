@@ -18,6 +18,7 @@ class PolygonTool {
           startMouseX = mouseX;
           startMouseY = mouseY;
           drawing = true;
+          
           // console.log(pixels)
           loadPixels();
         }

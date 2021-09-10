@@ -2,30 +2,53 @@ class CanvasImage {
   constructor() {
     let img;
     let input;
-    let imgSize;
+    let imgLoad = false;
     let imageWidth;
     let imageHeight;
     // var slider;
 
     function handleFile(file) {
-      print(file);
+      // print(file);
       if (file.type === "image") {
-        img = createImg(file.data, "");
-        img.hide();
-        image(img, 0, 0, imageWidth.value(), imageHeight.value());
+        img = createImg(file.data, "", (lImg) => {
+          console.log(lImg)
+          imgLoad = true
+          img.hide();
+          image(img, 0, 0, imageWidth.value(), imageHeight.value());
+        });
+
+        // if (!imgLoad) {
+        //   alert("Error Loading Image, Try Again!")
+        //   imgLoad = false
+        // }
+
+
+
       } else {
         alert("Please Select An Image");
         img = null;
       }
     }
+
     //   input = createFileInput(handleFile);
     //   input.position(0, 0);
+    input = createFileInput(handleFile);
+    input.attribute("accept", "image/*")
+    input.parent("#initOpt")
+    input.elt.onchange = () => {
+      if (!img) {
+        imageWidth = createInput(width, "number");
+        imageHeight = createInput(height, "number");
+        imageWidth.changed(() => {
+          fill(random(255))
+        })
+        imageWidth.parent("#initOpt");
+        imageHeight.parent("#initOpt");
+      }
+    }
     this.populateOptions = function () {
-      input = createFileInput(handleFile);
-      imageWidth = createInput(width, "number");
-      imageHeight = createInput(height, "number");
+
       // input.position(0, 0);
-      input.parent(Gopt);
       imageWidth.parent(Gopt);
       imageHeight.parent(Gopt);
       // slider = createSlider(5, 200, 20);

@@ -5,7 +5,7 @@ html, body {
 
 #sidebar {
 	grid-area: sidebar;
-	overflow-y: scroll;
+	overflow-y: hidden;
 }
 
 #content {
@@ -32,7 +32,7 @@ html, body {
 	max-Width:50px;
 }
 
-.colourPalette{
+#initOpt{
 	grid-area: colourP;
 	display:flex;
 	flex-direction:grid;

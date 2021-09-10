@@ -21,6 +21,7 @@ function setup() {
     undoArr.push(get());
     select("#undoButton").removeAttribute("disabled");
   });
+  pixelDensity(1)
   Gopt = select(".options"); //Global Function
 
 
