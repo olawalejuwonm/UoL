@@ -56,6 +56,8 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 - Text Tool
 - Layers
 - 3D
+- Es6
+- Perfect Shade(bucket) - Smooth
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 https://en.wikipedia.org/wiki/Flood_fill
