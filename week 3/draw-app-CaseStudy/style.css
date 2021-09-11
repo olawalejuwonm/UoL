@@ -75,3 +75,68 @@ html, body {
 .header {
   background-color: #999;
 }
+
+
+
+@media (max-width: 200px) {
+	.horizontal > .component-area {
+		display: none;
+	}
+}
+@media (max-height: 340px) {
+	.vertical > .component-area {
+		display: none;
+	}
+}
+@media (max-height: 359px) {
+	.vertical > .status-area {
+		display: none !important;
+	}
+}
+
+.component-area,
+.tool-window .window-titlebar {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.tool-window .window-titlebar {
+	direction: ltr;
+	text-align: start;
+}
+.status-area,
+.component-area {
+	display: flex;
+	flex: 0 0 auto;
+}
+
+.selection,
+.textbox,
+.helper-layer {
+	z-index: 3;
+}
+
+.component-area {
+	/* for measuring offsetTop/offsetLeft of component elements */
+	/* (makes it relative to this element) */
+	position: relative;
+}
+
+
+.horizontal .component-area {
+	flex-direction: column;
+}	
+
+.canvas-area {
+	flex: 1;
+	display: block !important;
+	position: relative;
+	overflow: auto;
+	padding: 3px;
+	direction: ltr/*rtl:ignore*/;
+}
+.p5Canvas {
+	position: absolute;
+	z-index: 2;
+}

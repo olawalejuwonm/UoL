@@ -8,6 +8,7 @@ var Gopt = null;
 var imageB = null;
 var undoArr = [];
 var redoArr = [];
+var canvasContainer = null;
 
 function setup() {
   //create a canvas to fill the content div from index.html
@@ -18,15 +19,13 @@ function setup() {
   );
   c.parent("content");
 
-
   //create helper functions and the colour palette
   helpers = new HelperFunctions();
   colourP = new ColourPalette();
   imageB = new CanvasImage();
 
-
   c.mousePressed(function () {
-    helpers.getPixels()
+    helpers.getPixels();
   });
   pixelDensity(1);
   Gopt = select(".options"); //Global Function
@@ -43,6 +42,7 @@ function setup() {
   toolbox.addTool(new EditableShapeTool());
   // toolbox.addTool(new PolygonTool())
   toolbox.addTool(new BucketFillTool());
+  toolbox.addTool(new ZoomTool());
   background(255);
 }
 
@@ -67,5 +67,11 @@ function mousePressed() {
 function mouseReleased() {
   if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
     toolbox.selectedTool.mouseReleased();
+  }
+}
+
+function mouseDragged() {
+  if (toolbox.selectedTool.hasOwnProperty("mouseDragged")) {
+    toolbox.selectedTool.mouseDragged();
   }
 }
