@@ -6,12 +6,19 @@ class ZoomTool {
     this.selectScale = { x: 0, y: 0, w: 50, h: 50 };
     let img = [];
     let zoomButton;
+    let unzoomButton;
     this.prevPixel = [{ pixel: null, width: null, height: null }];
+    this.zoom = false;
     // let UnzoomButton;
 
     this.draw = () => {
+      if (!this.zoom) {
+        updatePixels();
+      }
+      else {
+        return;
+      }
       if (mouseIsPressed) {
-        // updatePixels();
         noFill();
         rect(
           this.selectScale.x,
@@ -33,11 +40,14 @@ class ZoomTool {
       loadPixels();
 
       zoomButton = createButton("Zoom");
+      unzoomButton = createButton("Unzoom")
       zoomButton.parent(Gopt);
+      unzoomButton.parent(Gopt);
 
       zoomButton.mousePressed(() => {
+        this.zoom = true;
         console.log(this.selectScale);
-        // zoomButton.attribute("disabled", "");
+        zoomButton.attribute("disabled", "");
         this.prevPixel[0].width = width;
         this.prevPixel[0].height = height;
         // resizeCanvas(this.selectScale.w, this.selectScale.y)
@@ -46,42 +56,33 @@ class ZoomTool {
           this.selectScale.y,
           this.selectScale.w,
           this.selectScale.h
-        )
-        img.push(
-          gotten
         );
+        img.push(gotten);
         fill(255);
-        noStroke()
+        noStroke();
         rect(
-          this.selectScale.x -5,
-          this.selectScale.y -5,
+          this.selectScale.x - 5,
+          this.selectScale.y - 5,
           this.selectScale.w + 15,
           this.selectScale.h + 15
         );
         this.prevPixel[0].pixel = get();
 
-        let cont = select("#content")
 
         // cont.size(cont.size().width*2, cont.size().height*2)
 
         // cont.elt.clientHeight = cont.size().height*2
         // cont.elt.clientWidth = cont.size().width*2
 
-
-        resizeCanvas(cont.size().width*2,cont.size().height*2, true)
-        image(this.prevPixel[0].pixel, 0, 0)
+        resizeCanvas(width * 2,height * 2, true);
+        // image(this.prevPixel[0].pixel, 0, 0);
         scale(2);
-        image(
-          gotten,
-          this.selectScale.x,
-          this.selectScale.y
-        );
-
-  
-
-
-
+        image(gotten, this.selectScale.x, this.selectScale.y);
       });
+
+      unzoomButton.mousePressed(() => {
+        this.zoom = false;
+      })
     };
 
     this.mousePressed = () => {
@@ -98,5 +99,11 @@ class ZoomTool {
     };
 
     this.mouseReleased = () => {};
+
+    this.unselectTool = () => {
+      let color = select("#color").value();
+      fill(color)
+      stroke(color)
+    };
   }
 }
