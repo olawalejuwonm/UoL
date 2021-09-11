@@ -58,6 +58,7 @@ function Toolbox() {
 				//if the tool has an unselectTool method run it.
 				if (this.selectedTool != null && this.selectedTool.hasOwnProperty(
 						"unselectTool")) {
+							Gopt.html("")
 					this.selectedTool.unselectTool();
 				}
 				//select the tool and highlight it on the toolbar
