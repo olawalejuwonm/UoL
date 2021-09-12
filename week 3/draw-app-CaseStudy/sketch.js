@@ -9,16 +9,41 @@ var imageB = null;
 var undoArr = [];
 var redoArr = [];
 var canvasContainer = null;
+var savedPixels
+var savedImg = {}
 
+// function preload() {
+//   if (savedPixels) {
+//     savedImg = loadImage(savedPixels)
+//   }
+//   savedImg = async () => {
+//     try {
+//       if (savedPixels) {
+//         savedImg = await loadImage(savedPixels);
+//         return savedImg
+//       }
+//     } catch (error) {
+//       console.log(error)
+//       return {}
+//     }
+//   }
+//   // savedImg = savedImg()
+// }
 function setup() {
   //create a canvas to fill the content div from index.html
+  savedPixels = getItem("pixels")
+  // console.log(savedPixels)
+  
   canvasContainer = select("#content");
+  console.log(savedImg)
   var c = createCanvas(
-    canvasContainer.size().width,
-    canvasContainer.size().height
+    savedImg.width || canvasContainer.size().width,
+    savedImg.height || canvasContainer.size().height
   );
   c.parent("content");
 
+
+  
   //create helper functions and the colour palette
   helpers = new HelperFunctions();
   colourP = new ColourPalette();
@@ -26,6 +51,8 @@ function setup() {
 
   c.mousePressed(function () {
     helpers.getPixels();
+    // console.log(select('#defaultCanvas0').elt.toDataURL("image/png"))
+  
   });
   pixelDensity(1);
   Gopt = select(".options"); //Global Function
@@ -44,6 +71,16 @@ function setup() {
   toolbox.addTool(new BucketFillTool());
   toolbox.addTool(new ZoomTool());
   background(255);
+
+  if (savedPixels) {
+    loadImage(savedPixels, img => {
+      // console.log(img)
+      savedImg = img
+      resizeCanvas(savedImg.width, savedImg.height)
+
+      image(img, 0, 0, width, height);
+    });
+  }
 }
 
 function draw() {
@@ -56,6 +93,7 @@ function draw() {
   } else {
     alert("it doesn't look like your tool has a draw method!");
   }
+
 }
 
 function mousePressed() {
@@ -68,6 +106,10 @@ function mouseReleased() {
   if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
     toolbox.selectedTool.mouseReleased();
   }
+  let dataURL = select('#defaultCanvas0').elt.toDataURL("image/png")
+  // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  // console.log(fImg)
+  storeItem("pixels", dataURL)
 }
 
 function mouseDragged() {
