@@ -1,16 +1,21 @@
-let zoomMode = false;
+let zoomMode;
 let lastScale = { x: 0, y: 0, w: 0, h: 0 };
 class ZoomTool {
   zoomButton;
   unzoomButton;
   constructor() {
+    zoomMode = getItem("zoomMode") || false
     //set an icon and a name for the object
     this.icon = "assets/rectangle.png";
     this.name = "zoomTool";
-    this.selectScale = { x: 0, y: 0, w: 50, h: 50 };
+    this.selectScale = { x: 0, y: 0, w: 0, h: 0 };
     this.img = [];
     this.prevPixel = [{ pixel: null, width: null, height: null }];
-    this.zoom = false;
+    this.zoomed = false;
+    this.pressed = false;
+    this.unZoomPressed = false;
+    this.mouseIsDrag = false;
+    this.UnpopulatePressed = false;
     // let UnzoomButton;
 
     this.draw = () => {
@@ -22,7 +27,22 @@ class ZoomTool {
       // else {
       //   return;
       // }
-      if (mouseIsPressed && zoomMode === false) {
+      // if (mouseIsPressed) {
+      //   console.log(
+      //     this.selectScale,
+      //     lastScale,
+      //     "press",
+      //     JSON.stringify(this.selectScale) === JSON.stringify(lastScale)
+      //   );
+      // }
+      if (
+        mouseIsPressed &&
+        zoomMode === false &&
+        mouseX > 5 &&
+        mouseY < height - 10 &&
+        this.pressed === true
+        //  && JSON.stringify(this.selectScale) !== JSON.stringify(lastScale)
+      ) {
         noFill();
         stroke(0);
         rect(
@@ -43,59 +63,73 @@ class ZoomTool {
 
     this.populateOptions = () => {
       loadPixels();
+      
 
       this.zoomButton = createButton("Zoom");
       this.unzoomButton = createButton("Unzoom");
       this.zoomButton.parent(Gopt);
       this.unzoomButton.parent(Gopt);
-      // if (zoomMode) {
-      //   this.zoomButton.attribute("disabled", "");
-      // } else {
-      //   this.unzoomButton.attribute("disabled", "");
-      // }
+      this.UnpopulatePressed = false;
+      if (zoomMode) {
+        this.zoomButton.attribute("disabled", "");
+      } else {
+        this.unzoomButton.attribute("disabled", "");
+      }
 
       this.zoomButton.mousePressed(() => {
         this.zoomAction();
       });
 
       this.unzoomButton.mousePressed(() => {
-        this.prevPixel[0].width = width;
-        this.prevPixel[0].height = height;
-        this.prevPixel[0].pixel = get();
-        let justGot = get();
-        resizeCanvas(width / 2, height / 2);
-        scale(1)
-
-        fill(255);
-        rect(0, 0, width, height);
-        loadPixels();
-        image(justGot, 0, 0);
-        loadPixels();
-        this.zoomButton.removeAttribute("disabled");
-        this.unzoomButton.attribute("disabled", "");
-
-        zoomMode = false;
+        this.unZoomAction();
       });
+
+     
     };
 
     this.mousePressed = () => {
-      this.selectScale.x = mouseX;
-      this.selectScale.y = mouseY;
+      print("pressed", mouseX, mouseY, pmouseY, pwinMouseY, winMouseY);
+
+      if (this.unZoomPressed && this.mouseIsDrag) {
+        this.mouseIsDrag = false;
+        this.unZoomPressed = false;
+        this.mousePressed();
+        return;
+      }
+
+      if (mouseX > 5 && mouseY < height - 15) {
+        this.selectScale.x = mouseX;
+        this.selectScale.y = mouseY;
+        this.pressed = true;
+      }
     };
 
     this.mouseDragged = () => {
-      let w = mouseX - this.selectScale.x;
-      let h = mouseY - this.selectScale.y;
+      console.log("mouse Dragged", this.unZoomPressed);
+      if (this.unZoomPressed === true) {
+        this.mouseIsDrag = true;
+        return;
+      }
 
-      this.selectScale.w = w;
-      this.selectScale.h = h;
+      if (mouseX > 0 && mouseY > 0 && mouseX < width && mouseY < height) {
+        let w = mouseX - this.selectScale.x;
+        let h = mouseY - this.selectScale.y;
+
+        this.selectScale.w = w;
+        this.selectScale.h = h;
+      }
     };
 
     this.mouseReleased = () => {
       updatePixels();
+
+      // if (!(mouseY < 20) || !(mouseX < 20)) {
+
+      // }
+      console.log(this.selectScale, lastScale);
       if (
-        this.selectScale.w - lastScale.w > 20 &&
-        this.selectScale.h - lastScale.h > 20 &&
+        // this.selectScale.w - lastScale.w > 20 &&
+        // this.selectScale.h - lastScale.h > 20 &&
         JSON.stringify(this.selectScale) !== JSON.stringify(lastScale)
       ) {
         this.zoomAction();
@@ -105,6 +139,8 @@ class ZoomTool {
     };
 
     this.unselectTool = () => {
+      this.UnpopulatePressed = true;
+      console.log(this.UnpopulatePressed);
       let color = select("#color").value();
       fill(color);
       stroke(color);
@@ -116,7 +152,21 @@ class ZoomTool {
     //   return;
     // }
 
-    console.log(this.selectScale);
+    console.log(this.UnpopulatePressed, "ZoomAction", this.selectScale);
+    if (
+      this.UnpopulatePressed ||
+      this.selectScale.x < 0 ||
+      this.selectScale.y < 0 ||
+      this.selectScale.w < 0 ||
+      this.selectScale.h < 0
+    ) {
+      return;
+    }
+
+    if (zoomMode) {
+      return;
+    }
+
     this.zoomButton.attribute("disabled", "");
 
     // resizeCanvas(this.selectScale.w, this.selectScale.y)
@@ -162,5 +212,36 @@ class ZoomTool {
 
     this.unzoomButton.removeAttribute("disabled");
     zoomMode = true;
+    storeItem("zoomMode", zoomMode)
+  }
+
+  unZoomAction() {
+    this.prevPixel[0].width = width;
+    this.prevPixel[0].height = height;
+    this.prevPixel[0].pixel = get();
+    loadPixels();
+
+    resizeCanvas(width / 2, height / 2, true);
+    fill(255);
+    rect(0, 0, width, height);
+    loadPixels();
+
+    scale(1);
+    image(this.prevPixel[0].pixel, 0, 0, width, height);
+    // select("#content").size(width / 2, height / 2);
+
+    loadPixels();
+    this.zoomButton.removeAttribute("disabled");
+    this.unzoomButton.attribute("disabled", "");
+
+    zoomMode = false;
+    storeItem("zoomMode", zoomMode)
+
+    console.log(mouseIsPressed, "umzoom");
+    mouseIsPressed = false;
+    console.log(mouseIsPressed, "umzoom");
+    this.unZoomPressed = true;
+
+    this.selectScale = { x: -width, y: -height, w: -width, h: -height };
   }
 }
