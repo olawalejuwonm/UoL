@@ -3,8 +3,10 @@ let lastScale = { x: 0, y: 0, w: 0, h: 0 };
 class ZoomTool {
   zoomButton;
   unzoomButton;
+  cvSize = select("#content").size();
+
   constructor() {
-    zoomMode = getItem("zoomMode") || false
+    zoomMode = getItem("zoomMode") || false;
     //set an icon and a name for the object
     this.icon = "assets/rectangle.png";
     this.name = "zoomTool";
@@ -16,6 +18,7 @@ class ZoomTool {
     this.unZoomPressed = false;
     this.mouseIsDrag = false;
     this.UnpopulatePressed = false;
+
     // let UnzoomButton;
 
     this.draw = () => {
@@ -63,7 +66,6 @@ class ZoomTool {
 
     this.populateOptions = () => {
       loadPixels();
-      
 
       this.zoomButton = createButton("Zoom");
       this.unzoomButton = createButton("Unzoom");
@@ -83,8 +85,6 @@ class ZoomTool {
       this.unzoomButton.mousePressed(() => {
         this.unZoomAction();
       });
-
-     
     };
 
     this.mousePressed = () => {
@@ -151,8 +151,14 @@ class ZoomTool {
     // if (zoomMode === true) {
     //   return;
     // }
+    this.cvSize = select("#content").size()
 
-    console.log(this.UnpopulatePressed, "ZoomAction", this.selectScale);
+    if ((width === this.cvSize.width * 2) || (height === this.cvSize.height *2)) {
+      this.zoomButton.attribute("disabled", "");
+      this.unzoomButton.removeAttribute("disabled");
+      return;
+    }
+    // console.log(this.UnpopulatePressed, "ZoomAction", this.selectScale);
     if (
       this.UnpopulatePressed ||
       this.selectScale.x < 0 ||
@@ -212,10 +218,16 @@ class ZoomTool {
 
     this.unzoomButton.removeAttribute("disabled");
     zoomMode = true;
-    storeItem("zoomMode", zoomMode)
+    storeItem("zoomMode", zoomMode);
   }
 
   unZoomAction() {
+    // this.cvSize = select("#content").size()
+    if ((width  === this.cvSize.width) || (height  === this.cvSize.height)) {
+      this.zoomButton.removeAttribute("disabled");
+      this.unzoomButton.attribute("disabled", "");
+      return;
+    }
     this.prevPixel[0].width = width;
     this.prevPixel[0].height = height;
     this.prevPixel[0].pixel = get();
@@ -228,14 +240,13 @@ class ZoomTool {
 
     scale(1);
     image(this.prevPixel[0].pixel, 0, 0, width, height);
-    // select("#content").size(width / 2, height / 2);
 
     loadPixels();
     this.zoomButton.removeAttribute("disabled");
     this.unzoomButton.attribute("disabled", "");
 
     zoomMode = false;
-    storeItem("zoomMode", zoomMode)
+    storeItem("zoomMode", zoomMode);
 
     console.log(mouseIsPressed, "umzoom");
     mouseIsPressed = false;

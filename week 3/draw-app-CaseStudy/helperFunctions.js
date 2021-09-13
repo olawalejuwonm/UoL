@@ -15,9 +15,13 @@ function HelperFunctions() {
       select("#content").size().width,
       select("#content").size().height
     );
+    clear();
+
     select("#img").elt.value = null;
     imageB.img = null;
-
+    storeItem("zoomMode", false);
+    removeItem("pixels");
+    zoomMode = false;
     //call loadPixels to update the drawing state
     //this is needed for the mirror tool
     loadPixels();
