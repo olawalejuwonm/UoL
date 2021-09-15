@@ -1,4 +1,5 @@
 //Displays and handles the colour palette.
+var c = 0;
 class ColourPalette {
   constructor() {
     //a list of web colour strings
@@ -73,7 +74,7 @@ class ColourPalette {
 
     var color = select("#color");
     color.input(function () {
-      var c = color.value();
+      c = color.value();
       self.selectedColour = c;
       fill(c);
       stroke(c);

@@ -9,41 +9,39 @@ var imageB = null;
 var undoArr = [];
 var redoArr = [];
 var canvasContainer = null;
-var savedPixels
-var savedImg = {}
+var savedPixels;
+var savedImg = {};
+var fonts = {
+  Arial: "Arial",
+  Courier: "Courier New",
+  Georgia: "Georgia",
+  TNR: "Times New Roman",
+  TMS: "Trebuchet MS",
+  Verdana: "Verdana"
+};
 
-// function preload() {
-//   if (savedPixels) {
-//     savedImg = loadImage(savedPixels)
-//   }
-//   savedImg = async () => {
-//     try {
-//       if (savedPixels) {
-//         savedImg = await loadImage(savedPixels);
-//         return savedImg
-//       }
-//     } catch (error) {
-//       console.log(error)
-//       return {}
-//     }
-//   }
-//   // savedImg = savedImg()
-// }
+function preload() {
+  // fonts.klinzhai = loadFont("assets/fonts/Klinzhai.ttf")
+  // fonts.korinth = loadFont("assets/fonts/Korinth.ttf");
+  fonts.Aqum = loadFont("assets/fonts/Aqum2Classic.otf");
+  fonts.OpenSans = loadFont("assets/fonts/OpenSans-Regular.ttf");
+
+  // fonts.splonic = loadFont("assets/fonts/SPlonic.ttf")
+  // savedImg = savedImg()
+}
 function setup() {
   //create a canvas to fill the content div from index.html
-  savedPixels = getItem("pixels")
+  savedPixels = getItem("pixels");
   // console.log(savedPixels)
-  
+
   canvasContainer = select("#content");
-  console.log(savedImg)
+  console.log(savedImg);
   var c = createCanvas(
     savedImg.width || canvasContainer.size().width,
     savedImg.height || canvasContainer.size().height
   );
   c.parent("content");
 
-
-  
   //create helper functions and the colour palette
   helpers = new HelperFunctions();
   colourP = new ColourPalette();
@@ -52,7 +50,6 @@ function setup() {
   c.mousePressed(function () {
     helpers.getPixels();
     // console.log(select('#defaultCanvas0').elt.toDataURL("image/png"))
-  
   });
   pixelDensity(1);
   Gopt = select(".options"); //Global Function
@@ -70,13 +67,14 @@ function setup() {
   // toolbox.addTool(new PolygonTool())
   toolbox.addTool(new BucketFillTool());
   toolbox.addTool(new ZoomTool());
+  toolbox.addTool(new TextTool());
   background(255);
 
   if (savedPixels) {
-    loadImage(savedPixels, img => {
+    loadImage(savedPixels, (img) => {
       // console.log(img)
-      savedImg = img
-      resizeCanvas(savedImg.width, savedImg.height)
+      savedImg = img;
+      resizeCanvas(savedImg.width, savedImg.height);
 
       image(img, 0, 0, width, height);
     });
@@ -93,7 +91,6 @@ function draw() {
   } else {
     alert("it doesn't look like your tool has a draw method!");
   }
-
 }
 
 function mousePressed() {
@@ -106,14 +103,27 @@ function mouseReleased() {
   if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
     toolbox.selectedTool.mouseReleased();
   }
-  let dataURL = select('#defaultCanvas0').elt.toDataURL("image/png")
-  // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-  // console.log(fImg)
-  storeItem("pixels", dataURL)
+
+  let awaitSave = async () => {
+    setTimeout(() => {
+      let dataURL = select("#defaultCanvas0").elt.toDataURL("image/png");
+      // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+      // console.log(fImg)
+      storeItem("pixels", dataURL);
+    }, 1000);
+  };
+
+  awaitSave();
 }
 
 function mouseDragged() {
   if (toolbox.selectedTool.hasOwnProperty("mouseDragged")) {
     toolbox.selectedTool.mouseDragged();
+  }
+}
+
+function keyPressed() {
+  if (toolbox.selectedTool.hasOwnProperty("keyPressed")) {
+    toolbox.selectedTool.keyPressed();
   }
 }

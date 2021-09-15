@@ -43,12 +43,10 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 # Todo
 - Cursor Image
 - Add info about each tool
-- Save drawing to local storage
+- Save drawing to local storage - Offline usage #DONE
 - Text Tool
-- Local Storage Saving
-- History
+- History #ALMOST DONE
 - Upload Drawing
-- Offline usage
 - Rectangle Tool
 - Hand Tool
 - Cloning Tool

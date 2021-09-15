@@ -136,7 +136,11 @@ html, body {
 	padding: 3px;
 	direction: ltr/*rtl:ignore*/;
 }
-.p5Canvas {
+/* .p5Canvas {
 	position: absolute;
 	z-index: 2;
-}
+} */
+
+/* #textToolInput {
+	background-color: grey;
+} */
