@@ -4,7 +4,7 @@ class TextTool {
     this.name = "TextTool";
     this.icon = "assets/sprayCan.jpg";
     this.draw = this.Draw;
-    this.fontSelected = fonts[Object.keys(fonts)[0]];
+    this.fontSelected = fonts[Object.keys(fonts)[0]] || "Arial";
     this.sel;
     this.populateOptions = this.Populate;
     this.unselectTool = this.Unpopulate;
@@ -16,6 +16,9 @@ class TextTool {
     this.keyPressed = this.KeyPressed;
     this.textBtn;
     this.text;
+    this.noHistory = true;
+    this.sizeBtn;
+    this.size;
   }
 
   Draw() {
@@ -29,7 +32,7 @@ class TextTool {
         this.selectScale.h
       );
 
-      this.WriteText()
+      this.WriteText();
     }
     if (this.textMode === false) {
       updatePixels();
@@ -57,6 +60,7 @@ class TextTool {
 
   Unpopulate() {
     Gopt.html("");
+    this.DoneWriting();
   }
 
   MousePressed() {
@@ -67,22 +71,14 @@ class TextTool {
   }
 
   KeyPressed() {
-    console.log(keyCode, c);
-
-    if (keyCode === 8) {  //when text got deleted
-      this.ReWrite(0,0,0,0);
+    if (keyCode === 8) {
+      //when text got deleted
+      this.ReWrite(0, 0, 0, 0);
     }
 
-    if (keyCode === 13 && this.textMode === true) { //when enter key is pressed
-      this.ReWrite(-3, -3, 5, 5)
-      this.WriteText()
-      this.textBtn.remove();
-      this.sel.remove();
-      this.textMode = false;
-      this.textBtn = null;
-      this.sel = null;
-      loadPixels();
-      this.text = "";
+    if (keyCode === 13 && this.textMode === true) {
+      //when enter key is pressed
+      this.DoneWriting();
     }
   }
 
@@ -117,9 +113,9 @@ class TextTool {
   WriteText() {
     fill(c);
     stroke(c);
+
     textFont(this.fontSelected);
     textWrap(CHAR);
-    textSize(32);
 
     text(
       this.text,
@@ -130,6 +126,28 @@ class TextTool {
     );
   }
 
+  DoneWriting() {
+    this.ReWrite(-3, -3, 5, 5);
+    this.WriteText();
+    if (this.textBtn) {
+      this.textBtn.remove();
+    }
+
+    if (this.sel) {
+      this.sel.remove();
+    }
+
+    if (this.sizeBtn) {
+      this.sizeBtn.remove();
+    }
+    this.textMode = false;
+    this.textBtn = null;
+    this.sel = null;
+    this.sizeBtn = null;
+    loadPixels();
+    this.text = "";
+  }
+
   MouseReleased() {
     // console.log("hello", this.selectScale);
     if (!this.textBtn) {
@@ -137,16 +155,16 @@ class TextTool {
 
       this.textBtn = createInput("", "text");
       this.textBtn.id("textToolInput");
-      this.textBtn.elt.placeholder = "Enter Your Text Here";
+      this.textBtn.elt.placeholder = "Enter Text Here";
       this.textBtn.position(
         this.selectScale.x,
-        this.selectScale.y + this.selectScale.h / 4
+        this.selectScale.y + this.selectScale.h / 2
       );
       this.textBtn.size(this.selectScale.w / 4, this.selectScale.h / 4);
       this.textMode = true;
       // this.textBtn.parent(select("#content"));
       this.textBtn.input(() => {
-        console.log(this.textBtn.value(), this.selectScale);
+        // console.log(this.textBtn.value(), this.selectScale);
 
         this.text = this.textBtn.value();
       });
@@ -164,6 +182,25 @@ class TextTool {
         });
 
         this.sel.parent(Gopt);
+      }
+
+      if (!this.sizeBtn) {
+        // console.log("size btn", this.selectScale)
+        const initValue = round(random(this.selectScale.h / 3));
+        this.sizeBtn = createInput(initValue, "number");
+        textSize(initValue);
+
+        this.sizeBtn.input(() => {
+          this.size = Number(this.sizeBtn.value());
+          console.log(this.size, "size");
+
+          textSize(this.size);
+
+          this.ReWrite(0, 0, 0, 0);
+          this.WriteText();
+        });
+
+        this.sizeBtn.parent(Gopt);
       }
     }
   }

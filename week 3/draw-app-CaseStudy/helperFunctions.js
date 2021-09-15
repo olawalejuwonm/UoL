@@ -21,6 +21,8 @@ function HelperFunctions() {
     storeItem("zoomMode", false);
     removeItem("pixels");
     zoomMode = false;
+    // undoArr = []
+    // redoArr = []
     //call loadPixels to update the drawing state
     //this is needed for the mirror tool
     loadPixels();
@@ -36,11 +38,14 @@ function HelperFunctions() {
   let redobtn = select("#redoButton");
 
   undobtn.mouseClicked(function () {
+    console.log(undoArr)
     var undoL = undoArr.length;
     if (undoL > 0) {
       redoArr.push(get());
       redobtn.removeAttribute("disabled");
-      image(undoArr[undoL - 1], 0, 0);
+      // resizeCanvas(width, height)
+      clear()
+      image(undoArr[undoL - 1], 0, 0, width, height);
       // undoArr[undoArr.length - 1].loadPixels();
       // updatePixels()
 

@@ -18,6 +18,7 @@ class ZoomTool {
     this.unZoomPressed = false;
     this.mouseIsDrag = false;
     this.UnpopulatePressed = false;
+    this.noHistory = true;
 
     // let UnzoomButton;
 
@@ -105,7 +106,6 @@ class ZoomTool {
     };
 
     this.mouseDragged = () => {
-      console.log("mouse Dragged", this.unZoomPressed);
       if (this.unZoomPressed === true) {
         this.mouseIsDrag = true;
         return;
@@ -126,7 +126,6 @@ class ZoomTool {
       // if (!(mouseY < 20) || !(mouseX < 20)) {
 
       // }
-      console.log(this.selectScale, lastScale);
       if (
         // this.selectScale.w - lastScale.w > 20 &&
         // this.selectScale.h - lastScale.h > 20 &&
@@ -140,7 +139,6 @@ class ZoomTool {
 
     this.unselectTool = () => {
       this.UnpopulatePressed = true;
-      console.log(this.UnpopulatePressed);
       let color = select("#color").value();
       fill(color);
       stroke(color);
@@ -158,7 +156,6 @@ class ZoomTool {
       this.unzoomButton.removeAttribute("disabled");
       return;
     }
-    // console.log(this.UnpopulatePressed, "ZoomAction", this.selectScale);
     if (
       this.UnpopulatePressed ||
       this.selectScale.x < 0 ||
@@ -248,9 +245,7 @@ class ZoomTool {
     zoomMode = false;
     storeItem("zoomMode", zoomMode);
 
-    console.log(mouseIsPressed, "umzoom");
     mouseIsPressed = false;
-    console.log(mouseIsPressed, "umzoom");
     this.unZoomPressed = true;
 
     this.selectScale = { x: -width, y: -height, w: -width, h: -height };

@@ -17,7 +17,7 @@ var fonts = {
   Georgia: "Georgia",
   TNR: "Times New Roman",
   TMS: "Trebuchet MS",
-  Verdana: "Verdana"
+  Verdana: "Verdana",
 };
 
 function preload() {
@@ -47,10 +47,6 @@ function setup() {
   colourP = new ColourPalette();
   imageB = new CanvasImage();
 
-  c.mousePressed(function () {
-    helpers.getPixels();
-    // console.log(select('#defaultCanvas0').elt.toDataURL("image/png"))
-  });
   pixelDensity(1);
   Gopt = select(".options"); //Global Function
   //create a toolbox for storing the tools
@@ -79,6 +75,41 @@ function setup() {
       image(img, 0, 0, width, height);
     });
   }
+
+  c.mousePressed(function () {
+    console.log(toolbox.selectedTool.noHistory);
+    if (!toolbox.selectedTool.noHistory) {
+      // noHistory is no undo or redo
+      if (undoArr.length === 0) {
+        helpers.getPixels();
+      }
+    }
+
+    MousePressed();
+    // console.log(select('#defaultCanvas0').elt.toDataURL("image/png"))
+  });
+
+  c.mouseReleased(() => {
+    console.log("i was called cn", mouseX, mouseY);
+    if (!toolbox.selectedTool.noHistory) {
+      // noHistory is no undo or redo
+
+      let awaitSave = async () => {
+        setTimeout(() => {
+          let dataURL = select("#defaultCanvas0").elt.toDataURL("image/png");
+          // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+          // console.log(fImg)
+          storeItem("pixels", dataURL);
+        }, 1000);
+      };
+    
+      // helpers.getPixels();
+    
+      awaitSave();
+      helpers.getPixels();
+    }
+    MouseReleased();
+  });
 }
 
 function draw() {
@@ -93,37 +124,35 @@ function draw() {
   }
 }
 
-function mousePressed() {
-  if (toolbox.selectedTool.hasOwnProperty("mousePressed")) {
-    toolbox.selectedTool.mousePressed();
-  }
-}
-
-function mouseReleased() {
-  if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
-    toolbox.selectedTool.mouseReleased();
-  }
-
-  let awaitSave = async () => {
-    setTimeout(() => {
-      let dataURL = select("#defaultCanvas0").elt.toDataURL("image/png");
-      // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-      // console.log(fImg)
-      storeItem("pixels", dataURL);
-    }, 1000);
-  };
-
-  awaitSave();
-}
-
 function mouseDragged() {
   if (toolbox.selectedTool.hasOwnProperty("mouseDragged")) {
-    toolbox.selectedTool.mouseDragged();
+    if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
+      toolbox.selectedTool.mouseDragged();
+    }
   }
 }
 
 function keyPressed() {
   if (toolbox.selectedTool.hasOwnProperty("keyPressed")) {
+    if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
+    }
     toolbox.selectedTool.keyPressed();
   }
 }
+
+function MousePressed() {
+  // not using mousePressed because it get called outside canvas
+  if (toolbox.selectedTool.hasOwnProperty("mousePressed")) {
+    toolbox.selectedTool.mousePressed();
+  }
+}
+
+function MouseReleased() {
+  if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
+    toolbox.selectedTool.mouseReleased();
+  }
+
+ 
+}
+
+
