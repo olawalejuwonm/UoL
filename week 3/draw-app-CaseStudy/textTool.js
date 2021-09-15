@@ -19,6 +19,7 @@ class TextTool {
     this.noHistory = true;
     this.sizeBtn;
     this.size;
+    this.doneBtn;
   }
 
   Draw() {
@@ -140,12 +141,16 @@ class TextTool {
     if (this.sizeBtn) {
       this.sizeBtn.remove();
     }
+
+    if (this.doneBtn) {
+      this.doneBtn.remove();
+    }
     this.textMode = false;
     this.textBtn = null;
     this.sel = null;
     this.sizeBtn = null;
+    this.doneBtn = null;
     loadPixels();
-    this.text = "";
   }
 
   MouseReleased() {
@@ -163,11 +168,15 @@ class TextTool {
       this.textBtn.size(this.selectScale.w / 4, this.selectScale.h / 4);
       this.textMode = true;
       // this.textBtn.parent(select("#content"));
-      this.textBtn.input(() => {
+      const inpF = () => {
         // console.log(this.textBtn.value(), this.selectScale);
 
         this.text = this.textBtn.value();
-      });
+        this.ReWrite(0, 0, 0, 0);
+      };
+      this.textBtn.input(inpF);
+      this.text = "";
+
       this.mouseReleased(); //recursion to show element below
       loadPixels();
     } else {
@@ -186,22 +195,36 @@ class TextTool {
 
       if (!this.sizeBtn) {
         // console.log("size btn", this.selectScale)
-        const initValue = round(random(this.selectScale.h / 3));
+        const initValue = abs(round(random(this.selectScale.h / 3)));
         this.sizeBtn = createInput(initValue, "number");
         textSize(initValue);
 
         this.sizeBtn.input(() => {
           this.size = Number(this.sizeBtn.value());
-          console.log(this.size, "size");
-
           textSize(this.size);
 
           this.ReWrite(0, 0, 0, 0);
-          this.WriteText();
         });
 
         this.sizeBtn.parent(Gopt);
       }
+
+      if (!this.doneBtn) {
+        this.doneBtn = createButton("Done");
+        this.doneBtn.mousePressed(() => {
+          if (this.textMode) {
+            this.DoneWriting();
+          }
+        });
+
+        this.doneBtn.parent(Gopt);
+      }
+    }
+
+    if (this.textMode) {
+      this.noHistory = true;
+    } else {
+      this.noHistory = false;
     }
   }
 
