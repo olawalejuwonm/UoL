@@ -39,7 +39,7 @@ html, body {
 	flex-flow: wrap;
 }
 
-.options{
+#options{
 	grid-area: options;
 	padding: 15px;
 }

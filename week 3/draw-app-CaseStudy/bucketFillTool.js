@@ -12,6 +12,11 @@ class BucketFillTool {
 
     }
 
+    this.mouseReleased = () => {
+      cursor("assets/cursorBucket.png", 30,30)
+
+    }
+
     this.unselectTool = () => {
       cursor()
     }
@@ -24,11 +29,21 @@ class BucketFillTool {
       let r = pixels[(mouseY * width + mouseX) * 4];
       let g = pixels[(mouseY * width + mouseX) * 4 + 1];
       let b = pixels[(mouseY * width + mouseX) * 4 + 2];
-      console.log(r, g, b, color);
-      if (r === color.r || g === color.g || b === color.b ) {
+      console.log(r, g, b, color, "rgb color  ");
+      if (r === 0  && g === 0 && b === 0) {
+        let text = "Pixel is empty, Click Reload"
+        cursor("not-allowed")
+      }
+      if (typeof r === "undefined" || typeof g === "undefined" || typeof b === "undefined") {
+        let text = "The Pixel Is Already Filled, Kindly Erase Using Eraser Tool and Fill Again"
+        console.log(text)
+        cursor("not-allowed")
 
       }
-      else if ( r === 255){
+      if (r === color.r || g === color.g || b === color.b ) {
+        let text = "You cannot fill a pixel with the same color"
+      }
+      else if ( r <= 255 || r >= 200){
         bucket(mouseX, mouseY, 0, color.r, color.g, color.b, r, g, b);
       }
       updatePixels();
@@ -50,6 +65,8 @@ class BucketFillTool {
 
 
 function bucket(x, y, ii, R, G, B, ro, go, bo) {
+  let max = 1
+
   if (max > 7000) {
     console.log(max)
     max = 0
@@ -61,9 +78,9 @@ function bucket(x, y, ii, R, G, B, ro, go, bo) {
     max += 1
   }
 
-  if (!ro|| !go || !bo || !x || !y) {
-    return;
-  }
+  // if (!ro|| !go || !bo || !x || !y) {
+  //   return;
+  // }
   if(ii > 1000){ 
     // max = 0
     return;};
@@ -71,6 +88,12 @@ function bucket(x, y, ii, R, G, B, ro, go, bo) {
   let g = pixels[(y * width + x) * 4 + 1];
   let b = pixels[(y * width + x) * 4 + 2];
   // console.log(r,g,b,ro,go,bo)
+  // if (r === 0) {
+  //   r = 255
+  //   g = 255
+  //   b = 255
+  //   // console.log("r is 0")
+  // }
   if (r == ro && g == go && b == bo) {
     pixels[(y * width + x) * 4] = R;
     pixels[(y * width + x) * 4+1] = G;
@@ -93,5 +116,4 @@ function bucket(x, y, ii, R, G, B, ro, go, bo) {
 }
 
 
-let max = 1
  

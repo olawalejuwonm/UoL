@@ -18,25 +18,42 @@ function HelperFunctions() {
   };
 
   //event handler for the clear button event. Clears the screen
-  select("#clearButton").mouseClicked(function () {
-    background(255, 255, 255);
-    resizeCanvas(
-      select("#content").size().width,
-      select("#content").size().height
-    );
-    clear();
-    clearStorage();
-    select("#img").elt.value = null;
-    imageB.img = null;
-    storeItem("zoomMode", false);
-    removeItem("pixels");
-    zoomMode = false;
-    // undoArr = []
-    // redoArr = []
-    //call loadPixels to update the drawing state
-    //this is needed for the mirror tool
-    loadPixels();
+  select("#clearButton").mouseClicked(() => {
+    this.clearCanvas();
   });
+
+  this.clearCanvas = (reload) => {
+    const clearAll = () => {
+      background(255, 255, 255);
+      resizeCanvas(
+        select("#content").size().width,
+        select("#content").size().height
+      );
+      clear();
+      clearStorage();
+      select("#img").elt.value = null;
+      imageB.img = null;
+      storeItem("zoomMode", false);
+      removeItem("pixels");
+      zoomMode = false;
+      // undoArr = []
+      // redoArr = []
+      //call loadPixels to update the drawing state
+      //this is needed for the mirror tool
+      loadPixels();
+    };
+    if (reload) {
+      let ans = confirm("This will clear the drawing state. Continue?");
+      if (ans) {
+        clearAll();
+      }
+
+      window.location.reload();
+    }
+    clearAll();
+  };
+
+  
 
   //event handler for the save image button. saves the canvsa to the
   //local file system.

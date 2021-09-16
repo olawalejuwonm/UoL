@@ -19,7 +19,7 @@ class EraserTool {
         stroke(255);
         fill(255);
         strokeWeight(value)
-        line(mouseX, mouseY, mouseX + (value/4), mouseY+(value/4));
+        line(mouseX, mouseY + 10, mouseX + (value/4), (mouseY+10)+(value/4));
       }
     };
 

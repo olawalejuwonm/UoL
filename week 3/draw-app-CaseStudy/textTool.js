@@ -20,6 +20,7 @@ class TextTool {
     this.sizeBtn;
     this.size;
     this.doneBtn;
+    this.imgPos;
   }
 
   Draw() {
@@ -62,7 +63,7 @@ class TextTool {
 
   Unpopulate() {
     Gopt.html("");
-    this.DoneWriting();
+    this.DoneWriting(true);
     cursor();
   }
 
@@ -110,7 +111,6 @@ class TextTool {
       this.selectScale.w + w,
       this.selectScale.h + h
     );
-    fill(c);
   }
 
   WriteText() {
@@ -129,8 +129,15 @@ class TextTool {
     );
   }
 
-  DoneWriting() {
+  DoneWriting(unrender) {
+
+    if (unrender) {
+      this.imgPos= get()
+    }
     this.ReWrite(-3, -3, 5, 5);
+
+
+    image(this.imgPos, 0, 0, width, height);
     this.WriteText();
     if (this.textBtn) {
       this.textBtn.remove();
@@ -158,21 +165,23 @@ class TextTool {
   }
 
   MouseReleased() {
-    // console.log("hello", this.selectScale);
+    console.log(this.selectScale, "in text Tool", mouseX, mouseY)
     if (!this.selectScale.w || !this.selectScale.h) {
       return;
     }
     if (!this.textBtn) {
       updatePixels();
+      this.imgPos = get();
 
       this.textBtn = createInput("", "text");
       this.textBtn.id("textToolInput");
       this.textBtn.elt.placeholder = "Enter Text Here";
+      scale(1)
       this.textBtn.position(
         this.selectScale.x,
-        this.selectScale.y + this.selectScale.h / 2
+        this.selectScale.y 
       );
-      this.textBtn.size(this.selectScale.w / 4, this.selectScale.h / 4);
+      // this.textBtn.size(this.selectScale.w / 4, this.selectScale.h / 4);
       this.textMode = true;
       // this.textBtn.parent(select("#content"));
       const inpF = () => {
@@ -202,7 +211,7 @@ class TextTool {
 
       if (!this.sizeBtn) {
         // console.log("size btn", this.selectScale)
-        const initValue = abs(round(random(this.selectScale.h / 3)));
+        const initValue = max(20, abs(round(random(this.selectScale.h / 3))));
         this.sizeBtn = createInput(initValue, "number");
         textSize(initValue);
 

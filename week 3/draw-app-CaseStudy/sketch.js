@@ -36,11 +36,11 @@ function setup() {
 
   canvasContainer = select("#content");
   console.log(savedImg);
-  var c = createCanvas(
+  var cnv = createCanvas(
     savedImg.width || canvasContainer.size().width,
     savedImg.height || canvasContainer.size().height
   );
-  c.parent("content");
+  cnv.parent("content");
 
   //create helper functions and the colour palette
   helpers = new HelperFunctions();
@@ -48,7 +48,7 @@ function setup() {
   imageB = new CanvasImage();
 
   pixelDensity(1);
-  Gopt = select(".options"); //Global Function
+  Gopt = select("#options"); //Global Function
   //create a toolbox for storing the tools
   toolbox = new Toolbox();
 
@@ -78,7 +78,7 @@ function setup() {
     });
   }
 
-  c.mousePressed(function () {
+  cnv.mousePressed(function () {
     console.log(toolbox.selectedTool.noHistory);
     if (!toolbox.selectedTool.noHistory) {
       // noHistory is no undo or redo
@@ -91,7 +91,7 @@ function setup() {
     // console.log(select('#defaultCanvas0').elt.toDataURL("image/png"))
   });
 
-  c.mouseReleased(() => {
+  cnv.mouseReleased(() => {
     console.log("i was called cn", mouseX, mouseY);
     if (!toolbox.selectedTool.noHistory) {
       // noHistory is no undo or redo
@@ -102,6 +102,9 @@ function setup() {
     }
     MouseReleased();
   });
+
+
+
 }
 
 function draw() {
