@@ -32,10 +32,11 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
+<body style="background-color: #444;">
   <div class="wrapper">
     <div class="box header">My Drawing App
       <button id="clearButton">Clear</button>
+      <button id="Reload">Reload</button>
       <button id="saveImageButton">Save Image</button>
       <button id="undoButton" disabled="true">Undo</button>
       <button id="redoButton" disabled="true">Redo</button>
@@ -47,9 +48,11 @@
       <input type="color" name="color" id="color" value="#4109DC"  />
     </div>
     <div class="box options">
-      <div id="info"></div>
-      <div id="message" style="color: red;"></div>
       <div id="options"></div>
+
+      <div id="message" style="color: red;"></div>
+      <div id="info" disabled style="color: paleturquoise;"></div>
+
     </div>
   </div>
 </body>

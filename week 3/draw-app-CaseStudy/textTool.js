@@ -21,6 +21,7 @@ class TextTool {
     this.size;
     this.doneBtn;
     this.imgPos;
+    this.description = "The text Tool can be used by dragging the area to be used for rendering the text on the canvas. After drag an input box (Enter Your Text) to type in your text and an option to change the font Type, font Size will appear. When done writing, click on 'Done' button."
   }
 
   Draw() {

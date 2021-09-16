@@ -41,7 +41,7 @@ html, body {
 
 #options{
 	grid-area: options;
-	padding: 15px;
+	padding: 0px;
 }
 
 .colourSwatches{

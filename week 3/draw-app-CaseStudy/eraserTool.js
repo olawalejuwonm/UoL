@@ -3,6 +3,7 @@ class EraserTool {
     //set an icon and a name for the object
     this.icon = "assets/eraser.jpg";
     this.name = "eraserTool";
+    this.description = "The eraser tool can be used by pressing and holding on the area of canvas desired to be cleaned."
 
     var slider;
     this.populateOptions = function () {

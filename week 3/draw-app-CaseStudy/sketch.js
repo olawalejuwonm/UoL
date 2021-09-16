@@ -92,16 +92,13 @@ function setup() {
   });
 
   cnv.mouseReleased(() => {
-    console.log("i was called cn", mouseX, mouseY);
-    if (!toolbox.selectedTool.noHistory) {
-      // noHistory is no undo or redo
 
-      helpers.awaitSave()
-    
-      helpers.getPixels();
-    }
     MouseReleased();
   });
+
+  cnv.touchEnded(() => {
+    MouseReleased()
+  })
 
 
 
@@ -114,6 +111,8 @@ function draw() {
   //if there isn't a draw method the app will alert the user
   if (toolbox.selectedTool.hasOwnProperty("draw")) {
     toolbox.selectedTool.draw();
+    select("#message").html(this.toolbox.selectedTool.message || "");
+
   } else {
     alert("it doesn't look like your tool has a draw method!");
   }
@@ -143,11 +142,20 @@ function MousePressed() {
 }
 
 function MouseReleased() {
+  if (!toolbox.selectedTool.noHistory) {
+    // noHistory is no undo or redo
+
+    helpers.awaitSave()
+  
+    helpers.getPixels();
+  }
   if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
     toolbox.selectedTool.mouseReleased();
   }
 
  
 }
+
+
 
 

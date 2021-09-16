@@ -19,6 +19,7 @@ class ZoomTool {
     this.mouseIsDrag = false;
     this.UnpopulatePressed = false;
     this.noHistory = true;
+    this.description = `The zoom tool can be used by dragging the mouse on the canvas and then clicking the zoom button`;
 
     // let UnzoomButton;
 
@@ -68,9 +69,7 @@ class ZoomTool {
     this.populateOptions = () => {
       loadPixels();
 
-        cursor("assets/zoomC.png", 30,30)
-  
-      
+      cursor("assets/zoomC.png", 30, 30);
 
       this.zoomButton = createButton("Zoom");
       this.unzoomButton = createButton("Unzoom");
@@ -144,7 +143,7 @@ class ZoomTool {
       let color = select("#color").value();
       fill(color);
       stroke(color);
-      cursor()
+      cursor();
     };
   }
 
@@ -152,9 +151,9 @@ class ZoomTool {
     // if (zoomMode === true) {
     //   return;
     // }
-    this.cvSize = select("#content").size()
+    this.cvSize = select("#content").size();
 
-    if ((width === this.cvSize.width * 2) || (height === this.cvSize.height *2)) {
+    if (width === this.cvSize.width * 2 || height === this.cvSize.height * 2) {
       this.zoomButton.attribute("disabled", "");
       this.unzoomButton.removeAttribute("disabled");
       return;
@@ -223,7 +222,7 @@ class ZoomTool {
 
   unZoomAction() {
     // this.cvSize = select("#content").size()
-    if ((width  === this.cvSize.width) || (height  === this.cvSize.height)) {
+    if (width === this.cvSize.width || height === this.cvSize.height) {
       this.zoomButton.removeAttribute("disabled");
       this.unzoomButton.attribute("disabled", "");
       return;

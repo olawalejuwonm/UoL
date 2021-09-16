@@ -22,6 +22,10 @@ function HelperFunctions() {
     this.clearCanvas();
   });
 
+  select("#Reload").mouseClicked(() => {
+    this.clearCanvas(true);
+  });
+
   this.clearCanvas = (reload) => {
     const clearAll = () => {
       background(255, 255, 255);
@@ -50,10 +54,13 @@ function HelperFunctions() {
 
       window.location.reload();
     }
-    clearAll();
+    else {
+      clearAll();
+
+    }
   };
 
-  
+
 
   //event handler for the save image button. saves the canvsa to the
   //local file system.
