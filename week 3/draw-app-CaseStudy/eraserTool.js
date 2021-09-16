@@ -1,22 +1,25 @@
-
 class EraserTool {
   constructor() {
     //set an icon and a name for the object
     this.icon = "assets/eraser.jpg";
-    this.name = "eraser";
+    this.name = "eraserTool";
 
     var slider;
     this.populateOptions = function () {
       noFill();
-      slider = createSlider(50, 200, 5);
+      slider = createSlider(5, width / 4, 5);
       createP("Eraser Intensity: ").parent(Gopt);
       slider.parent(Gopt);
+
+      cursor("assets/eraserC.png");
     };
     this.draw = function () {
+      let value = slider.value()
       if (mouseIsPressed) {
         stroke(255);
         fill(255);
-        ellipse(mouseX, mouseY, slider.value());
+        strokeWeight(value)
+        line(mouseX, mouseY, mouseX + (value/4), mouseY+(value/4));
       }
     };
 
@@ -25,6 +28,8 @@ class EraserTool {
       var color = select("#color");
       fill(color.value());
       stroke(color.value());
+      strokeWeight(1);
+      cursor();
     };
   }
 }

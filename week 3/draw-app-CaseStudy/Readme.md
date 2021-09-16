@@ -44,16 +44,13 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 - Cursor Image
 - Add info about each tool
 - Save drawing to local storage - Offline usage #DONE
-- Text Tool
+- Text Tool #DONE
 - History #ALMOST DONE
-- Upload Drawing
-- Rectangle Tool
+- Upload Drawing 
+- Rectangle Tool #ALMOST DONE
 - Hand Tool
 - Cloning Tool
 - Shape Tool
-- Text Tool
-- Layers
-- 3D
 - Es6
 - Perfect Shade(bucket) - Smooth
 

@@ -2,7 +2,7 @@ var GlobalInp;
 class TextTool {
   constructor() {
     this.name = "TextTool";
-    this.icon = "assets/sprayCan.jpg";
+    this.icon = "assets/text.png";
     this.draw = this.Draw;
     this.fontSelected = fonts[Object.keys(fonts)[0]] || "Arial";
     this.sel;
@@ -57,11 +57,13 @@ class TextTool {
 
   Populate() {
     loadPixels();
+    cursor("text");
   }
 
   Unpopulate() {
     Gopt.html("");
     this.DoneWriting();
+    cursor();
   }
 
   MousePressed() {
@@ -151,10 +153,15 @@ class TextTool {
     this.sizeBtn = null;
     this.doneBtn = null;
     loadPixels();
+    helpers.awaitSave();
+    helpers.getPixels();
   }
 
   MouseReleased() {
     // console.log("hello", this.selectScale);
+    if (!this.selectScale.w || !this.selectScale.h) {
+      return;
+    }
     if (!this.textBtn) {
       updatePixels();
 
@@ -218,6 +225,7 @@ class TextTool {
         });
 
         this.doneBtn.parent(Gopt);
+        this.noHistory = false;
       }
     }
 

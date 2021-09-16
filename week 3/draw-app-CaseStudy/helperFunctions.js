@@ -8,6 +8,15 @@ function HelperFunctions() {
     select("#undoButton").removeAttribute("disabled");
   };
 
+  this.awaitSave = async () => {
+    setTimeout(() => {
+      let dataURL = select("#defaultCanvas0").elt.toDataURL("image/png");
+      // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+      // console.log(fImg)
+      storeItem("pixels", dataURL);
+    }, 1000);
+  };
+
   //event handler for the clear button event. Clears the screen
   select("#clearButton").mouseClicked(function () {
     background(255, 255, 255);
@@ -16,6 +25,7 @@ function HelperFunctions() {
       select("#content").size().height
     );
     clear();
+    clearStorage();
     select("#img").elt.value = null;
     imageB.img = null;
     storeItem("zoomMode", false);
@@ -38,13 +48,13 @@ function HelperFunctions() {
   let redobtn = select("#redoButton");
 
   undobtn.mouseClicked(function () {
-    console.log(undoArr)
+    console.log(undoArr);
     var undoL = undoArr.length;
     if (undoL > 0) {
       redoArr.push(get());
       redobtn.removeAttribute("disabled");
       // resizeCanvas(width, height)
-      clear()
+      clear();
       image(undoArr[undoL - 1], 0, 0, width, height);
       // undoArr[undoArr.length - 1].loadPixels();
       // updatePixels()

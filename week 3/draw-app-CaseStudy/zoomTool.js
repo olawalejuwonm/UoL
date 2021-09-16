@@ -8,7 +8,7 @@ class ZoomTool {
   constructor() {
     zoomMode = getItem("zoomMode") || false;
     //set an icon and a name for the object
-    this.icon = "assets/rectangle.png";
+    this.icon = "assets/zoom.jpg";
     this.name = "zoomTool";
     this.selectScale = { x: 0, y: 0, w: 0, h: 0 };
     this.img = [];
@@ -68,6 +68,10 @@ class ZoomTool {
     this.populateOptions = () => {
       loadPixels();
 
+        cursor("assets/zoomC.png", 30,30)
+  
+      
+
       this.zoomButton = createButton("Zoom");
       this.unzoomButton = createButton("Unzoom");
       this.zoomButton.parent(Gopt);
@@ -89,8 +93,6 @@ class ZoomTool {
     };
 
     this.mousePressed = () => {
-      print("pressed", mouseX, mouseY, pmouseY, pwinMouseY, winMouseY);
-
       if (this.unZoomPressed && this.mouseIsDrag) {
         this.mouseIsDrag = false;
         this.unZoomPressed = false;
@@ -142,6 +144,7 @@ class ZoomTool {
       let color = select("#color").value();
       fill(color);
       stroke(color);
+      cursor()
     };
   }
 

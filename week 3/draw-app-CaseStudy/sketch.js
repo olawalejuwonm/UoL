@@ -57,13 +57,15 @@ function setup() {
   toolbox.addTool(new LineToTool());
   toolbox.addTool(new SprayCanTool());
   toolbox.addTool(new mirrorDrawTool());
-  toolbox.addTool(new EraserTool());
   toolbox.addTool(new RectangleTool());
   toolbox.addTool(new EditableShapeTool());
   // toolbox.addTool(new PolygonTool())
+
   toolbox.addTool(new BucketFillTool());
-  toolbox.addTool(new ZoomTool());
   toolbox.addTool(new TextTool());
+  toolbox.addTool(new ZoomTool());
+  toolbox.addTool(new EraserTool());
+
   background(255);
 
   if (savedPixels) {
@@ -94,18 +96,8 @@ function setup() {
     if (!toolbox.selectedTool.noHistory) {
       // noHistory is no undo or redo
 
-      let awaitSave = async () => {
-        setTimeout(() => {
-          let dataURL = select("#defaultCanvas0").elt.toDataURL("image/png");
-          // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-          // console.log(fImg)
-          storeItem("pixels", dataURL);
-        }, 1000);
-      };
+      helpers.awaitSave()
     
-      // helpers.getPixels();
-    
-      awaitSave();
       helpers.getPixels();
     }
     MouseReleased();

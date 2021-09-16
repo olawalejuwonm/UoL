@@ -1,10 +1,20 @@
 class BucketFillTool {
   constructor() {
     //set an icon and a name for the object
-    this.icon = "assets/freehand.jpg";
-    this.name = "bucketFill";
+    this.icon = "assets/bucket.jpg";
+    this.name = "bucketFillTool";
 
-    this.draw = function () { };
+    this.draw = function () {
+     };
+
+    this.populateOptions = () => {
+      cursor("assets/cursorBucket.png", 30,30)
+
+    }
+
+    this.unselectTool = () => {
+      cursor()
+    }
 
     this.mousePressed = function () {
       let color = select("#color");
