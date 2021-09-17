@@ -6,8 +6,9 @@ class RectangleTool {
 
     var startMouseX = -1;
     var startMouseY = -1;
-    var drawing = false;
     var pos = 1;
+    this.selectScale = { x: 0, y: 0, w: 0, h: 0 };
+
 
     var color = select("#color");
     this.draw = function () {
@@ -16,7 +17,25 @@ class RectangleTool {
       // })
       cursor("crosshair");
 
+      if (pos === 3) {
+        updatePixels();
+        if (mouseIsPressed) {
+
+          noFill();
+        stroke(0);
+        rect(
+          this.selectScale.x,
+          this.selectScale.y,
+          this.selectScale.w,
+          this.selectScale.h
+        );
+        }
+        
+        return;
+      }
+
       if (mouseIsPressed) {
+        
         if (startMouseX == -1) {
           startMouseX = mouseX;
           startMouseY = mouseY;
@@ -26,12 +45,9 @@ class RectangleTool {
           updatePixels();
           if (pos === 1) {
             noFill();
-
-
           }
           if (pos === 2) {
             fill(255);
-
           }
           stroke(color.value());
           rect(
@@ -66,50 +82,78 @@ class RectangleTool {
       // }
     };
 
+    this.mousePressed = () => {
+      if (pos === 3) {
+        this.selectScale.x = mouseX;
+        this.selectScale.y = mouseY;
+      }
+    
+    }
+
+    this.mouseDragged = () => {
+      if (pos === 3) {
+        if (mouseX > 0 && mouseY > 0 && mouseX < width && mouseY < height) {
+          let w = mouseX - this.selectScale.x;
+          let h = mouseY - this.selectScale.y;
+  
+          this.selectScale.w = w;
+          this.selectScale.h = h;
+        }
+      }
+      
+    }
+
+    this.mouseReleased = () => {
+      if (pos === 3) {
+        rect(this.selectScale.x, this.selectScale.y,this.selectScale.w, this.selectScale.h )
+      }
+    }
+
     this.populateOptions = function () {
       var pg = createGraphics(windowWidth / 3, 100);
       pg.background(100);
       // pg.noStroke();
       pg.fill(255);
       pg.textSize(20);
-      pg.text("Double Click To Select Mode", 10, 30);
+      pg.text("Click On One To Select Mode", 10, 30);
       pg.stroke(255);
       pg.noFill();
       pg.rect(45, 50, 40, 20);
       pg.rect(15, 35, 50, 50).mousePressed(() => {
-
         if (pos === 1) {
           // console.log(pg.mouseX);
           pg.fill(60, 120, 216);
+          // pg.fill(0)
+          // pg.rect(45, 35, 50, 50);
+
           pg.rect(15, 35, 50, 50);
           pg.noFill();
 
           pg.rect(45, 50, 40, 20);
-
-
         } else {
           pg.fill(100);
           pg.rect(15, 35, 50, 50);
           pg.noFill();
           pg.rect(45, 50, 40, 20);
-
         }
       });
       pg.fill(100);
       pg.rect(160, 50, 50, 25);
       pg.rect(140, 35, 50, 50).mousePressed(() => {
-
         if (pos === 2) {
           pg.fill(60, 120, 216);
           pg.rect(140, 35, 50, 50);
           pg.noFill();
-        }
-        else {
+        } else {
           pg.fill(100);
           pg.rect(160, 50, 50, 25);
           pg.rect(140, 35, 50, 50);
         }
       });
+
+
+      pg.fill(c)
+      pg.rect(250, 35, 50, 50)
       // pg.ellipse(pg.width / 2 + 50, pg.height / 2, 50, 50).mousePressed(() => {
       //   console.log("hi ")
       // });
@@ -129,6 +173,38 @@ class RectangleTool {
         } else if (dist(384, 670, pmouseX, pmouseY) <= 120) {
           pos = 2;
         }
+
+        else {
+          pos= 3
+        }
+        if (pos === 1) {
+          // console.log(pg.mouseX);
+          pg.fill(60, 120, 216);
+          // pg.fill(0)
+          // pg.rect(45, 35, 50, 50);
+
+          pg.rect(15, 35, 50, 50);
+          pg.noFill();
+
+          pg.rect(45, 50, 40, 20);
+        } else {
+          pg.fill(100);
+          pg.rect(15, 35, 50, 50);
+          pg.noFill();
+          pg.rect(45, 50, 40, 20);
+        }
+
+        if (pos === 2) {
+          pg.fill(60, 120, 216);
+          pg.rect(140, 35, 50, 50);
+          pg.noFill();
+        } else {
+          pg.fill(100);
+          pg.rect(160, 50, 50, 25);
+          pg.rect(140, 35, 50, 50);
+        }
+
+
         // else if (pmouseX >= 256) {
         //   pos = null;
         // }

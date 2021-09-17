@@ -57,10 +57,10 @@ function setup() {
   toolbox.addTool(new LineToTool());
   toolbox.addTool(new SprayCanTool());
   toolbox.addTool(new mirrorDrawTool());
-  toolbox.addTool(new RectangleTool());
   toolbox.addTool(new EditableShapeTool());
   // toolbox.addTool(new PolygonTool())
 
+  toolbox.addTool(new RectangleTool());
   toolbox.addTool(new BucketFillTool());
   toolbox.addTool(new TextTool());
   toolbox.addTool(new ZoomTool());

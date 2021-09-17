@@ -45,20 +45,21 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 - Add info about each tool
 - Save drawing to local storage - Offline usage #DONE
 - Text Tool #DONE
-- History #ALMOST DONE
 - Upload Drawing 
 - Rectangle Tool #ALMOST DONE
-- Hand Tool
-- Cloning Tool
-- Shape Tool
 - Es6
 - Perfect Shade(bucket) - Smooth #Done
 - Get image of selected x in text and fill it back #Done
-
 - unZoom change cursor
 - add error message for zoom
 - resize text
 - Rectangle Tool
+
+
+- History #ALMOST DONE (Layer History)
+- Add stamp
+- Add cut tool
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 https://en.wikipedia.org/wiki/Flood_fill
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
