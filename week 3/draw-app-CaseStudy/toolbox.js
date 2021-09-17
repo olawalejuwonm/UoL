@@ -46,6 +46,10 @@ function Toolbox() {
   this.selectTool = function (toolName) {
     //search through the tools for one that's name matches
     //toolName
+    Gopt.html("");
+
+    fill(c);
+    stroke(sc);
     for (var i = 0; i < this.tools.length; i++) {
       if (this.tools[i].name == toolName) {
         //if the tool has an unselectTool method run it.
@@ -53,7 +57,6 @@ function Toolbox() {
           this.selectedTool != null &&
           this.selectedTool.hasOwnProperty("unselectTool")
         ) {
-          Gopt.html("");
           this.selectedTool.unselectTool();
         }
         //select the tool and highlight it on the toolbar
@@ -67,11 +70,9 @@ function Toolbox() {
         if (this.selectedTool.hasOwnProperty("populateOptions")) {
           this.selectedTool.populateOptions();
         }
-		if(select("#info")) {
-			select("#info").html(this.selectedTool.description || "");
-
-		}
-
+        if (select("#info")) {
+          select("#info").html(this.selectedTool.description || "");
+        }
       }
     }
   };

@@ -67,7 +67,10 @@ class TextTool {
 
   Unpopulate() {
     Gopt.html("");
-    this.DoneWriting(true);
+    if (this.textMode) {
+      this.DoneWriting(true);
+
+    }
     cursor();
   }
 
@@ -119,7 +122,7 @@ class TextTool {
 
   WriteText() {
     fill(c);
-    stroke(c);
+    stroke(sc);
 
     textFont(this.fontSelected);
     textWrap(CHAR);
@@ -135,7 +138,7 @@ class TextTool {
 
   DoneWriting(unrender) {
     if (unrender) {
-      let imgData = getItem("pixels")
+      // let imgData = getItem("pixels")
       // if (imgData) {
       //   this.imgPos =loadImage(imgData) ;
       // }
@@ -185,13 +188,13 @@ class TextTool {
     this.sel = null;
     this.sizeBtn = null;
     this.doneBtn = null;
+    this.selectScale = {x: -mouseX, y: -mouseY, w:-width, h:-height}
     loadPixels();
     helpers.awaitSave();
     helpers.getPixels();
   }
 
   MouseReleased() {
-    console.log(this.selectScale, "in text Tool", mouseX, mouseY);
     if (!this.selectScale.w || !this.selectScale.h) {
       return;
     }

@@ -43,19 +43,8 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 # Todo
 - Cursor Image
 - Add info about each tool
-- Save drawing to local storage - Offline usage #DONE
-- Text Tool #DONE
 - Upload Drawing 
-- Rectangle Tool #ALMOST DONE
-- Es6
-- Perfect Shade(bucket) - Smooth #Done
-- Get image of selected x in text and fill it back #Done
-- unZoom change cursor
-- add error message for zoom
 - resize text
-- Rectangle Tool
-
-
 - History #ALMOST DONE (Layer History)
 - Add stamp
 - Add cut tool

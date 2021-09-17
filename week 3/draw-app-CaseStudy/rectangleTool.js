@@ -8,21 +8,27 @@ class RectangleTool {
     var startMouseY = -1;
     var pos = 3;
     this.selectScale = { x: 0, y: 0, w: 0, h: 0 };
+    let pg = createGraphics(windowWidth / 3, 100);
 
 
-    var color = select("#color");
+
+    let color = select("#color");
     this.draw = function () {
       // mousePressed(function () {
       //     return false
       // })
       cursor("crosshair");
 
+      pg.fill(c)
+        pg.rect(250, 35, 50, 50)
+
       if (pos === 3) {
+        
         updatePixels();
         if (mouseIsPressed) {
 
           noFill();
-        stroke(0);
+        stroke(sc);
         rect(
           this.selectScale.x,
           this.selectScale.y,
@@ -113,7 +119,6 @@ class RectangleTool {
     }
 
     this.populateOptions = function () {
-      var pg = createGraphics(windowWidth / 3, 100);
       pg.background(100);
       // pg.noStroke();
       pg.fill(255);
@@ -154,9 +159,14 @@ class RectangleTool {
         }
       });
 
+      // pg.draw = () => {
+      //   pg.fill(c)
+      //   pg.rect(250, 35, 50, 50)
+      // }
 
-      pg.fill(c)
-      pg.rect(250, 35, 50, 50)
+
+      console.log(pg)
+      
       // pg.ellipse(pg.width / 2 + 50, pg.height / 2, 50, 50).mousePressed(() => {
       //   console.log("hi ")
       // });

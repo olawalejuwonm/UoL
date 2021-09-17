@@ -118,6 +118,8 @@ class mirrorDrawTool {
 		this.unselectTool = function () {
 			updatePixels();
 			//clear options
+			fill(c)
+			stroke(sc)
 			select(".options").html("");
 		};
 

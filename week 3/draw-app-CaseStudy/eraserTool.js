@@ -28,7 +28,7 @@ class EraserTool {
       Gopt.html("");
       var color = select("#color");
       fill(color.value());
-      stroke(color.value());
+      stroke(sc);
       strokeWeight(1);
       cursor();
     };

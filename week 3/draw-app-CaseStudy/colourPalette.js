@@ -1,5 +1,6 @@
 //Displays and handles the colour palette.
-var c = "#4109DC";
+let c = "#4109DC";
+let sc = "#7B7342";
 class ColourPalette {
   constructor() {
     //a list of web colour strings
@@ -39,7 +40,7 @@ class ColourPalette {
       //set the selected colour and fill and stroke
       self.selectedColour = c;
       fill(c);
-      stroke(c);
+      stroke(sc);
 
       //add a new border to the selected colour
       this.style("border", "2px solid blue");
@@ -70,16 +71,19 @@ class ColourPalette {
       select(".colourSwatches").style("border", "2px solid blue");
     };
 
-    var color = select("#color");
+    let color = select("#color");
     color.input(function () {
       c = color.value();
       self.selectedColour = c;
       fill(c);
-      stroke(c);
     });
-    c = color.value();
-    fill(c);
-    stroke(c);
+    let strokeColor = select("#SC");
+    strokeColor.input(function () {
+      sc = strokeColor.value();
+      stroke(sc);
+    });
+    fill(c)
+    stroke(sc)
 
     //call the loadColours function now it is declared
     // this.loadColours();

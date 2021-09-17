@@ -12,6 +12,7 @@ class BucketFillTool {
       if (this.smooth === true) {
         if (mouseIsPressed) {
           fill(c);
+          stroke(c)
           ellipse(mouseX, mouseY, 10);
         }
       }
