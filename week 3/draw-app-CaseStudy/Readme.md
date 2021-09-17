@@ -59,7 +59,7 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 - History #ALMOST DONE (Layer History)
 - Add stamp
 - Add cut tool
-
+- select stroke color
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 https://en.wikipedia.org/wiki/Flood_fill
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes

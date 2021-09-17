@@ -6,7 +6,7 @@ class RectangleTool {
 
     var startMouseX = -1;
     var startMouseY = -1;
-    var pos = 1;
+    var pos = 3;
     this.selectScale = { x: 0, y: 0, w: 0, h: 0 };
 
 
@@ -105,7 +105,10 @@ class RectangleTool {
 
     this.mouseReleased = () => {
       if (pos === 3) {
+        fill(c)
         rect(this.selectScale.x, this.selectScale.y,this.selectScale.w, this.selectScale.h )
+
+        loadPixels()
       }
     }
 
@@ -115,7 +118,7 @@ class RectangleTool {
       // pg.noStroke();
       pg.fill(255);
       pg.textSize(20);
-      pg.text("Click On One To Select Mode", 10, 30);
+      pg.text("Click To Select Mode", 10, 30);
       pg.stroke(255);
       pg.noFill();
       pg.rect(45, 50, 40, 20);
