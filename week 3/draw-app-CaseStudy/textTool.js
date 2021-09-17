@@ -21,7 +21,8 @@ class TextTool {
     this.size;
     this.doneBtn;
     this.imgPos;
-    this.description = "The text Tool can be used by dragging the area to be used for rendering the text on the canvas. After drag an input box (Enter Your Text) to type in your text and an option to change the font Type, font Size will appear. When done writing, click on 'Done' button."
+    this.description =
+      "The text Tool can be used by dragging the area to be used for rendering the text on the canvas. After drag an input box (Enter Your Text) to type in your text and an option to change the font Type, font Size will appear. When done writing, click on 'Done' button.";
   }
 
   Draw() {
@@ -60,6 +61,8 @@ class TextTool {
   Populate() {
     loadPixels();
     cursor("text");
+    helpers.awaitSave();
+    helpers.getPixels();
   }
 
   Unpopulate() {
@@ -131,15 +134,37 @@ class TextTool {
   }
 
   DoneWriting(unrender) {
-
     if (unrender) {
-      this.imgPos= get()
+      let imgData = getItem("pixels")
+      // if (imgData) {
+      //   this.imgPos =loadImage(imgData) ;
+      // }
+
+
+      this.imgPos = get()
+      this.ReWrite(-3, -3, 5, 5);
+
+      image(this.imgPos, 0, 0, width, height);
+      if (this.text) {
+        if (confirm("Do you want to write the text on the canvas?")) {
+          this.ReWrite(-3, -3, 5, 5);
+
+          this.WriteText();
+        }
+        else {
+          this.ReWrite(-3, -3, 5, 5);
+
+        }
+      }
     }
-    this.ReWrite(-3, -3, 5, 5);
 
+    else {
+      this.ReWrite(-3, -3, 5, 5);
 
-    image(this.imgPos, 0, 0, width, height);
-    this.WriteText();
+      image(this.imgPos, 0, 0, width, height);
+      this.WriteText();
+    }
+    
     if (this.textBtn) {
       this.textBtn.remove();
     }
@@ -166,7 +191,7 @@ class TextTool {
   }
 
   MouseReleased() {
-    console.log(this.selectScale, "in text Tool", mouseX, mouseY)
+    console.log(this.selectScale, "in text Tool", mouseX, mouseY);
     if (!this.selectScale.w || !this.selectScale.h) {
       return;
     }
@@ -177,11 +202,8 @@ class TextTool {
       this.textBtn = createInput("", "text");
       this.textBtn.id("textToolInput");
       this.textBtn.elt.placeholder = "Enter Text Here";
-      scale(1)
-      this.textBtn.position(
-        this.selectScale.x,
-        this.selectScale.y 
-      );
+      scale(1);
+      this.textBtn.position(this.selectScale.x, this.selectScale.y);
       // this.textBtn.size(this.selectScale.w / 4, this.selectScale.h / 4);
       this.textMode = true;
       // this.textBtn.parent(select("#content"));
@@ -235,15 +257,14 @@ class TextTool {
         });
 
         this.doneBtn.parent(Gopt);
-        this.noHistory = false;
       }
     }
 
-    if (this.textMode) {
-      this.noHistory = true;
-    } else {
-      this.noHistory = false;
-    }
+    // if (this.textMode) {
+    //   this.noHistory = true;
+    // } else {
+    //   this.noHistory = false;
+    // }
   }
 
   DashedRect(x, y, w, h, l, g) {

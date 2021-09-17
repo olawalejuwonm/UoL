@@ -10,6 +10,8 @@ class ZoomTool {
     //set an icon and a name for the object
     this.icon = "assets/zoom.jpg";
     this.name = "zoomTool";
+    this.description = `The zoom tool can be used by dragging the mouse on the canvas and then clicking the zoom button`;
+    this.message = "";
     this.selectScale = { x: 0, y: 0, w: 0, h: 0 };
     this.img = [];
     this.prevPixel = [{ pixel: null, width: null, height: null }];
@@ -19,7 +21,6 @@ class ZoomTool {
     this.mouseIsDrag = false;
     this.UnpopulatePressed = false;
     this.noHistory = true;
-    this.description = `The zoom tool can be used by dragging the mouse on the canvas and then clicking the zoom button`;
 
     // let UnzoomButton;
 
@@ -104,6 +105,11 @@ class ZoomTool {
         this.selectScale.y = mouseY;
         this.pressed = true;
       }
+
+      if (zoomMode === true) {
+        this.unZoomAction()
+      }
+      this.message = ""
     };
 
     this.mouseDragged = () => {
@@ -156,6 +162,9 @@ class ZoomTool {
     if (width === this.cvSize.width * 2 || height === this.cvSize.height * 2) {
       this.zoomButton.attribute("disabled", "");
       this.unzoomButton.removeAttribute("disabled");
+      zoomMode = true;
+      storeItem("zoomMode", zoomMode);
+      cursor("zoom-out");
       return;
     }
     if (
@@ -165,6 +174,7 @@ class ZoomTool {
       this.selectScale.w < 0 ||
       this.selectScale.h < 0
     ) {
+      this.message = "Please drag on the canvas to zoom"
       return;
     }
 
@@ -203,6 +213,7 @@ class ZoomTool {
     rect(0, 0, width, height);
     loadPixels();
     // image(this.prevPixel[0].pixel, 0, 0);
+    // translate(this.selectScale.x, this.selectScale.y)
     scale(2);
     image(gotten, 0, 0);
     loadPixels();
@@ -214,10 +225,11 @@ class ZoomTool {
     //   this.selectScale.w,
     //   this.selectScale.h
     // );
-
-    this.unzoomButton.removeAttribute("disabled");
     zoomMode = true;
     storeItem("zoomMode", zoomMode);
+    cursor("zoom-out");
+    this.unzoomButton.removeAttribute("disabled");
+   
   }
 
   unZoomAction() {
@@ -225,6 +237,9 @@ class ZoomTool {
     if (width === this.cvSize.width || height === this.cvSize.height) {
       this.zoomButton.removeAttribute("disabled");
       this.unzoomButton.attribute("disabled", "");
+      zoomMode = false;
+      storeItem("zoomMode", zoomMode);
+      cursor("assets/zoomC.png", 30, 30);
       return;
     }
     this.prevPixel[0].width = width;
@@ -246,6 +261,7 @@ class ZoomTool {
 
     zoomMode = false;
     storeItem("zoomMode", zoomMode);
+    cursor("assets/zoomC.png", 30, 30);
 
     mouseIsPressed = false;
     this.unZoomPressed = true;

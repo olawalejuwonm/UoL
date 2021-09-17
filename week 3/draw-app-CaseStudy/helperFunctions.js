@@ -9,11 +9,14 @@ function HelperFunctions() {
   };
 
   this.awaitSave = async () => {
+    let mes = select("#stateMes");
+    mes.html("Saving....");
     setTimeout(() => {
       let dataURL = select("#defaultCanvas0").elt.toDataURL("image/png");
       // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
       // console.log(fImg)
       storeItem("pixels", dataURL);
+      mes.html("All changes saved locally");
     }, 1000);
   };
 
@@ -53,14 +56,10 @@ function HelperFunctions() {
       }
 
       window.location.reload();
-    }
-    else {
+    } else {
       clearAll();
-
     }
   };
-
-
 
   //event handler for the save image button. saves the canvsa to the
   //local file system.

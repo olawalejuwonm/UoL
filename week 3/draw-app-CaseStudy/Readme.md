@@ -52,12 +52,17 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 - Cloning Tool
 - Shape Tool
 - Es6
-- Perfect Shade(bucket) - Smooth
-- Get image of selected x in text and fill it back
+- Perfect Shade(bucket) - Smooth #Done
+- Get image of selected x in text and fill it back #Done
 
 - unZoom change cursor
 - add error message for zoom
+- resize text
+- Rectangle Tool
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 https://en.wikipedia.org/wiki/Flood_fill
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 window location 
+async
+window confirm
+local storage, p5js
