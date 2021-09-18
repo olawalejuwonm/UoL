@@ -35,6 +35,7 @@ function Toolbox() {
       alert("make sure your tool has both a name and an icon");
     }
     this.tools.push(tool);
+
     addToolIcon(tool.icon, tool.name);
     //if no tool is selected (ie. none have been added so far)
     //make this tool the selected one.
@@ -50,21 +51,27 @@ function Toolbox() {
 
     fill(c);
     stroke(sc);
+    helpers.ButtonStates();
+
     for (var i = 0; i < this.tools.length; i++) {
       if (this.tools[i].name == toolName) {
         //if the tool has an unselectTool method run it.
-        if (this.selectedTool != null && this.selectedTool.noHistory) {
-          helpers.ButtonStates();
-        }
-        if (
-          this.selectedTool != null &&
-          this.selectedTool.hasOwnProperty("unselectTool")
-        ) {
-          this.selectedTool.unselectTool();
+
+      //order matters
+        if (this.selectedTool != null) {
+          if (this.selectedTool.hasOwnProperty("unselectTool")) {
+            this.selectedTool.unselectTool();
+          }
         }
 
         //select the tool and highlight it on the toolbar
         this.selectedTool = this.tools[i];
+
+
+        if (this.selectedTool.noHistory) {
+          undobtn.attribute("disabled", "");
+          redobtn.attribute("disabled", "");
+        }
         select("#" + toolName + "sideBarItem").style(
           "border",
           "2px solid blue"

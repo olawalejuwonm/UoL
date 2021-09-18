@@ -61,6 +61,7 @@ class TextTool {
   Populate() {
     loadPixels();
     cursor("text");
+    
     // helpers.awaitSave();
     // helpers.getPixels();
   }
