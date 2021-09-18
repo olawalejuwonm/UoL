@@ -147,15 +147,25 @@ function MousePressed() {
 }
 
 function MouseReleased() {
+  
+  if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
+    toolbox.selectedTool.mouseReleased();
+  }
+
   if (!toolbox.selectedTool.noHistory) {
     // noHistory is no undo or redo
+    console.log("i shouldn called")
+
+
 
     helpers.awaitSave();
 
     helpers.getPixels();
   }
-  if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
-    toolbox.selectedTool.mouseReleased();
+
+  else {
+    undobtn.attribute("disabled", "")
+    redobtn.attribute("disabled", "")
   }
 }
 

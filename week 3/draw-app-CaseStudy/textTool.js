@@ -15,7 +15,7 @@ class TextTool {
     this.mouseReleased = this.MouseReleased;
     this.keyPressed = this.KeyPressed;
     this.textBtn;
-    this.text;
+    this.text = "";
     this.noHistory = true;
     this.sizeBtn;
     this.size;
@@ -61,8 +61,8 @@ class TextTool {
   Populate() {
     loadPixels();
     cursor("text");
-    helpers.awaitSave();
-    helpers.getPixels();
+    // helpers.awaitSave();
+    // helpers.getPixels();
   }
 
   Unpopulate() {
@@ -87,10 +87,10 @@ class TextTool {
       this.ReWrite(0, 0, 0, 0);
     }
 
-    if (keyCode === 13 && this.textMode === true) {
-      //when enter key is pressed
-      this.DoneWriting();
-    }
+    // if (keyCode === 13 && this.textMode === true) {
+    //   //when enter key is pressed
+    //   this.DoneWriting();
+    // }
   }
 
   MouseDragged() {
@@ -143,12 +143,11 @@ class TextTool {
       //   this.imgPos =loadImage(imgData) ;
       // }
 
-
       this.imgPos = get()
       this.ReWrite(-3, -3, 5, 5);
 
       image(this.imgPos, 0, 0, width, height);
-      if (this.text) {
+      if (this.text.length > 0) {
         if (confirm("Do you want to write the text on the canvas?")) {
           this.ReWrite(-3, -3, 5, 5);
 
@@ -158,6 +157,10 @@ class TextTool {
           this.ReWrite(-3, -3, 5, 5);
 
         }
+      }
+      else {
+        this.ReWrite(-3, -3, 5, 5);
+
       }
     }
 
@@ -190,8 +193,9 @@ class TextTool {
     this.doneBtn = null;
     this.selectScale = {x: -mouseX, y: -mouseY, w:-width, h:-height}
     loadPixels();
-    helpers.awaitSave();
-    helpers.getPixels();
+    // helpers.getPixels();
+
+    // helpers.awaitSave();
   }
 
   MouseReleased() {

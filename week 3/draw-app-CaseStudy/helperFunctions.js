@@ -1,4 +1,7 @@
 let HistoryClose;
+let undobtn;
+let redobtn;
+let historyBtn;
 class HelperFunctions {
   constructor() {
     //p5.dom click click events. Notice that there is no this. at the
@@ -6,10 +9,10 @@ class HelperFunctions {
     //be added to the button and doesn't 'belong' to the object
 
     let dC = select("#defaultCanvas0");
-    let undobtn = select("#undoButton");
-    let redobtn = select("#redoButton");
+    undobtn = select("#undoButton");
+    redobtn = select("#redoButton");
     let historyMode = false;
-    let historyBtn = select("#History");
+    historyBtn = select("#History");
     let HistoryDiv = createDiv("Canvas History").style(
       "background-color: #EFEFEF;"
     );
@@ -20,25 +23,32 @@ class HelperFunctions {
       HistoryDiv.hide();
     };
 
-    if (undoArr.length !== 0) {
-      //generate pixel
-      undoArr = undoArr.map((obj) => {
-        let pixel = loadImage(obj.url);
-        return { ...obj, pixel };
-      });
-    } else {
-      undobtn.attribute("disabled", "");
-      historyBtn.attribute("disabled", "");
+    this.ButtonStates = () => {
+      if (undoArr.length !== 0) {
+        //generate pixel
+        undoArr = undoArr.map((obj) => {
+          let pixel = loadImage(obj.url);
+          return { ...obj, pixel };
+        });
+        undobtn.removeAttribute("disabled")
+      } else {
+        undobtn.attribute("disabled", "");
+        // historyBtn.attribute("disabled", "");
+      }
+  
+      if (redoArr.length !== 0) {
+        redoArr = redoArr.map((obj) => {
+          let pixel = loadImage(obj.url);
+          return { ...obj, pixel };
+        });
+        redobtn.removeAttribute("disabled")
+      } else {
+        redobtn.attribute("disabled", "");
+      }
     }
 
-    if (redoArr.length !== 0) {
-      redoArr = redoArr.map((obj) => {
-        let pixel = loadImage(obj.url);
-        return { ...obj, pixel };
-      });
-    } else {
-      redobtn.attribute("disabled", "");
-    }
+    this.ButtonStates()
+   
 
     this.getPixels = () => {
       let date = new Date();
@@ -146,8 +156,8 @@ class HelperFunctions {
         storeItem("zoomMode", false);
         removeItem("pixels");
         zoomMode = false;
-        undoArr = []
-        redoArr = []
+        undoArr = [];
+        redoArr = [];
         //call loadPixels to update the drawing state
         //this is needed for the mirror tool
         loadPixels();

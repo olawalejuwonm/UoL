@@ -53,12 +53,16 @@ function Toolbox() {
     for (var i = 0; i < this.tools.length; i++) {
       if (this.tools[i].name == toolName) {
         //if the tool has an unselectTool method run it.
+        if (this.selectedTool != null && this.selectedTool.noHistory) {
+          helpers.ButtonStates();
+        }
         if (
           this.selectedTool != null &&
           this.selectedTool.hasOwnProperty("unselectTool")
         ) {
           this.selectedTool.unselectTool();
         }
+
         //select the tool and highlight it on the toolbar
         this.selectedTool = this.tools[i];
         select("#" + toolName + "sideBarItem").style(
