@@ -10,7 +10,7 @@ class CanvasImage {
         loadImage(
           file.data,
           (img) => {
-            resizeCanvas(img.width, img.height);
+            resizeCanvas(img.width*2, img.height*2);
             image(img, 20, 20, width - 30, height - 30);
             this.img = img;
             this.handleEdit();

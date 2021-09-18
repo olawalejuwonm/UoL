@@ -4,6 +4,35 @@ class HelperFunctions {
     //start we don't need to do that here because the event will
     //be added to the button and doesn't 'belong' to the object
 
+    let dC = select("#defaultCanvas0");
+    let undobtn = select("#undoButton");
+    let redobtn = select("#redoButton");
+    let historyMode = false;
+    let historyBtn = select("#History");
+    let HistoryDiv = createDiv("Canvas History").style(
+      "background-color: #EFEFEF;"
+    );
+
+    if (undoArr.length !== 0) {
+      //generate pixel
+      undoArr = undoArr.map((obj) => {
+        let pixel = loadImage(obj.pixel);
+        return { ...obj, pixel };
+      });
+    } else {
+      undobtn.attribute("disabled", "");
+      historyBtn.attribute("disabled", "");
+    }
+
+    if (redoArr.length !== 0) {
+      redoArr = redoArr.map((obj) => {
+        let pixel = loadImage(obj.pixel);
+        return { ...obj, pixel };
+      });
+    } else {
+      redobtn.attribute("disabled", "");
+    }
+
     this.getPixels = () => {
       let date = new Date();
 
@@ -21,15 +50,22 @@ class HelperFunctions {
           ":" +
           date.getSeconds(),
         pixel: get(),
+        url: dC.elt.toDataURL("image/png"),
       });
-      select("#undoButton").removeAttribute("disabled");
+      let storArr = undoArr.map((a) => {
+        //strip out get() from the Array of object because it's a circular and it can't be stored in local storage
+        return { date: a.date, url: a.url };
+      });
+      storeItem("undoArr", storArr);
+      undobtn.removeAttribute("disabled");
+      historyMode.removeAttribute("disabled");
     };
 
     this.awaitSave = async () => {
       let mes = select("#stateMes");
       mes.html("Saving....");
       setTimeout(() => {
-        let dataURL = select("#defaultCanvas0").elt.toDataURL("image/png");
+        let dataURL = dC.elt.toDataURL("image/png");
         // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
         // console.log(fImg)
         storeItem("pixels", dataURL);
@@ -37,29 +73,27 @@ class HelperFunctions {
       }, 1000);
     };
 
-    let historyMode = false;
-    let historyBtn = select("#History");
-    let HistoryDiv = createDiv("Canvas History")
-    
-    // .style(
-    //   "background-color: #444;"
-    // );
-
     historyBtn.mouseClicked(() => {
-      HistoryDiv.html("Canvas History")
+      HistoryDiv.html("Canvas History");
+
+      if (undoArr.length === 0) {
+        HistoryDiv.html("<br>No History At The Moment", true);
+      } else {
+        HistoryDiv.html("<br>Click On A Button Below \n<br>", true);
+      }
       undoArr.forEach((a, i) => {
         let button = createButton(a.date, i);
-        button.style("display:block;background-color: #444;color:white");
+        button.style("display:block;color:#444;margin-bottom: 5px");
         button.mousePressed(() => {
-          console.log(button.value(), i, "values", undoArr[i].pixel)
-          resizeCanvas(width, height)
-          image(undoArr[i].pixel, 0, 0, width, height)
+          console.log(button.value(), i, "values", undoArr[i].pixel);
+          resizeCanvas(width, height);
+          image(undoArr[i].pixel, 0, 0, width, height);
         });
         button.parent(HistoryDiv);
         console.log(i, a.date);
       });
 
-      HistoryDiv.position(width - 30, 0);
+      HistoryDiv.position(windowWidth - 200, 0);
       // HistoryDiv.center()
       HistoryDiv.show();
 
@@ -67,12 +101,10 @@ class HelperFunctions {
         historyBtn.html("Close History");
         historyMode = true;
         HistoryDiv.show();
-
       } else {
         historyBtn.html("Layer History");
         historyMode = false;
         HistoryDiv.hide();
-
       }
     });
 
@@ -123,9 +155,6 @@ class HelperFunctions {
       save("myCanvas.jpg");
     });
 
-    let undobtn = select("#undoButton");
-    let redobtn = select("#redoButton");
-
     undobtn.mouseClicked(function () {
       // console.log(undoArr);
       let date = new Date();
@@ -145,7 +174,13 @@ class HelperFunctions {
             ":" +
             date.getSeconds(),
           pixel: get(),
+          url: dC.elt.toDataURL("image/png"),
         });
+        let storArr = undoArr.map((a) => {
+          //strip out get() from the Array of object because it's a circular and it can't be stored in local storage
+          return { date: a.date, url: a.url };
+        });
+        storeItem("redoArr", storArr);
         redobtn.removeAttribute("disabled");
         // resizeCanvas(width, height)
         clear();
@@ -182,7 +217,13 @@ class HelperFunctions {
             ":" +
             date.getSeconds(),
           pixel: get(),
+          url: dC.elt.toDataURL("image/png"),
         });
+        let storArr = undoArr.map((a) => {
+          //strip out get() from the Array of object because it's a circular and it can't be stored in local storage
+          return { date: a.date, url: a.url };
+        });
+        storeItem("undoArr", storArr);
         undobtn.removeAttribute("disabled");
 
         image(redoArr[redoL - 1].pixel, 0, 0);

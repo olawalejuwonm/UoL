@@ -1,17 +1,15 @@
 //global variables that will store the toolbox colour palette
 //amnd the helper functions
 // ssw
-var toolbox = null;
-var colourP = null;
-var helpers = null;
-var Gopt = null;
-var imageB = null;
-var undoArr = [];
-var redoArr = [];
-var canvasContainer = null;
-var savedPixels;
-var savedImg = {};
-var fonts = {
+let toolbox = null;
+let colourP = null;
+let helpers = null;
+let Gopt = null;
+let imageB = null;
+let canvasContainer = null;
+let savedPixels;
+let savedImg = {};
+let fonts = {
   Arial: "Arial",
   Courier: "Courier New",
   Georgia: "Georgia",
@@ -20,6 +18,9 @@ var fonts = {
   Verdana: "Verdana",
 };
 
+let undoArr;
+let redoArr;
+let message;
 function preload() {
   // fonts.klinzhai = loadFont("assets/fonts/Klinzhai.ttf")
   // fonts.korinth = loadFont("assets/fonts/Korinth.ttf");
@@ -32,6 +33,10 @@ function preload() {
 function setup() {
   //create a canvas to fill the content div from index.html
   savedPixels = getItem("pixels");
+  undoArr = getItem("undoArr") || [];
+  redoArr = getItem("redoArr") || [];
+  message = select("#message");
+
   // console.log(savedPixels)
 
   canvasContainer = select("#content");
@@ -78,13 +83,14 @@ function setup() {
     });
   }
 
+  
+
   cnv.mousePressed(function () {
-    console.log(toolbox.selectedTool.noHistory);
     if (!toolbox.selectedTool.noHistory) {
       // noHistory is no undo or redo
-      if (undoArr.length === 0) {
-        helpers.getPixels();
-      }
+      // if (undoArr.length === 0) {
+      //   helpers.getPixels();
+      // }
     }
 
     MousePressed();
@@ -92,16 +98,12 @@ function setup() {
   });
 
   cnv.mouseReleased(() => {
-
     MouseReleased();
   });
 
   cnv.touchEnded(() => {
-    MouseReleased()
-  })
-
-
-
+    MouseReleased();
+  });
 }
 
 function draw() {
@@ -111,8 +113,9 @@ function draw() {
   //if there isn't a draw method the app will alert the user
   if (toolbox.selectedTool.hasOwnProperty("draw")) {
     toolbox.selectedTool.draw();
-    select("#message").html(this.toolbox.selectedTool.message || "");
-
+    if (message) {
+      message.html(toolbox.selectedTool.message || "");
+    }
   } else {
     alert("it doesn't look like your tool has a draw method!");
   }
@@ -142,25 +145,22 @@ function MousePressed() {
 }
 
 function MouseReleased() {
- 
   if (!toolbox.selectedTool.noHistory) {
     // noHistory is no undo or redo
 
-    helpers.awaitSave()
-  
+    helpers.awaitSave();
+
     helpers.getPixels();
   }
   if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
     toolbox.selectedTool.mouseReleased();
   }
-
- 
 }
 
-function mouseReleased() {
-  
+function mouseReleased() {}
 
-}
-
-
-
+// function windowResized() {
+//   let img = get()
+//   resizeCanvas(windowWidth, windowHeight, true);
+//   image(img, 0, 0, width, height)
+// }
