@@ -194,9 +194,9 @@ class TextTool {
     this.doneBtn = null;
     this.selectScale = {x: -mouseX, y: -mouseY, w:-width, h:-height}
     loadPixels();
-    // helpers.getPixels();
+    helpers.getPixels();
 
-    // helpers.awaitSave();
+    helpers.awaitSave();
   }
 
   MouseReleased() {

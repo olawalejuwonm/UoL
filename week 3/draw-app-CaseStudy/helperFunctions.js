@@ -30,25 +30,26 @@ class HelperFunctions {
           let pixel = loadImage(obj.url);
           return { ...obj, pixel };
         });
-        undobtn.removeAttribute("disabled")
+        undobtn.removeAttribute("disabled");
+        historyBtn.removeAttribute("disabled");
       } else {
         undobtn.attribute("disabled", "");
         // historyBtn.attribute("disabled", "");
       }
-  
+
       if (redoArr.length !== 0) {
         redoArr = redoArr.map((obj) => {
           let pixel = loadImage(obj.url);
           return { ...obj, pixel };
         });
-        redobtn.removeAttribute("disabled")
+        redobtn.removeAttribute("disabled");
+        historyBtn.removeAttribute("disabled");
       } else {
         redobtn.attribute("disabled", "");
       }
-    }
+    };
 
-    this.ButtonStates()
-   
+    this.ButtonStates();
 
     this.getPixels = () => {
       let date = new Date();

@@ -71,6 +71,7 @@ function Toolbox() {
         if (this.selectedTool.noHistory) {
           undobtn.attribute("disabled", "");
           redobtn.attribute("disabled", "");
+          historyBtn.attribute("disabled", "")
         }
         select("#" + toolName + "sideBarItem").style(
           "border",
