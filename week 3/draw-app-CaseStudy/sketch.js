@@ -88,9 +88,9 @@ function setup() {
   cnv.mousePressed(function () {
     if (!toolbox.selectedTool.noHistory) {
       // noHistory is no undo or redo
-      // if (undoArr.length === 0) {
-      //   helpers.getPixels();
-      // }
+      if (undoArr.length === 0) {
+        helpers.getPixels();
+      }
     }
 
     MousePressed();
@@ -142,6 +142,8 @@ function MousePressed() {
   if (toolbox.selectedTool.hasOwnProperty("mousePressed")) {
     toolbox.selectedTool.mousePressed();
   }
+  HistoryClose() //to close the history
+
 }
 
 function MouseReleased() {

@@ -1,3 +1,4 @@
+let HistoryClose;
 class HelperFunctions {
   constructor() {
     //p5.dom click click events. Notice that there is no this. at the
@@ -13,10 +14,16 @@ class HelperFunctions {
       "background-color: #EFEFEF;"
     );
 
+    HistoryClose = () => {
+      historyBtn.html("Layer History");
+      historyMode = false;
+      HistoryDiv.hide();
+    };
+
     if (undoArr.length !== 0) {
       //generate pixel
       undoArr = undoArr.map((obj) => {
-        let pixel = loadImage(obj.pixel);
+        let pixel = loadImage(obj.url);
         return { ...obj, pixel };
       });
     } else {
@@ -26,7 +33,7 @@ class HelperFunctions {
 
     if (redoArr.length !== 0) {
       redoArr = redoArr.map((obj) => {
-        let pixel = loadImage(obj.pixel);
+        let pixel = loadImage(obj.url);
         return { ...obj, pixel };
       });
     } else {
@@ -52,13 +59,21 @@ class HelperFunctions {
         pixel: get(),
         url: dC.elt.toDataURL("image/png"),
       });
-      let storArr = undoArr.map((a) => {
+
+      let storeArr = [];
+      undoArr.map((a) => {
+        if (storeArr.length > 14) {
+          //reduce maximum number of history in localStorage
+          storeArr.splice(0, 1);
+        }
         //strip out get() from the Array of object because it's a circular and it can't be stored in local storage
-        return { date: a.date, url: a.url };
+        storeArr.push({ date: a.date, url: a.url });
       });
-      storeItem("undoArr", storArr);
+      // console.log(undoArr.length, storeArr)
+
+      storeItem("undoArr", storeArr);
       undobtn.removeAttribute("disabled");
-      historyMode.removeAttribute("disabled");
+      historyBtn.removeAttribute("disabled");
     };
 
     this.awaitSave = async () => {
@@ -75,22 +90,22 @@ class HelperFunctions {
 
     historyBtn.mouseClicked(() => {
       HistoryDiv.html("Canvas History");
+      let historyArr = undoArr.concat(redoArr); //join the two array  to make history
 
-      if (undoArr.length === 0) {
+      if (historyArr.length === 0) {
         HistoryDiv.html("<br>No History At The Moment", true);
       } else {
-        HistoryDiv.html("<br>Click On A Button Below \n<br>", true);
+        HistoryDiv.html("<br>Click On A Date Below \n<br>", true);
       }
-      undoArr.forEach((a, i) => {
+      historyArr.forEach((a, i) => {
         let button = createButton(a.date, i);
         button.style("display:block;color:#444;margin-bottom: 5px");
         button.mousePressed(() => {
-          console.log(button.value(), i, "values", undoArr[i].pixel);
           resizeCanvas(width, height);
-          image(undoArr[i].pixel, 0, 0, width, height);
+          image(historyArr[i].pixel, 0, 0, width, height);
         });
         button.parent(HistoryDiv);
-        console.log(i, a.date);
+        // console.log(i, a.date);
       });
 
       HistoryDiv.position(windowWidth - 200, 0);
@@ -109,9 +124,9 @@ class HelperFunctions {
     });
 
     //event handler for the clear button event. Clears the screen
-    select("#clearButton").mouseClicked(() => {
-      this.clearCanvas();
-    });
+    // select("#clearButton").mouseClicked(() => {
+    //   this.clearCanvas();
+    // });
 
     select("#Reload").mouseClicked(() => {
       this.clearCanvas(true);
@@ -131,8 +146,8 @@ class HelperFunctions {
         storeItem("zoomMode", false);
         removeItem("pixels");
         zoomMode = false;
-        // undoArr = []
-        // redoArr = []
+        undoArr = []
+        redoArr = []
         //call loadPixels to update the drawing state
         //this is needed for the mirror tool
         loadPixels();
@@ -158,7 +173,8 @@ class HelperFunctions {
     undobtn.mouseClicked(function () {
       // console.log(undoArr);
       let date = new Date();
-      var undoL = undoArr.length;
+      let undoL = undoArr.length;
+
       if (undoL > 0) {
         redoArr.push({
           date:
@@ -176,11 +192,16 @@ class HelperFunctions {
           pixel: get(),
           url: dC.elt.toDataURL("image/png"),
         });
-        let storArr = undoArr.map((a) => {
+        let storeArr = [];
+        redoArr.map((a) => {
+          if (storeArr.length > 14) {
+            //reduce maximum number of history in local storage
+            storeArr.splice(0, 1);
+          }
           //strip out get() from the Array of object because it's a circular and it can't be stored in local storage
-          return { date: a.date, url: a.url };
+          storeArr.push({ date: a.date, url: a.url });
         });
-        storeItem("redoArr", storArr);
+        storeItem("redoArr", storeArr);
         redobtn.removeAttribute("disabled");
         // resizeCanvas(width, height)
         clear();
@@ -202,7 +223,6 @@ class HelperFunctions {
 
       if (redoL > 0) {
         let date = new Date();
-
         undoArr.push({
           date:
             date.getDate() +
@@ -219,11 +239,17 @@ class HelperFunctions {
           pixel: get(),
           url: dC.elt.toDataURL("image/png"),
         });
-        let storArr = undoArr.map((a) => {
+        let storeArr = [];
+
+        undoArr.map((a) => {
+          if (storeArr.length > 14) {
+            //reduce maximum number of history in local storage
+            storeArr.splice(0, 1);
+          }
           //strip out get() from the Array of object because it's a circular and it can't be stored in local storage
-          return { date: a.date, url: a.url };
+          storeArr.push({ date: a.date, url: a.url });
         });
-        storeItem("undoArr", storArr);
+        storeItem("undoArr", storeArr);
         undobtn.removeAttribute("disabled");
 
         image(redoArr[redoL - 1].pixel, 0, 0);
