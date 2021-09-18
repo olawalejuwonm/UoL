@@ -142,6 +142,7 @@ function MousePressed() {
 }
 
 function MouseReleased() {
+ 
   if (!toolbox.selectedTool.noHistory) {
     // noHistory is no undo or redo
 
@@ -156,6 +157,10 @@ function MouseReleased() {
  
 }
 
+function mouseReleased() {
+  
+
+}
 
 
 

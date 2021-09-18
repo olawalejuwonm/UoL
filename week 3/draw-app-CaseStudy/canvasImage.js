@@ -64,8 +64,6 @@ class CanvasImage {
     this.editBtn.mousePressed(() => {
       if (!this.editMode) {
 
-        // undoArr.push(get());
-        // console.log(get(), undoArr)
         helpers.getPixels()
 
         loadPixels();
