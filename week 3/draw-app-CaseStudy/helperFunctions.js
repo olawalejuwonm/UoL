@@ -13,19 +13,19 @@ class HelperFunctions {
     redobtn = select("#redoButton");
     let historyMode = false;
     historyBtn = select("#History");
-    let HistoryDiv = createDiv("").style(
-      "background-color: #EFEFEF;"
-    );
-    
-    this.awaitSave = async () => {
+    let HistoryDiv = createDiv("").style("background-color: #EFEFEF;");
+
+    this.awaitSave = async (sync) => {
+      let getDataUrl = () => {
+        let dataURL = dC.elt.toDataURL("image/png");
+        storeItem("pixels", dataURL);
+        mes.html("All changes saved locally");
+      };
+
       let mes = select("#stateMes");
       mes.html("Saving....");
       setTimeout(() => {
-        let dataURL = dC.elt.toDataURL("image/png");
-        // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-        // console.log(fImg)
-        storeItem("pixels", dataURL);
-        mes.html("All changes saved locally");
+        getDataUrl();
       }, 1000);
     };
 

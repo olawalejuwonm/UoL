@@ -58,6 +58,7 @@ function Toolbox() {
 
           fill(c);
           stroke(sc);
+          strokeWeight(sw);
           helpers.ButtonStates();
           cursor("auto");
           if (this.selectedTool.hasOwnProperty("unselectTool")) {

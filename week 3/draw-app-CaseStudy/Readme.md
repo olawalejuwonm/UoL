@@ -45,10 +45,6 @@ Try to write some tools of your own. Maybe a rectangle tool and an ellipse tool.
 - Add info about each tool
 
 - Upload Drawing 
-- resize text
-- History #ALMOST DONE (Layer History)
-- Add stamp
-- Add cut tool
 - no console
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 https://en.wikipedia.org/wiki/Flood_fill

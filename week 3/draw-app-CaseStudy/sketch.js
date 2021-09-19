@@ -7,16 +7,9 @@ let helpers = null;
 let Gopt = null;
 let imageB = null;
 let canvasContainer = null;
-let savedPixels;
 let savedImg = {};
-let fonts = {
-  Arial: "Arial",
-  Courier: "Courier New",
-  Georgia: "Georgia",
-  TNR: "Times New Roman",
-  TMS: "Trebuchet MS",
-  Verdana: "Verdana",
-};
+let fonts = {};
+let savedPixels;
 
 let undoArr;
 let redoArr;
@@ -25,6 +18,14 @@ function preload() {
   // fonts.klinzhai = loadFont("assets/fonts/Klinzhai.ttf")
   // fonts.korinth = loadFont("assets/fonts/Korinth.ttf");
   // fonts.Aqum = loadFont("assets/fonts/Aqum2Classic.otf");
+  fonts = {
+    Arial: "Arial",
+    Courier: "Courier New",
+    Georgia: "Georgia",
+    TNR: "Times New Roman",
+    TMS: "Trebuchet MS",
+    Verdana: "Verdana",
+  };
   fonts.OpenSans = loadFont("assets/fonts/OpenSans-Regular.ttf");
 
   // fonts.splonic = loadFont("assets/fonts/SPlonic.ttf")
@@ -36,7 +37,7 @@ function setup() {
   undoArr = getItem("undoArr") || [];
   redoArr = getItem("redoArr") || [];
   message = select("#message");
-
+  savedImg = {};
   // console.log(savedPixels)
 
   canvasContainer = select("#content");
@@ -54,6 +55,7 @@ function setup() {
 
   pixelDensity(1);
   Gopt = select("#options"); //Global Function
+
   //create a toolbox for storing the tools
   toolbox = new Toolbox();
 
@@ -63,7 +65,7 @@ function setup() {
   toolbox.addTool(new SprayCanTool());
   toolbox.addTool(new mirrorDrawTool());
   toolbox.addTool(new StampTool());
-  toolbox.addTool(new ScissorsTool())
+  toolbox.addTool(new ScissorsTool());
 
   toolbox.addTool(new RectangleTool());
   toolbox.addTool(new BucketFillTool());
@@ -144,11 +146,7 @@ function MousePressed() {
 }
 
 function MouseReleased() {
-  if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
-    toolbox.selectedTool.mouseReleased();
-  }
-
-  if (!toolbox.selectedTool.noHistory) {
+   if (!toolbox.selectedTool.noHistory) {
     // noHistory is no undo or redo
     helpers.awaitSave();
     helpers.getPixels();
@@ -156,6 +154,11 @@ function MouseReleased() {
     undobtn.attribute("disabled", "");
     redobtn.attribute("disabled", "");
   }
+  if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
+    toolbox.selectedTool.mouseReleased();
+  }
+
+ 
 }
 
 function mouseReleased() {}

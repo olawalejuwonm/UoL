@@ -1,6 +1,7 @@
 //Displays and handles the colour palette.
 let c = "#4109DC";
 let sc = "#7B7342";
+let sw = 1;
 class ColourPalette {
   constructor() {
     //a list of web colour strings
@@ -78,12 +79,25 @@ class ColourPalette {
       fill(c);
     });
     let strokeColor = select("#SC");
-    strokeColor.input(function () {
+    strokeColor.input(() => {
       sc = strokeColor.value();
       stroke(sc);
     });
-    fill(c)
-    stroke(sc)
+
+    let strokeW = select("#SW");
+    strokeW.input(() => {
+      sw = Number(strokeW.value());
+      if (sw > 49) {
+        strokeWeight(50);
+        sw = 50
+        return strokeW.value(50);
+      }
+      strokeWeight(sw);
+    });
+
+    fill(c);
+    stroke(sc);
+    strokeWeight(sw);
 
     //call the loadColours function now it is declared
     // this.loadColours();
