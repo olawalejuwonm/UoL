@@ -57,7 +57,7 @@ class BucketFillTool {
       let b = pixels[(mouseY * width + mouseX) * 4 + 2];
       console.log(r, g, b, color, "rgb color  ");
       if (r === 0 && g === 0 && b === 0) {
-        let text = "Pixel is empty, Click Reload or  Use Smooth";
+        let text = "Pixel is empty, Save the canvas and clear it or  use smooth";
         this.message = text;
         cursor("not-allowed");
       }
@@ -66,7 +66,7 @@ class BucketFillTool {
         typeof g === "undefined" ||
         typeof b === "undefined"
       ) {
-        let text = "Pixel is empty, Click Reload or  Use Smooth";
+        let text = "Pixel is empty, Save the canvas and clear it or  use smooth";
         this.message = text;
 
         cursor("not-allowed");

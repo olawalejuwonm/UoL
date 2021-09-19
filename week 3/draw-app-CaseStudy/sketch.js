@@ -24,7 +24,7 @@ let message;
 function preload() {
   // fonts.klinzhai = loadFont("assets/fonts/Klinzhai.ttf")
   // fonts.korinth = loadFont("assets/fonts/Korinth.ttf");
-  fonts.Aqum = loadFont("assets/fonts/Aqum2Classic.otf");
+  // fonts.Aqum = loadFont("assets/fonts/Aqum2Classic.otf");
   fonts.OpenSans = loadFont("assets/fonts/OpenSans-Regular.ttf");
 
   // fonts.splonic = loadFont("assets/fonts/SPlonic.ttf")
@@ -63,7 +63,7 @@ function setup() {
   toolbox.addTool(new SprayCanTool());
   toolbox.addTool(new mirrorDrawTool());
   toolbox.addTool(new EditableShapeTool());
-  // toolbox.addTool(new PolygonTool())
+    toolbox.addTool(new StampTool())
 
   toolbox.addTool(new RectangleTool());
   toolbox.addTool(new BucketFillTool());
@@ -154,12 +154,7 @@ function MouseReleased() {
 
   if (!toolbox.selectedTool.noHistory) {
     // noHistory is no undo or redo
-    console.log("i shouldn called")
-
-
-
     helpers.awaitSave();
-
     helpers.getPixels();
   }
 

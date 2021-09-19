@@ -169,7 +169,7 @@ class HelperFunctions {
           clearAll();
         }
 
-        window.location.reload();
+        // window.location.reload();
       } else {
         clearAll();
       }

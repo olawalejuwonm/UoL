@@ -47,18 +47,19 @@ function Toolbox() {
   this.selectTool = function (toolName) {
     //search through the tools for one that's name matches
     //toolName
-    Gopt.html("");
-
-    fill(c);
-    stroke(sc);
-    helpers.ButtonStates();
 
     for (var i = 0; i < this.tools.length; i++) {
       if (this.tools[i].name == toolName) {
         //if the tool has an unselectTool method run it.
 
-      //order matters
+        //order matters
         if (this.selectedTool != null) {
+          Gopt.html("");
+
+          fill(c);
+          stroke(sc);
+          helpers.ButtonStates();
+          cursor("auto");
           if (this.selectedTool.hasOwnProperty("unselectTool")) {
             this.selectedTool.unselectTool();
           }
@@ -67,11 +68,10 @@ function Toolbox() {
         //select the tool and highlight it on the toolbar
         this.selectedTool = this.tools[i];
 
-
         if (this.selectedTool.noHistory) {
           undobtn.attribute("disabled", "");
           redobtn.attribute("disabled", "");
-          historyBtn.attribute("disabled", "")
+          historyBtn.attribute("disabled", "");
         }
         select("#" + toolName + "sideBarItem").style(
           "border",
