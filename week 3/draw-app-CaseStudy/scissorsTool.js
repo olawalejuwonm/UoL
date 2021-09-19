@@ -49,18 +49,7 @@ class ScissorsTool {
         } else if (selectMode == 1) {
           selectMode += 1;
           selectButton.html("end paste");
-
-          //refresh the screen
-          updatePixels();
-
-          //store the pixels
-          selectedPixels = get(
-            selectedArea.x,
-            selectedArea.y,
-            selectedArea.w,
-            selectedArea.h
-          );
-
+          this.getSPixels();
           //draw a rectangle over it
           fill(255);
           noStroke();
@@ -81,6 +70,7 @@ class ScissorsTool {
       selectButton.parent(Gopt);
       noFill();
       stroke(0);
+      loadPixels();
     };
 
     this.mousePressed = () => {
@@ -95,25 +85,17 @@ class ScissorsTool {
               selectButton.html("end copy");
               copyButton.hide();
 
-              //refresh the screen
-              updatePixels();
-
-              //store the pixels
-              selectedPixels = get(
-                selectedArea.x,
-                selectedArea.y,
-                selectedArea.w,
-                selectedArea.h
-              );
+              this.getSPixels();
             }
           });
           saveButton = createButton("save pixel");
           saveButton.mousePressed(() => {
-              if (savedPixels) {
-                save(savedPixels)
+            this.getSPixels();
 
-              }
-          })
+            if (selectedPixels) {
+              selectedPixels.save("myCuttedDrawing", "png");
+            }
+          });
 
           copyButton.parent(Gopt);
           saveButton.parent(Gopt);
@@ -150,6 +132,19 @@ class ScissorsTool {
         return;
       }
       this.message = "";
+    };
+
+    this.getSPixels = () => {
+      //refresh the screen
+      updatePixels();
+
+      //store the pixels
+      selectedPixels = get(
+        selectedArea.x,
+        selectedArea.y,
+        selectedArea.w,
+        selectedArea.h
+      );
     };
   }
 }
