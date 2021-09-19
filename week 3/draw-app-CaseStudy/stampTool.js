@@ -43,16 +43,7 @@ class StampTool {
     this.draw = () => {
       if (img) {
         cursor("grab");
-        // if (mouseX > 0 && mouseX < width && mouseY > 5 && mouseY < height) {
-        //   let size = slider.value();
-        //   let x = mouseX + size / 2;
-        //   let y = mouseY + size / 2;
-        //   if (img) {
-        //     image(img, mouseX, mouseY, size);
-        //   }
-        // }
-
-        // image(star, mouseX, mouseY, starSize);
+         
       }
     };
     this.mousePressed = () => {

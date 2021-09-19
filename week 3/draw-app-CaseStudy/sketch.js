@@ -62,8 +62,8 @@ function setup() {
   toolbox.addTool(new LineToTool());
   toolbox.addTool(new SprayCanTool());
   toolbox.addTool(new mirrorDrawTool());
-  toolbox.addTool(new EditableShapeTool());
-    toolbox.addTool(new StampTool())
+  toolbox.addTool(new StampTool());
+  toolbox.addTool(new ScissorsTool())
 
   toolbox.addTool(new RectangleTool());
   toolbox.addTool(new BucketFillTool());
@@ -82,8 +82,6 @@ function setup() {
       image(img, 0, 0, width, height);
     });
   }
-
-  
 
   cnv.mousePressed(function () {
     if (!toolbox.selectedTool.noHistory) {
@@ -142,12 +140,10 @@ function MousePressed() {
   if (toolbox.selectedTool.hasOwnProperty("mousePressed")) {
     toolbox.selectedTool.mousePressed();
   }
-  HistoryClose() //to close the history
-
+  HistoryClose(); //to close the history
 }
 
 function MouseReleased() {
-  
   if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
     toolbox.selectedTool.mouseReleased();
   }
@@ -156,11 +152,9 @@ function MouseReleased() {
     // noHistory is no undo or redo
     helpers.awaitSave();
     helpers.getPixels();
-  }
-
-  else {
-    undobtn.attribute("disabled", "")
-    redobtn.attribute("disabled", "")
+  } else {
+    undobtn.attribute("disabled", "");
+    redobtn.attribute("disabled", "");
   }
 }
 

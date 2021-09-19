@@ -13,9 +13,21 @@ class HelperFunctions {
     redobtn = select("#redoButton");
     let historyMode = false;
     historyBtn = select("#History");
-    let HistoryDiv = createDiv("Canvas History").style(
+    let HistoryDiv = createDiv("").style(
       "background-color: #EFEFEF;"
     );
+    
+    this.awaitSave = async () => {
+      let mes = select("#stateMes");
+      mes.html("Saving....");
+      setTimeout(() => {
+        let dataURL = dC.elt.toDataURL("image/png");
+        // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+        // console.log(fImg)
+        storeItem("pixels", dataURL);
+        mes.html("All changes saved locally");
+      }, 1000);
+    };
 
     HistoryClose = () => {
       historyBtn.html("Layer History");
@@ -85,18 +97,6 @@ class HelperFunctions {
       storeItem("undoArr", storeArr);
       undobtn.removeAttribute("disabled");
       historyBtn.removeAttribute("disabled");
-    };
-
-    this.awaitSave = async () => {
-      let mes = select("#stateMes");
-      mes.html("Saving....");
-      setTimeout(() => {
-        let dataURL = dC.elt.toDataURL("image/png");
-        // let fImg = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-        // console.log(fImg)
-        storeItem("pixels", dataURL);
-        mes.html("All changes saved locally");
-      }, 1000);
     };
 
     historyBtn.mouseClicked(() => {
@@ -178,10 +178,10 @@ class HelperFunctions {
     //event handler for the save image button. saves the canvsa to the
     //local file system.
     select("#saveImageButton").mouseClicked(function () {
-      save("myCanvas.jpg");
+      saveCanvas("myDrawing.png");
     });
 
-    undobtn.mouseClicked(function () {
+    undobtn.mouseClicked(() => {
       // console.log(undoArr);
       let date = new Date();
       let undoL = undoArr.length;
@@ -220,6 +220,7 @@ class HelperFunctions {
         // undoArr[undoArr.length - 1].loadPixels();
         // updatePixels()
         undoArr.splice(undoL - 1, 1);
+        this.awaitSave();
       }
       if (undoArr.length === 0) {
         undobtn.attribute("disabled", "");
@@ -251,7 +252,6 @@ class HelperFunctions {
           url: dC.elt.toDataURL("image/png"),
         });
         let storeArr = [];
-
         undoArr.map((a) => {
           if (storeArr.length > 14) {
             //reduce maximum number of history in local storage
@@ -268,6 +268,7 @@ class HelperFunctions {
         // updatePixels()
         // undoArr.push(redoArr[redoL - 1])
         redoArr.splice(redoL - 1, 1);
+        this.awaitSave();
       }
       if (redoArr.length === 0) {
         redobtn.attribute("disabled", true);
