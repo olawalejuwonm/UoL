@@ -12,13 +12,14 @@ class BucketFillTool {
       if (this.smooth === true) {
         if (mouseIsPressed) {
           fill(c);
-          stroke(c)
+          stroke(c);
           ellipse(mouseX, mouseY, 10);
         }
       }
     };
 
     this.populateOptions = () => {
+      //populate button and set cursor
       cursor("assets/cursorBucket.png", 30, 30);
       this.smoothBtn = createButton("Smooth");
       this.smoothBtn.mousePressed(() => {
@@ -45,6 +46,7 @@ class BucketFillTool {
     this.mousePressed = function () {
       this.message = "";
       let color = select("#color");
+      //convert the hex color value to rgb so that it can be matched with pixel
       color = this.hexToRgb(color.value());
       loadPixels();
 
@@ -52,26 +54,30 @@ class BucketFillTool {
         return;
       }
 
+    //Get rgb color of surrounding pixel with respect to value of mouse position
+    //if the canvas is white it'll result in 255
       let r = pixels[(mouseY * width + mouseX) * 4];
       let g = pixels[(mouseY * width + mouseX) * 4 + 1];
       let b = pixels[(mouseY * width + mouseX) * 4 + 2];
-      console.log(r, g, b, color, "rgb color  ");
-      if (r === 0 && g === 0 && b === 0) {
-        let text = "Pixel is empty, Save the canvas and clear it or  use smooth";
+      if (r === 0 && g === 0 && b === 0) { //handle unusual behavior usually when image is on canvas
+        let text =
+          "Pixel is empty, Save the canvas and clear it or  use smooth";
         this.message = text;
         cursor("not-allowed");
       }
-      if (
+      if ( //handle unusual behavior usually when image is on canvas
         typeof r === "undefined" ||
         typeof g === "undefined" ||
         typeof b === "undefined"
       ) {
-        let text = "Pixel is empty, Save the canvas and clear it or  use smooth";
+        let text =
+          "Pixel is empty, Save the canvas and clear it or  use smooth";
         this.message = text;
 
         cursor("not-allowed");
       }
-      if (r === color.r || g === color.g || b === color.b) {
+      if (r === color.r || g === color.g || b === color.b) { 
+        //handle when user is trying to fill with same color
         cursor("not-allowed");
         let text = "You cannot fill a pixel with the same color";
         this.message = text;
@@ -82,7 +88,7 @@ class BucketFillTool {
     };
   }
 
-  hexToRgb(hex) {
+  hexToRgb(hex) { //function to convert hex value to rgb for pixel using regex
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
       ? {
@@ -94,6 +100,8 @@ class BucketFillTool {
   }
 }
 
+
+//function to fill, following the flood fill algorithm
 function bucket(x, y, ii, R, G, B, ro, go, bo) {
   let max = 1;
 
@@ -101,34 +109,21 @@ function bucket(x, y, ii, R, G, B, ro, go, bo) {
     console.log(max);
     max = 0;
     return;
-    // mult += 1
-    // max = 0
   } else {
     max += 1;
   }
 
-  // if (!ro|| !go || !bo || !x || !y) {
-  //   return;
-  // }
   if (ii > 1000) {
-    // max = 0
     return;
   }
   let r = pixels[(y * width + x) * 4];
   let g = pixels[(y * width + x) * 4 + 1];
   let b = pixels[(y * width + x) * 4 + 2];
-  // console.log(r,g,b,ro,go,bo)
-  // if (r === 0) {
-  //   r = 255
-  //   g = 255
-  //   b = 255
-  //   // console.log("r is 0")
-  // }
+
   if (r == ro && g == go && b == bo) {
     pixels[(y * width + x) * 4] = R;
     pixels[(y * width + x) * 4 + 1] = G;
     pixels[(y * width + x) * 4 + 2] = B;
-    // pixels[(y * width + x) * 4+3] = 1;
 
     for (let i = -1; i <= 1; i++) {
       if (i == 0) continue;

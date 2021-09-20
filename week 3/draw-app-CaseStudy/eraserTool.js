@@ -5,10 +5,10 @@ class EraserTool {
     this.name = "eraserTool";
     this.description = "The eraser tool can be used by pressing and holding on the area of canvas desired to be cleaned."
 
-    var slider;
+    let slider;
     this.populateOptions = function () {
       noFill();
-      slider = createSlider(5, width / 4, 5);
+      slider = createSlider(30, width / 4, 5);
       createP("Eraser Intensity: ").parent(Gopt);
       slider.parent(Gopt);
 
@@ -26,7 +26,7 @@ class EraserTool {
 
     this.unselectTool = function () {
       Gopt.html("");
-      var color = select("#color");
+      let color = select("#color");
       fill(color.value());
       stroke(sc);
       strokeWeight(1);

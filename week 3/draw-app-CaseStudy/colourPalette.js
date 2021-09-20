@@ -1,4 +1,5 @@
 //Displays and handles the colour palette.
+//Define fill collor, stroke color and stroke weight
 let c = "#4109DC";
 let sc = "#7B7342";
 let sw = 1;
@@ -72,6 +73,7 @@ class ColourPalette {
       select(".colourSwatches").style("border", "2px solid blue");
     };
 
+    //handle input for fill, stroke and strokeWeight
     let color = select("#color");
     color.input(function () {
       c = color.value();
@@ -89,7 +91,7 @@ class ColourPalette {
       sw = Number(strokeW.value());
       if (sw > 49) {
         strokeWeight(50);
-        sw = 50
+        sw = 50;
         return strokeW.value(50);
       }
       strokeWeight(sw);

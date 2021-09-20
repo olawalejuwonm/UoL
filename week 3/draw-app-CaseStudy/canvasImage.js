@@ -5,33 +5,25 @@ class CanvasImage {
     this.editBtn = null;
     this.editMode = false;
 
+    //Canvas Image Set An Image As Background of the canvas.
+    //It also set the width and height of the canvas approximately to the image size
+
+    //handleFile
     input = createFileInput((file) => {
       if (file.type === "image") {
         loadImage(
           file.data,
           (img) => {
-            resizeCanvas(img.width*2, img.height*2);
+            resizeCanvas(img.width * 2, img.height * 2);
             image(img, 20, 20, width - 30, height - 30);
             this.img = img;
             this.handleEdit();
-
-            // img.resize(0, 30);
           },
           (e) => {
             console.log(e);
             alert("Unable To Load Image");
           }
         );
-
-        // createImg(file.data, file.name, "", (limg) => {
-        //   limg.hide();
-
-        // });
-
-        // if (!imgLoad) {
-        //   alert("Error Loading Image, Try Again!")
-        //   imgLoad = false
-        // }
       } else {
         alert("Please Select An Image");
         this.img = null;
@@ -40,50 +32,29 @@ class CanvasImage {
     input.attribute("accept", "image/*");
     input.attribute("id", "img");
     input.parent("#initOpt");
-
-    // input.elt.onchange = () => {
-    //   if (!img) {
-    //     // imageWidth = createInput(width, "number");
-    //     // imageHeight = createInput(height, "number");
-    //     // imageWidth.changed(() => {
-    //     //   fill(random(255))
-    //     // })
-    //     // imageWidth.parent("#initOpt");
-    //     // imageHeight.parent("#initOpt");
-    //   }
-    // };
-
-    
   }
 
+  //Apply filter to the image when edit button is pressed
   handleEdit() {
     if (this.img) {
       this.editBtn = createButton("Blur Image");
       this.editBtn.parent("#initOpt");
     }
-    this.editBtn.mousePressed(() => {
+    this.editBtn.mousePressed(() => { 
       if (!this.editMode) {
-
-        helpers.getPixels()
+        helpers.getPixels();
 
         loadPixels();
         noFill();
-
 
         this.img.filter(BLUR, 3);
 
         image(this.img, 20, 20, width - 30, height - 30);
 
-        // rect(20, 20, width - 30, height - 30);
-
-        this.editBtn.attribute("disabled", "")
+        this.editBtn.attribute("disabled", "");
         this.editMode = true;
       } else {
-        // this.img.filter(BLUR, -3);
         image(this.img, 20, 20, width - 30, height - 30);
-
-        // noFill()
-        // noS
         this.editBtn.html("Blur Image");
         this.editMode = false;
       }

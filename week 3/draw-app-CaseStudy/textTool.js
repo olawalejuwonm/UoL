@@ -26,7 +26,9 @@ class TextTool {
   }
 
   Draw() {
+    //draw function
     if (this.textMode === true) {
+      //draw text captioned size with a rectangle
       noFill();
       stroke(100);
       rect(
@@ -36,9 +38,10 @@ class TextTool {
         this.selectScale.h
       );
 
-      this.WriteText();
+      this.WriteText(); // write the text
     }
     if (this.textMode === false) {
+      //To select area
       updatePixels();
 
       if (mouseIsPressed && mouseX > 5 && mouseY < height - 10) {
@@ -52,25 +55,17 @@ class TextTool {
         );
       }
     }
-
-    // else {
-    //   updatePixels()
-    // }
   }
 
   Populate() {
     loadPixels();
-    cursor("text");
-    
-    // helpers.awaitSave();
-    // helpers.getPixels();
+    cursor("text"); //set cursor
   }
 
   Unpopulate() {
-    Gopt.html("");
     if (this.textMode) {
-      this.DoneWriting(true);
-
+      this.DoneWriting(true); //call this to prompt user if they wish to leave
+      //their unsaved changes
     }
     cursor();
   }
@@ -88,13 +83,14 @@ class TextTool {
       this.ReWrite(0, 0, 0, 0);
     }
 
+    //when enter key is pressed,this will write on the canvs. It can be uncomment to use
     // if (keyCode === 13 && this.textMode === true) {
-    //   //when enter key is pressed
     //   this.DoneWriting();
     // }
   }
 
   MouseDragged() {
+    //select area
     if (
       mouseX > 0 &&
       mouseY > 0 &&
@@ -111,6 +107,7 @@ class TextTool {
   }
 
   ReWrite(x, y, w, h) {
+    //draw a rectangle over pixel
     fill(255);
     noStroke();
     rect(
@@ -122,6 +119,7 @@ class TextTool {
   }
 
   WriteText() {
+    //write the text on the canvas
     fill(c);
     stroke(sc);
 
@@ -139,39 +137,30 @@ class TextTool {
 
   DoneWriting(unrender) {
     if (unrender) {
-      // let imgData = getItem("pixels")
-      // if (imgData) {
-      //   this.imgPos =loadImage(imgData) ;
-      // }
-
-      this.imgPos = get()
+      //true when text Input close pre maturely
+      this.imgPos = get();
       this.ReWrite(-3, -3, 5, 5);
 
       image(this.imgPos, 0, 0, width, height);
       if (this.text.length > 0) {
         if (confirm("Do you want to write the text on the canvas?")) {
+          //avoid destructive action
           this.ReWrite(-3, -3, 5, 5);
 
           this.WriteText();
-        }
-        else {
+        } else {
           this.ReWrite(-3, -3, 5, 5);
-
         }
-      }
-      else {
+      } else {
         this.ReWrite(-3, -3, 5, 5);
-
       }
-    }
-
-    else {
+    } else {
       this.ReWrite(-3, -3, 5, 5);
 
       image(this.imgPos, 0, 0, width, height);
       this.WriteText();
     }
-    
+
     if (this.textBtn) {
       this.textBtn.remove();
     }
@@ -192,8 +181,8 @@ class TextTool {
     this.sel = null;
     this.sizeBtn = null;
     this.doneBtn = null;
-    this.selectScale = {x: -mouseX, y: -mouseY, w:-width, h:-height}
-    loadPixels();
+    this.selectScale = { x: -mouseX, y: -mouseY, w: -width, h: -height };
+    loadPixels(); //user is done typing save the pixel
     helpers.getPixels();
 
     helpers.awaitSave();
@@ -212,12 +201,8 @@ class TextTool {
       this.textBtn.elt.placeholder = "Enter Text Here";
       scale(1);
       this.textBtn.position(this.selectScale.x, this.selectScale.y);
-      // this.textBtn.size(this.selectScale.w / 4, this.selectScale.h / 4);
       this.textMode = true;
-      // this.textBtn.parent(select("#content"));
       const inpF = () => {
-        // console.log(this.textBtn.value(), this.selectScale);
-
         this.text = this.textBtn.value();
         this.ReWrite(0, 0, 0, 0);
       };
@@ -241,7 +226,6 @@ class TextTool {
       }
 
       if (!this.sizeBtn) {
-        // console.log("size btn", this.selectScale)
         const initValue = max(20, abs(round(random(this.selectScale.h / 3))));
         this.sizeBtn = createInput(initValue, "number");
         textSize(initValue);
@@ -267,12 +251,6 @@ class TextTool {
         this.doneBtn.parent(Gopt);
       }
     }
-
-    // if (this.textMode) {
-    //   this.noHistory = true;
-    // } else {
-    //   this.noHistory = false;
-    // }
   }
 
   DashedRect(x, y, w, h, l, g) {

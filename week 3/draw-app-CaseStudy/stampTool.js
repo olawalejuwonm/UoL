@@ -2,11 +2,13 @@ class StampTool {
   constructor() {
     this.icon = "assets/stamp.jpg";
     this.name = "stamp";
-    this.description = "Stamp Tool"
+    this.description = "Stamp Tool allow you to select an image, resize and paste on the canvas. Click on the canvas to use it"
     let img;
     let input;
     let slider;
 
+
+    //handle File picked
     const handleFile = (file) => {
       if (file.type === "image") {
         createImg(file.data, "", "", (image) => {
@@ -35,11 +37,6 @@ class StampTool {
       input.parent(Gopt);
 
     };
-    this.unselectTool = function () {
-      // updatePixels();
-      //clear options
-      Gopt.html("");
-    };
     this.draw = () => {
       if (img) {
         cursor("grab");
@@ -56,12 +53,9 @@ class StampTool {
             image(img, mouseX, mouseY, size);
           }
         }
-
-        // image(star, mouseX, mouseY, starSize);
       }
       else {
-          console.log(input)
-          input.elt.click()
+          input.elt.click() //automatically trigger image selection
       }
     };
   }

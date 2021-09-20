@@ -1,8 +1,8 @@
 class ScissorsTool {
   constructor() {
     this.name = "scissorsTool";
-    this.icon = "assets/mM.png";
-    this.description = "Scissors Tool";
+    this.icon = "assets/scissors.png";
+    this.description = "Scissors Tool allows you to cut or copy an area on the canvas. The cutted area can be paste by dropping it elsewhere on the canvas. It also allow you to download the area selected as an image file. Click select area to use it";
     this.message = "";
     let selectMode;
     let selectedArea;
@@ -21,7 +21,7 @@ class ScissorsTool {
 
     this.noHistory = true;
     this.draw = () => {
-      if (selectMode === 2) {
+      if (selectMode === 2) { //change cursor
         cursor("grab");
       } else {
         cursor("auto");
@@ -49,7 +49,7 @@ class ScissorsTool {
         } else if (selectMode == 1) {
           selectMode += 1;
           selectButton.html("end paste");
-          this.getSPixels();
+          this.getSPixels(); //modularise
           //draw a rectangle over it
           fill(255);
           noStroke();

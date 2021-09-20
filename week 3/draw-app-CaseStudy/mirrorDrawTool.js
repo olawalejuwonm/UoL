@@ -3,6 +3,7 @@ class mirrorDrawTool {
     this.name = "mirrorDraw";
     this.icon = "assets/mirrorDraw.jpg";
     this.noHistory = true;
+    this.description  = "mirrowDraw tool partition the screen into two and clone your drawing to the other side horizontally or vertically (depending on the mode selected). Click and drag on the canvas to use it"
 
     //which axis is being mirrored (x or y) x is default
     this.axis = "x";
@@ -122,7 +123,7 @@ class mirrorDrawTool {
     //toggle the line of symmetry between horizonatl to vertical
     this.populateOptions = function () {
       select(".options").html(
-        "<button id='directionButton'>Make Horizontal</button>"
+        "<button id='directionButton'>Make Horizontal</button>", true
       );
       // 	//click handler
       select("#directionButton").mouseClicked(function () {

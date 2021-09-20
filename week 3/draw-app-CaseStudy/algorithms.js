@@ -1,3 +1,4 @@
+//Algotithms written using pseudocose from FCS lecture
 function insertionSort(a) {
   for (let j = 1; j < a.length; j++) {
     let i = 0;

@@ -1,5 +1,5 @@
 //global variables that will store the toolbox colour palette
-//amnd the helper functions
+//and the helper functions
 // ssw
 let toolbox = null;
 let colourP = null;
@@ -9,15 +9,12 @@ let imageB = null;
 let canvasContainer = null;
 let savedImg = {};
 let fonts = {};
-let savedPixels;
+let savedPixels;// localStorage pixels
 
-let undoArr;
-let redoArr;
-let message;
+let undoArr; //store undoArr
+let redoArr; //store redoArr
+let message; //uidance message
 function preload() {
-  // fonts.klinzhai = loadFont("assets/fonts/Klinzhai.ttf")
-  // fonts.korinth = loadFont("assets/fonts/Korinth.ttf");
-  // fonts.Aqum = loadFont("assets/fonts/Aqum2Classic.otf");
   fonts = {
     Arial: "Arial",
     Courier: "Courier New",
@@ -28,17 +25,15 @@ function preload() {
   };
   fonts.OpenSans = loadFont("assets/fonts/OpenSans-Regular.ttf");
 
-  // fonts.splonic = loadFont("assets/fonts/SPlonic.ttf")
-  // savedImg = savedImg()
 }
 function setup() {
   //create a canvas to fill the content div from index.html
+  //get values needed for the application from localStorage
   savedPixels = getItem("pixels");
   undoArr = getItem("undoArr") || [];
   redoArr = getItem("redoArr") || [];
   message = select("#message");
   savedImg = {};
-  // console.log(savedPixels)
 
   canvasContainer = select("#content");
   console.log(savedImg);
@@ -48,13 +43,13 @@ function setup() {
   );
   cnv.parent("content");
 
-  //create helper functions and the colour palette
+  //create helper functions and the colour palette and canvasImage
   helpers = new HelperFunctions();
   colourP = new ColourPalette();
   imageB = new CanvasImage();
 
   pixelDensity(1);
-  Gopt = select("#options"); //Global Function
+  Gopt = select("#options"); //Global Variable
 
   //create a toolbox for storing the tools
   toolbox = new Toolbox();
@@ -75,9 +70,9 @@ function setup() {
 
   background(255);
 
-  if (savedPixels) {
+  if (savedPixels) { // check if user has some existing changes in local storage
+    //if true display that image first
     loadImage(savedPixels, (img) => {
-      // console.log(img)
       savedImg = img;
       resizeCanvas(savedImg.width, savedImg.height);
 
@@ -85,7 +80,8 @@ function setup() {
     });
   }
 
-  cnv.mousePressed(function () {
+  cnv.mousePressed(function () { //set mousepressed on canvas. So it 
+    //doesn't get called outside canvas
     if (!toolbox.selectedTool.noHistory) {
       // noHistory is no undo or redo
       if (undoArr.length === 0) {
@@ -94,14 +90,14 @@ function setup() {
     }
 
     MousePressed();
-    // console.log(select('#defaultCanvas0').elt.toDataURL("image/png"))
   });
 
-  cnv.mouseReleased(() => {
+  cnv.mouseReleased(() => { //set mousereleased on canvas. So it 
+    //doesn't get called outside canvas
     MouseReleased();
   });
 
-  cnv.touchEnded(() => {
+  cnv.touchEnded(() => { //used as a result from feeback from testers
     MouseReleased();
   });
 }
@@ -161,10 +157,4 @@ function MouseReleased() {
  
 }
 
-function mouseReleased() {}
 
-// function windowResized() {
-//   let img = get()
-//   resizeCanvas(windowWidth, windowHeight, true);
-//   image(img, 0, 0, width, height)
-// }

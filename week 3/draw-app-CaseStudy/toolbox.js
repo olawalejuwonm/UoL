@@ -54,13 +54,10 @@ function Toolbox() {
 
         //order matters
         if (this.selectedTool != null) {
-          Gopt.html("");
+          Gopt.html(""); //called this once to clear option field, since it appears mostly
+          //in unslect tools of most tools
 
-          fill(c);
-          stroke(sc);
-          strokeWeight(sw);
-          helpers.ButtonStates();
-          cursor("auto");
+         
           if (this.selectedTool.hasOwnProperty("unselectTool")) {
             this.selectedTool.unselectTool();
           }
@@ -69,7 +66,14 @@ function Toolbox() {
         //select the tool and highlight it on the toolbar
         this.selectedTool = this.tools[i];
 
-        if (this.selectedTool.noHistory) {
+         //mostly called to restore state
+         fill(c);
+         stroke(sc);
+         strokeWeight(sw);
+         helpers.ButtonStates();
+         cursor("auto");
+        if (this.selectedTool.noHistory) { //if there's no history 
+          //diable undo/redo and layer history
           undobtn.attribute("disabled", "");
           redobtn.attribute("disabled", "");
           historyBtn.attribute("disabled", "");
@@ -83,6 +87,8 @@ function Toolbox() {
         if (this.selectedTool.hasOwnProperty("populateOptions")) {
           this.selectedTool.populateOptions();
         }
+
+        //to display information about each tool
         if (select("#info")) {
           select("#info").html(this.selectedTool.description || "");
         }

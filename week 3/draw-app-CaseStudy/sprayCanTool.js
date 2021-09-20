@@ -4,6 +4,7 @@ class SprayCanTool {
     constructor() {
         this.name = "sprayCanTool",
             this.icon = "assets/sprayCan.jpg",
+            this.description = "The spray can tool sprays on the canvas slowly based on stroke color. Click and hold on the canvas to use it"
             this.points = 13,
             this.spread = 10,
             this.draw = function () {
