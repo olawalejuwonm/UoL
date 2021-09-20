@@ -106,7 +106,6 @@ function bucket(x, y, ii, R, G, B, ro, go, bo) {
   let max = 1;
 
   if (max > 7000) {
-    console.log(max);
     max = 0;
     return;
   } else {

@@ -20,7 +20,6 @@ class CanvasImage {
             this.handleEdit();
           },
           (e) => {
-            console.log(e);
             alert("Unable To Load Image");
           }
         );

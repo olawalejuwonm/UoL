@@ -23,7 +23,6 @@ function preload() {
     TMS: "Trebuchet MS",
     Verdana: "Verdana",
   };
-  fonts.OpenSans = loadFont("assets/fonts/OpenSans-Regular.ttf");
 
 }
 function setup() {
@@ -36,7 +35,6 @@ function setup() {
   savedImg = {};
 
   canvasContainer = select("#content");
-  console.log(savedImg);
   var cnv = createCanvas(
     savedImg.width || canvasContainer.size().width,
     savedImg.height || canvasContainer.size().height

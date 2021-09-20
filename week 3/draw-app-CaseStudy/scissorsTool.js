@@ -119,12 +119,10 @@ class ScissorsTool {
         selectedArea.w = w;
         selectedArea.h = h;
 
-        console.log(selectedArea);
       }
     };
 
     this.mouseReleased = () => {
-      console.log(selectMode);
       if (selectMode === 1) {
         this.message =
           "Complete action by cutting, pasting or saving the image";

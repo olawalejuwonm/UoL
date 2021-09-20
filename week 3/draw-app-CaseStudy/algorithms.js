@@ -63,8 +63,7 @@ function binarySearch(List, item) {
         const element = List[index];
         listLeft.push(element);
       }
-      //   pos++
-      //   console.log(listLeft,"lefy")
+    
       return binarySearch(listLeft, item);
     } else if (List[mid] < item) {
       let listRight = [];
@@ -72,8 +71,7 @@ function binarySearch(List, item) {
         const element = List[index];
         listRight.push(element);
       }
-      //   pos++
-      //   console.log(listRight)
+     
       return binarySearch(listRight, item);
     }
   }
@@ -146,7 +144,6 @@ function QuickSort(List) {
       }
     }
   }
-  console.log(Listleft, ListRight, pivot);
   let ans = QuickSort(Listleft) + pivotItem + QuickSort(ListRight);
   return ans;
 }
@@ -192,7 +189,6 @@ function mergeSort(List) {
     const element = List[index];
     ListLeft.push(element);
   }
-  console.log(ListLeft, ListRight)
   ListLeft = mergeSort(ListLeft);
   ListRight = mergeSort(ListRight);
   return merge(ListLeft, ListRight);
