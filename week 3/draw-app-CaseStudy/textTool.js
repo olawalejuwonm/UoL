@@ -60,6 +60,9 @@ class TextTool {
   Populate() {
     loadPixels();
     cursor("text"); //set cursor
+    if (AppMode) {
+      this.description = ""
+    }
   }
 
   Unpopulate() {

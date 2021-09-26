@@ -10,7 +10,7 @@ let canvasContainer = null;
 let savedImg = {};
 let fonts = {};
 let savedPixels;// localStorage pixels
-
+let AppMode;
 let undoArr; //store undoArr
 let redoArr; //store redoArr
 let message; //uidance message
@@ -25,6 +25,11 @@ function preload() {
   };
 
 }
+
+let SaveWithoutAsync = false
+
+
+let noHistory = false;
 function setup() {
   //create a canvas to fill the content div from index.html
   //get values needed for the application from localStorage
@@ -40,17 +45,17 @@ function setup() {
     savedImg.height || canvasContainer.size().height
   );
   cnv.parent("content");
-
-  //create helper functions and the colour palette and canvasImage
-  helpers = new HelperFunctions();
-  colourP = new ColourPalette();
-  imageB = new CanvasImage();
-
   pixelDensity(1);
   Gopt = select("#options"); //Global Variable
 
   //create a toolbox for storing the tools
   toolbox = new Toolbox();
+  //create helper functions and the colour palette and canvasImage
+  helpers = new HelperFunctions();
+  colourP = new ColourPalette();
+  imageB = new CanvasImage();
+
+ 
 
   //add the tools to the toolbox.
   toolbox.addTool(new FreehandTool());
@@ -140,14 +145,20 @@ function MousePressed() {
 }
 
 function MouseReleased() {
-   if (!toolbox.selectedTool.noHistory) {
-    // noHistory is no undo or redo
-    helpers.awaitSave();
-    helpers.getPixels();
-  } else {
-    undobtn.attribute("disabled", "");
-    redobtn.attribute("disabled", "");
+  if (SaveWithoutAsync) {
+
   }
+
+   else {
+    if (!toolbox.selectedTool.noHistory) {
+      // noHistory is no undo or redo
+      helpers.awaitSave();
+      helpers.getPixels();
+    } else {
+      undobtn.attribute("disabled", "");
+      redobtn.attribute("disabled", "");
+    }
+   }
   if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
     toolbox.selectedTool.mouseReleased();
   }

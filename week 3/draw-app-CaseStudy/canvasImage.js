@@ -5,6 +5,26 @@ class CanvasImage {
     this.editBtn = null;
     this.editMode = false;
 
+    const getLastItem = (thePath) =>
+      thePath.substring(thePath.lastIndexOf("/") + 1);
+    let path = getLastItem(window.location.pathname);
+    console.log(window.location, path);
+
+    if (path == "birthday.html") {
+      AppMode = path;
+      SaveWithoutAsync = true;
+      
+      loadImage("assets/birthday.jpg", (img) => {
+        resizeCanvas(img.width, img.height);
+        image(img, 0, 0, img.width, img.height);
+      });
+      let button = createButton("Enter Text");
+      button.mousePressed(() => {
+        toolbox.selectTool("TextTool")
+      })
+      button.parent(Gopt);
+    }
+
     //Canvas Image Set An Image As Background of the canvas.
     //It also set the width and height of the canvas approximately to the image size
 
@@ -39,7 +59,7 @@ class CanvasImage {
       this.editBtn = createButton("Blur Image");
       this.editBtn.parent("#initOpt");
     }
-    this.editBtn.mousePressed(() => { 
+    this.editBtn.mousePressed(() => {
       if (!this.editMode) {
         helpers.getPixels();
 
