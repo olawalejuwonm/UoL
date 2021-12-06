@@ -1,0 +1,55 @@
+
+
+body {
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    color: #545454;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 2em 2em 4em;
+}
+
+h1.grub {
+    color: #900;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+h1.teapot {
+    color: #009;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+h1.lamb{
+    color: #070;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+h1.index{
+    color: #6a5acd;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+p.index {color: #8a8acd;}
+
+p.grub {color: #D00;}
+
+p.teapot {color: #00D;}
+
+p.lamb {color: #090;}
+
+img {
+    animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
+    background: transparent;
+    border: 10px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    display: block;
+    margin: 1.3em auto;
+    max-width: 95%;
+}
