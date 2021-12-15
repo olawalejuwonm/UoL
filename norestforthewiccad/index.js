@@ -13,13 +13,13 @@ var user_routes = require('./user.js');
 
 // mount the routes in spells
 // off of /spells
-app.use('/spools', spell_routes);
+app.use('/spells', spell_routes);
 app.use('/user', user_routes);
 
 // default route
 app.get('/', function (req, res) {
   console.log("Request to /");
-  res.json({"message":"This is not the norestforthewiccad API"});
+  res.json({"message":"Welcome to the norestforthewiccad API"});
 })
 
 
