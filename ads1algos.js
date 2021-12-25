@@ -27,7 +27,20 @@ function SEC(n) {
 //   console.log(lastVal, "last")
   return y;
 }
-console.log(SEC(4));
+// console.log(SEC(4));
+
+// var n = 6;
+// var sum = 2;
+// for (var i = 0; i < n; i++) {
+//     sum = 2 * sum;
+// }
+// console.log(sum);
+
+var arr = [];
+for (var i = 0; i < 5; i++) {
+    arr[i] = i;
+}
+console.log(arr.length);
 
 // let x = 1;
 // let y = 0;

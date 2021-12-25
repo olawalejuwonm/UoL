@@ -1,22 +1,25 @@
 function BubbleSort(vecArr) {
   const n = vecArr.length;
+  let pass = 0;
+  let comp = 0;
   function Swap(thevecArr, indexi, indexj) {
     let x = thevecArr[indexj];
     thevecArr[indexj] = thevecArr[indexi];
     thevecArr[indexi] = x;
+    comp += 1;
+
+    console.log("swapped", comp, thevecArr);
     return thevecArr;
   }
-  let pass = 0;
-  let comp = 0;
+
   for (let i = 0; i <= n - 2; i++) {
     //should be n-2
     let count = 0; //count should be here if not it'll affect pass
     for (let j = 0; j <= n - 2; j++) {
       //should be n-2
       if (vecArr[j + 1] < vecArr[j]) {
-        Swap(vecArr, j, j + 1);
         count += 1;
-        comp += 1;
+        Swap(vecArr, j, j + 1);
       }
     }
 
@@ -25,11 +28,11 @@ function BubbleSort(vecArr) {
       break;
     }
     pass += 1;
-    console.log(pass, "pass", vecArr)
+    // console.log(pass, "pass", vecArr);
   }
 
   console.log("The pass was", pass, "and total comparison/swap is", comp);
-
+  console.log("sorted array", vecArr);
   return vecArr;
 }
 
@@ -39,34 +42,34 @@ function BubbleSort(vecArr) {
 // console.log("Bubble Sort", BubbleSort([ 2, 1, 5, 5, 4]));
 // console.log("Bubble Sort", BubbleSort([1, 2, 3, 1, 4, 5]));
 
-
 function insertionSort(vecArr) {
-  let noShift = 0
-  let noOfComp = 0
-function shift(arr, ith, jth) {
-  if (ith <= jth) {
+  let noShift = 0;
+  let noOfComp = 0;
+  function shift(arr, ith, jth) {
+    if (ith <= jth) {
+      return arr;
+    }
+    let store = arr[ith];
+    for (let kthIndex = 0; kthIndex <= ith - jth - 1; kthIndex++) {
+      //tricky
+      arr[ith - kthIndex] = arr[ith - kthIndex - 1];
+    }
+    arr[jth] = store;
+    noShift += 1;
+    console.log("after shift", noShift, vecArr);
+
     return arr;
   }
-  let store = arr[ith];
-  for (let kthIndex = 0; kthIndex <= ith - jth - 1; kthIndex++) { //tricky
-    arr[ith - kthIndex] = arr[ith - kthIndex - 1];
+  for (let iindex = 1; iindex <= vecArr.length; iindex++) {
+    let j = iindex;
+    while (vecArr[iindex] < vecArr[j - 1] && j > 0) {
+      j = j - 1;
+      noOfComp += 1;
+    }
+    shift(vecArr, iindex, j);
   }
-  arr[jth] = store;
-  noShift += 1
-  console.log("after shift", noShift, vecArr)
-
-  return arr;
-}
-for (let iindex = 1; iindex <= vecArr.length; iindex++) {
-  let j = iindex;
-  while (vecArr[iindex] < vecArr[j - 1] && j > 0) {
-    j = j - 1;
-    noOfComp += 1;
-  }
-  shift(vecArr, iindex, j)
-}
-console.log("No of shift was", noShift, "and No Of Comparison was", noOfComp)
-return vecArr
+  console.log("No of shift was", noShift, "and No Of Comparison was", noOfComp);
+  return vecArr;
 }
 
 // console.log("Insertion Sort", insertionSort([ 6, 7, 3, 4]));
@@ -74,7 +77,6 @@ return vecArr
 // console.log("Insertion Sort", insertionSort([ 8, 3, 4, 1]));
 // console.log("Insertion Sort", insertionSort([ 6, 7, 3, 4]));
 // console.log("Insertion Sort", insertionSort([ 2, 1, 4, 3, 1]));
-
 
 function genRandomArray(n) {
   var arr = [];
@@ -146,7 +148,6 @@ function genRandomArray(n) {
 // console.log(Swap(Swap(Swap(arr, 1, 2), 2, 5), 4, 5));
 // console.log("s1,2,3", s1, s2 )
 
-
 // var n = 6;
 // var sum = 2;
 // for (var i = 0; i < n; i++) {
@@ -160,13 +161,63 @@ function genRandomArray(n) {
 // }
 // console.log(arr.length);
 
-function swap(array,index1,index2) {
-	var x = array[index2];
-	array[index2] = array[index1];
-	array[index1] = x;
-	return array;
- }
- var arr = [1, 2, 2, 3];
- const s1 = swap(arr,(1-1),(2-1));
- const s2 = swap(arr,(2-1),(3-1));
- console.log(s1, s2);
+function swap(array, index1, index2) {
+  var x = array[index2];
+  array[index2] = array[index1];
+  array[index1] = x;
+  return array;
+}
+//  var arr = [1, 2, 2, 3];
+//  const s1 = swap(arr,(1-1),(2-1));
+//  const s2 = swap(arr,(2-1),(3-1));
+//  console.log(s1, s2);
+
+// //This is wrong X
+// const arr = [9, 5, 1, 4, 5]
+// const s1 = swap(arr,(1-1), (2-1))
+// console.log(arr, s1, "arr", "s1")
+// const s2 = swap(arr, (2-1), (5-1))
+// console.log(arr, s2, "arr", "s2")
+// const s3 = swap(arr, (4-1), (5-1))
+// console.log(s3)
+
+//This is right
+// const arr = [9, 5, 1, 4,1, 5]
+// const s1 = swap(arr,(1-1), (3-1))
+// console.log(arr, s1, "arr", "s1")
+// const s2 = swap(s1, (4-1), (5-1))
+// console.log(arr, s1, "arr", "s2")
+// const s3 = swap(s2, (2-1), (5-1))
+// console.log(s3)
+
+function shift(arr, ith, jth) {
+  if (ith <= jth) {
+    return arr;
+  }
+  let store = arr[ith];
+  for (let kthIndex = 0; kthIndex <= ith - jth - 1; kthIndex++) {
+    //tricky
+    arr[ith - kthIndex] = arr[ith - kthIndex - 1];
+  }
+  arr[jth] = store;
+  // noShift += 1
+  // console.log("after shift", noShift, vecArr)
+
+  return arr;
+}
+
+// This is corrects
+// const arr = [2, 3, 4, 1, 5];
+// const s1 = shift(arr,( 5 - 1), (4 - 1));
+// const s2 = shift(s1,( 3 - 1),( 1 - 1));
+// console.log(s2)
+
+BubbleSort([2, 1, 5, 5, 4]) //Good example to practice with 
+
+// BubbleSort([1, 4, 3, 1, 4, 3])
+// insertionSort([2, 1, 4, 2, 1])
+
+// var arr = [1, 2, 2, 3];
+// swap(arr, 1, 2);
+// swap(arr, 2, 3);
+// console.log(arr);
