@@ -115,6 +115,7 @@ function findSorted(birthdays) {
 	const seenBirth = {};
 	const uniques = [];
 	birthdays = bubbleSortDays(birthdays)
+	let nothing = bubbleSort(birthdays)
 	for (let index = 0; index < n; index++) {
 	  const element = birthdays[index];
 	  if (!Array.isArray(element)) {
