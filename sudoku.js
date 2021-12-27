@@ -283,37 +283,61 @@ function ColChecks(puzzle) {
 }
 
 function CheckGrids(puzzle) {
-  let numbers = genStack(4, [1, 2, 3, 4]);
   // let column = 0;
+  // let numbers = genStack(4, [1, 2, 3, 4]);
 
+  function SearchAGrid(puzzle, startRow, firstColumn, secondColumn) {
+    //you can later include an argument to specify number of times to loop
+    let currentRow = startRow;
+    let endRow = currentRow + 1;
+    let currentColumn = firstColumn;
+    let endColumn = secondColumn;
+    let numbers = genStack(4, [1, 2, 3, 4]);
 
-  function SearchAGrid(puzzle, startIndex,totalSlot) { //you can later include halfSlot
-     
-  }
-  while(j ) {
-    const row = puzzle[j];
-    let d = j + 1;
-    if (d >= puzzle.length) {
-      d = j;
+    while (currentRow < endRow) {
+      for (; currentColumn < endColumn; currentColumn++) {
+        let value = puzzle[currentRow][currentColumn];
+        numbers = SearchStack(numbers, value);
+        if (numbers === false) {
+          return false;
+        }
+      }
+      currentRow++;
     }
-    let inColumn = 0;
-    const value = row[inColumn];
-
-    numbers = SearchStack(numbers, value);
-
-    if (numbers === false) {
-      return false;
-    } else {
-      inColumn += 1;
-
-      // console.log(column, inColumn)
-    }
-
-    // for (let k = 0; k < row.length; k++) {
-    //   const value = row[k];
-
-    // }
+    return true;
   }
+
+  let rowIndex = 0;
+
+  while (rowIndex < puzzle.length) {
+    // let firstC = 0;
+    // let secondC = 1;
+    for (let j = 0; j < puzzle.length - 2; j++) {
+      //should be < 2 in pseudocode
+      let checkAGrid = SearchAGrid(puzzle, rowIndex, j, j + 1);
+      if (checkAGrid === false) {
+        return false;
+      }
+    }
+    rowIndex = rowIndex + 2;
+  }
+
+  // while (j < puzzle.length) {
+  //   // const row = puzzle[j];
+  //   // let d = j + 1;
+  //   // if (d >= puzzle.length) {
+  //   //   d = j;
+  //   // }
+  //   // if (numbers === false) {
+  //   //   return false;
+  //   // } else {
+  //   //   inColumn += 1;
+  //   //   // console.log(column, inColumn)
+  //   // }
+  //   // for (let k = 0; k < row.length; k++) {
+  //   //   const value = row[k];
+  //   // }
+  // }
 
   return true;
 }
