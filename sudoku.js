@@ -86,9 +86,9 @@ const genStack = (num, arr) => {
     }
   } else {
     for (let index = 0; index < num; index++) {
-      let theNum = Math.round(4 * Math.random())
+      let theNum = Math.round(4 * Math.random());
       if (theNum === 0) {
-        theNum = 1
+        theNum = 1;
       }
       s.PUSH(theNum);
     }
@@ -104,9 +104,9 @@ const genStack = (num, arr) => {
 const genVec = (num) => {
   let theVec = [];
   for (let index = 0; index < num; index++) {
-    let theNum = Math.round(4 * Math.random())
+    let theNum = Math.round(4 * Math.random());
     if (theNum === 0) {
-      theNum = 1
+      theNum = 1;
     }
     theVec.push(theNum);
   }
@@ -200,6 +200,18 @@ function PermuteRows(puzzle, x, y, z) {
   puzzle[0] = PermuteVector(puzzle[0], x);
   puzzle[1] = PermuteVector(puzzle[1], y);
   puzzle[2] = PermuteVector(puzzle[2], z);
+  const vector = puzzle;
+  console.log(
+    "sudoku \n",
+    vector[0],
+    "\n",
+    vector[1],
+    "\n",
+    vector[2],
+    "\n",
+    vector[3]
+  );
+
   return puzzle;
 }
 
@@ -256,7 +268,7 @@ function SearchStack(stack, item) {
 
 const printPuzzle = (vec) => {
   let vector;
-  
+
   if (Array.isArray(vec)) {
     vector = vec;
   } else {
@@ -312,9 +324,9 @@ function CheckGrids(puzzle) {
     //you can later include an argument to specify number of times to loop
     let currentRow = startRow;
     let endRow = currentRow + 1;
-  
+
     let numbers = genStack(4, [1, 2, 3, 4]);
-  
+
     // console.log("start", "row: ", currentRow, currentColumn, endColumn);
     while (currentRow <= endRow) {
       let currentColumn = firstColumn;
@@ -337,7 +349,7 @@ function CheckGrids(puzzle) {
         //   "value:",
         //   value
         // );
-  
+
         numbers = SearchStack(numbers, value);
         if (numbers === false) {
           return false;
@@ -353,7 +365,7 @@ function CheckGrids(puzzle) {
       //   numbers.data
       // );
     }
-  
+
     // console.log("end", currentRow, currentColumn, endColumn);
     return true;
   }
@@ -364,13 +376,13 @@ function CheckGrids(puzzle) {
     // let firstC = 0;
     // let secondC = 1;
     // console.log(rowIndex)
-    let j = 0
-    for (; j < puzzle.length; j+=2) {
+    let j = 0;
+    for (; j < puzzle.length; j += 2) {
       // console.log("jsh", rowIndex, j, j + 1);
       // should be < 2 in pseudocode
       let checkAGrid = SearchAGrid(puzzle, rowIndex, j, j + 1);
       if (checkAGrid === false) {
-        console.log("false", rowIndex, j, j+1)
+        console.log("false", rowIndex, j, j + 1);
         return false;
       }
     }
@@ -430,23 +442,48 @@ function SearchAGrid(puzzle, startRow, firstColumn, secondColumn) {
   return true;
 }
 
+//TASK 8
+function MakeSolution(row) {
+  let puzzle = MakeVector(row);
+  let solution;
+  let gridCheck;
+  let checkCol;
+  for (let i = 0; i < row.length - 1; i++) {
+    for (let j = 0; j < row.length - 1; j++) {
+      for (let k = 0; k < row.length - 1; k++) {
+        console.log(i, j, k)
+        solution = PermuteRows(puzzle, i, j, k);
+        gridCheck = CheckGrids(solution);
+        checkCol = ColChecks(solution);
+        if (gridCheck === true && checkCol === true) {
+          return solution;
+        }
+      }
+    }
+  }
+ 
+  
+}
+
+console.log(MakeSolution([2, 4, 1, 3]));
+
 // console.log(SearchAGrid(printPuzzle(), 0, 2, 3));
 // console.log(CheckGrids(printPuzzle()));
 
-console.log(
-  CheckGrids(
-    printPuzzle([
-      // [2, 4, 1, 3],
-      // [1, 3, 2, 4],
-      // [3, 2, 4, 1],
-      // [4, 1, 3, 2],
-      [2, 4, 3, 4],
-      [1, 3, 2, 1],
-      [1, 3, 1, 2],
-      [2, 4, 3, 4],
-    ])
-  )
-);
+// console.log(
+//   CheckGrids(
+//     printPuzzle([
+//       // [2, 4, 1, 3],
+//       // [1, 3, 2, 4],
+//       // [3, 2, 4, 1],
+//       // [4, 1, 3, 2],
+//       [2, 4, 3, 4],
+//       [1, 3, 2, 1],
+//       [1, 3, 1, 2],
+//       [2, 4, 3, 4],
+//     ])
+//   )
+// );
 
 // console.log(SearchStack(genStack(4, [1, 2, 3, 4]), 2));
 // console.log(
