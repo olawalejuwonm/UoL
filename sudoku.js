@@ -86,16 +86,31 @@ const genStack = (num, arr) => {
     }
   } else {
     for (let index = 0; index < num; index++) {
-      s.PUSH(Math.round(4 * Math.random()));
+      let theNum = Math.round(4 * Math.random())
+      if (theNum === 0) {
+        theNum = 1
+      }
+      s.PUSH(theNum);
     }
+    console.log("Generated Stack:", s.data);
   }
 
   // const v = Math.random()
   // console.log(Math.round(9*v), 9*v, v)
 
-  console.log("Generated Stack:", s.data);
-
   return s;
+};
+
+const genVec = (num) => {
+  let theVec = [];
+  for (let index = 0; index < num; index++) {
+    let theNum = Math.round(4 * Math.random())
+    if (theNum === 0) {
+      theNum = 1
+    }
+    theVec.push(theNum);
+  }
+  return theVec;
 };
 
 //TASK 1
@@ -239,7 +254,14 @@ function SearchStack(stack, item) {
 //   // }
 // }
 
-const printPuzzle = (vector) => {
+const printPuzzle = (vec) => {
+  let vector;
+  
+  if (Array.isArray(vec)) {
+    vector = vec;
+  } else {
+    vector = [genVec(4), genVec(4), genVec(4), genVec(4)];
+  }
   console.log(
     "sudoku \n",
     vector[0],
@@ -290,20 +312,49 @@ function CheckGrids(puzzle) {
     //you can later include an argument to specify number of times to loop
     let currentRow = startRow;
     let endRow = currentRow + 1;
-    let currentColumn = firstColumn;
-    let endColumn = secondColumn;
+  
     let numbers = genStack(4, [1, 2, 3, 4]);
-
-    while (currentRow < endRow) {
+  
+    // console.log("start", "row: ", currentRow, currentColumn, endColumn);
+    while (currentRow <= endRow) {
+      let currentColumn = firstColumn;
+      let endColumn = secondColumn + 1;
+      // console.log(
+      //   "current row: ",
+      //   currentRow,
+      //   "end row:",
+      //   endRow,
+      //   "number:",
+      //   numbers.data
+      // );
       for (; currentColumn < endColumn; currentColumn++) {
         let value = puzzle[currentRow][currentColumn];
+        // console.log(
+        //   "curent row:",
+        //   currentRow,
+        //   "current column:",
+        //   currentColumn,
+        //   "value:",
+        //   value
+        // );
+  
         numbers = SearchStack(numbers, value);
         if (numbers === false) {
           return false;
         }
       }
       currentRow++;
+      // console.log(
+      //   "current row: ",
+      //   currentRow,
+      //   "end row:",
+      //   endRow,
+      //   "number:",
+      //   numbers.data
+      // );
     }
+  
+    // console.log("end", currentRow, currentColumn, endColumn);
     return true;
   }
 
@@ -312,47 +363,103 @@ function CheckGrids(puzzle) {
   while (rowIndex < puzzle.length) {
     // let firstC = 0;
     // let secondC = 1;
-    for (let j = 0; j < puzzle.length - 2; j++) {
-      //should be < 2 in pseudocode
+    // console.log(rowIndex)
+    let j = 0
+    for (; j < puzzle.length; j+=2) {
+      // console.log("jsh", rowIndex, j, j + 1);
+      // should be < 2 in pseudocode
       let checkAGrid = SearchAGrid(puzzle, rowIndex, j, j + 1);
       if (checkAGrid === false) {
+        console.log("false", rowIndex, j, j+1)
         return false;
       }
     }
     rowIndex = rowIndex + 2;
   }
 
-  // while (j < puzzle.length) {
-  //   // const row = puzzle[j];
-  //   // let d = j + 1;
-  //   // if (d >= puzzle.length) {
-  //   //   d = j;
-  //   // }
-  //   // if (numbers === false) {
-  //   //   return false;
-  //   // } else {
-  //   //   inColumn += 1;
-  //   //   // console.log(column, inColumn)
-  //   // }
-  //   // for (let k = 0; k < row.length; k++) {
-  //   //   const value = row[k];
-  //   // }
-  // }
-
   return true;
 }
 
-// console.log(SearchStack(genStack(4, [1, 2, 3, 4]), 2));
+function SearchAGrid(puzzle, startRow, firstColumn, secondColumn) {
+  //you can later include an argument to specify number of times to loop
+  let currentRow = startRow;
+  let endRow = currentRow + 1;
+
+  let numbers = genStack(4, [1, 2, 3, 4]);
+
+  // console.log("start", "row: ", currentRow, currentColumn, endColumn);
+  while (currentRow <= endRow) {
+    let currentColumn = firstColumn;
+    let endColumn = secondColumn + 1;
+    // console.log(
+    //   "current row: ",
+    //   currentRow,
+    //   "end row:",
+    //   endRow,
+    //   "number:",
+    //   numbers.data
+    // );
+    for (; currentColumn < endColumn; currentColumn++) {
+      let value = puzzle[currentRow][currentColumn];
+      // console.log(
+      //   "curent row:",
+      //   currentRow,
+      //   "current column:",
+      //   currentColumn,
+      //   "value:",
+      //   value
+      // );
+
+      numbers = SearchStack(numbers, value);
+      if (numbers === false) {
+        return false;
+      }
+    }
+    currentRow++;
+    // console.log(
+    //   "current row: ",
+    //   currentRow,
+    //   "end row:",
+    //   endRow,
+    //   "number:",
+    //   numbers.data
+    // );
+  }
+
+  // console.log("end", currentRow, currentColumn, endColumn);
+  return true;
+}
+
+// console.log(SearchAGrid(printPuzzle(), 0, 2, 3));
+// console.log(CheckGrids(printPuzzle()));
+
 console.log(
   CheckGrids(
     printPuzzle([
-      [2, 4, 1, 3],
-      [1, 2, 3, 4],
-      [3, 1, 4, 1],
-      [4, 3, 2, 2],
+      // [2, 4, 1, 3],
+      // [1, 3, 2, 4],
+      // [3, 2, 4, 1],
+      // [4, 1, 3, 2],
+      [2, 4, 3, 4],
+      [1, 3, 2, 1],
+      [1, 3, 1, 2],
+      [2, 4, 3, 4],
     ])
   )
 );
+
+// console.log(SearchStack(genStack(4, [1, 2, 3, 4]), 2));
+// console.log(
+//   CheckGrids(
+//     printPuzzle([
+//       [2, 4, 1, 3],
+//       [1, 2, 3, 4],
+//       [3, 1, 4, 1],
+//       [4, 3, 2, 2],
+//     ])
+//   )
+// );
+
 // console.log(
 //   CheckColumn(
 //     printPuzzle([
@@ -365,7 +472,9 @@ console.log(
 //   )
 // );
 // console.log(MakeVector([2, 4, 1, 3]));
+
 // console.log(PermuteRows(MakeVector([2, 4, 1, 3]), 1, 2, 3));
+
 // console.log(PermuteVector([2, 4, 1, 3], 1)); //correct [ 4, 1, 3, 2 ]
 // console.log(PermuteVector([2, 4, 1, 3], 2)); //correct [ 1, 3, 2, 4 ]
 // console.log(PermuteVector([2, 4, 1, 3], 3)); //correct [ 3, 2, 4, 1 ]
