@@ -283,19 +283,36 @@ function ColChecks(puzzle) {
 }
 
 function CheckGrids(puzzle) {
+  let numbers = genStack(4, [1, 2, 3, 4]);
+  let column = 0;
   for (let j = 0; j < puzzle.length; j++) {
     const row = puzzle[j];
     let d = j+1;
     if (d >= puzzle.length) {
       d = j
     }
-     
-    for (let k = 0; k < row.length; k++) {
-      const value = row[k];
-      
+    let inColumn = column
+    const value = row[inColumn]
+
+    numbers = SearchStack(numbers, value)
+
+    if (numbers === false) {
+      return false
+    }
+    else {
+      inColumn += 1
+      // console.log(column, inColumn)
     }
     
+    // for (let k = 0; k < row.length; k++) {
+    //   const value = row[k];
+      
+    // }
+    
   }
+
+  return true
+
 }
 
 // console.log(SearchStack(genStack(4, [1, 2, 3, 4]), 2));
