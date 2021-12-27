@@ -48,7 +48,7 @@ class Stack {
 
   PUSH(element) {
     // this.data[this.top] = element;
-    this.top = this.data.unshift(element)
+    this.top = this.data.unshift(element);
     // this.top = this.top + 1;
   }
 
@@ -84,8 +84,6 @@ const genStack = (num, arr) => {
       const element = arr[index];
       s.PUSH(element);
     }
-
-    
   } else {
     for (let index = 0; index < num; index++) {
       s.PUSH(Math.round(4 * Math.random()));
@@ -192,30 +190,27 @@ function PermuteRows(puzzle, x, y, z) {
 
 function SearchStack(stack, item) {
   let s = new Stack();
-  let itemStored = false
+  let itemStored = 0; //this is used to track the number of times item was found in the stack
 
   // console.log(stack.POP(), stack.data)
   while (stack.EMPTY() === false) {
     if (stack.TOP() !== item) {
       s.PUSH(stack.POP());
-    }
-    else {
-      stack.POP()
-      itemStored = true
+    } else {
+      stack.POP();
+      itemStored += 1; //item is found increase itemStored
     }
   }
 
-  let orderedStack = new Stack()
+  let orderedStack = new Stack();
   while (s.EMPTY() === false) {
-    orderedStack.PUSH(s.POP())
+    orderedStack.PUSH(s.POP());
   }
-  if (itemStored === false) {
-    return itemStored
-  }
-
-  else {
-    return orderedStack
-
+  if (itemStored === 1) {
+    return orderedStack;
+  } else {
+    //itemStored is either zero or greater than one. if it's zero the item is not found in the stack hence return false, it it's greater than one duplicate item was found in the stack hence return false
+    return false;
   }
   // if (s.EMPTY()) {
   //   return s;
@@ -224,6 +219,25 @@ function SearchStack(stack, item) {
   // }
 }
 
+// function SearchStack(stack, item) {
+//   let s;
+//   let itemStored = 0;
+
+//   while (stack.EMPTY() === false) {
+//     if (item === stack.TOP()) {
+//       stack.POP();
+//       s = stack;
+//     }
+//     // else {
+//     //   return false;
+//     // }
+//   }
+//   // if (s.EMPTY()) {
+//   //   return s;
+//   // } else {
+//   //   return false;
+//   // }
+// }
 
 const printPuzzle = (vector) => {
   console.log(
@@ -237,32 +251,75 @@ const printPuzzle = (vector) => {
     vector[3]
   );
 
-  return vector
-}
+  return vector;
+};
 
 function CheckColumn(puzzle, j) {
   let numbers = genStack(4, [1, 2, 3, 4]);
-  let k = 1;
-  for (let index = 0; index < puzzle.length; index++) {
-    numbers = genStack(4, [1, 2, 3, 4]);
-    const row = puzzle[index];
-    let value = row[(j-1)] //don't do - 1
-    // console.log(value, numbers)
+  //k should be 1 in pseudocode
+  for (let k = 0; k < puzzle.length; k++) {
+    // numbers = genStack(4, [1, 2, 3, 4]);
+    const row = puzzle[k];
+    let value = row[j - 1]; //don't do - 1
 
-    let sSe = SearchStack(numbers, value)
-    if (sSe === false) {
-      return false
-    }
-    else {
-      k+=1
+    numbers = SearchStack(numbers, value);
+    if (numbers === false) {
+      return false;
     }
   }
 
-  return true
+  return true;
 }
 
-// console.log(SearchStack(genStack(4), 2));
-console.log(CheckColumn(printPuzzle([[2, 4, 1, 3], [1, 2, 3, 4], [3, 1, 4, 1], [4, 3, 2, 2]]), 3))
+function ColChecks(puzzle) {
+  //j should be 1 in pseudocode
+  for (let j = 0; j < puzzle.length; j++) {
+    if (CheckColumn(puzzle, j) === false) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function CheckGrids(puzzle) {
+  for (let j = 0; j < puzzle.length; j++) {
+    const row = puzzle[j];
+    let d = j+1;
+    if (d >= puzzle.length) {
+      d = j
+    }
+     
+    for (let k = 0; k < row.length; k++) {
+      const value = row[k];
+      
+    }
+    
+  }
+}
+
+// console.log(SearchStack(genStack(4, [1, 2, 3, 4]), 2));
+console.log(
+  CheckGrids(
+    printPuzzle([
+      [2, 4, 1, 3],
+      [1, 2, 3, 4],
+      [3, 1, 4, 1],
+      [4, 3, 2, 2],
+    ])
+  )
+);
+// console.log(
+//   CheckColumn(
+//     printPuzzle([
+//       [2, 4, 1, 3],
+//       [1, 2, 3, 4],
+//       [3, 1, 4, 1],
+//       [4, 3, 2, 2],
+//     ]),
+//     1
+//   )
+// );
 // console.log(MakeVector([2, 4, 1, 3]));
 // console.log(PermuteRows(MakeVector([2, 4, 1, 3]), 1, 2, 3));
 // console.log(PermuteVector([2, 4, 1, 3], 1)); //correct [ 4, 1, 3, 2 ]
