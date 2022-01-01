@@ -465,7 +465,7 @@ function MakeSolution(row) {
   
 }
 
-console.log(MakeSolution([2, 4, 1, 3]));
+console.log(MakeSolution([1, 2, 3, 4]));
 
 // console.log(SearchAGrid(printPuzzle(), 0, 2, 3));
 // console.log(CheckGrids(printPuzzle()));
