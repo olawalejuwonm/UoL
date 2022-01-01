@@ -14,7 +14,7 @@ var user_routes = require('./user.js');
 // mount the routes in spells
 // off of /spells
 app.use('/spells', spell_routes);
-app.use('/user', user_routes);
+app.use('/users', user_routes);
 
 // default route
 app.get('/', function (req, res) {
