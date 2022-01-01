@@ -9,7 +9,7 @@ function Spectrum() {
     fill(0, 255, 0);
     for (var i = 0; i < spectrum.length; i++) {
       var cs = spectrum[i];
-	  var lowCol = map(cs, 0, 255, 255, 0)
+      var lowCol = map(cs, 0, 255, 255, 0);
       if (cs < 127) {
         fill(cs, lowCol, 0);
       } else if (cs === 127) {
