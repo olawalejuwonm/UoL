@@ -3,3 +3,4 @@ _DS_Store*
 *.zip
 *.db
 *DS_Store*
+node_modules
