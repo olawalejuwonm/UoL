@@ -16,19 +16,19 @@ describe("Test /user route", function () {
         assert.equal(res.status, 200); //check if request was successful
         // console.log(res.body.message, "res");
         assert.equal(res.body.message, "User created successfully");
-      });
-    chai
-      .request("http://localhost:3000")
-      .get("/user/all")
-      .end((err, res) => {
-        // console.log(res.body.message, "res");
-        //find the user in the database
-        const user = res.body.message.find(function (user) {
-          return user.username === "micheal";
-        });
-        assert.equal(user.username, "micheal");
-        assert.equal(user.password, "juwon%$#@");
-        done();
+        chai
+          .request("http://localhost:3000")
+          .get("/user/all")
+          .end((err, res) => {
+            // console.log(res.body.message, "res");
+            //find the user in the database
+            const user = res.body.message.find(function (user) {
+              return user.username === "micheal";
+            });
+            assert.equal(user.username, "micheal");
+            assert.equal(user.password, "juwon%$#@");
+            done();
+          });
       });
   });
 
