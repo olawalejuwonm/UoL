@@ -21,6 +21,7 @@ router.post("/", function (req, res) {
   });
 });
 
+//Get all user in the server
 router.get("/all", function (req, res) {
   return res.json({
     message: users,
@@ -37,7 +38,6 @@ router.post("/login", function (req, res) {
     user.loggedIn = true;
     //save the user back to users variable
     // users[user.id - 1] = user
-
     return res.json({
       message: "User logged in successfully",
     });
@@ -48,6 +48,7 @@ router.post("/login", function (req, res) {
   }
 });
 
+//logout a user
 router.post("/logout", function (req, res) {
   let body = req.body;
   let user = users.find(function (user) {
@@ -64,12 +65,16 @@ router.post("/logout", function (req, res) {
     });
   }
 });
-// get current user
-router.get("/", function (req, res) {
-  res.json({
-    username: "admin",
-    password: "notsogood",
-  });
+
+//user/:id route
+router.put("/:id", function (req, res) {
+  let id = req.params["id"];
+  let userExist = users.find((user) => user.id === id);
+  if (!userExist) {
+    return res.json({
+      message: "User does not exist",
+    });
+  }
 });
 
 module.exports = router;
