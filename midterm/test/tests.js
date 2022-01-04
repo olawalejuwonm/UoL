@@ -151,19 +151,35 @@ describe("Test /user/:id route", function () {
         done();
       });
   });
-  // it("it should not update a user with incorrect password", (done) => {
-  //   chai
-  //     .request("http://localhost:3000")
-  //     .put("/user/1")
-  //     .send({
-  //       username: "newUsername",
-  //       password: "wrong",
-  //     })
-  //     .end((err, res) => {
-  //       // console.log(res.body.message, "res");
-  //       assert.equal(res.body.message, "Unauthorized: Incorrect Password");
-  //     });
-  // });
+  it("it should not update a user with incorrect password", (done) => {
+    chai
+      .request("http://localhost:3000")
+      .put("/user/1")
+      .send({
+        username: "newUsername",
+        password: "wrong",
+      })
+      .end((err, res) => {
+        // console.log(res.body.message, "res");
+        assert.equal(res.body.message, "Unauthorized: Incorrect Password");
+        done();
+      });
+  });
+
+  it("it should update a user", (done) => {
+    chai
+      .request("http://localhost:3000")
+      .put("/user/1")
+      .send({
+        username: "newUsername",
+        password: "juwon%$#@",
+      })
+      .end((err, res) => {
+        // console.log(res.body.message, "res");
+        assert.equal(res.body.message.username, "newUsername");
+        done();
+      });
+  });
 });
 //should not update the user that does not exist
 //should not update a user without a password (authentication)

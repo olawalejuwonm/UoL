@@ -69,12 +69,23 @@ router.post("/logout", function (req, res) {
 //user/:id route
 router.put("/:id", function (req, res) {
   let id = req.params["id"];
-  let userExist = users.find((user) => user.id === id);
+  let userExist = users.find((user) => user.id == id);
+
   if (!userExist) {
     return res.json({
       message: "User does not exist",
     });
   }
+  if (userExist.password != req.body.password) {
+    return res.json({
+      message: "Unauthorized: Incorrect Password",
+    });
+  }
+
+  userExist.username = req.body.username;
+  return res.json({
+    message: userExist,
+  });
 });
 
 module.exports = router;
