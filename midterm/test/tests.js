@@ -172,7 +172,7 @@ describe("Test /user/:id route", function () {
       .put("/user/1")
       .send({
         username: "newUsername",
-        password: "juwon%$#@",
+        password: "test",
       })
       .end((err, res) => {
         // console.log(res.body.message, "res");
