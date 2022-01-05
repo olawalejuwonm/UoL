@@ -13,7 +13,6 @@ describe("Test /user route", function () {
         password: "juwon%$#@",
       })
       .end((err, res) => {
-        assert.equal(res.status, 200); //check if request was successful
         // console.log(res.body.message, "res");
         assert.equal(res.body.message, "User created successfully");
         chai
