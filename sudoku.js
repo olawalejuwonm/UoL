@@ -79,11 +79,18 @@ const genStack = (num, arr) => {
     //   s.PUSH(v);
     // });
     // console.log(arr.length - 1)
-    //do reverse loop
+    // do reverse loop
     for (let index = arr.length - 1; index >= 0; index--) {
       const element = arr[index];
       s.PUSH(element);
     }
+    //do reverse loop using while loop
+    // let i = 4;
+    // while (i > 0) {
+    //   console.log(i)
+    //   s.PUSH(i);
+    //   i = i-1;
+    // }
   } else {
     for (let index = 0; index < num; index++) {
       let theNum = Math.round(4 * Math.random());
@@ -100,6 +107,8 @@ const genStack = (num, arr) => {
 
   return s;
 };
+
+console.log(genStack(3, []));
 
 const genVec = (num) => {
   let theVec = [];
@@ -136,45 +145,46 @@ function MakeVector(row) {
 
 // console.log(MakeVector([ 2, 4, 1, 3]))
 
-function PermuteVectorA(row, p) {
-  if (p === 0) {
-    return row;
-  }
-  if (p > row.length - 1) {
-    console.warn("p shouldn't be greater than", row.length - 1);
-    return row;
-  }
-  let newRow = [];
-  // for (let index = 0; index < p; index++) {
-  //   let theIndx = index - 1;
-  //   if (theIndx < 0) {
-  //     theIndx = row.length + theIndx;
-  //   }
-  //   console.log("theIndx", theIndx, index)
-  //   newRow[theIndx] = row[index];
-  //}
+// function PermuteVectorA(row, p) {
+//   if (p === 0) {
+//     return row;
+//   }
+//   if (p > row.length - 1) {
+//     console.warn("p shouldn't be greater than", row.length - 1);
+//     return row;
+//   }
+//   let newRow = [];
+//   // for (let index = 0; index < p; index++) {
+//   //   let theIndx = index - 1;
+//   //   if (theIndx < 0) {
+//   //     theIndx = row.length + theIndx;
+//   //   }
+//   //   console.log("theIndx", theIndx, index)
+//   //   newRow[theIndx] = row[index];
+//   //}
 
-  //using forEach
-  // row.forEach((e, i) => {
-  //   let theIndx = i - p;
-  //   if (theIndx < 0) {
-  //     theIndx = row.length + theIndx;
-  //   }
-  //   newRow[theIndx] = e;
-  // });
+//   //using forEach
+//   // row.forEach((e, i) => {
+//   //   let theIndx = i - p;
+//   //   if (theIndx < 0) {
+//   //     theIndx = row.length + theIndx;
+//   //   }
+//   //   newRow[theIndx] = e;
+//   // });
 
-  //using for loop
-  for (let index = 0; index < row.length; index++) {
-    const element = row[index];
-    let theIndx = index - p;
-    if (theIndx < 0) {
-      theIndx = row.length + theIndx;
-    }
-    newRow[theIndx] = element;
-  }
-  return newRow;
-}
+//   //using for loop
+//   for (let index = 0; index < row.length; index++) {
+//     const element = row[index];
+//     let theIndx = index - p;
+//     if (theIndx < 0) {
+//       theIndx = row.length + theIndx;
+//     }
+//     newRow[theIndx] = element;
+//   }
+//   return newRow;
+// }
 
+//TASK 2
 function PermuteVector(row, p) {
   if (p === 0) {
     return row;
@@ -184,7 +194,9 @@ function PermuteVector(row, p) {
     return row;
   }
   let q = new Queue();
+  //firstly add all element to the queue
   for (let i = 0; i < row.length; i++) {
+    //start from 1
     q.ENQUEUE(row[i]);
   }
   for (let index = 1; index <= p; index++) {
@@ -192,9 +204,20 @@ function PermuteVector(row, p) {
     q.DEQUEUE();
   }
 
-  return q.items;
-}
+  console.log(q.items);
 
+  let newRow = [];
+  for (let i = 0; i < 4; i++) {
+    //start from 1
+    newRow[i] = q.DEQUEUE();
+  }
+
+  console.log("vector", newRow);
+  return newRow;
+}
+// console.log(PermuteVector([2, 4, 1, 3], 2))
+
+//TASK 3
 function PermuteRows(puzzle, x, y, z) {
   //remember to increase by 1
   puzzle[0] = PermuteVector(puzzle[0], x);
@@ -215,6 +238,7 @@ function PermuteRows(puzzle, x, y, z) {
   return puzzle;
 }
 
+//TASK 4
 function SearchStack(stack, item) {
   let s = new Stack();
   let itemStored = 0; //this is used to track the number of times item was found in the stack
@@ -288,6 +312,7 @@ const printPuzzle = (vec) => {
   return vector;
 };
 
+//TASK 5
 function CheckColumn(puzzle, j) {
   let numbers = genStack(4, [1, 2, 3, 4]);
   //k should be 1 in pseudocode
@@ -307,7 +332,7 @@ function CheckColumn(puzzle, j) {
 
 function ColChecks(puzzle) {
   //j should be 1 in pseudocode
-  for (let j = 0; j < puzzle.length; j++) {
+  for (let j = 1; j <= puzzle.length; j++) {
     if (CheckColumn(puzzle, j) === false) {
       return false;
     }
@@ -316,6 +341,7 @@ function ColChecks(puzzle) {
   return true;
 }
 
+//TASK 6
 function CheckGrids(puzzle) {
   // let column = 0;
   // let numbers = genStack(4, [1, 2, 3, 4]);
@@ -382,7 +408,7 @@ function CheckGrids(puzzle) {
       // should be < 2 in pseudocode
       let checkAGrid = SearchAGrid(puzzle, rowIndex, j, j + 1);
       if (checkAGrid === false) {
-        console.log("false", rowIndex, j, j + 1);
+        // console.log("false", rowIndex, j, j + 1);
         return false;
       }
     }
@@ -442,16 +468,38 @@ function SearchAGrid(puzzle, startRow, firstColumn, secondColumn) {
   return true;
 }
 
-//TASK 8
+//TASK 8 WRONG
+// function MakeSolution(row) {
+//   let puzzle = MakeVector(row);
+//   let solution;
+//   let gridCheck;
+//   let checkCol;
+//   for (let i = 0; i < row.length - 1; i++) {
+//     for (let j = 0; j < row.length - 1; j++) {
+//       for (let k = 0; k < row.length - 1; k++) {
+//         console.log(i, j, k)
+//         solution = PermuteRows(puzzle, i, j, k);
+//         gridCheck = CheckGrids(solution);
+//         checkCol = ColChecks(solution);
+//         if (gridCheck === true && checkCol === true) {
+//           return solution;
+//         }
+//       }
+//     }
+//   }
+
+// }
+
+//TASK 8 RIGHT
 function MakeSolution(row) {
   let puzzle = MakeVector(row);
   let solution;
   let gridCheck;
   let checkCol;
-  for (let i = 0; i < row.length - 1; i++) {
-    for (let j = 0; j < row.length - 1; j++) {
-      for (let k = 0; k < row.length - 1; k++) {
-        console.log(i, j, k)
+  for (let i = 1; i < row.length; i++) {
+    for (let j = 1; j < row.length; j++) {
+      for (let k = 1; k < row.length; k++) {
+        console.log(i, j, k);
         solution = PermuteRows(puzzle, i, j, k);
         gridCheck = CheckGrids(solution);
         checkCol = ColChecks(solution);
@@ -461,12 +509,58 @@ function MakeSolution(row) {
       }
     }
   }
- 
-  
+
+  return solution;
+
+  // solution = PermuteRows(puzzle, 1, 3, 2);
+  // checkCol = ColChecks(solution)
+  // console.log(checkCol)
+
+  // while (checkCol !== true) {
+  //   solution = PermuteRows(puzzle, 1, 3, 2);
+  //   // gridCheck = CheckGrids(solution);
+  //   checkCol = ColChecks(solution);
+  //   console.log("gridCheck: ", gridCheck, "checkCol", checkCol);
+
+  //   if (checkCol === true) {
+  //     break;
+  //   }
+  // }
 }
 
-console.log(MakeSolution([1, 2, 3, 4]));
+//TASK 9
+function SetBlanks(puzzle, n) {
+  let maximumBlank = puzzle.length * puzzle.length;
+  if (n > maximumBlank) {
+    n = maximumBlank;
+  }
 
+  let blanks = 0;
+  function SetBlank() {
+    // console.log(Math.round(maximumBlank * Math.random()), maximumBlank);
+    const randomRow = Math.round((puzzle.length - 1) * Math.random());
+    const randomColumn = Math.round((puzzle.length - 1) * Math.random());
+    let value = puzzle[randomRow][randomColumn];
+    if (value === "X") {
+      SetBlank();
+    } else {
+      puzzle[randomRow][randomColumn] = "X";
+      blanks = blanks + 1;
+    }
+  }
+
+  while (blanks < n) {
+    SetBlank();
+  }
+
+  
+
+  console.log("final", puzzle)
+  return puzzle
+}
+SetBlanks(MakeSolution([1, 3, 2, 4]), 4);
+// console.log(MakeSolution([1, 3, 2, 4]));
+// console.log(Math.round(2 * Math.random()));
 // console.log(SearchAGrid(printPuzzle(), 0, 2, 3));
 // console.log(CheckGrids(printPuzzle()));
 
