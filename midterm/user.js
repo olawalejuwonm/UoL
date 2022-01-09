@@ -12,7 +12,6 @@ let users = [
 
 //create a user account
 router.post("/", function (req, res) {
-  // console.log(req.body)
   let body = req.body;
   body.id = users.length + 1;
   users.push(body);
