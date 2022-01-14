@@ -1,0 +1,642 @@
+/*Custom Fonts-------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Anton');
+
+
+/*Common CSS-------------------------------------*/
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+body{
+    
+}
+
+h1{
+    font-family: Arial, Helvetica,'Anton', sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 2em;
+    color: black;
+}
+
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 20px;;
+    color: black;
+}
+
+h3{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 17px;;
+    color: black;
+}
+
+p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: black;
+}
+
+
+
+
+/*Header CSS---------------------------------------*/
+
+header{
+    
+}
+
+header h1{
+  
+}
+
+header object{
+  
+}
+
+/*Nav CSS-------------------------------------------*/
+
+nav{
+    
+}
+
+nav ol{
+    color: black;
+}
+
+nav li{
+    
+}
+
+nav li a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 1em;
+    color:hsl(0,0%,0%);
+}
+
+/*Index.html CSS------------------------------------*/
+
+#fpIntro{
+   
+}
+
+#fpIntro #fpintroTitle{
+
+}
+
+#fpIntro #fpintroTitle p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 25px;;
+    color:rgb(0, 0, 0);
+}
+
+#fpIntro #fpintroText{
+ 
+}
+
+#fplinkArea{
+
+}
+
+#fplinkArea .fplinkAreaContent{
+   
+}
+
+#fplinkArea .fplinkAreaContent h2{
+  
+}
+
+#fplinkArea .fplinkAreaContent p{
+ 
+}
+
+#fplinkArea .fplinkAreaContent a{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: blue;
+} 
+
+#bestSellersList{
+   
+}
+
+#bestSellersList h2{
+
+}
+
+#bestSellersList ol li{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 1em;
+    color: black; 
+}
+
+/*onlineRead.html CSS-------------------------------------*/
+
+#orReadingIntro{
+  
+}
+
+#orReadingIntro p{
+
+}
+
+aside{
+   
+}
+
+aside #orProtocol{
+
+}
+
+aside #orProtocolOverview{
+ 
+}
+
+aside #orProtocolOverview p{
+
+} 
+
+aside #orProtocolList{
+   
+} 
+
+aside #orProtocolList li{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 1em;
+    color: black; 
+} 
+
+#orReadingBooks{
+   
+}
+
+#orReadingBooks p:first-child{
+     font-weight: bold;
+}
+
+#orReadingBooks .orBook{
+
+}
+
+#orReadingBooks .orBook h2{
+ 
+}
+
+#orReadingBooks .orBook h2 a{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 18px;;
+    color: blue;
+}
+
+#orReadingBooks .orBook img{
+ 
+}
+
+#orReadingBooks .orBook p{
+ 
+}
+
+
+/*localBookshops.html CSS-----------------------------------*/
+
+#lbsImageMap{
+ 
+}
+
+#lbsImageMap img{
+  
+}
+
+#lbsImageCaption{
+   
+}
+
+#lbsImageCaption p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 15px;;
+    color: black;
+}
+
+.lbsShop{
+
+}
+
+.lbsShop .lbsShopTitle{
+  
+}
+
+.lbsShop .lbsShopTitle h2{
+
+}
+
+.lbsShop .lbsShopDescription{
+
+}
+
+.lbsShop .lbsShopDescription p{
+  
+}
+
+.lbsShop .lbsShopImage{
+
+}
+
+.lbsShop .lbsShopImage img{
+   
+}
+
+.lbsShop .lbsShopOpeningTimes{
+
+}
+
+.lbsShop .lbsShopOpeningTimes p{
+
+}
+
+.lbsShop .lbsShopOpeningTimes table{
+
+}
+
+.lbsShop .lbsShopOpeningTimes table th{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 15px;;
+    color:rgb(0, 0, 0);
+}
+
+.lbsShop .lbsShopOpeningTimes table td{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color:hsl(0, 0%, 0%);
+}
+
+.lbsShop .lbsShopContactName{
+
+}
+
+.lbsShop .lbsShopContactName p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: lighter;
+    font-size: 18px;;
+    color:rgb(0, 0, 0);
+}
+
+.lbsShop .lbsShopAddress{
+
+}
+
+.lbsShop .lbsShopAddress address{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;
+    color:rgb(0, 0, 0);
+}
+
+
+/*localReadingGroups.html CSS----------------------------------*/
+
+#lrgImageMap{
+ 
+}
+
+#lrgImageMap img{
+  
+}
+
+#lrgImageMapCaption{
+   
+}
+
+#lrgImageMapCaption p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 15px;;
+    color: black;
+}
+
+.lrgGroup{
+   
+}
+
+.lrgGroup .lrgGroupTitle {
+
+}
+
+.lrgGroup .lrgGroupTitle h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 20px;;
+    color: black;
+}
+
+.lrgGroup .lrgGroupDescription{
+
+}
+
+.lrgGroup .lrgGroupDescription p{
+ 
+}
+
+.lrgGroup .lrgGroupMeetTimes{
+
+}
+
+.lrgGroup .lrgGroupMeetTimes p{
+   
+}
+
+.lrgGroup .lrgGroupMeetTimes table{
+
+}
+
+.lrgGroup .lrgGroupMeetTimes table th{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 15px;;
+    color:rgb(0, 0, 0);
+}
+
+.lrgGroup .lrgGroupMeetTimes table td{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color:rgb(0, 0, 0);
+}
+
+
+.lrgGroup .lrgGroupContactName{
+
+}
+
+.lrgGroup .lrgGroupContactName p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: lighter;
+    font-size: 18px;;
+    color:rgb(0, 0, 0);
+}
+
+
+.lrgGroup .lrgGroupAddress{
+
+}
+
+.lrgGroup .lrgGroupAddress p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color:rgb(0, 0, 0);
+}
+
+
+/*book1-5.html CSS---------------------------------------*/
+
+
+#orBookTitle{
+    
+}
+
+#orBookTitle h2{
+  
+}
+
+#orBookTitle p{
+   
+}
+
+#orBookdCurrent
+{
+
+}
+
+#orBookdCurrent #orBookDcTitle{
+    
+}
+
+#orBookdCurrent #orBookDcTitle h3
+{
+   
+}
+
+#orBookdCurrent #orBookDcSeal{
+
+}
+
+#orBookdCurrent #orBookDcSeal p
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color:rgb(0, 0, 0);
+}
+
+#orBookdCurrent .orBookDcComment 
+{
+    
+}
+
+#orBookdCurrent .orBookDcComment .orBookDcContent{
+   
+}
+
+#orBookdCurrent .orBookDcComment .orBookDcContent .ContPic{
+  
+} 
+
+#orBookdCurrent .orBookDcComment .orBookDcContent .ContPic img{
+   
+} 
+
+
+#orBookdCurrent .orBookDcComment  .orBookDcContent .ContName{
+    
+}
+
+#orBookdCurrent .orBookDcComment  .orBookDcContent .ContName p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 18px;;
+    color:rgb(0, 0, 0);
+}
+
+#orBookdCurrent .orBookDcComment .orBookDcText{
+   
+}
+
+#orBookdCurrent .orBookDcComment .orBookDcText q{
+
+}
+
+#orBookdCurrent .orBookDcComment .ContDate{
+
+}
+
+#orBookdCurrent .orBookDcComment .ContDate time
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color:black;
+}
+
+#orBookDiscussions{
+    
+}
+
+#orBookDiscussions p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 20px;;
+    color:black;
+}
+
+#orBookDiscussions .orBookDiscussion{
+
+}
+
+#orBookDiscussions .orBookDiscussion h3{
+    
+}
+
+#orBookVideo{
+    
+}
+
+#orBookVideo video{
+    
+}
+
+/*Footer CSS-------------------------------------------*/
+
+footer
+{
+    
+}
+
+footer #fpcontactInformation
+{
+    
+}
+
+footer #fpcontactInformation ul
+{
+    
+}
+
+footer #fpcontactInformation ul li
+{
+    
+}
+
+footer #fpcontactInformation #contact
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 20px;;
+    color: red;
+}
+
+footer #fpcontactInformation #name
+{
+  
+}
+
+footer #fpcontactInformation #email
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: blue;
+}
+
+footer #fpcontactInformation #charity
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: black;
+}
+
+
+
+footer #fpcontactInformation ul li a
+{
+    
+}
+
+
+
+
+
+
+
+
+
