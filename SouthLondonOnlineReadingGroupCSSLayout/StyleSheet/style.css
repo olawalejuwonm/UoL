@@ -1,0 +1,873 @@
+/*Common CSS-------------------------------------*/
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background: white;
+    height: 100%;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 2em;
+    color: white;
+}
+
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 20px;;
+    color: black;
+}
+
+h3{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 17px;;
+    color: black;
+}
+
+p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: black;
+}
+
+/*Header CSS---------------------------------------*/
+
+header { grid-area: header; }
+
+header{
+    background:rgba(78, 119, 186, 255);
+    border-radius: 10px;;
+    border: 1px solid white;
+    text-align: center;
+    width:100%;
+    height:200px;
+    padding: 10px;
+    
+    
+    
+}
+
+header h1{
+  
+}
+
+header object{
+  
+}
+
+/*Nav CSS-------------------------------------------*/
+
+nav { grid-area: nav; }
+
+nav{
+    background:rgba(78, 119, 186, 255);
+    border-radius: 10px;
+    border: 1px solid white;
+    text-align:center;
+    width:100%;
+    
+    
+    
+}
+
+nav ol{
+    border:1px solid white;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+    
+}
+
+nav li{
+    display:inline;
+    border: 1px solid white;
+    border-radius: 5px;;
+    padding:5px;
+    
+    
+}
+
+nav li a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 1em;
+    color:hsl(0,0%,255%);
+    display:inline-block;
+    padding:10px;
+
+    
+    
+}
+
+/*Index.html CSS------------------------------------*/
+
+
+#fpIntro { grid-area: intro; }
+#fplinkArea { grid-area: main; }
+#bestSellersList { grid-area: bestSeller; }
+
+
+.grid-container-index {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto 200px;
+  grid-template-areas:
+    'header header header header header intro'
+    'nav nav nav nav nav intro'
+    'main main main main main bestSeller'
+    'footer footer footer footer footer footer';
+  background-color: white;
+}
+
+
+#fpIntro{
+    border: 1px solid grey;
+    border-bottom: none;
+    background: rgb(212, 212, 134);
+    height:100%;;
+    
+}
+
+#fpIntro #fpintroTitle{
+    
+    position:relative;
+}
+
+#fpIntro #fpintroTitle p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 25px;;
+    color:rgb(0, 0, 0);
+    padding-left:10px;
+    padding-right: 10px;
+    
+}
+
+#fpIntro #fpintroText{
+  width:200px;
+  position: relative;
+  padding-left:10px;
+  padding-right: 10px;
+  
+}
+
+#fplinkArea{
+
+}
+
+#fplinkArea .fplinkAreaContent{
+    border: 1px solid grey;
+    border-bottom: none;
+    border-right:none;
+    position: relative;
+    padding: 40px;
+    
+}
+
+
+
+#fplinkArea .fplinkAreaContent h2{
+    background: rgb(212, 212, 134);
+}
+
+#fplinkArea .fplinkAreaContent p{
+ 
+}
+
+#fplinkArea .fplinkAreaContent a{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: blue;
+} 
+
+#bestSellersList{
+    background: rgb(243, 243, 226);
+    border: 1px solid grey;
+}
+
+#bestSellersList h2{
+ position: relative;
+ padding-left:22px;
+}
+
+#bestSellersList ol{
+   
+}
+
+#bestSellersList ol li{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 0.8em;
+    color: black; 
+    margin-bottom: 40px;
+    padding-right:10px;
+    padding-top: 10px;
+}
+
+/*onlineRead.html CSS-------------------------------------*/
+
+#orReadingIntro { grid-area: intro; }
+aside { grid-area: aside; }
+#orReadingBooks { grid-area: main; }
+
+
+
+.grid-container-onlineRead {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto 300px;
+  grid-template-areas:
+    'header header header header header header'
+    'nav nav nav nav nav nav'
+    'intro intro intro intro intro aside'
+    'main main main main main aside'
+    'footer footer footer footer footer footer';
+  background-color: white;
+}
+
+#orReadingIntro{
+  background: rgb(212, 212, 134);
+  padding: 20px;
+}
+
+#orReadingIntro p{
+  font-size: 20px;
+}
+
+aside{
+    background: white;
+    padding:20px;
+    height: 100%;
+    border:1px solid grey;
+}
+
+aside #orProtocol{
+background: rgb(243, 243, 226);
+height: 100%;
+border:1px solid lightgray;
+}
+
+aside #orProtocolOverview{
+  padding:10px;
+  width:100%;
+}
+
+aside #orProtocolOverview p{
+  font-weight: bold;
+} 
+
+aside #orProtocolList{
+   
+} 
+
+aside #orProtocolList li{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 0.8em;
+    color: black; 
+    margin-bottom: 80px;
+    padding:10px;
+    
+  
+} 
+
+#orReadingBooks{
+    border: 1px solid grey;
+    border-right: none;
+    padding:20px;
+   
+}
+
+#orReadingBooks p:first-child{
+     font-weight: bold;
+     font-size: 25px;
+}
+
+#orReadingBooks .orBook{
+    background: rgb(243, 243, 226);
+    padding:20px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    border-style: dashed;
+
+}
+
+#orReadingBooks .orBook h2{
+ 
+}
+
+#orReadingBooks .orBook h2 a{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 18px;;
+    color: blue;
+}
+
+#orReadingBooks .orBook img{
+ 
+}
+
+#orReadingBooks .orBook p{
+ 
+}
+
+
+/*localBookshops.html CSS-----------------------------------*/
+
+#lbsImageMap { grid-area: image; }
+#lbsImageCaption{grid-area: imgCaption;}
+.firstShop{grid-area: one;}
+.secondShop{grid-area: two;}
+.thirdShop{grid-area: three;}
+.fourthShop{grid-area: four;}
+
+.grid-container-localBookShops {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-areas:
+      'header header header header header header'
+      'nav nav nav nav nav nav'
+      'image image image image image image'
+      'imgCaption imgCaption imgCaption imgCaption imgCaption imgCaption'
+      'one one one two two two'
+      'three three three four four four'
+      'footer footer footer footer footer footer';
+    
+  }
+
+
+
+#lbsImageMap{
+    text-align: center;
+    background: rgb(229, 231, 245);
+    padding:10px;
+}
+
+#lbsImageMap img{
+  
+}
+
+#lbsImageCaption{
+    background: rgb(229, 231, 245);
+    text-align: center;
+}
+
+#lbsImageCaption p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 18px;;
+    color: black;
+}
+
+.lbsShop{
+    padding:20px;
+    background: rgb(243, 243, 226);
+    border:2px solid lightgray;
+    margin:2px;
+    border-style: dotted;
+
+}
+
+.lbsShop .lbsShopTitle{
+    background: rgb(212, 212, 134);
+}
+
+.lbsShop .lbsShopTitle h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 20px;;
+    color: black;
+}
+
+.lbsShop .lbsShopDescription{
+
+}
+
+.lbsShop .lbsShopDescription p{
+  
+}
+
+.lbsShop .lbsShopImage{
+
+}
+
+.lbsShop .lbsShopImage img{
+   
+}
+
+.lbsShop .lbsShopOpeningTimes{
+
+}
+
+.lbsShop .lbsShopOpeningTimes p{
+    font-weight: bold;
+}
+
+.lbsShop .lbsShopOpeningTimes table{
+
+}
+
+.lbsShop .lbsShopOpeningTimes table th{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 15px;;
+    color:rgb(0, 0, 0);
+    float: left;
+}
+
+.lbsShop .lbsShopOpeningTimes table td{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color:hsl(0, 0%, 0%);
+}
+
+.lbsShop .lbsShopContactName{
+
+}
+
+.lbsShop .lbsShopContactName p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: lighter;
+    font-size: 18px;;
+    color:rgb(0, 0, 0);
+}
+
+.lbsShop .lbsShopAddress{
+
+}
+
+.lbsShop .lbsShopAddress address{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;
+    color:rgb(0, 0, 0);
+}
+
+
+/*localReadingGroups.html CSS----------------------------------*/
+
+#lrgImageMap { grid-area: image; }
+#lrgImageMapCaption{grid-area: imgCaption;}
+.firstGroup{grid-area: one;}
+.secondGroup{grid-area: two;}
+.thirdGroup{grid-area: three;}
+.fourthGroup{grid-area: four;}
+
+.grid-container-localReading {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-areas:
+      'header header header header header header'
+      'nav nav nav nav nav nav'
+      'image image image image image image'
+      'imgCaption imgCaption imgCaption imgCaption imgCaption imgCaption'
+      'one one one two two two'
+      'three three three four four four'
+      'footer footer footer footer footer footer';
+    
+  }
+
+#lrgImageMap{
+ text-align: center;
+ background: rgb(229, 231, 245);
+ padding:10px;
+}
+
+#lrgImageMap img{
+  
+}
+
+#lrgImageMapCaption{
+    background: rgb(229, 231, 245);
+    text-align: center;
+}
+
+#lrgImageMapCaption p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 18px;;
+    color: black;
+}
+
+.lrgGroup{
+   padding:20px;
+   background: rgb(243, 243, 226);
+   border:2px solid lightgray;
+   margin:2px;
+   border-style: dotted;
+
+}
+
+.lrgGroup .lrgGroupTitle {
+    background: rgb(212, 212, 134);
+}
+
+.lrgGroup .lrgGroupTitle h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 20px;;
+    color: black;
+}
+
+.lrgGroup .lrgGroupDescription{
+
+}
+
+.lrgGroup .lrgGroupDescription p{
+ 
+}
+
+.lrgGroup .lrgGroupMeetTimes{
+
+}
+
+.lrgGroup .lrgGroupMeetTimes p{
+    font-weight: bold;
+  
+   
+}
+
+.lrgGroup .lrgGroupMeetTimes table{
+
+}
+
+.lrgGroup .lrgGroupMeetTimes table th{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 15px;;
+    color:rgb(0, 0, 0);
+    float:left;
+}
+
+.lrgGroup .lrgGroupMeetTimes table td{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color:rgb(0, 0, 0);
+ 
+}
+
+
+.lrgGroup .lrgGroupContactName{
+
+}
+
+.lrgGroup .lrgGroupContactName p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: lighter;
+    font-size: 18px;;
+    color:rgb(0, 0, 0);
+    position: relative;
+    top:20px;
+}
+
+
+.lrgGroup .lrgGroupAddress{
+
+}
+
+.lrgGroup .lrgGroupAddress p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color:rgb(0, 0, 0);
+    position: relative;
+    top:20px;
+}
+
+
+/*book1-5.html CSS---------------------------------------*/
+
+#orBookTitle { grid-area: title; }
+#fplinkArea { grid-area: main; }
+#orBookdCurrent { grid-area: currentBook; }
+#orBookDiscussions { grid-area: currentDiscussion; }
+#orBookVideo { grid-area: bookVideo; }
+
+
+.grid-container-book {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-areas:
+    'header header header header header header'
+    'nav nav nav nav nav nav'
+    'title title title title title title'
+    'currentBook currentBook currentBook currentBook currentDiscussion currentDiscussion'
+    'currentBook currentBook currentBook currentBook bookVideo bookVideo'
+    'footer footer footer footer footer footer';
+  background-color: white;
+}
+
+#orBookTitle{
+    text-align: center;
+    background: rgb(212, 212, 134);
+
+}
+
+#orBookTitle h2{
+  font-size: 22px;
+  
+}
+
+#orBookTitle p{
+ 
+}
+
+#orBookdCurrent
+{
+  padding:20px;
+  border: 1px solid grey;
+  border-right: none;
+  background: rgb(243, 243, 226);
+}
+
+#orBookdCurrent #orBookDcTitle{
+    
+}
+
+#orBookdCurrent #orBookDcTitle h3
+{
+   
+}
+
+#orBookdCurrent #orBookDcSeal{
+
+}
+
+#orBookdCurrent #orBookDcSeal p
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color:rgb(0, 0, 0);
+}
+
+#orBookdCurrent .orBookDcComment 
+{
+    border: 1px solid grey;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#orBookdCurrent .orBookDcComment .orBookDcContent{
+   
+}
+
+#orBookdCurrent .orBookDcComment .orBookDcContent .ContPic{
+  
+} 
+
+#orBookdCurrent .orBookDcComment .orBookDcContent .ContPic img{
+   
+} 
+
+
+#orBookdCurrent .orBookDcComment  .orBookDcContent .ContName{
+    
+}
+
+#orBookdCurrent .orBookDcComment  .orBookDcContent .ContName p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 18px;;
+    color:rgb(0, 0, 0);
+}
+
+#orBookdCurrent .orBookDcComment .orBookDcText{
+   
+}
+
+#orBookdCurrent .orBookDcComment .orBookDcText q{
+   
+}
+
+#orBookdCurrent .orBookDcComment .ContDate{
+
+}
+
+#orBookdCurrent .orBookDcComment .ContDate time
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color:black;
+}
+
+#orBookDiscussions{
+    padding: 10px;
+    border: 1px solid grey;
+    background: rgb(229, 231, 245);
+
+}
+
+#orBookDiscussions p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 20px;;
+    color:black;
+}
+
+#orBookDiscussions .orBookDiscussion{
+
+}
+
+#orBookDiscussions .orBookDiscussion h3{
+    font-weight: normal;
+}
+
+#orBookVideo{
+    border: 1px solid grey;
+    border-top: none;
+    text-align: center;
+    padding:0;
+    margin:0;
+    background: rgb(229, 231, 245);
+ 
+}
+
+#orBookVideo video{
+    position: relative;
+    top:45px;
+}
+
+/*Footer CSS-------------------------------------------*/
+
+footer { grid-area: footer; }
+
+
+footer
+{
+    background:rgba(78, 119, 186, 255);
+    text-align: center;
+    width:100%;
+    padding: 10px;
+}
+
+footer #fpcontactInformation
+{
+    background: rgb(243, 243, 226);
+    text-align: center;
+    margin: auto;
+    width:99%;
+    
+}
+
+footer #fpcontactInformation ul
+{
+    list-style:none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+footer #fpcontactInformation ul li
+{
+    display: inline-block;
+    margin:40px;
+    height: 30px;
+    
+}
+
+footer #fpcontactInformation #contact
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 20px;;
+    color: red;
+}
+
+footer #fpcontactInformation #name
+{
+  
+}
+
+footer #fpcontactInformation #email
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: blue;
+}
+
+footer #fpcontactInformation #charity
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: black;
+}
+
+
+
+footer #fpcontactInformation ul li a
+{
+    
+}
