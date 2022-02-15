@@ -77,4 +77,6 @@ function Partition(vector, i, j) {
   return final;
 }
 
-console.log(Partition([7, 4, 1, 2, 3, 6, 7], 0, 6));
+
+
+// console.log(Partition([7, 4, 1, 2, 3, 6, 7], 0, 6));
