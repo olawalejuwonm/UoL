@@ -1,0 +1,2461 @@
+/*Common CSS-------------------------------------*/
+
+* {
+    box-sizing: border-box;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+ }
+
+
+/*Mobile-------------------------------------*/
+@media only screen and (max-width: 570px){
+    body{
+        background: white;
+        height: 100%;
+        padding:8px;
+    }
+    
+    h1{
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 1.3em;
+        color: white;
+    }
+    
+    h2{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color: black;
+    }
+    
+    h3{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 17px;;
+        color: black;
+    }
+    
+    p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color: black;
+    }
+
+}
+
+
+/*Tablet-------------------------------------*/
+@media only screen and (min-width: 571px) and (max-width: 1010px){
+    body{
+        background: white;
+        height: 100%;
+        padding:8px;
+    }
+    
+    h1{
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 1.4em;
+        color: white;
+    }
+    
+    h2{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color: black;
+    }
+    
+    h3{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 17px;;
+        color: black;
+    }
+    
+    p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color: black;
+    }
+}
+/*Desktop-------------------------------------*/
+@media only screen and (min-width: 1011px){
+    body{
+        background: white;
+        height: 100%;
+        padding:8px;
+    }
+    
+    h1{
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 2em;
+        color: white;
+    }
+    
+    h2{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color: black;
+    }
+    
+    h3{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 17px;;
+        color: black;
+    }
+    
+    p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color: black;
+    }
+}
+
+
+/*Header CSS---------------------------------------*/
+
+
+header{
+    background:rgba(78, 119, 186, 255);
+    border-radius: 10px;;
+    border: 1px solid white;
+    text-align: center;
+    width:100%;
+    height:200px;
+    padding: 100x; 
+    
+}
+
+header h1{
+  position: relative;
+  top:40px;
+}
+
+header object{
+    position: relative;
+    top:40px;
+}
+
+/*Nav CSS-------------------------------------------*/
+
+@media only screen and (max-width: 570px){
+    nav{
+        background:rgba(78, 119, 186, 255);
+        border-radius: 10px;
+        border: 1px solid white;
+        text-align:center;
+        width:100%;
+        height: auto;
+
+        
+        
+    }
+    
+    label{
+        display: block;
+        cursor: pointer;
+        font-size:28px;
+        color: white;
+        margin-right: 20px;
+        position: relative;
+        text-align: right;
+    
+    }
+    
+    #toggle{
+     display: none;
+    }
+
+    nav #menu{
+        display: none;
+        border-radius: 20px;
+        width:100%;
+        clear: right;
+    }
+    
+    nav ol{
+        border:1px solid white;
+        border-width:1px 0;
+        list-style:none;
+        margin:0;
+        padding:0;
+        text-align:center;
+        
+        
+    }
+    
+    nav li{
+        display:block;
+        border: 1px solid white;
+        border-radius: 5px;;
+        padding:5px;
+        
+        
+        
+    }
+    
+    nav li a {
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: normal;
+        text-decoration: none;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 1em;
+        color:hsl(0,0%,255%);
+        display:inline-block;
+        padding:10px;
+    
+        
+        
+    }
+
+    nav li a:hover{
+        color:hsl(0,0%,255%);
+        text-decoration: none;
+    }
+
+    #toggle:checked + #menu{
+        display: block;
+    }
+}
+/*Tablet-------------------------------------*/
+@media only screen and (min-width: 571px) and (max-width: 1010px){
+    nav{
+        background:rgba(78, 119, 186, 255);
+        border-radius: 10px;
+        border: 1px solid white;
+        text-align:center;
+        width:100%;
+        
+        
+        
+    }
+    
+    label{
+        margin: 0 40px 0 0;
+        font-size: 26px;   
+        text-align: center;
+        display: none;
+    }
+    
+    #toggle{
+     display: none;
+    }
+    
+    nav ol{
+        border:1px solid white;
+        border-width:1px 0;
+        list-style:none;
+        margin:0;
+        padding:0;
+        text-align:center;
+        
+    }
+    
+    nav li{
+        display:inline;
+        border: 1px solid white;
+        border-radius: 5px;;
+        padding:5px;
+        
+        
+    }
+    
+    nav li a {
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: normal;
+        text-decoration: none;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 1em;
+        color:hsl(0,0%,255%);
+        display:inline-block;
+        padding:10px;
+    
+        
+        
+    }
+
+    nav li a:hover{
+        color:hsl(0,0%,255%);
+        text-decoration: none;
+    }
+}
+/*Desktop-------------------------------------*/
+@media only screen and (min-width: 1011px){
+    nav{
+        background:rgba(78, 119, 186, 255);
+        border-radius: 10px;
+        border: 1px solid white;
+        text-align:center;
+        width:100%;
+        
+        
+        
+    }
+    
+    label{
+        margin: 0 40px 0 0;
+        font-size: 26px;   
+        text-align: center;
+        display: none;
+    }
+    
+    #toggle{
+     display: none;
+    }
+    
+    nav ol{
+        border:1px solid white;
+        border-width:1px 0;
+        list-style:none;
+        margin:0;
+        padding:0;
+        text-align:center;
+        
+    }
+    
+    nav li{
+        display:inline;
+        border: 1px solid white;
+        border-radius: 5px;;
+        padding:5px;
+        
+        
+    }
+    
+    nav li a {
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: normal;
+        text-decoration: none;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 1em;
+        color:hsl(0,0%,255%);
+        display:inline-block;
+        padding:10px;
+    
+        
+        
+    }
+
+    nav li a:hover{
+        color:hsl(0,0%,255%);
+        text-decoration: none;
+    }
+}
+
+/*Index.html CSS------------------------------------*/
+
+/*Mobile-------------------------------------*/
+@media only screen and (max-width: 570px)
+{
+  
+      #fpIntro{
+        border: 1px solid grey;
+        border-bottom: none;
+        background: rgb(212, 212, 134);
+         
+    }
+    
+    #fpIntro #fpintroTitle{
+        
+        padding:10px;
+        position:relative;
+    }
+    
+    #fpIntro #fpintroTitle p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color:rgb(0, 0, 0);
+        text-align: center;
+        
+    }
+    
+    #fpIntro #fpintroText{
+      width:100%;
+      padding:10px;
+      text-align: center;
+      
+    }
+    
+    #fplinkArea{
+    
+    }
+    
+    #fplinkArea .fplinkAreaContent{
+        border: 1px solid grey;
+        border-bottom: none;
+        position: relative;
+        padding: 40px;
+        
+    }
+    
+    
+    
+    #fplinkArea .fplinkAreaContent h2{
+        background: rgb(212, 212, 134);
+    }
+    
+    #fplinkArea .fplinkAreaContent p{
+     
+    }
+    
+    #fplinkArea .fplinkAreaContent a{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color: blue;
+    } 
+    
+    #bestSellersList{
+        background: rgb(243, 243, 226);
+        border: 1px solid grey;
+        border-bottom: none;
+        height: 100%;
+        
+    }
+    
+    #bestSellersList h2{
+     position: relative;
+     padding:22px;
+    }
+    
+    #bestSellersList ol{
+        text-align: left;
+    }
+    
+    #bestSellersList ol li{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 1em;
+        color: black; 
+        margin-bottom: 40px;
+    }
+}
+
+/*Tablet-------------------------------------*/
+@media only screen and (min-width: 571px) and (max-width: 1010px){
+
+      #fpIntro{
+          border: 1px solid grey;
+          border-bottom: none;
+          background: rgb(212, 212, 134);
+          height: 250px;
+          
+      }
+      
+      #fpIntro #fpintroTitle{
+        
+        padding:10px;
+        position:relative;
+    }
+    
+     #fpIntro #fpintroTitle p{
+            font-family: 'Times New Roman', Times, serif;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: bold;
+            font-size: 18px;
+            color:rgb(0, 0, 0);
+            width:100%;
+            position: relative;
+            
+            
+            
+        }
+        
+        #fpIntro #fpintroText{
+        width:100%;
+        padding:10px;
+        position: relative;
+        bottom:30px;
+        }
+      
+      
+      #fplinkArea{
+      width: 100%;
+      height: 100%;
+      }
+      
+      #fplinkArea .fplinkAreaContent{
+          border: 1px solid grey;
+          border-bottom: none;
+          border-right: none;
+          position: relative;
+          padding: 40px;
+          height: 33.3%;
+          
+      }
+      
+      
+      
+      #fplinkArea .fplinkAreaContent h2{
+          background: rgb(212, 212, 134);
+      }
+      
+      #fplinkArea .fplinkAreaContent p{
+       
+      }
+      
+      #fplinkArea .fplinkAreaContent a{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 15px;;
+          color: blue;
+      } 
+      
+      #bestSellersList{
+          background: rgb(243, 243, 226);
+          border: 1px solid grey;
+          border-bottom: none;
+          height: 100%;;
+      }
+      
+      #bestSellersList h2{
+       position: relative;
+       padding:22px;
+
+      }
+      
+      #bestSellersList ol{
+          text-align: left;
+      }
+      
+      #bestSellersList ol li{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 1em;
+          color: black; 
+          margin-bottom: 40px;
+      }
+}
+/*Desktop-------------------------------------*/
+@media only screen and (min-width: 1011px) {
+
+    
+    #fpIntro{
+        border: 1px solid grey;
+        border-bottom: none;
+        background: rgb(212, 212, 134);
+        height: 250px;
+
+        
+    }
+    
+    #fpIntro #fpintroTitle{
+        
+        padding:10px;
+        position:relative;
+    }
+    
+    #fpIntro #fpintroTitle p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 23px;;
+        color:rgb(0, 0, 0);
+        width:100%;
+        position: relative;
+        
+        
+        
+    }
+    
+    #fpIntro #fpintroText{
+      width:100%;
+      padding:10px;
+      position: relative;
+      bottom:30px;
+    }
+    
+    #fplinkArea{
+       width: 100%;
+       height: 100%;
+    }
+    
+    #fplinkArea .fplinkAreaContent{
+        border: 1px solid grey;
+        border-bottom: none;
+        border-right:none;
+        position: relative;
+        padding: 45px;
+        height: 33.3%;
+    
+        
+        
+    }
+    
+    
+    
+    #fplinkArea .fplinkAreaContent h2{
+        background: rgb(212, 212, 134);
+    }
+    
+    #fplinkArea .fplinkAreaContent p{
+     
+    }
+    
+    #fplinkArea .fplinkAreaContent a{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color: blue;
+    } 
+    
+    #bestSellersList{
+        background: rgb(243, 243, 226);
+        border: 1px solid grey;
+        height: 100%;
+    }
+    
+    #bestSellersList h2{
+     position: relative;
+     padding:22px;
+
+    }
+    
+    #bestSellersList ol{
+        text-align: left;
+        padding:20px;
+    }
+    
+    #bestSellersList ol li{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 0.9em;
+        color: black; 
+        margin-bottom: 40px;
+        padding:5px;
+    }
+    
+}
+
+
+/*onlineRead.html CSS-------------------------------------*/
+
+/*Mobile-------------------------------------*/
+@media only screen and (max-width: 570px){
+      
+      #orReadingIntro{
+        background: rgb(212, 212, 134);
+        padding: 20px;
+        text-align: center;
+      }
+      
+      #orReadingIntro p{
+        font-size: 15px;
+      }
+      
+      aside{
+          background: white;
+          padding:20px;
+          height: 100%;
+          border:1px solid grey;
+          border-bottom: none;
+      }
+      
+      aside #orProtocol{
+      background: rgb(243, 243, 226);
+      height: 100%;
+      border:1px solid grey;
+      
+      }
+      
+      aside #orProtocolOverview{
+        padding:20px;
+      }
+      
+      aside #orProtocolOverview p{
+        font-weight: bold;
+      } 
+      
+      aside #orProtocolList{
+         
+      } 
+      
+      aside #orProtocolList li{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 0.8em;
+          color: black; 
+          margin-bottom: 80px;
+          margin-right: 20px;
+      } 
+      
+      #orReadingBooks{
+          border: 1px solid grey;
+          padding:20px;
+          border-bottom: none;
+         
+      }
+      
+      #orReadingBooks p:first-child{
+           font-weight: bold;
+           font-size: 19px;
+      }
+      
+      #orReadingBooks .orBook{
+          background: rgb(243, 243, 226);
+          padding:20px;
+          border: 1px solid black;
+          margin-bottom: 10px;
+          border-style: dashed;
+      
+      }
+      
+      #orReadingBooks .orBook h2{
+       font-size: 15px;
+      }
+      
+      #orReadingBooks .orBook h2 a{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 18px;;
+          color: blue;
+      }
+      
+      #orReadingBooks .orBook img{
+       
+      }
+      
+      #orReadingBooks .orBook p{
+       
+      }
+}
+/*Tablet-------------------------------------*/
+@media only screen and (min-width: 571px) and (max-width: 1010px){
+  
+      
+      #orReadingIntro{
+        background: rgb(212, 212, 134);
+        padding: 20px;
+      }
+      
+      #orReadingIntro p{
+        font-size: 15px;
+      }
+      
+      aside{
+          background: white;
+          padding:20px;
+          height: 100%;
+          border:1px solid grey;
+          border-bottom: none;
+      }
+      
+      aside #orProtocol{
+      background: rgb(243, 243, 226);
+      height: 100%;
+      border:1px solid grey;
+      }
+      
+      aside #orProtocolOverview{
+        padding:20px;
+      }
+      
+      aside #orProtocolOverview p{
+        font-weight: bold;
+        font-size: 15px;
+      } 
+      
+      aside #orProtocolList{
+         
+      } 
+      
+      aside #orProtocolList li{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 0.9em;
+          color: black; 
+          margin-bottom: 80px;
+      } 
+      
+      #orReadingBooks{
+          border: 1px solid grey;
+          border-bottom: none;
+          padding:20px;
+         
+      }
+      
+      #orReadingBooks p:first-child{
+           font-weight: bold;
+           font-size: 18px;
+      }
+      
+      #orReadingBooks .orBook{
+          background: rgb(243, 243, 226);
+          padding:20px;
+          border: 1px solid black;
+          margin-bottom: 10px;
+          border-style: dashed;
+      
+      }
+      
+      #orReadingBooks .orBook h2{
+          font-size:17px;
+       
+      }
+      
+      #orReadingBooks .orBook h2 a{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 18px;;
+          color: blue;
+      }
+      
+      #orReadingBooks .orBook img{
+       
+      }
+      
+      #orReadingBooks .orBook p{
+       
+      }
+}
+/*Desktop-------------------------------------*/
+@media only screen and (min-width: 1011px){
+  
+      
+      #orReadingIntro{
+        background: rgb(212, 212, 134);
+        padding: 20px;
+      }
+      
+      #orReadingIntro p{
+        font-size: 20px;
+      }
+      
+      aside{
+          background: white;
+          padding:20px;
+          height: 100%;
+          border:1px solid grey;
+      }
+      
+      aside #orProtocol{
+      background: rgb(243, 243, 226);
+      height: 100%;
+      border:1px solid grey;
+      width:100%;
+      }
+      
+      aside #orProtocolOverview{
+        padding:20px;
+      }
+      
+      aside #orProtocolOverview p{
+        font-weight: bold;
+      } 
+      
+      aside #orProtocolList{
+         
+      } 
+      
+      aside #orProtocolList li{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 0.9em;
+          color: black; 
+          margin-bottom: 80px;
+          padding:15px;
+      } 
+      
+      #orReadingBooks{
+          border: 1px solid grey;
+          border-right: none;
+          padding:20px;
+         
+      }
+      
+      #orReadingBooks p:first-child{
+           font-weight: bold;
+           font-size: 25px;
+      }
+      
+      #orReadingBooks .orBook{
+          background: rgb(243, 243, 226);
+          padding:20px;
+          border: 1px solid black;
+          margin-bottom: 10px;
+          border-style: dashed;
+      
+      }
+      
+      #orReadingBooks .orBook h2{
+       
+      }
+      
+      #orReadingBooks .orBook h2 a{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 18px;;
+          color: blue;
+      }
+      
+      #orReadingBooks .orBook img{
+       
+      }
+      
+      #orReadingBooks .orBook p{
+       
+      }
+
+}
+
+
+
+
+
+/*localBookshops.html CSS-----------------------------------*/
+
+/*Mobile-------------------------------------*/
+@media only screen and (max-width: 570px){
+
+    
+    
+    
+    #lbsImageMap{
+        text-align: center;
+        background: rgb(229, 231, 245);
+        padding:10px;
+    }
+    
+    #lbsImageMap img{
+      width:100%;
+      height: auto;
+    }
+    
+    #lbsImageCaption{
+        background: rgb(229, 231, 245);
+        text-align: center;
+    }
+    
+    #lbsImageCaption p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 15px;;
+        color: black;
+    }
+    
+    .lbsShop{
+        padding:20px;
+        background: rgb(243, 243, 226);
+        border:2px solid lightgray;
+        margin:2px;
+        border-style: dotted;
+    
+    }
+    
+    .lbsShop .lbsShopTitle{
+        background: rgb(212, 212, 134);
+    }
+    
+    .lbsShop .lbsShopTitle h2{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color: black;
+    }
+    
+    .lbsShop .lbsShopDescription{
+    
+    }
+    
+    .lbsShop .lbsShopDescription p{
+      
+    }
+    
+    .lbsShop .lbsShopImage{
+    
+    }
+    
+    .lbsShop .lbsShopImage img{
+       
+    }
+    
+    .lbsShop .lbsShopOpeningTimes{
+    
+    }
+    
+    .lbsShop .lbsShopOpeningTimes p{
+        font-weight: bold;
+    }
+    
+    .lbsShop .lbsShopOpeningTimes table{
+    
+    }
+    
+    .lbsShop .lbsShopOpeningTimes table th{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+        float: left;
+    }
+    
+    .lbsShop .lbsShopOpeningTimes table td{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color:hsl(0, 0%, 0%);
+    }
+    
+    .lbsShop .lbsShopContactName{
+    
+    }
+    
+    .lbsShop .lbsShopContactName p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: lighter;
+        font-size: 18px;;
+        color:rgb(0, 0, 0);
+    }
+    
+    .lbsShop .lbsShopAddress{
+    
+    }
+    
+    .lbsShop .lbsShopAddress address{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 13px;
+        color:rgb(0, 0, 0);
+    }
+}
+/*Tablet-------------------------------------*/
+@media only screen and (min-width: 571px) and (max-width: 1010px){
+    
+    
+    #lbsImageMap{
+        text-align: center;
+        background: rgb(229, 231, 245);
+        padding:10px;
+    }
+    
+    #lbsImageMap img{
+      width:100%;
+      height: auto;
+    }
+    
+    #lbsImageCaption{
+        background: rgb(229, 231, 245);
+        text-align: center;
+    }
+    
+    #lbsImageCaption p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 18px;;
+        color: black;
+    }
+    
+    .lbsShop{
+        padding:20px;
+        background: rgb(243, 243, 226);
+        border:2px solid lightgray;
+        margin:2px;
+        border-style: dotted;
+    
+    }
+    
+    .lbsShop .lbsShopTitle{
+        background: rgb(212, 212, 134);
+    }
+    
+    .lbsShop .lbsShopTitle h2{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color: black;
+    }
+    
+    .lbsShop .lbsShopDescription{
+    
+    }
+    
+    .lbsShop .lbsShopDescription p{
+      
+    }
+    
+    .lbsShop .lbsShopImage{
+    
+    }
+    
+    .lbsShop .lbsShopImage img{
+       
+    }
+    
+    .lbsShop .lbsShopOpeningTimes{
+    
+    }
+    
+    .lbsShop .lbsShopOpeningTimes p{
+        font-weight: bold;
+    }
+    
+    .lbsShop .lbsShopOpeningTimes table{
+    
+    }
+    
+    .lbsShop .lbsShopOpeningTimes table th{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+        float: left;
+    }
+    
+    .lbsShop .lbsShopOpeningTimes table td{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color:hsl(0, 0%, 0%);
+    }
+    
+    .lbsShop .lbsShopContactName{
+    
+    }
+    
+    .lbsShop .lbsShopContactName p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: lighter;
+        font-size: 18px;;
+        color:rgb(0, 0, 0);
+    }
+    
+    .lbsShop .lbsShopAddress{
+    
+    }
+    
+    .lbsShop .lbsShopAddress address{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;
+        color:rgb(0, 0, 0);
+    }
+}
+/*Desktop-------------------------------------*/
+@media only screen and (min-width: 1011px){
+    
+    
+    #lbsImageMap{
+        text-align: center;
+        background: rgb(229, 231, 245);
+        padding:100px;
+        width:100%;
+    }
+    
+    #lbsImageMap img{
+        width: 100%;
+        height: auto;
+    }
+    
+    #lbsImageCaption{
+        background: rgb(229, 231, 245);
+        text-align: center;
+    }
+    
+    #lbsImageCaption p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 18px;;
+        color: black;
+    }
+    
+    .lbsShop{
+        padding:20px;
+        background: rgb(243, 243, 226);
+        border:2px solid lightgray;
+        margin:2px;
+        border-style: dotted;
+        height: 99%;
+    
+    }
+    
+    .lbsShop .lbsShopTitle{
+        background: rgb(212, 212, 134);
+    }
+    
+    .lbsShop .lbsShopTitle h2{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color: black;
+    }
+    
+    .lbsShop .lbsShopDescription{
+    
+    }
+    
+    .lbsShop .lbsShopDescription p{
+      
+    }
+    
+    .lbsShop .lbsShopImage{
+    
+    }
+    
+    .lbsShop .lbsShopImage img{
+       
+    }
+    
+    .lbsShop .lbsShopOpeningTimes{
+    
+    }
+    
+    .lbsShop .lbsShopOpeningTimes p{
+        font-weight: bold;
+    }
+    
+    .lbsShop .lbsShopOpeningTimes table{
+    
+    }
+    
+    .lbsShop .lbsShopOpeningTimes table th{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+        float: left;
+    }
+    
+    .lbsShop .lbsShopOpeningTimes table td{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color:hsl(0, 0%, 0%);
+    }
+    
+    .lbsShop .lbsShopContactName{
+    
+    }
+    
+    .lbsShop .lbsShopContactName p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: lighter;
+        font-size: 18px;;
+        color:rgb(0, 0, 0);
+    }
+    
+    .lbsShop .lbsShopAddress{
+    
+    }
+    
+    .lbsShop .lbsShopAddress address{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;
+        color:rgb(0, 0, 0);
+    }
+}
+
+/*localReadingGroups.html CSS----------------------------------*/
+
+/*Mobile-------------------------------------*/
+@media only screen and (max-width: 570px){
+
+ 
+    
+    #lrgImageMap{
+        text-align: center;
+        background: rgb(229, 231, 245);
+        padding:10px;
+    }
+    
+    #lrgImageMap img{
+      width:100%;
+      height:auto;
+    }
+    
+    #lrgImageMapCaption{
+        background: rgb(229, 231, 245);
+        text-align: center;
+    }
+    
+    #lrgImageMapCaption p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 14px;;
+        color: black;
+    }
+    
+    .lrgGroup{
+       padding:20px;
+       background: rgb(243, 243, 226);
+       border:2px solid lightgray;
+       margin:2px;
+       border-style: dotted;
+    
+    }
+    
+    .lrgGroup .lrgGroupTitle {
+        background: rgb(212, 212, 134);
+    }
+    
+    .lrgGroup .lrgGroupTitle h2{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color: black;
+    }
+    
+    .lrgGroup .lrgGroupDescription{
+    
+    }
+    
+    .lrgGroup .lrgGroupDescription p{
+     
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes{
+    
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes p{
+        font-weight: bold;
+      
+       
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes table{
+    
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes table th{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+        float:left;
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes table td{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+     
+    }
+    
+    
+    .lrgGroup .lrgGroupContactName{
+    
+    }
+    
+    .lrgGroup .lrgGroupContactName p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: lighter;
+        font-size: 18px;;
+        color:rgb(0, 0, 0);
+        position: relative;
+        top:20px;
+    }
+    
+    
+    .lrgGroup .lrgGroupAddress{
+    
+    }
+    
+    .lrgGroup .lrgGroupAddress p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+        position: relative;
+        top:20px;
+    }
+}
+/*Tablet-------------------------------------*/
+@media only screen and (min-width: 571px) and (max-width: 1010px){
+
+    
+    #lrgImageMap{
+        text-align: center;
+        background: rgb(229, 231, 245);
+        padding:10px;
+    }
+    
+    #lrgImageMap img{
+      width:100%;
+      height:auto;
+    }
+    
+    #lrgImageMapCaption{
+        background: rgb(229, 231, 245);
+        text-align: center;
+    }
+    
+    #lrgImageMapCaption p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 18px;;
+        color: black;
+    }
+    
+    .lrgGroup{
+       padding:20px;
+       background: rgb(243, 243, 226);
+       border:2px solid lightgray;
+       margin:2px;
+       border-style: dotted;
+    
+    }
+    
+    .lrgGroup .lrgGroupTitle {
+        background: rgb(212, 212, 134);
+    }
+    
+    .lrgGroup .lrgGroupTitle h2{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color: black;
+    }
+    
+    .lrgGroup .lrgGroupDescription{
+    
+    }
+    
+    .lrgGroup .lrgGroupDescription p{
+     
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes{
+    
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes p{
+        font-weight: bold;
+      
+       
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes table{
+    
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes table th{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+        float:left;
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes table td{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+     
+    }
+    
+    
+    .lrgGroup .lrgGroupContactName{
+    
+    }
+    
+    .lrgGroup .lrgGroupContactName p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: lighter;
+        font-size: 18px;;
+        color:rgb(0, 0, 0);
+        position: relative;
+        top:20px;
+    }
+    
+    
+    .lrgGroup .lrgGroupAddress{
+    
+    }
+    
+    .lrgGroup .lrgGroupAddress p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+        position: relative;
+        top:20px;
+    }
+    
+}
+/*Desktop-------------------------------------*/
+@media only screen and (min-width: 1011px){
+ 
+    
+    #lrgImageMap{
+        text-align: center;
+        background: rgb(229, 231, 245);
+        padding:100px;
+        width:100%;
+    }
+    
+    #lrgImageMap img{
+      width:100%;
+      height:auto;
+    }
+    
+    #lrgImageMapCaption{
+        background: rgb(229, 231, 245);
+        text-align: center;
+    }
+    
+    #lrgImageMapCaption p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 18px;;
+        color: black;
+    }
+    
+    .lrgGroup{
+       padding:20px;
+       background: rgb(243, 243, 226);
+       border:2px solid lightgray;
+       margin:2px;
+       border-style: dotted;
+       height: 99%;
+    
+    }
+    
+    .lrgGroup .lrgGroupTitle {
+        background: rgb(212, 212, 134);
+    }
+    
+    .lrgGroup .lrgGroupTitle h2{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color: black;
+    }
+    
+    .lrgGroup .lrgGroupDescription{
+    
+    }
+    
+    .lrgGroup .lrgGroupDescription p{
+     
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes{
+    
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes p{
+        font-weight: bold;
+      
+       
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes table{
+    
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes table th{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+        float:left;
+    }
+    
+    .lrgGroup .lrgGroupMeetTimes table td{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+     
+    }
+    
+    
+    .lrgGroup .lrgGroupContactName{
+    
+    }
+    
+    .lrgGroup .lrgGroupContactName p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: lighter;
+        font-size: 18px;;
+        color:rgb(0, 0, 0);
+        position: relative;
+        top:20px;
+    }
+    
+    
+    .lrgGroup .lrgGroupAddress{
+    
+    }
+    
+    .lrgGroup .lrgGroupAddress p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color:rgb(0, 0, 0);
+        position: relative;
+        top:20px;
+    }
+
+}
+
+
+/*book1-5.html CSS---------------------------------------*/
+
+/*Mobile-------------------------------------*/
+@media only screen and (max-width: 570px){
+
+      #orBookTitle{
+          text-align: center;
+          background: rgb(212, 212, 134);
+          padding:10px;
+      
+      }
+      
+      #orBookTitle h2{
+        font-size: 19px;
+        
+      }
+      
+      #orBookTitle p{
+       padding: 10px;
+       text-align: center;
+      }
+      
+      #orBookdCurrent
+      {
+        padding:20px;
+        border: 1px solid grey;
+        border-bottom:none;
+        background: rgb(243, 243, 226);
+      }
+      
+      #orBookdCurrent #orBookDcTitle{
+          
+      }
+      
+      #orBookdCurrent #orBookDcTitle h3
+      {
+         font-size:16px;
+      }
+      
+      #orBookdCurrent #orBookDcSeal{
+      
+      }
+      
+      #orBookdCurrent #orBookDcSeal p
+      {
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 15px;;
+          color:rgb(0, 0, 0);
+      }
+      
+      #orBookdCurrent .orBookDcComment 
+      {
+          border: 1px solid grey;
+          margin-bottom: 10px;
+          padding: 10px;
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcContent{
+         
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcContent .ContPic{
+        
+      } 
+      
+      #orBookdCurrent .orBookDcComment .orBookDcContent .ContPic img{
+         
+      } 
+      
+      
+      #orBookdCurrent .orBookDcComment  .orBookDcContent .ContName{
+          
+      }
+      
+      #orBookdCurrent .orBookDcComment  .orBookDcContent .ContName p{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 18px;;
+          color:rgb(0, 0, 0);
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcText{
+         
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcText q{
+         
+      }
+      
+      #orBookdCurrent .orBookDcComment .ContDate{
+      
+      }
+      
+      #orBookdCurrent .orBookDcComment .ContDate time
+      {
+          font-family: 'Times New Roman', Times, serif;
+          font-style: italic;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 15px;;
+          color:black;
+      }
+
+      aside{
+          border:none;
+          padding:0;
+      }
+      
+      #orBookDiscussions{
+          padding: 10px;
+          border: 1px solid grey;
+          background: rgb(229, 231, 245);
+          border-bottom: none;
+      
+      }
+      
+      #orBookDiscussions p{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: bold;
+          font-size: 20px;;
+          color:black;
+      }
+      
+      #orBookDiscussions .orBookDiscussion{
+      
+      }
+      
+      #orBookDiscussions .orBookDiscussion h3{
+          font-weight: normal;
+      }
+      
+      #orBookVideo{
+          border: 1px solid grey;
+          border-bottom:none;
+          text-align: center;
+          padding:0;
+          margin:0;
+          background: rgb(229, 231, 245);
+       
+      }
+      
+      #orBookVideo video{
+          position: relative;
+          bottom:5px;
+      }
+
+}
+/*Tablet-------------------------------------*/
+@media only screen and (min-width: 571px) and (max-width: 1010px){
+
+      
+      #orBookTitle{
+          text-align: center;
+          background: rgb(212, 212, 134);
+          padding:10px;
+      
+      }
+      
+      #orBookTitle h2{
+        font-size: 22px;
+        
+      }
+      
+      #orBookTitle p{
+        padding: 10px;
+        text-align: center;
+      }
+      
+      #orBookdCurrent
+      {
+        padding:20px;
+        border: 1px solid grey;
+        background: rgb(243, 243, 226);
+        border-right: none;
+        border-bottom: none;
+      }
+      
+      #orBookdCurrent #orBookDcTitle{
+          
+      }
+      
+      #orBookdCurrent #orBookDcTitle h3
+      {
+         
+      }
+      
+      #orBookdCurrent #orBookDcSeal{
+      
+      }
+      
+      #orBookdCurrent #orBookDcSeal p
+      {
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 15px;;
+          color:rgb(0, 0, 0);
+      }
+      
+      #orBookdCurrent .orBookDcComment 
+      {
+          border: 1px solid grey;
+          margin-bottom: 10px;
+          padding: 10px;
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcContent{
+         
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcContent .ContPic{
+        
+      } 
+      
+      #orBookdCurrent .orBookDcComment .orBookDcContent .ContPic img{
+         
+      } 
+      
+      
+      #orBookdCurrent .orBookDcComment  .orBookDcContent .ContName{
+          
+      }
+      
+      #orBookdCurrent .orBookDcComment  .orBookDcContent .ContName p{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 18px;;
+          color:rgb(0, 0, 0);
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcText{
+         
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcText q{
+         
+      }
+      
+      #orBookdCurrent .orBookDcComment .ContDate{
+      
+      }
+      
+      #orBookdCurrent .orBookDcComment .ContDate time
+      {
+          font-family: 'Times New Roman', Times, serif;
+          font-style: italic;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 15px;;
+          color:black;
+      }
+      aside{
+        width:100%;
+        height: 100%;
+        padding:0;
+        border: none;
+    }
+    
+    #orBookDiscussions{
+        padding: 10px;
+        border: 1px solid grey;
+        background: rgb(229, 231, 245);
+        height: 60%;
+      
+
+    
+    }
+    
+    #orBookDiscussions p{
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color:black;
+    }
+    
+    #orBookDiscussions .orBookDiscussion{
+    
+    }
+    
+    #orBookDiscussions .orBookDiscussion h3{
+        font-weight: normal;
+    }
+    
+    #orBookVideo{
+        border: 1px solid grey;
+        border-top: none;
+        text-align: center;
+        padding:0;
+        margin:0;
+        background: rgb(229, 231, 245);
+        height: 40%;
+     
+    }
+    
+    #orBookVideo video{
+        padding:5px;
+        margin: 0;
+        position: relative;
+        bottom: 10px;
+        
+
+    }
+}
+/*Desktop-------------------------------------*/
+@media only screen and (min-width: 1011px){
+
+      
+      #orBookTitle{
+          text-align: center;
+          background: rgb(212, 212, 134);
+      
+      }
+      
+      #orBookTitle h2{
+        font-size: 22px;
+        padding:10px;
+        
+      }
+      
+      #orBookTitle p{
+        padding:10px;
+      }
+      
+      #orBookdCurrent
+      {
+        padding:20px;
+        border: 1px solid grey;
+        border-right: none;
+        background: rgb(243, 243, 226);
+      }
+      
+      #orBookdCurrent #orBookDcTitle{
+          
+      }
+      
+      #orBookdCurrent #orBookDcTitle h3
+      {
+         
+      }
+      
+      #orBookdCurrent #orBookDcSeal{
+      
+      }
+      
+      #orBookdCurrent #orBookDcSeal p
+      {
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 15px;;
+          color:rgb(0, 0, 0);
+      }
+      
+      #orBookdCurrent .orBookDcComment 
+      {
+          border: 1px solid grey;
+          margin-bottom: 10px;
+          padding: 10px;
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcContent{
+         
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcContent .ContPic{
+        
+      } 
+      
+      #orBookdCurrent .orBookDcComment .orBookDcContent .ContPic img{
+         
+      } 
+      
+      
+      #orBookdCurrent .orBookDcComment  .orBookDcContent .ContName{
+          
+      }
+      
+      #orBookdCurrent .orBookDcComment  .orBookDcContent .ContName p{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 18px;;
+          color:rgb(0, 0, 0);
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcText{
+         
+      }
+      
+      #orBookdCurrent .orBookDcComment .orBookDcText q{
+         
+      }
+      
+      #orBookdCurrent .orBookDcComment .ContDate{
+      
+      }
+      
+      #orBookdCurrent .orBookDcComment .ContDate time
+      {
+          font-family: 'Times New Roman', Times, serif;
+          font-style: italic;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 15px;;
+          color:black;
+      }
+
+      aside{
+          width:100%;
+          height: 100%;
+          padding:0;
+          border: none;
+      }
+      
+      #orBookDiscussions{
+          padding: 10px;
+          border: 1px solid grey;
+          background: rgb(229, 231, 245);
+          height: 50%;
+        
+
+      
+      }
+      
+      #orBookDiscussions p{
+          font-family: 'Times New Roman', Times, serif;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: bold;
+          font-size: 20px;;
+          color:black;
+      }
+      
+      #orBookDiscussions .orBookDiscussion{
+      
+      }
+      
+      #orBookDiscussions .orBookDiscussion h3{
+          font-weight: normal;
+      }
+      
+      #orBookVideo{
+          border: 1px solid grey;
+          border-top: none;
+          text-align: center;
+          padding:0;
+          margin:0;
+          background: rgb(229, 231, 245);
+          height: 50%;
+       
+      }
+      
+      #orBookVideo video{
+          padding:0;
+          margin: 0;
+          position: relative;
+          top:25%;
+
+      }
+}
+
+
+/*Footer CSS-------------------------------------------*/
+
+footer { grid-area: footer; }
+/*Mobile-------------------------------------*/
+@media only screen and (max-width: 570px){
+    footer
+{
+    background:rgba(78, 119, 186, 255);
+    text-align: center;
+    width:100%;
+    padding: 10px;
+}
+
+footer #fpcontactInformation
+{
+    background: rgb(243, 243, 226);
+    text-align: center;
+    margin: auto;
+    width:99%;
+    padding:10px;
+    
+}
+
+footer #fpcontactInformation ul
+{
+    list-style:none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+footer #fpcontactInformation ul li
+{
+    padding: 8px; 
+}
+
+
+footer #fpcontactInformation #contact
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 20px;;
+    color: red;
+}
+
+footer #fpcontactInformation #name
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: black;
+}
+
+footer #fpcontactInformation #email
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: blue;
+}
+
+footer #fpcontactInformation #charity
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: black;
+}
+
+
+
+footer #fpcontactInformation ul li a
+{
+    
+}
+}
+/*Tablet-------------------------------------*/
+@media only screen and (min-width: 571px) and (max-width: 1010px){
+    footer
+    {
+        background:rgba(78, 119, 186, 255);
+        text-align: center;
+        width:100%;
+        padding: 10px;
+    }
+    
+    footer #fpcontactInformation
+    {
+        background: rgb(243, 243, 226);
+        text-align: center;
+        margin: auto;
+        width:99%;
+        padding:10px;
+        
+    }
+    
+    footer #fpcontactInformation ul
+    {
+        list-style:none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    
+    footer #fpcontactInformation ul li
+    {
+        padding: 8px; 
+    }
+    
+    
+    footer #fpcontactInformation #contact
+    {
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 20px;;
+        color: red;
+    }
+    
+    footer #fpcontactInformation #name
+    {
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color: black;
+    }
+    
+    footer #fpcontactInformation #email
+    {
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color: blue;
+    }
+    
+    footer #fpcontactInformation #charity
+    {
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 15px;;
+        color: black;
+    }
+    
+    
+    
+    footer #fpcontactInformation ul li a
+    {
+        
+    }
+}
+@media only screen and (min-width: 1011px){
+    footer
+{
+    background:rgba(78, 119, 186, 255);
+    text-align: center;
+    width:100%;
+    padding: 10px;
+}
+
+footer #fpcontactInformation
+{
+    background: rgb(243, 243, 226);
+    text-align: center;
+    margin: auto;
+    width:99%;
+    padding:10px;
+    
+}
+
+footer #fpcontactInformation ul
+{
+    list-style:none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+footer #fpcontactInformation ul li
+{
+    display: inline-block;
+    margin:20px;
+    height: 5px;
+    position: relative;
+    padding-bottom: 10px;
+    
+}
+
+
+footer #fpcontactInformation #contact
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 20px;;
+    color: red;
+}
+
+footer #fpcontactInformation #name
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: black;
+}
+
+footer #fpcontactInformation #email
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: blue;
+}
+
+footer #fpcontactInformation #charity
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;;
+    color: black;
+}
+
+
+
+footer #fpcontactInformation ul li a
+{
+    
+}
+}
+
