@@ -1,0 +1,74 @@
+<html>
+
+<body>
+    <header>
+        <button id="larger">MAKE ME LARGER</button>
+    </header>
+    <footer>
+        <style>
+            body {
+                height: 200px;
+                background: salmon;
+
+            }
+
+            .dot {
+                height: 8px;
+                width: 8px;
+                border-radius: 4px;
+                background: blue;
+                position: absolute;
+            }
+        </style>
+        <script>
+            document.body.addEventListener("mousemove", function (e) {
+                var dot = document.createElement("div");
+                dot.classList.add("dot");
+                dot.style.left = e.clientX + "px";
+                dot.style.top = e.clientY + "px";
+                if ((e.pageY -4) > 27)  {
+                    document.body.appendChild(dot);
+
+                }
+            });
+
+            const buttonlarger = document.getElementById("larger");
+            buttonlarger.addEventListener("mouseover", function (e) {
+                var dot = document.getElementsByClassName("dot");
+                for (var i = 0; i < dot.length; i++) {
+                    dot[i].style.height = "16px";
+                    dot[i].style.width = "16px";
+                    dot[i].style.borderRadius = "8px";
+                }
+            });
+
+            buttonlarger.addEventListener("mouseout", function (e) {
+                var dot = document.getElementsByClassName("dot");
+                for (var i = 0; i < dot.length; i++) {
+                    dot[i].style.height = "8px";
+                    dot[i].style.width = "8px";
+                    dot[i].style.borderRadius = "4px";
+                }
+            });
+
+
+
+
+            window.addEventListener("keydown", e => {
+                if (e.key == "v") {
+                    document.body.style.background = "blue";
+                }
+            })
+
+            window.addEventListener("keyup", e => {
+                if (e.key == "v") {
+                    document.body.style.background = "salmon";
+                }
+            })
+            //let a equals cat emoji
+            let a =     "🐱";
+        </script>
+    </footer>
+</body>
+ 
+</html>

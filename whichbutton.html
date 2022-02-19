@@ -1,0 +1,26 @@
+<html>
+
+<body>
+    <button id="btn">Click me whatever you may like</button>
+</body>
+
+<script>
+    var button = document.getElementById("btn");
+    function whichs(e){
+        if (event.button == 0){
+            alert("Left button clicked");
+        }
+        else if (event.button == 1){
+            alert("Middle button clicked");
+        }
+        else if (event.button == 2){
+            alert("Right button clicked");
+        }
+        console.log(event.whichs, "which");
+        console.log("event", event);
+        console.log("e", e); // e is the event object similar to event in the console
+    }
+    button.addEventListener("mousedown", whichs);
+</script>
+
+</html>

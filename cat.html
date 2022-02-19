@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <p id="cat" style="font-size: 90px;">🐱</p>
+    </body>
+
+    <footer>
+        <script>
+            const cat = document.getElementById("cat");
+            function keydown(){
+                const keyName = event.key;
+                if (keyName == "ArrowUp"){
+                    cat.style.fontSize = "150px";
+                }
+                else if (keyName == "ArrowDown"){
+                    cat.style.fontSize = "50px";
+                }
+                else if (keyName == "ArrowLeft"){
+                    cat.style.fontSize = "30px";
+                }
+                else if (keyName == "ArrowRight"){
+                    cat.style.fontSize = "60px";
+                }
+            }
+
+            window.addEventListener("keydown", keydown);
+            //keyup tends to be more accurate and safe when responding to a user holding a button down
+            //If the user holds the keyboard key down for long enough it will trigger a repeat which we have to be careful of.
+        </script>
+    </footer>
+</html>

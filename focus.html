@@ -1,0 +1,17 @@
+<html>
+    <body id="form">
+        <input type="text" placeholder="text input">
+        <input type="password" placeholder="password">
+    </body>
+
+    <script>
+        const form = document.getElementById("form");
+        form.addEventListener("focus", function(e){
+            e.target.style.backgroundColor = "pink";
+        }, true);
+
+        form.addEventListener("blur", function(e){
+            e.target.style.backgroundColor = "";
+        }, true);
+    </script>
+</html>

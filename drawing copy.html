@@ -1,0 +1,80 @@
+<html>
+
+<body>
+    <header>
+        <button id="larger">MAKE ME LARGER</button>
+    </header>
+    <footer>
+        <style>
+            body {
+                height: 200px;
+                background: salmon;
+
+            }
+
+            .dot {
+                height: 8px;
+                width: 8px;
+                border-radius: 4px;
+                background: blue;
+                position: absolute;
+            }
+        </style>
+        <script>
+            document.body.addEventListener("touchmove", function (e) {
+                for (let i = 0; i < e.touches.length; i++) {
+                    const fingers = e.touches[i];
+                    var dot = document.createElement("div");
+                    dot.className = "dot";
+                    dot.style.left = (fingers.pageX - 4) + "px";
+                    dot.style.top = (fingers.pageY - 4) + "px";
+                    document.body.appendChild(dot);
+
+                    // if ((fingers.pageY - 4) > 27) {
+                    //     document.body.appendChild(dot);
+
+                    // }
+                }
+                e.preventDefault()
+            }, {passive: false}); //work in chrome, edge, firefox for prevent default
+
+            // const buttonlarger = document.getElementById("larger");
+            // buttonlarger.addEventListener("mouseover", function (e) {
+            //     var dot = document.getElementsByClassName("dot");
+            //     for (var i = 0; i < dot.length; i++) {
+            //         dot[i].style.height = "16px";
+            //         dot[i].style.width = "16px";
+            //         dot[i].style.borderRadius = "8px";
+            //     }
+            // });
+
+            // buttonlarger.addEventListener("mouseout", function (e) {
+            //     var dot = document.getElementsByClassName("dot");
+            //     for (var i = 0; i < dot.length; i++) {
+            //         dot[i].style.height = "8px";
+            //         dot[i].style.width = "8px";
+            //         dot[i].style.borderRadius = "4px";
+            //     }
+            // });
+
+
+
+
+            window.addEventListener("keydown", e => {
+                if (e.key == "v") {
+                    document.body.style.background = "blue";
+                }
+            })
+
+            window.addEventListener("keyup", e => {
+                if (e.key == "v") {
+                    document.body.style.background = "salmon";
+                }
+            })
+            //let a equals cat emoji
+            let a =     "🐱";
+        </script>
+    </footer>
+</body>
+ 
+</html>

@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <p id="item" style="background-color: red; width:80px; height:20px;">
+    </body>
+    <script>
+        var lastX;
+        var item = document.getElementById("item");
+        item.addEventListener("mousedown", function(e){
+            if (e.which == 1){
+                lastX = e.clientX;
+                // console.log("lastX", lastX);
+                window.addEventListener("mousemove", function(e){
+                    // console.log("e.clientX", e.clientX);
+                    const dist = e.clientX - lastX;
+                    const newWidth = item.offsetWidth + dist;
+                    item.style.width = newWidth + "px";
+                    lastX = e.clientX;
+                    // item.style.left = e.clientX - lastX + "px";
+                });
+            }
+            // console.log(lastX);
+        });
+    </script>
+</html>
