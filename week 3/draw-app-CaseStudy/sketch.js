@@ -9,7 +9,7 @@ let imageB = null;
 let canvasContainer = null;
 let savedImg = {};
 let fonts = {};
-let savedPixels;// localStorage pixels
+let savedPixels; // localStorage pixels
 let AppMode;
 let undoArr; //store undoArr
 let redoArr; //store redoArr
@@ -23,11 +23,9 @@ function preload() {
     TMS: "Trebuchet MS",
     Verdana: "Verdana",
   };
-
 }
 
-let SaveWithoutAsync = false
-
+let SaveWithoutAsync = false;
 
 let noHistory = false;
 function setup() {
@@ -55,8 +53,6 @@ function setup() {
   colourP = new ColourPalette();
   imageB = new CanvasImage();
 
- 
-
   //add the tools to the toolbox.
   toolbox.addTool(new FreehandTool());
   toolbox.addTool(new LineToTool());
@@ -73,7 +69,8 @@ function setup() {
 
   background(255);
 
-  if (savedPixels) { // check if user has some existing changes in local storage
+  if (savedPixels) {
+    // check if user has some existing changes in local storage
     //if true display that image first
     loadImage(savedPixels, (img) => {
       savedImg = img;
@@ -83,7 +80,8 @@ function setup() {
     });
   }
 
-  cnv.mousePressed(function () { //set mousepressed on canvas. So it 
+  cnv.mousePressed(function () {
+    //set mousepressed on canvas. So it
     //doesn't get called outside canvas
     if (!toolbox.selectedTool.noHistory) {
       // noHistory is no undo or redo
@@ -95,12 +93,14 @@ function setup() {
     MousePressed();
   });
 
-  cnv.mouseReleased(() => { //set mousereleased on canvas. So it 
+  cnv.mouseReleased(() => {
+    //set mousereleased on canvas. So it
     //doesn't get called outside canvas
     MouseReleased();
   });
 
-  cnv.touchEnded(() => { //used as a result from feeback from testers
+  cnv.touchEnded(() => {
+    //used as a result from feeback from testers
     MouseReleased();
   });
 }
@@ -146,10 +146,8 @@ function MousePressed() {
 
 function MouseReleased() {
   if (SaveWithoutAsync) {
-
-  }
-
-   else {
+    //do nothing
+  } else {
     if (!toolbox.selectedTool.noHistory) {
       // noHistory is no undo or redo
       helpers.awaitSave();
@@ -158,12 +156,8 @@ function MouseReleased() {
       undobtn.attribute("disabled", "");
       redobtn.attribute("disabled", "");
     }
-   }
+  }
   if (toolbox.selectedTool.hasOwnProperty("mouseReleased")) {
     toolbox.selectedTool.mouseReleased();
   }
-
- 
 }
-
-

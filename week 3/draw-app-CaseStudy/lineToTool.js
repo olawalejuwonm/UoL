@@ -2,7 +2,8 @@ class LineToTool {
   constructor() {
     this.icon = "assets/lineTo.jpg";
     this.name = "LineTo";
-	this.description = "Line To tool can be use for drawing straight lines from one point to another. Click and drag on the canvas to use it"
+    this.description =
+      "Line To tool can be use for drawing straight lines from one point to another. Click and drag on the canvas to use it";
 
     let startMouseX = -1;
     let startMouseY = -1;
