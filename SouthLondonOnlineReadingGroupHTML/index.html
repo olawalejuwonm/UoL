@@ -2,103 +2,197 @@
 <html lang="en">
 
 <!-- This head section contains all the invisible information about the page -->
+
 <head>
-  <title>South London Reading Club - Home</title>
-  <meta charset="utf-8">
-  <meta name="description" content="This is a website for a community of people interested in reading books for discussion and sharing.">
-  <meta name="author" content="Online Reading Community">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="refresh" content="600">
-  <meta name="keywords" content="Book Reading Discussion 'Reading Club'">
-  <link rel="stylesheet" type="text/css" href="StyleSheet/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <title>South London Reading Club - Home</title>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="This is a website for a community of people interested in reading books for discussion and sharing.">
+    <meta name="author" content="Online Reading Community">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="refresh" content="600">
+    <meta name="keywords" content="Book Reading Discussion 'Reading Club'">
+    <link rel="stylesheet" type="text/css" href="StyleSheet/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 </head>
 
 <!-- This body section contains the structure for all the visble content -->
+
 <body>
 
-<header>
-    <script id="template" type="template/handlebars">
-        <h1>{{title}}</h1>
+    <header>
+        <script id="template" type="template/handlebars">
+        <h1>{{caps "South London bookclub" lower="yes"}}</h1>
 
     </script>
-    <span id="target"></span>
-    <object data="img/logo.svg"> 
-    </object>    
-</header>
-<script >
-    const src=document.getElementById("template").innerHTML;
-    const template = Handlebars.compile(src);
-    const rendered = template({title: "South london Book Club"})
-    document.getElementById("target").innerHTML = rendered
+        <span id="target"></span>
+        <object data="img/logo.svg">
+        </object>
+    </header>
+    <script>
+        const src = document.getElementById("template").innerHTML;
+        const template = Handlebars.compile(src);
+        Handlebars.registerHelper("caps", function (text, options) {
+            if (!options.hash.lower || options.hash.lower === "no") {
+                return text.toUpperCase();
+            }
+            else {
+                return text.toLowerCase();
+            }
+        });
+        const rendered = template()
+        document.getElementById("target").innerHTML = rendered
 
-</script>
+    </script>
 
-<nav>
-<ol>
-  <li><a href="index.html">Home</a></li>
-  <li><a href="onlineRead.html">Online reads</a></li>
-  <li><a href="localReadingGroups.html">Local reading groups</a></li>
-  <li><a href="localBookShops.html">Local bookshops</a></li>
-</ol>
-</nav>
+    <nav>
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="onlineRead.html">Online reads</a></li>
+            <li><a href="localReadingGroups.html">Local reading groups</a></li>
+            <li><a href="localBookShops.html">Local bookshops</a></li>
+        </ol>
+    </nav>
 
-<div id="fpIntro">
-	<div id="fpintroTitle">
-		<p>
-    	Welcome to South London Reading Club.
-		</p>
-	</div>
-	<div id="fpintroText">
-        <p>The South London Reading Club is an online community of book readers based in South East London.</p>
-	</div>
-</div>
-
-<div id="fplinkArea">
-	<div class="fplinkAreaContent">
-		<h2>Books being read</h2>
-		<p>There are a number of books being read online. You can join any one of the groups and read along with the other members</p>
-		To find out more, go to the <a href="onlineRead.html">online reads page</a>.
-	</div>
-
-
-	<div class="fplinkAreaContent">
-		<h2>Local reading groups</h2>
-		<p>There are a variety of different reading groups in your area...</p>
-		To find out more, go to the <a href="localReadingGroups.html">local reading groups page</a>.
-	</div>
-	
-	<div class="fplinkAreaContent">
-		<h2>Local bookshops</h2>
-        <p>The South London Reading Club supports local bookshops,
-who often have special offers to coincide with the books being read.</p>
-        To find out more, go to the <a href="localBookShops.html">local bookshops page</a>.
-    </div>    
-</div>
-    
-<div id="bestSellersList">
-    <h2>Best Sellers</h2>
-    <ol>
-        <li><b>The Woman in the Window</b> by <em>A.J.Finn</em></li>
-        <li><b>Stand By Me</b> by <em>S.D.Robertson</em></li>
-        <li><b>One in a Million</b> by <em>Lindsey Kelk</em></li>
-        <li><b>The Secret Wife</b> by <em>Gill Paul</em></li>
-        <li><b>Try Not to Breathe</b> by <em>Holly Seddon</em></li>
-        <li><b>The Stranger</b> by <em>Saskia Sarginson </em></li>
-    </ol>
-</div>
-
-
-<footer>
-    <div id="fpcontactInformation">
-            <ul>
-                <li id = "contact">Contact Us:</li>
-                <li id = "name">Mrs S Smith</li>
-                <li id = "email"><a href="s.smithatemail.com">s.smithatemail.com</a></li>
-                <li id = "charity">Charity number: 987654321RR0001</li>
-            </ul>
+    <div id="fpIntro">
+        <div id="fpintroTitle">
+            <p>
+                <script id="greettemplate" type="template/handlebars">
+                    <p>{{greetings}} to South London Reading Club.</p>
+                </script>
+            </p>
+            <span id="greettarget"></span>
+            <script>
+                const greetsrc = document.getElementById("greettemplate").innerHTML;
+                const greettemplate = Handlebars.compile(greetsrc);
+                Handlebars.registerHelper("greetings", function (options, options2) {
+                    console.log("micheal ~ file: index.html ~ line 69 ~ options2", options2)
+                    console.log("micheal ~ file: index.html ~ line 71 ~ options", options)
+                    switch (options.data.language) {
+                        case "en":
+                            return "Welcome to"
+                        case "es":
+                            return "Bienvenido a"
+                        case "fr":
+                            return "Bienvenue à"
+                        case "de":
+                            return "Willkommen bei"
+                        case "yo":
+                            return "Welkom by"
+                        default:
+                            return "Welcome to"
+                    }
+                });
+                const greetrendered = greettemplate({}, {
+                    data: {
+                        language: "fr"
+                    }
+                });
+                document.getElementById("greettarget").innerHTML = greetrendered
+            </script>
+        </div>
+        <div id="fpintroText">
+            <p>The South London Reading Club is an online community of book readers based in South East London.</p>
+        </div>
     </div>
-</footer>
+
+    <div id="fplinkArea">
+        <script id="readtemplate" type="template/handlebars">
+            {{#if beingread}} //#unless can also be used
+            <div class="fplinkAreaContent">
+                <h2>Books being read</h2>
+                <p>There are a number of books being read online. You can join any one of the groups and read along with the
+                    other members</p>
+                To find out more, go to the <a href="onlineRead.html">online reads page</a>.
+            </div>
+            {{/if}}
+        </script>
+        <span id="readtarget"></span>
+        <script>
+            const readsrc = document.getElementById("readtemplate").innerHTML;
+            const readtemplate = Handlebars.compile(readsrc);
+            const readrendered = readtemplate({
+                beingread: true
+            });
+            document.getElementById("readtarget").innerHTML = readrendered
+        </script>
+
+
+
+        <div class="fplinkAreaContent">
+            <h2>Local reading groups</h2>
+            <p>There are a variety of different reading groups in your area...</p>
+            To find out more, go to the <a href="localReadingGroups.html">local reading groups page</a>.
+        </div>
+
+        <div class="fplinkAreaContent">
+            <h2>Local bookshops</h2>
+            <p>The South London Reading Club supports local bookshops,
+                who often have special offers to coincide with the books being read.</p>
+            To find out more, go to the <a href="localBookShops.html">local bookshops page</a>.
+        </div>
+    </div>
+
+    <div id="bestSellersList">
+        <h2>Best Sellers</h2>
+        <script id="besttemplate" type="template/handlebars">
+      <ol>
+            {{#each bestsellers}}
+       <li>{{title}}</li>
+       {{/each}}
+      </ol>
+    </script>
+        <ol>
+            <li><b>The Woman in the Window</b> by <em>A.J.Finn</em></li>
+            <li><b>Stand By Me</b> by <em>S.D.Robertson</em></li>
+            <li><b>One in a Million</b> by <em>Lindsey Kelk</em></li>
+            <li><b>The Secret Wife</b> by <em>Gill Paul</em></li>
+            <li><b>Try Not to Breathe</b> by <em>Holly Seddon</em></li>
+            <li><b>The Stranger</b> by <em>Saskia Sarginson </em></li>
+        </ol>
+    </div>
+
+    <script>
+        const bestsrc = document.getElementById("besttemplate").innerHTML;
+        const besttemplate = Handlebars.compile(bestsrc);
+        Handlebars.registerHelper("list", function (context, options) {
+            var ret = "<ol>";
+            for (var i = 0, j = context.length; i < j; i++) {
+                ret = ret + "<li>" + Handlebars.Utils.escapeExpression(context[i].title) + " by " + "</li>";
+            }
+            ret = ret + "</ol>";
+            return new Handlebars.SafeString(ret);
+        });
+        const bestrendered = besttemplate({
+            bestsellers: [{
+                title: "The secret wife",
+
+            },
+            {
+                title: "Stand by me",
+
+            },
+            {
+                title: "One in a million",
+
+            },
+            ]
+        })
+        document.getElementById("bestSellersList").innerHTML = bestrendered
+    </script>
+
+
+    <footer>
+        <div id="fpcontactInformation">
+            <ul>
+                <li id="contact">Contact Us:</li>
+                <li id="name">Mrs S Smith</li>
+                <li id="email"><a href="s.smithatemail.com">s.smithatemail.com</a></li>
+                <li id="charity">Charity number: 987654321RR0001</li>
+            </ul>
+        </div>
+    </footer>
 
 </body>
+
 </html>
