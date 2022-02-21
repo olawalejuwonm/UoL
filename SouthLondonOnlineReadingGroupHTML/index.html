@@ -11,16 +11,28 @@
   <meta name="refresh" content="600">
   <meta name="keywords" content="Book Reading Discussion 'Reading Club'">
   <link rel="stylesheet" type="text/css" href="StyleSheet/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 </head>
 
 <!-- This body section contains the structure for all the visble content -->
 <body>
 
 <header>
-	<h1>South London Reading Club - Home</h1>
+    <script id="template" type="template/handlebars">
+        <h1>{{title}}</h1>
+
+    </script>
+    <span id="target"></span>
     <object data="img/logo.svg"> 
     </object>    
 </header>
+<script >
+    const src=document.getElementById("template").innerHTML;
+    const template = Handlebars.compile(src);
+    const rendered = template({title: "South london Book Club"})
+    document.getElementById("target").innerHTML = rendered
+
+</script>
 
 <nav>
 <ol>
