@@ -1,0 +1,405 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,300,500,600|Roboto:400|Lato:400,400italic");
+
+.home {
+  align-items: flex-end;
+  background-color: 
+#ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 1987px;
+  overflow: hidden;
+  width: 1440px;
+}
+
+.hidden,
+.hidden * {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.flex-col-1 {
+  align-items: flex-end;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: -18px;
+  margin-top: -20px;
+  min-height: 1353px;
+  width: 1379px;
+}
+
+.vector {
+  cursor: pointer;
+  height: 1px;
+  margin-top: 16px;
+  width: 1067px;
+}
+
+.flex-row-4 {
+  align-items: center;
+  display: flex;
+  margin-top: 36px;
+  min-width: 1062px;
+}
+
+.flex-col {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3px;
+  min-height: 191px;
+  width: 331px;
+}
+
+.lorem-ipsum-dolor-si {
+  cursor: pointer;
+  letter-spacing: 0;
+  line-height: 40.2px;
+  min-height: 131px;
+  width: 331px;
+}
+
+.tage-kene-okafor-80 {
+  cursor: pointer;
+  letter-spacing: 0;
+  margin-left: 9px;
+  min-height: 60px;
+}
+
+.unsplashh-si-t_-du-ke2c {
+  cursor: pointer;
+  height: 221px;
+  margin-left: 32px;
+  width: 336px;
+}
+
+.lorem-ipsum-dolor-si-1 {
+  cursor: pointer;
+  letter-spacing: 0;
+  margin-left: 32px;
+  margin-top: 9px;
+  min-height: 197px;
+  width: 331px;
+}
+
+.flex-row {
+  align-items: flex-start;
+  display: flex;
+  height: 1079px;
+  min-width: 1379px;
+}
+
+.flex-col-2 {
+  align-items: flex-end;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  margin-left: 49px;
+  min-height: 974px;
+  width: 1067px;
+}
+
+.flex-col-3 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-height: 704px;
+  width: 1067px;
+}
+
+.flex-row-2 {
+  align-items: flex-start;
+  align-self: flex-end;
+  display: flex;
+  height: 540px;
+  margin-top: 10px;
+  min-width: 1061px;
+}
+
+.flex-col-4 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-height: 539px;
+  width: 635px;
+}
+
+.taye-taiwo-1 {
+  letter-spacing: 0;
+  margin-left: 4px;
+  margin-top: 1px;
+  min-height: 27px;
+}
+
+.tier-mobility-acquir {
+  color: var(--main-colour);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xxxxl);
+  font-weight: 600;
+  letter-spacing: 0;
+  margin-left: 4px;
+  min-height: 100px;
+  width: 617px;
+}
+
+.unsplashxjx-wbf-so2f0 {
+  height: 391px;
+  margin-top: 20px;
+  width: 635px;
+}
+
+.flex-col-5 {
+  align-items: flex-start;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  margin-left: 27px;
+  min-height: 420px;
+  width: 399px;
+}
+
+.tier-mobility-acquir-2 {
+  letter-spacing: 1.26px;
+  line-height: 36.7px;
+  margin-top: 22px;
+  min-height: 111px;
+  width: 399px;
+}
+
+.line {
+  height: 1px;
+  margin-left: 3px;
+  margin-top: 10px;
+  width: 393px;
+}
+
+.line-4 {
+  height: 1px;
+  margin-left: 3px;
+  margin-top: 8px;
+  width: 393px;
+}
+
+.taye-taiwo {
+  letter-spacing: 0;
+  margin-left: 3px;
+  margin-top: 16px;
+  min-height: 27px;
+}
+
+.hot-topics {
+  color: var(--sub-colour);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xxxl);
+  font-weight: 600;
+  letter-spacing: 1.35px;
+  line-height: 39px;
+  margin-left: 3px;
+  min-height: 39px;
+  white-space: nowrap;
+}
+
+.tier-mobility-acquir-1 {
+  letter-spacing: 1.26px;
+  line-height: 36.4px;
+  margin-top: 24px;
+  min-height: 108px;
+  width: 399px;
+}
+
+.overlap-group4 {
+  height: 45px;
+  margin-top: 36px;
+  position: relative;
+  width: 1067px;
+}
+
+.vector-12 {
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 41px;
+  width: 1067px;
+}
+
+.latest-update {
+  color: var(--sub-colour);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xxxl);
+  font-weight: 500;
+  left: 5px;
+  letter-spacing: 0;
+  position: absolute;
+  top: 0;
+}
+
+.vector-8 {
+  height: 1px;
+  margin-top: 42px;
+  width: 1067px;
+}
+
+.lastect-teh {
+  height: 31px;
+  margin-left: 2px;
+  width: 227px;
+}
+
+.flex-row-3 {
+  align-items: center;
+  display: flex;
+  margin-top: 31px;
+  min-width: 1062px;
+}
+
+.flex-row-1 {
+  align-items: flex-start;
+  background-image: url(https://anima-uploads.s3.amazonaws.com/projects/62222073a0f95cf40249f1bc/releases/622220c8ba6c820092728e35/img/side-bar-1@1x.svg);
+  background-size: 100% 100%;
+  display: flex;
+  min-width: 263px;
+}
+
+.side-bar {
+  height: 1064px;
+  width: 263px;
+}
+
+.flex-col-6 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-right: 79px;
+  margin-top: 16px;
+  min-height: 320px;
+  width: 1067px;
+}
+
+.vector-11 {
+  height: 1px;
+  width: 1067px;
+}
+
+.footer {
+  align-items: flex-start;
+  display: flex;
+  margin-left: 5px;
+  margin-top: 76px;
+  min-width: 1045px;
+}
+
+.frame-5 {
+  align-items: flex-start;
+  display: flex;
+  height: 32px;
+  justify-content: flex-end;
+  margin-left: 230px;
+  margin-top: 1px;
+  min-width: 132px;
+  padding: 3px 0.7px;
+}
+
+.vector-container-2 {
+  align-self: flex-end;
+  height: 24px;
+  margin-bottom: 0;
+  margin-left: 24px;
+  position: relative;
+  width: 28px;
+}
+
+.vector-4 {
+  height: 24px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
+
+.vector-3 {
+  height: 1px;
+  left: 12px;
+  position: absolute;
+  top: 11px;
+  width: 1px;
+}
+
+.vector-container {
+  height: 26px;
+  position: relative;
+  width: 26px;
+}
+
+.vector-2 {
+  height: 26px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 26px;
+}
+
+.vector-1 {
+  height: 1px;
+  left: 13px;
+  position: absolute;
+  top: 13px;
+  width: 1px;
+}
+
+.vector-container-1 {
+  align-self: center;
+  height: 26px;
+  margin-left: 24px;
+  position: relative;
+  width: 26px;
+}
+
+.overlap-group3 {
+  height: 159px;
+  position: relative;
+  width: 683px;
+}
+
+.about-us {
+  color: var(--sub-colour);
+  font-family: var(--font-family-poppins);
+  font-size: 25px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 0;
+}
+
+.lorem-ipsum-dolor-si-2 {
+  color: var(--black);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-m);
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 33px;
+  width: 683px;
+}
+
+.title {
+  align-self: center;
+  color: var(--main-colour);
+  font-family: var(--font-family-poppins);
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin-right: 133px;
+  margin-top: 24px;
+  min-height: 60px;
+  min-width: 184px;
+}
+
+.flex-row-5 {
+  align-items: center;
+  display: flex;
+  margin-right: 79px;
+  margin-top: 36px;
+  min-width: 1062px;
+}
