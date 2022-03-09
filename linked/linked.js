@@ -71,7 +71,7 @@ function swapLL(point) {
   return false;
 }
 
-function bubbleLL(head) {
+function bubbleLL(head) { //for bubble sort
   if (head === null) {
     return head;
   }
