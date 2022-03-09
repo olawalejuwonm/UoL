@@ -14,7 +14,8 @@ function BubbleSort(vecArr) {
 
   for (let i = 0; i <= n - 2; i++) {
     //should be n-2
-    let count = 0; //count should be here if not it'll affect pass
+    let count = 0; //count should be here if not it'll affect pass, it should 
+    //be here so it get breaked before increasing pass
     for (let j = 0; j <= n - 2; j++) {
       //should be n-2
       if (vecArr[j + 1] < vecArr[j]) {
@@ -24,6 +25,8 @@ function BubbleSort(vecArr) {
     }
 
     if (count == 0) {
+      //add this if you want to include pass to check if it's sorted
+
       //if everything is already sorted and the pass run no swap was made stop looping
       break;
     }
@@ -31,7 +34,7 @@ function BubbleSort(vecArr) {
     // console.log(pass, "pass", vecArr);
   }
 
-  console.log("The pass was", pass, "and total comparison/swap is", comp);
+  console.log("The pass with swap was", pass, " last pass with sorted is: " , pass+1, "and total comparison/swap is", comp);
   console.log("sorted array", vecArr);
   return vecArr;
 }
@@ -212,10 +215,15 @@ function shift(arr, ith, jth) {
 // const s2 = shift(s1,( 3 - 1),( 1 - 1));
 // console.log(s2)
 
-BubbleSort([2, 1, 5, 5, 4]) //Good example to practice with 
+// BubbleSort([2, 1, 5, 5, 4]) //Good example to practice with
+
+// BubbleSort([5, 1, 2, 2])
+
+// BubbleSort([5, 1, 4, 1]);
 
 // BubbleSort([1, 4, 3, 1, 4, 3])
 // insertionSort([2, 1, 4, 2, 1])
+// BubbleSort([1, 2, 3, 1, 4, 1, 5]);
 
 // var arr = [1, 2, 2, 3];
 // swap(arr, 1, 2);
