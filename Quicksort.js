@@ -87,14 +87,14 @@ function Partition(vector, i, j) {
     " \n",
     "\n"
   );
-  return final;
+  return final; //This is the final location of the pivot value (index + 1)
 }
 
 function Quicksort(arr) {
   if (arr.length <= 1) {
     return arr;
   }
-  const pivot = Partition(arr, 0, arr.length - 1);
+  const pivot = Partition(arr, 0, arr.length - 1); //This is the pivot which is the final location of the pivot value (index + 1)
   const left = Quicksort(arr.slice(0, pivot));
   const right = Quicksort(arr.slice(pivot + 1, arr.length));
   // console.log("Total Partition: ", TotalPartition, "\n");
@@ -103,11 +103,13 @@ function Quicksort(arr) {
 // console.log(Partition([7, 4, 1, 2, 3, 6, 7], 0, 6));
 // console.log(Partition([9, 5, 4, 1, 1, 5], 0, 5));
 
-console.log(Quicksort([9, 5, 4, 1, 1, 5]));
+// console.log(Quicksort([9, 5, 4, 1, 1, 5]));
 
 console.group("\n Another,   \n");
 console.log(Quicksort([4, 5, 9, 1, 1, 5]));
 console.group("\n Another,   \n");
 
 
-console.log(Quicksort([9, 8, 3, 1, 2, 5]));
+// console.log(Quicksort([9, 8, 3, 1, 2, 5]));
+
+console.log(Quicksort([0, 1, 16, 4, 9, 25]))

@@ -35,16 +35,17 @@ function mergeSort(vector) {
   if (n <= 1) {
     return vector;
   }
-  let m = Math.floor((n + 1)/ 2); //no need to do n+1
+  let m = Math.floor((n + 1) / 2); //no need to do n+1
   let l = vector.slice(0, m);
   let r = vector.slice(m, n);
-  console.log("\n" ,"m: ", m, " n: ", n, "l: ", l, " r: ", r, " \n");
+  console.log("\n", "m: ", m, " n: ", n, "l: ", l, " r: ", r, " \n");
   return merge(mergeSort(l), mergeSort(r));
 }
 
-console.log(mergeSort([3, 1, 2, 5, 8, 1]));
-
+// console.log(mergeSort([3, 1, 2, 5, 8, 1]));
 
 console.group("\n\n\n", "Another Example: ");
 
-console.log(mergeSort([8, 5, 3, 1, 1, 10]))
+// console.log(mergeSort([8, 5, 3, 1, 1, 10]))
+
+console.log(mergeSort([0, 1, 16, 4, 9, 25]));

@@ -57,7 +57,36 @@ function numberLL(head, item) {
   return seen;
 }
 
-
 // console.log(numberLL(head, 0))
 // console.log(numberLL(head, 4))
 // console.log(numberLL(head, 10))
+
+function swapLL(point) {
+  if (point.next !== null) {
+    var store = point.data;
+    point.data = point.next.data;
+    point.next.data = store;
+    return point;
+  }
+  return false;
+}
+
+function bubbleLL(head) {
+  if (head === null) {
+    return head;
+  }
+  while (true) {
+    var count = 0;
+    var store = head;
+    while (store.next !== null) {
+      if (store.data > store.next.data) {
+        swapLL(store);
+        count++;
+      }
+      store = store.next;
+    }
+    if (count === 0) {
+      return head;
+    }
+  }
+}
