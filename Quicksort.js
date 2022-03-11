@@ -105,11 +105,12 @@ function Quicksort(arr) {
 
 // console.log(Quicksort([9, 5, 4, 1, 1, 5]));
 
-console.group("\n Another,   \n");
-console.log(Quicksort([4, 5, 9, 1, 1, 5]));
-console.group("\n Another,   \n");
+// console.group("\n Another,   \n");
+// console.log(Quicksort([4, 5, 9, 1, 1, 5]));
+// console.group("\n Another,   \n");
 
 
 // console.log(Quicksort([9, 8, 3, 1, 2, 5]));
 
-console.log(Quicksort([0, 1, 16, 4, 9, 25]))
+// console.log(Quicksort([0, 1, 16, 4, 9, 25]))
+console.log(Quicksort([6, 2, 3, 5, 4]))
