@@ -1,0 +1,101 @@
+/* the modal footer */
+.modal-footer {
+    border-top: none !important;
+  }
+
+  /* this is the modal header text */
+  .modal-title {
+    font-size: 1.7em;
+    color: #f89924;
+  }
+  
+  /* this is the review textarea modal field to compose a review */
+  .review-textarea {
+    border: 0.4px solid #c4c4c4;
+    border-radius: 5px;
+    width: 300px;
+  
+  }
+  
+  /* this is the mission div containing where we have who, when and how  */
+  #about-stats {
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  /* signin header text */
+  .signin {
+    color: #f89924;
+    font-size: 2.5em;
+  }
+  
+  /* this is to close the modal */
+  .close {
+    font-size: 1.8em !important;
+    background: none;
+  }
+  /* the modal-content  */
+  .modal-content {
+    width: fit-content !important;
+    border-radius: 20px;
+  }
+  
+  /* forgot password button */
+  .forgot-password {
+    font-style: italic;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: #474F48;
+    background: none;
+    border: none;
+  }
+  
+  /* signup button  */
+  .btn-signup {
+    border: none;
+    background: none;
+  }
+  
+  /* signup button focus removal */
+  .btn-signup:focus-visible {
+    outline: none !important;
+  }
+  
+  /* open signup removal */
+  .signup-open:focus-visible {
+    outline: none !important; 
+  }
+  
+  @media(max-width: 500px) {
+    /* this is the signin text size on mobile devices */
+    .signin {
+  
+      font-size: 1.8em;
+    }
+  }
+
+  /* Loader */
+  .loader_bg {
+    position: fixed;
+    z-index: 9999999;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+/* this is the div holding the spinner */
+.loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* this is the spinner itself */
+.loader img {
+    width: 280px;
+}

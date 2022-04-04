@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Olawale Micheal report for CM1040 - Web Development</title>
+  <!-- Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sample Boootstrap report template for learning purposes." />
+  <meta name="author" content="Pedram Badakhchani" />
+
+  <link rel="shortcut icon" href="favicon.ico" />
+  <!-- FontAwesome JS -->
+  <!-- <script defer src="./fonts/fontawesome/js/all.js"></script> -->
+  <!-- Global Bootdtrap CSS -->
+  <!-- <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css" /> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- Custom Theme CSS -->
+  <link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col">
+          <!-- <img
+              class="profile-image img-fluid float-start rounded-circle"
+              src="assets/img/profile.png"
+              alt="profile image"
+            /> -->
+          <div class="profile-content">
+            <h1 class="name">Final Assignment Report</h1>
+            <h2 class="desc">Olawale Micheal Juwon - 200312082</h2>
+          </div>
+
+          <!-- eof profile-->
+        </div>
+        <!-- eof col-->
+        <div class="col-12 col-md-auto">
+          <div class="dark-mode-switch d-flex">
+            <!-- <div class="form-check form-switch mx-auto mx-md-0">
+              <input type="checkbox" class="form-check-input me-2" id="darkSwitch" />
+              <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+            </div> -->
+          </div>
+          <!-- eof dark-mode-switch-->
+          <!-- <a class="btn btn-warning" href="https://www.coursera.org/learn/uol-web-development/home/welcome"
+            target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Launch
+            Website</a> -->
+        </div>
+        <!-- eof col-->
+      </div>
+      <!-- eof row-->
+    </div>
+    <!-- eof container-->
+  </header>
+  <!-- eof header-->
+
+  <main class="container sections-wrapper py-5">
+    <div class="row">
+      <div class="primary col-lg-8 col-12">
+        <section id="intro" class="intro section">
+          <div class="section-inner shadow-sm rounded">
+            <h3 class="heading">Introduction</h3>
+            <div class="content">
+              <p>
+                What is the essential story being told by your site and what
+                type of structure did you choose to implement.
+              </p>
+              <hr />
+              <p>
+                FNH (Food Nutrition and Health) is a website that provides
+                information about food and nutrition. It houses information accured from
+                different authors with knowledge of food and nutrition.
+                Anyone visiting the website can sign up and sign in, there details are stored
+                in the browser database using localforage library.
+                The localforage library was choosen because it automatically support different browsers
+                and devices by internally using either indexedDB, websql or localstorage to store the data.
+                This made the website much more dynamic.
+                Signed in user can drop a review about the site at the homepage (which will appear automatically
+                on the homepage review carousel), they can choose to become an author and create a new article at the
+                blog
+                page.
+                The blog page entails a list of all the articles created by all the authors on the platform.
+
+              </p>
+              <!-- <p class="text-end text-primary"><small>350 words</small></p> -->
+            </div>
+          </div>
+        </section>
+
+        <section id="inspiration" class="section">
+          <div class="section-inner shadow-sm rounded">
+            <h3 class="heading">Inspiration</h3>
+            <div class="content">
+              <p>
+                State 3 things that have inspired you when creating your
+                website. These could include guest speakers, other websites,
+                artists, developers etc.
+              </p>
+
+              <ol>
+                <li>
+                  <p>I discovered that information about food is not widely spread online. For instance, i don't know
+                    much
+                    about different food consumed in other tribes within my country (Nigeria) talkless of other
+                    countries like
+                    the USA, UK, Canada, etc. But i was certain that the nutritional value of all foods are within the
+                    classes well known. So i felt it would be nice to have a website that people from all over the world
+                    can share information about their local food, it nutrient and how it relates to the health of the people.
+                    Hence the name FNH(Food Nutrition and Health).
+                  </p>
+                </li>
+                <li>
+                  <p>While browsing website features online, I was inspired by the capabilities of offline website (see
+                    references) known as Progressive Web Apps (PWA).
+                    This information motivate me to build my own version of website that can be used offline with the
+                    course project
+
+                  </p>
+                </li>
+                <li>
+                  <p>Sequel to number 2 above, i found out that files can be converted to base64 encoded string.
+                    This inspired me in experimenting the features with profile picture upload, artice picture upload
+                    and storing it in the browser database.
+                  </p>
+                </li>
+
+              </ol>
+            </div>
+            <!-- eof content-->
+          </div>
+          <!-- eof section-inner-->
+        </section>
+
+        <section id="accessibility" class="section">
+          <div class="section-inner shadow-sm rounded">
+            <h3 class="heading">Accessibility</h3>
+            <div class="content">
+              <p>State 3 ways in which your site is accessible.</p>
+              <ol>
+                <li>
+                  <p>The site was made accessible by ensuring that all img tags are accompanied by a descriptive alt
+                    attribute
+                    so that users using screen readers can read the image.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    The site was made accessible by ensuring that semantic tags are used to describe the content of
+                    the page.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    The site was checked for accessibility by using the WCAG 2.0 standards, which is a set of
+                    accessibility guidelines that are designed to meet the needs of the Web.
+                  </p>
+                </li>
+              </ol>
+            </div>
+            <!-- eof content-->
+          </div>
+          <!-- eof section-inner-->
+        </section>
+
+        <section id="usability" class="section">
+          <div class="section-inner shadow-sm rounded">
+            <h3 class="heading">Usability</h3>
+            <div class="content">
+              <p>
+                State 3 ways in which you have considered usability in your
+                site.
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    I asked friends and family to test the website and some provided feedback such as the font (too
+                    big).
+                    I modify the website based on all the feedback received, to make the website more user friendly.
+                  </p>
+                </li>
+                <li>
+                  <p>According to Nielson's Usability Principle (in references), the number 1 priciple is to ensure the
+                    visibility of
+                    system status. I followed this by ensuring the state of user authentication (either logged in or
+                    logged out) is visible
+                    at the navigation side. If they are signed in, their name displays on the navigation bar.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    The website has aesthetic and minimalist design. And it also allows user to recognize and recover
+                    from
+                    errors by displaying an alert for error and success message in order to keep the user informed.
+                    The website also has a loader to show the user that the website is loading due to it's asynchronous
+                    nature.
+                  </p>
+                </li>
+              </ol>
+            </div>
+            <!-- eof content-->
+          </div>
+          <!-- eof section-inner-->
+        </section>
+
+        <section id="learning" class="section">
+          <div class="section-inner shadow-sm rounded">
+            <h3 class="heading">Learning</h3>
+            <div class="content">
+              <p>
+                State 3 things you had to learn/find out by yourself when
+                creating your site, and describe how you did that .
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    I had to learn how to use the localforage library to store the data in the browser database using
+                    one of
+                    indexedDB, web sql or local storage.
+                    I came across the localforage library when reading documentation of indexdb on the MDN website
+                    (https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API#see_also). I learnt through the docs
+                    that indexdb is
+                    not supported in Safari and other mobile browsers. Other alternatives are web sql and local storage.
+                    Luckily localforage automatically decides which storage to use based on the browser.
+                    Since i want to make my website accessible to everyone, i decided to use localforage and i learnt
+                    it via their documentation.(see references)
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    I learnt about promises and how to handle asynchronous requests while using it with the try and
+                    catch pattern
+                    of exception handling.
+                    In the module.js file, i dynamically load the javascript file required for the present page a user
+                    is on.
+                    Through this also, i learnt how to organise scripts in the right order of dependencies.
+                    For instance, most variables and functions declared in the module.js file are used in other
+                    javascript files that
+                    follows the module.js file.
+                    I googled alot before i found an article that explains these concepts
+                    (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script).
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    I learnt how to use some browser API (Application Programming Interface) like file reader for
+                    converting files to base64 encoded string.
+                    In the article.html page i learnt how to serve enitrely different content on the same page.
+                    I firstly tried to use document.write as gotten from
+                    https://www.w3schools.com/jsref/met_doc_write.asp, but this did not work.
+                    Then i manually used the innerHTML property of the document and style applied to the head for the
+                    same purpose.
+                  </p>
+                </li>
+              </ol>
+              <hr />
+              <p>
+                What aspect(s) of your work do you think worked well and why?
+
+              </p>
+              <hr />
+              <p>
+                The aspect of authentication (sign in and sign out) and dynamic changing of the site content worked well
+                because it saves all the user details into
+                the browser database, and the mechanism for the dynamic content is that: If the page needs to display an
+                updated
+                details or information, the whole page reloads. The system has been designed to access the data from the
+                browser database
+                while the website is being loaded, since accessing the database is asynchronous, a loader is displayed
+                while the data is being loaded.
+                Likewise, the article page is a dependent page of the blog page. For example: article.html?0 will load article 
+                at index 0 of the blog. But when user manually request for an articel that's not in the database (for example
+                article.html?10), the page will automatically returns with Article Not Found page dynamically.
+                This works because of the javascript used to check if the article exists in the database.
+              </p>
+              <hr />
+
+              <p>
+                What aspect(s) of your work could be improved, and how might
+                you do things differently another time?
+
+              </p>
+              <hr />
+
+              <p>
+                The aspect of submitted review and articles can be improved by allowing users to delete and modify their
+                own content that is on the website.
+                Also user can be allowed to comment on the article page.
+              </p>
+            </div>
+            <!-- eof content-->
+          </div>
+          <!-- eof section-inner-->
+        </section>
+      </div>
+      <!-- eof primary-->
+      <div class="secondary col-lg-4 col-12">
+        <aside class="info aside section">
+          <div class="section-inner shadow-sm rounded">
+            <!-- <h3 class="heading sr-only">Link to my project</h3>
+            <div class="content">
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-link"></i><span class="sr-only">Project Website:</span><a
+                    href="https://www.website.com">https://www.website.com</a>
+                </li>
+                <li>
+                  <i class="fas fa-map-marker-alt"></i><span class="sr-only">Location:</span>London, Uk
+                </li>
+              </ul>
+            </div> -->
+            <!-- eof content-->
+          </div>
+          <!-- eof section-inner-->
+        </aside>
+        <!-- eof aside-->
+
+        <aside class="skills aside section">
+          <div class="section-inner shadow-sm rounded">
+            <h3 class="heading">Skills</h3>
+            <div class="content">
+              <div class="skillset">
+                <div class="item">
+                  <h4 class="level-title">
+                    HTML5<span class="level-label" data-bs-toggle="tooltip" data-bs-placement="left"
+                      title="You can use the tooltip to explain more about your skill level..."><i
+                        class="fa-solid fa-calendar-check"></i>Advanced</span>
+                  </h4>
+                  <div class="level-bar progress">
+                    <div class="progress-bar level-bar-inner" role="progressbar" style="width: 93%" aria-valuenow="93"
+                      aria-valuemin="0" aria-valuemax="96"></div>
+                  </div>
+                  <!-- eof level-bar-->
+                </div>
+                <!-- eof item-->
+
+                <div class="item">
+                  <h4 class="level-title">
+                    CSS3<span class="level-label" data-bs-toggle="tooltip" data-bs-placement="left"
+                      title="You can use the tooltip to explain more about your skill level..."><i
+                        class="fa-solid fa-calendar-check"></i>Beginner</span>
+                  </h4>
+                  <div class="level-bar progress">
+                    <div class="progress-bar level-bar-inner" role="progressbar" style="width: 30%" aria-valuenow="93"
+                      aria-valuemin="0" aria-valuemax="96"></div>
+                  </div>
+                  <!-- eof level-bar-->
+                </div>
+                <!-- eof item-->
+
+                <div class="item">
+                  <h4 class="level-title">
+                    Javascript<span class="level-label" data-bs-toggle="tooltip" data-bs-placement="left"
+                      title="You can use the tooltip to explain more about your skill level..."><i
+                        class="fa-solid fa-calendar-check"></i>Intermediate</span>
+                  </h4>
+                  <div class="level-bar progress">
+                    <div class="progress-bar level-bar-inner" role="progressbar" style="width: 50%" aria-valuenow="94"
+                      aria-valuemin="0" aria-valuemax="94"></div>
+                  </div>
+                  <!-- eof level-bar-->
+                </div>
+                <!-- eof item-->
+
+                <div class="item">
+                  <h4 class="level-title">
+                    Bootstrap<span class="level-label" data-bs-toggle="tooltip" data-placement="left"
+                      title="You can use the tooltip to explain more about your skill level..."><i
+                        class="fa-solid fa-calendar-check"></i>Beginner</span>
+                  </h4>
+                  <div class="level-bar progress">
+                    <div class="progress-bar level-bar-inner" role="progressbar" style="width: 26%" aria-valuenow="86"
+                      aria-valuemin="0" aria-valuemax="96"></div>
+                  </div>
+                  <!-- eof level-bar-->
+                </div>
+                <!-- eof item-->
+
+                <div class="item">
+                  <h4 class="level-title">
+                    JQuery<span class="level-label" data-bs-toggle="tooltip" data-placement="left"
+                      title="You can use the tooltip to explain more about your skill level..."><i
+                        class="fa-solid fa-calendar-check"></i>Beginner</span>
+                  </h4>
+                  <div class="level-bar progress">
+                    <div class="progress-bar level-bar-inner" role="progressbar" style="width: 36%" aria-valuenow="86"
+                      aria-valuemin="0" aria-valuemax="96"></div>
+                  </div>
+                  <!-- eof level-bar-->
+                </div>
+                <!-- eof item-->
+              </div>
+            </div>
+            <!-- eof content-->
+          </div>
+          <!-- eof section-inner-->
+        </aside>
+        <!-- eof section-->
+
+        <aside class="references aside section">
+          <div class="section-inner shadow-sm rounded">
+            <h2 class="heading">References</h2>
+            <div class="content">
+              <ul class="list-unstyled pb-2">
+                <li>
+                  <a href="https://localforage.github.io/localForage/" target="_blank"><i
+                      class="fas fa-external-link-alt"></i>Localforage</a>
+                </li>
+                <li>
+                  <a href="https://offlinefirst.org/" target="_blank"><i class="fas fa-external-link-alt"></i>Offline
+                    first</a>
+                </li>
+                <li>
+                  <a href="https://www.heurio.co/nielsens-10-usability-heuristics" target="_blank"><i
+                      class="fas fa-external-link-alt"></i>Nielsen usability principles</a>
+                </li>
+                <li>
+                  <a href="https://getbootstrap.com/" target="_blank"><i
+                      class="fas fa-external-link-alt"></i>Bootstrap</a>
+                </li>
+              
+                <li>
+                  <a href="https://github.com/pedbad" target="_blank"><i class="fas fa-external-link-alt"></i>Pedram
+                    Badakhchani</a>
+                </li>
+              </ul>
+              <hr />
+              <!-- <p class="pt-2">More references here....</p>
+              <ul class="list-group">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+              </ul> -->
+            </div>
+            <!-- eof content-->
+          </div>
+          <!-- eof section-inner-->
+        </aside>
+        <!-- eof section-->
+      </div>
+      <!-- eof secondary-->
+    </div>
+    <!-- eof row-->
+
+    <section>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              Site Map
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="row">
+                <div class="col">
+                  <img src="./img/appendix/sitemap.png" alt="sitemap example" />
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Website Wireframes
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <img src="./img/appendix/wireframes/home.png" class="img-fluid" alt="wireframe" />
+
+      
+              <img src="./img/appendix/wireframes/about us.png" class="img-fluid" alt="wireframe" />
+              <img src="./img/appendix/wireframes/article.png" class="img-fluid" alt="wireframe" />
+              <img src="./img/appendix/wireframes/authors.png" class="img-fluid" alt="wireframe" />
+              <img src="./img/appendix/wireframes/blog.png" class="img-fluid" alt="wireframe" />
+
+
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Website Mockups
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <img src="./img/appendix/mockup.png" class="img-fluid" alt="mockup example" />
+              <img src="./img/appendix/mockup-2.jpg" class="img-fluid" alt="mockup example" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources" class="intro section mt-2">
+      <div class="section-inner shadow-sm rounded">
+        <h3 class="heading">Resources</h3>
+        <div class="content">
+          <p>What resources were used when creating your work?</p>
+          <P>
+            SummerNote, 2022,
+            <code>
+
+              $('#articleContent').summernote({ //summernote configurations
+                placeholder: 'Write your article here',
+                tabsize: 2,
+                height: 120,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+            </code>
+            https://summernote.org/getting-started/#without-bootstrap-lite
+
+          </p>
+
+          <hr />
+          <p>
+            Free-css.com, https://www.free-css.com/ [2022] [online] Avaialble:
+            https://www.free-css.com/ (Accessed: 20/02/2020). Used for layout concept
+          </p>
+          <hr />
+          <p> Cephas Digital Dev Help, [physical]
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small class="copyright">
+        CM1040 - Web Development - Final Assignment Report</small>
+    </div>
+  </footer>
+
+  <!-- Javascript -->
+  <!-- <script src="./plugins/popper.min.js"></script> -->
+  <!-- <script src="./plugins/bootstrap/js/bootstrap.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Darkmode.js/1.0.1/darkmode-js.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- app js -->
+  <!-- <script src="./js/main.js"></script> -->
+</body>
+
+</html>

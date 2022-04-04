@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/authors.css">
+    <link rel="stylesheet" href="./css/modal.css">
+    <title>Single | Article</title>
+</head>
+
+<body>
+    <!-- loader  -->
+    <div class="loader_bg" id="loader">
+        <div class="loader"><img src="images/loading.gif" alt="Loader" /></div>
+    </div>
+    <!-- end loader -->
+    <div id="latest-tech">
+        <div id="toggle"></div>
+        <nav id="side-bar">
+            <div class="top">
+                <div class="logo">
+                    <img src="./images/logo.png" alt="magazine-logo" title="magazine-logo" class="img-fluid">
+                </div>
+                <nav class="side-bar-content">
+                    <ul class="list-items">
+                        <li> <a href="./index.html" class="list-item">Home</a> </li>
+                        <li> <a href="./blog.html" class="list-item">Blog</a> </li>
+                        <li> <a href="./authors.html" class="list-item">Authors</a> </li>
+                        <li> <a href="./about.html" class="list-item">About Us</a> </li>
+
+                    </ul>
+                </nav>
+            </div>
+            <div id="authPlaceholder"></div>
+
+        </nav>
+        <div id="modalPlaceholder"></div> <!-- This holds all the reusable modal-->
+        <div class="modal fade" id="becomeAuthorModal" tabindex="-1" role="dialog"
+        >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content p-4">
+                <div class="d-flex justify-content-between px-3">
+                    <h5 class="modal-title become-author" >Become an Author</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="becomeAnAuthor(event)">
+                        <div class="form-group d-flex flex-column">
+                            <label class="become-author-modal" for="authorDetails">Author Details</label>
+                            <textarea name="authorDetails" id="authorDetails" class="px-3 py-2 author-mod-textarea"
+                                placeholder="A brief description about yourself, this will show up on your article page"
+                                 cols="24" rows="7"></textarea>
+                        </div>
+                        <div class="px-3">
+                            <button type="submit" class="signout-btn">Submit</button>
+                        </div>
+                        </form>
+                </div>
+
+               
+            </div>
+        </div>
+
+    </div>
+
+
+        <div class="mx-2"></div>
+        <main id="content-area">
+            <h2 class="main-header">Authors</h2>
+            <section class="authors-section py-4">
+                <!--This section will hold all the authors from the database-->
+                <script type="handlebars/template" id="authorTemplate">
+                    {{#each authors}}
+                    <div class="container ">
+                        <div class="row authotContainer my-2">
+   
+                    <div class="col-12 col-md-8">
+                        <div class="my-2">
+                            <h3 class="author-name mb-0 mb-3">{{this.firstName}} {{this.lastName}}</h3>
+                            <p class="author-det">{{this.authorDetails}} </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="author-img">
+                            <img src="{{this.avatar}}" alt="{{this.firstName}} picture">
+                        </div>
+                    </div>
+                   
+                        </div>
+                        </div>
+                  
+                
+                    {{/each}}
+                </script>
+                <div class="row py-4" id="authorPlaceholder">
+
+
+
+
+
+
+
+                </div>
+                
+            </section>
+                <button onclick="becomeAnAuthor()" id="becomeAuthorBtn">Become An Author</button>
+
+        </main>
+
+    
+
+    </div>
+
+    <script src="./scripts//libraries/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./scripts/libraries/localForgae/localForage.min.js"></script>
+    <script src="./scripts/authenticationModals.js"></script>
+    <script src="./scripts/module.js"></script>
+    <script src="./scripts/libraries/handleBars/handlebars.min-v4.7.7.js"></script>
+</body>
+
+</html>

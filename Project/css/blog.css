@@ -1,0 +1,489 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* css variable to avoid repetition */
+:root {
+  --link-color: none;
+  --main-color: #555;
+  --sub-color: #f89924;
+  --caption-text: 13px;
+  --headers: capitalize;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--main-color);
+  overflow: auto;
+}
+
+/* he general container for both sidebar and content-area */
+#latest-tech {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  padding-top: 2em;
+  padding-right: 2em;
+}
+
+/* for the side-bar */
+#side-bar {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 15%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1),
+    3px 3px 10px 0px rgba(0, 0, 0, 0.1);
+  overflow-y: hidden;
+
+}
+
+/* logo */
+.logo {
+  padding: 0.9em;
+}
+
+/* this is the submit a review button */
+.sub_btn {
+  display: flex;
+  justify-content: start;
+  margin-left: 1.5em;
+  margin-top: 5em;
+  color: #444;
+}
+
+/* the article modal header text */
+.article-modal-header {
+  color: #f89924;
+}
+
+.close {
+  font-size: 1.8em !important;
+}
+
+/* article modal submit button */
+.art-sub-modal {
+  display: flex;
+  justify-content: start;
+  margin-left: 1.5em;
+  background: #f89924;
+  color: #fff;
+  padding: .5em 1.3rem;
+  border-radius: 5px;
+  border: none;
+}
+
+/* the editor menu bar background */
+.note-toolbar {
+  background: #f8992463 !important;
+}
+
+/* this is the div holding all the side-bar links */
+.side-bar-content {
+  max-width: 100%;
+}
+
+
+
+/* ul  */
+.list-items {
+  width: 100%;
+  list-style: none;
+  /*name clashes with bootstrap className so we have  to remove the bootstrap default style */
+  padding-left: 0em !important;
+}
+
+/* the lists which serves as the container for the links takes in margin since margin spaces two containers */
+li {
+  margin: 1em;
+}
+
+/* links in the list */
+.list-item {
+  text-decoration: var(--link-color);
+  padding: 0.5em 1em;
+  color: var(--main-color) !important;
+  transition: 0.5s all ease-in-out;
+}
+
+/* the hover state of the sidebar links */
+.list-item:hover {
+  color: var(--sub-color) !important;
+  margin-left: 0.5em;
+}
+
+/* this is the signout button for the signout modal */
+.signout-btn {
+  background: #f89924;
+  color: #fff !important;
+  padding: .5em 1em !important;
+  border-radius: 5px;
+  border: none;
+
+}
+
+/* this the header for the become an author modal */
+.become-author {
+  font-size: 1.5em;
+  color: #f89924;
+}
+
+/* this is the label for the become an author modal */
+.become-author-modal {
+  font-size: 1.2em;
+}
+
+/* this is the become an author textarea  */
+.author-mod-textarea {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* li:last-child {
+    margin-top: 2em;
+} */
+
+/* main-content area */
+#content-area {
+  max-width: 85%;
+  position: fixed;
+  top: 0;
+  left: 15%;
+  margin-left: 0.4em;
+  padding: 2.5em;
+  padding-left: 1em;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+}
+
+
+
+/* this is the section holding all articles */
+#topic {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+  height: 40vh;
+}
+
+/*this is the date article was created  */
+.caption-text {
+  font-size: var(--caption-text);
+  text-transform: var(--headers);
+  font-weight: 400;
+  padding-bottom: 1em;
+}
+
+
+/* this is the articles header text */
+.topic-header {
+  text-transform: var(--headers);
+  color: var(--sub-color);
+  padding-bottom: 0.4em;
+}
+
+
+/* this is the articles links description */
+.latest-topic-paragraph {
+  font-size: 1.25em;
+}
+
+
+/* this is the border below the articles header text */
+.caption-border {
+  border-bottom: 1px solid #c4c4c4;
+}
+
+
+/* this is the author text */
+.author {
+  margin-bottom: 0 !important;
+  padding-top: 1.3em;
+  font-size: 1em;
+}
+
+
+/* this is the div holding the article header */
+#latest {
+  margin-top: 2em;
+}
+
+/* this is the overall div which is holding a single article */
+.latest-content-divs {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* this is the div holding a single article  */
+.div-1,
+.div-2,
+.div-3 {
+  display: flex;
+  padding-bottom: 1em;
+  margin-bottom: 1.5em;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+/* this is the div holding the upload article button */
+.section-more {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* this the upload article button */
+.section-more button {
+  margin: auto;
+  color: var(--sub-color);
+  margin-bottom: 1.5em;
+  text-transform: capitalize;
+  padding: 0.1em 2em;
+  background: none;
+  border: none;
+  font-size: 2em;
+}
+
+
+/*this button also works for the modal submit buttons  */
+.submit-review-btn {
+  background: #f89924 !important;
+  border: none;
+}
+
+
+/* this button is used for the single article continue button */
+.continue-reading {
+  border: none;
+  background: none;
+  color: #f89924;
+}
+
+
+/*  media query - this is for responsiveness on mobile devices */
+@media (max-width: 820px) {
+
+  /* this is for the sidebar div  */
+  #side-bar {
+    max-width: 45%;
+  }
+
+  /* this is for the blog div */
+  #latest-tech {
+    padding-right: 0;
+  }
+
+  /* this is used on both divs to style both to achieve the same style  */
+  #topic,
+  #latest {
+    margin-top: 0 !important;
+  }
+
+  /* all artilcles header */
+  .topic-header {
+    padding-top: 0 !important;
+  }
+
+
+
+  /* this is for the toggle button div  */
+  #toggle {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    width: 40px;
+    height: 35px;
+    background: #f89924;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  /* this is for the toggle button first line*/
+  #toggle::before {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 2px;
+    background: #fff;
+    transform: translateY(-2px);
+    transition: 0.2s;
+  }
+
+  /* this is for the toggle button second line  */
+  #toggle::after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 2px;
+    transform: translateY(5px);
+    background: #fff;
+    transition: 0.2s;
+  }
+
+  /* for the side-bar */
+  #side-bar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    background: #fff;
+    transition: 0.5s;
+    z-index: 1;
+  }
+
+
+  /* for the side-bar active state */
+  #side-bar.active {
+    left: 0px;
+  }
+
+  /* this is the active state of the first line in the toggle button */
+  #toggle.active::before {
+    transform: translateY(0px) rotate(45deg);
+  }
+
+  /* this is the active state of the second line in the toggle button */
+  #toggle.active::after {
+    transform: translateY(0px) rotate(-45deg);
+  }
+
+  /* this the second div holding all other content excluding the sidebar */
+  #content-area {
+    max-width: 100%;
+    position: static;
+
+    margin-left: 0.4em;
+    padding: 2.5em;
+    padding-left: 1em;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+  }
+
+  /* this the upload article button */
+  .section-more button {
+    font-size: 1.3em;
+  }
+
+  /* this is the border below the articles header text */
+  .caption-border {
+    margin-top: 0;
+  }
+
+  /* sidebar links */
+  .list-item {
+    font-size: 1em !important;
+  }
+}
+
+/* media query for devices that the screens falls inbetween 500px to 820px */
+
+@media(max-width: 820px) {
+
+  /* for the side-bar */
+  #side-bar {
+    max-width: 40%;
+  }
+
+  /* this is for the toggle button first line*/
+  #toggle::before {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 2px;
+    background: #fff;
+    transform: translateY(-2px);
+    transition: 0.2s;
+
+  }
+
+  /* this is for the toggle button first line*/
+  #toggle::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 2px;
+    transform: translateY(5px);
+    background: #fff;
+    transition: 0.2s;
+
+  }
+
+  /* for the side-bar */
+  #side-bar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    background: #fff;
+    transition: 0.5s;
+    z-index: 1;
+  }
+
+  /* for the side-bar active state */
+  #side-bar.active {
+    left: 0px;
+  }
+
+
+  /* this is for the toggle button first line*/
+  #toggle.active::before {
+    transform: translateY(0px) rotate(45deg);
+
+  }
+
+  /* this is for the toggle button first line*/
+  #toggle.active::after {
+    transform: translateY(0px) rotate(-45deg);
+
+  }
+
+  /* this the second div holding all other content excluding the sidebar */
+  #content-area {
+    max-width: 100%;
+    position: static;
+
+    margin-left: .4em;
+    padding: 2.5em;
+    padding-left: 1em;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+
+
+  }
+
+  /* .content-header {
+        font-size: 3em;
+        padding-bottom: 0;
+    } */
+
+  /* this is the all articles header text */
+  .topic-header {
+    padding-top: 2em;
+    font-size: 2em;
+  }
+
+  /* .article-paragraph article  {
+        font-size: 1em;
+    } */
+
+
+  /* sidebar links */
+  .list-item {
+    font-size: 1.4em;
+  }
+}

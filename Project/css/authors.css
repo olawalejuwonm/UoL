@@ -1,0 +1,517 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* css variable to avoid repetition */
+:root {
+    --link-color: none;
+    --main-color: #555;
+    --sub-color: #f89924;
+    --caption-text: 13px;
+    --headers: capitalize;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--main-color);
+    overflow: auto;
+}
+
+/* he general container for both sidebar and content-area */
+#latest-tech {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    padding-top: 2em;
+    padding-right: 2em;
+
+}
+
+
+/* for the side-bar */
+#side-bar {
+    max-width: 15%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1), 3px 3px 10px 0px rgba(0, 0, 0, 0.1);
+    overflow-y: hidden;
+
+}
+
+/* logo */
+.logo {
+    padding: .9em;
+}
+
+/*  */
+.side-bar-content {
+    max-width: 100%;
+}
+
+/* ul  */
+.list-items {
+    width: 100%;
+    list-style: none;
+    /*name clashes with bootstrap className so we have  to remove the bootstrap default style */
+    padding-left: 0em !important;
+}
+
+/* the lists which serves as the container for the links takes in margin since margin spaces two containers */
+li {
+    margin: 1em;
+
+}
+
+/* links in the list */
+.list-item {
+    text-decoration: var(--link-color);
+    padding: 0.5em 1em;
+    color: var(--main-color) !important;
+    transition: 0.5s all ease-in-out;
+}
+
+.list-item:hover {
+    color: var(--sub-color) !important;
+    margin-left: 0.5em;
+}
+
+/* li:last-child {
+    margin-top: 2em;
+} */
+
+
+/* main-content area */
+#content-area {
+    max-width: 85%;
+    position: fixed;
+    top: 0;
+    left: 15%;
+    margin-left: .4em;
+    padding: 2.5em;
+    padding-left: 1em;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+
+
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 1em;
+}
+
+#header-img {
+    background: linear-gradient(106.54deg, rgba(0, 0, 0, 0.6)0.51%, rgba(0, 0, 0, 0.6)100%), url('../images/content-area-header.jpg')no-repeat center center/cover;
+    height: 50vh;
+}
+
+/* for the header first text */
+header p {
+    color: var(--sub-color);
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+
+
+/* for the header second text*/
+
+header h1 {
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 4em;
+}
+
+i {
+    color: #403F60;
+
+}
+
+.author-info {
+    display: flex;
+    margin-bottom: 2em;
+    margin-left: 1em;
+}
+
+.author-info p {
+    padding-right: 2em;
+    color: #444;
+    font-weight: lighter !important;
+    font-size: 1.3em;
+}
+
+.content-article {
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1), 3px -3px 10px -5px rgba(0, 0, 0, 0.1);
+    padding: 2em;
+}
+
+.content-article h2 {
+    margin-bottom: .5em;
+    font-weight: 600;
+}
+
+
+
+.content-article-paragraph {
+    font-weight: 100 !important;
+    font-size: .9em;
+    line-height: 1.7em;
+
+}
+
+#author {
+    display: flex;
+}
+
+.author-infos {
+    display: flex;
+    flex-direction: column;
+}
+
+.authorize {
+    display: flex;
+}
+
+.comment-img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    margin-right: 1em;
+}
+
+.author-header {
+    font-size: 1.3em;
+    text-align: center;
+    color: #666;
+
+    /* padding-bottom: .5em; */
+}
+
+.latest-header {
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.authorize p {
+    font-weight: 600;
+    color: #666;
+
+}
+
+.author {
+    font-size: .9em;
+    color: #666;
+}
+
+.author-header-border {
+    margin: auto;
+    background: var(--main-color);
+    height: 5px;
+    width: 70px;
+    margin-bottom: 2em;
+}
+
+.latest-header-border {
+    background: var(--main-color);
+    height: 5px;
+    width: 70px;
+    margin-bottom: 2em;
+}
+
+textarea {
+    width: 400px;
+    border: 0.1px solid var(--sub-color);
+    border-radius: 5px;
+    padding: 1.5em;
+    color: #666;
+}
+
+textarea:focus-visible {
+    outline: none;
+}
+
+.submit-btn {
+    padding: .7em 1.3em;
+    background: #da5743;
+    border: none;
+    transition: .3s ease-in-out;
+    color: #fff;
+    margin-top: .5em;
+    border-radius: 5px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-1px);
+}
+
+.reply-btn {
+    background: none;
+    border: none;
+    color: var(--sub-color);
+    height: 0;
+}
+
+#latest-posts {
+    margin-top: 4em;
+}
+
+.fruit-detail {
+    display: flex;
+    margin-top: 1em;
+    align-items: center;
+
+}
+
+.fruit-detail-first {
+
+    text-transform: uppercase !important;
+    font-size: .8em;
+    color: var(--sub-color);
+}
+
+.fruit-detail-second {
+    font-size: .7em;
+    color: #888;
+}
+
+.fruit-detail p {
+    padding-right: 1em;
+}
+
+.latest-post-paragraph {
+    font-size: .8em;
+}
+
+.main-header {
+    color: #f89924;
+}
+
+
+
+/* author details including image and other details */
+.authotContainer {
+    width: 100%;
+    min-height: 250px;
+    border: 2px solid #fff;
+    background: #fff;
+
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.1), -1px -1px 5px 0px rgba(0, 0, 0, 0.1);
+
+
+    padding: 1rem;
+}
+
+.author-img {
+    width: 100%;
+    height: 250px;
+}
+
+.author-img img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-position: center;
+    /* border: 0.4px solid #f89924; */
+    /* border-radius: 5px; */
+    /* object-fit: contain; */
+}
+
+.author-link {
+    padding-bottom: 1em;
+}
+
+.author-name {
+    color: #555;
+    font-size: 2rem;
+}
+
+.author-det {
+    max-width: 500px;
+}
+
+.sub_about_btn {
+    display: flex;
+    justify-content: start;
+    margin-left: 1.5em;
+    margin-top: 5em;
+    color: #444;
+}
+
+
+@media(max-width: 500px) {
+    textarea {
+        width: 275px;
+
+    }
+}
+
+
+@media(max-width: 820px) {
+
+    /* this is the div holding the sidebar */
+    #side-bar {
+        max-width: 40%;
+    }
+
+    /* the div holding the navbar */
+    #latest-tech {
+        padding-right: 0;
+    }
+
+    /* the toggle button div */
+    #toggle {
+        position: fixed;
+        top: 10px;
+        right: 20px;
+        width: 40px;
+        height: 35px;
+        background: #f89924;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+
+    }
+
+    /* for the side-bar */
+    #side-bar {
+        max-width: 40%;
+    }
+
+    /* this is for the toggle button first line*/
+    #toggle::before {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 2px;
+        background: #fff;
+        transform: translateY(-2px);
+        transition: 0.2s;
+
+    }
+
+    /* this is for the toggle button first line*/
+    #toggle::after {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 2px;
+        transform: translateY(5px);
+        background: #fff;
+        transition: 0.2s;
+
+    }
+
+    /* for the side-bar */
+    #side-bar {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        height: 100vh;
+        background: #fff;
+        transition: 0.5s;
+        z-index: 1;
+    }
+
+    /* for the side-bar active state */
+    #side-bar.active {
+        left: 0px;
+    }
+
+
+    /* this is for the toggle button first line*/
+    #toggle.active::before {
+        transform: translateY(0px) rotate(45deg);
+
+    }
+
+    /* this is for the toggle button first line*/
+    #toggle.active::after {
+        transform: translateY(0px) rotate(-45deg);
+
+    }
+
+    /* this the second div holding all other content excluding the sidebar */
+    #content-area {
+        max-width: 100%;
+        position: static;
+        padding-right: 1em !important;
+        margin-left: .4em;
+        padding: 2.5em;
+        padding-left: 1em;
+        width: 100%;
+        height: 100vh;
+        overflow: auto;
+
+
+    }
+
+
+    /* for the side-bar active state */
+    #side-bar.active {
+        left: 0px;
+    }
+
+
+    /* this is for the toggle button first line*/
+    #toggle.active::before {
+        transform: translateY(0px) rotate(45deg);
+
+    }
+
+    /* this is for the toggle button first line*/
+    #toggle.active::after {
+        transform: translateY(0px) rotate(-45deg);
+
+    }
+
+
+   /* this the second div holding all other content excluding the sidebar */
+  #content-area {
+    max-width: 100%;
+    position: static;
+
+    margin-left: .4em;
+    padding: 2.5em;
+    padding-left: 1em;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+
+
+  }
+
+
+    
+    
+
+    /* the div holding the navbar */
+    #latest-tech {
+        padding-right: 0;
+    }
+
+    
+}
+
+/* this is the button that opens up the mmodal to become an author */
+#becomeAuthorBtn {
+    display: flex;
+    margin: auto;
+    margin-bottom: 1.5em;
+    text-transform: capitalize;
+    padding: 0.1em 2em;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #f89924;
+}

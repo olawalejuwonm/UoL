@@ -1,0 +1,63 @@
+/* css reset this resets the margin anfd padding to zero */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* this defines reusable css variables styles */
+:root {
+    --link-color: none;
+    --main-color: #403F60;
+    --sub-color: #f99824;
+    --caption-text: 13px;
+    --headers: capitalize;
+}
+
+/* the body of the document */
+body {
+    color: var(--main-color);
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+
+/* this is the div containing the error contet */
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* this is the go back button on the 404 page that leads back to the previous page */
+.go-back {
+    border: 5px solid #f99824;
+    background: var(--sub-color);
+    padding: .7em 1.5em;
+    margin: 3em 4em;
+    margin-bottom: 0;
+    font-size: 1.1em;
+    color: #fff;
+    cursor: pointer;
+    transition: background .6s ease-in-out, border .4s ease-in-out;
+}
+
+/* this is the hover state of he go back button */
+.go-back:hover {
+    background: var(--main-color);
+    border: 5px solid #1e1b3f;
+}
+
+/* this is the eror text */
+h2 {
+    font-size: 3em;
+    text-align: center;
+}
+
+/* this is the 404 page image */
+img {
+    height: 60vh;
+}
