@@ -1,26 +1,56 @@
 var speed;
 
 function setup() {
-    createCanvas(900, 700);
+  createCanvas(900, 700);
 }
 
 function draw() {
-    background(0);
-    speed = frameCount;
+  background(0);
+  speed = frameCount;
 
-    push();
-    translate(width/2, height/2);
+  push();
+  translate(width / 2, height / 2);
 
-    celestialObj(color(255,150,0), 200); // SUN
+  celestialObj(color(255, 150, 0), 200); // SUN
 
+  pop();
 
-    pop();
+  push();
+  translate(width / 2, height / 2);
+  //Step 2
+  rotate(radians(speed));
+
+  translate(300, 0);
+  
+  //Step 3
+  rotate(radians(speed));
+
+  //Step 1
+  celestialObj(color(0, 0, 255), 80); // EARTH
+
+  //Step 4
+  rotate(radians(speed));
+  translate(100, 0);
+  rotate(radians(speed * -2));
+  celestialObj(color(255, 255, 255), 30); // MOON
+  pop();
+
+  //Step 4
+//   push();
+//   translate(width / 2, height / 2);
+//   rotate(radians(speed));
+//   translate(300, 0);
+//   rotate(radians(speed));
+//   translate(100, 0);
+//   rotate(radians(speed * -2));
+//   celestialObj(color(255, 255, 255), 30); // MOON
+//   pop();
 }
 
-function celestialObj(c, size){
-    strokeWeight(5);
-    fill(c);
-    stroke(0);
-    ellipse(0, 0, size, size);
-    line(0, 0, size/2, 0);
+function celestialObj(c, size) {
+  strokeWeight(5);
+  fill(c);
+  stroke(0);
+  ellipse(0, 0, size, size);
+  line(0, 0, size / 2, 0);
 }
