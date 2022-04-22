@@ -5,6 +5,7 @@ var atmosphereSize;
 var earthLoc;
 var earthSize;
 var starLocs = [];
+var start = false; //Determine when to start the game
 
 //////////////////////////////////////////////////
 function setup() {
@@ -23,6 +24,16 @@ function setup() {
 function draw() {
   background(0);
   sky();
+
+  if(!start) {
+		fill(100);
+		rect(300, 150, 400, 200);
+		fill(255)
+		textSize(20)
+		text( "Welcome To Asteroid Game \n Use Left, Right, Up And Down \n Arrow Key For Movement \
+		\n Press The Spacebar Key To Fire\n Press Enter To Continue", 345, 220)
+		return;
+	}
 
 
 
@@ -110,6 +121,9 @@ function keyPressed() {
   if (keyIsPressed && keyCode === 32) {
     // if spacebar is pressed, fire!
     spaceship.fire();
+  }
+  if (keyIsPressed && keyCode === 13) { //Press Enter to Start the Game
+    start = true;
   }
 }
 
