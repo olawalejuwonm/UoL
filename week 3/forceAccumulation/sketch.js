@@ -8,64 +8,76 @@ var ball;
 ////////////////////////////////////////////////////
 function setup() {
   createCanvas(900, 600);
-  ball = new Ball();
+  balls = [];
 }
 ////////////////////////////////////////////////////
 function draw() {
   background(0);
 
-  var gravity = createVector(0, 0.1);
-  var friction = ball.velocity.copy();
-  friction.mult(-1);
-  friction.normalize();
-  friction.mult(0.01);
-  ball.applyForce(friction);
-  ball.applyForce(gravity);
+  for (var i = 0; i < balls.length; i++) {
+    var gravity = createVector(0, 0.1);
+    var friction = balls[i].velocity.copy();
+    friction.mult(-1);
+    friction.normalize();
+    friction.mult(0.01);
+    balls[i].applyForce(friction);
+    balls[i].applyForce(gravity);
+    balls[i].run();
+    balls[i].age--;
 
-  ball.run();
+  
+  }
 }
 //////////////////////////////////////////////////////
 class Ball {
-
-  constructor(){
-    this.velocity = new createVector(5, 0);
-    this.location = new createVector(width/2, 50);
+  constructor(x, y) {
+    this.velocity = new createVector(random(-3, 3), random(-3, 3));
+    this.location = new createVector(x, y);
     this.acceleration = new createVector(0, 0);
-    this.size = 40;
+    this.size = random(20, 40);
+    this.age = 255;
   }
 
-  run(){
+  run() {
     this.draw();
     this.move();
     this.bounce();
   }
 
-  draw(){
-    fill(125);
+  draw() {
+    fill(random(255), random(255), random(255), this.age);
     ellipse(this.location.x, this.location.y, this.size, this.size);
   }
 
-  move(){
+  move() {
     this.velocity.add(this.acceleration);
     this.location.add(this.velocity);
     this.acceleration.mult(0);
   }
 
-  bounce(){
-    if (this.location.x > width-this.size/2) {
-          this.location.x = width-this.size/2;
-          this.velocity.x *= -1;
-    } else if (this.location.x < this.size/2) {
-          this.velocity.x *= -1;
-          this.location.x = this.size/2;
+  bounce() {
+    if (this.location.x > width - this.size / 2) {
+      this.location.x = width - this.size / 2;
+      this.velocity.x *= -1;
+    } else if (this.location.x < this.size / 2) {
+      this.velocity.x *= -1;
+      this.location.x = this.size / 2;
     }
-    if (this.location.y > height-this.size/2) {
-          this.velocity.y *= -1;
-          this.location.y = height-this.size/2;
+    if (this.location.y > height - this.size / 2) {
+      this.velocity.y *= -1;
+      this.location.y = height - this.size / 2;
     }
   }
 
-  applyForce(force){
+  applyForce(force) {
     this.acceleration.add(force);
   }
+}
+
+function mouseDragged() {
+  balls.push(new Ball(mouseX, mouseY));
+}
+
+function keyPressed() {
+  balls = [];
 }

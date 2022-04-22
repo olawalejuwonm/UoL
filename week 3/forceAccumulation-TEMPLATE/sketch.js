@@ -7,53 +7,70 @@
 var ball;
 ///////////////////////////////////////////////
 function setup() {
-  createCanvas(600,400);
+  createCanvas(600, 400);
   ball = new Ball();
 }
 ///////////////////////////////////////////////
 function draw() {
   background(0);
 
+  // let mouse = createVector(mouseX, mouseY);
+  // let dir = p5.Vector.sub(mouse, ball.location);
+  // dir.normalize(); // Normalize the vector (make its length equal to 1)
+  // dir.mult(0.3); // Multiply the vector by 0.3 (so the force is only 30% of the mass)
+  // ball.applyForce(dir);
+
+  let gravity = createVector(0, 0.1);
+  ball.applyForce(gravity);
+  let friction = ball.velocity.copy();
+  friction.mult(-1);
+  friction.normalize();
+  friction.mult(0.01);
+  ball.applyForce(friction);
+
   ball.run();
 }
 ///////////////////////////////////////////////
 class Ball {
-
-  constructor(){
+  constructor() {
     this.velocity = new createVector(0, 0);
-    this.location = new createVector(width/2, height/2);
+    this.location = new createVector(width / 2, height / 2);
     this.acceleration = new createVector(0, 0);
     this.size = 40;
   }
 
-  run(){
+  run() {
     this.draw();
     this.move();
     this.bounce();
   }
 
-  draw(){
+  draw() {
     fill(125);
     ellipse(this.location.x, this.location.y, this.size, this.size);
   }
 
-  move(){
+  move() {
     this.velocity.add(this.acceleration);
     this.location.add(this.velocity);
+    this.acceleration.mult(0); // Reset acceleration to 0 each frame
   }
 
-  bounce(){
-    if (this.location.x > width-this.size/2) {
-          this.location.x = width-this.size/2;
-          this.velocity.x *= -1;
-    } else if (this.location.x < this.size/2) {
-          this.velocity.x *= -1;
-          this.location.x = this.size/2;
+  bounce() {
+    if (this.location.x > width - this.size / 2) {
+      this.location.x = width - this.size / 2;
+      this.velocity.x *= -1;
+    } else if (this.location.x < this.size / 2) {
+      this.velocity.x *= -1;
+      this.location.x = this.size / 2;
     }
-    if (this.location.y > height-this.size/2) {
-          this.velocity.y *= -1;
-          this.location.y = height-this.size/2;
+    if (this.location.y > height - this.size / 2) {
+      this.velocity.y *= -1;
+      this.location.y = height - this.size / 2;
     }
   }
 
+  applyForce(force) {
+    this.acceleration.add(force);
+  }
 }
