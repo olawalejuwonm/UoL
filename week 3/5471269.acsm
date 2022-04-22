@@ -1,0 +1,37 @@
+<fulfillmentToken fulfillmentType="loan" auth="user" xmlns="http://ns.adobe.com/adept">
+  <distributor>urn:uuid:9cb786e8-586a-4950-8901-fff8d2ee6025</distributor>
+  <operatorURL>http://acs.ebookcentral.proquest.com/fulfillment</operatorURL>
+  <transaction>5471269_268163912</transaction>
+  <expiration>2020-11-21T00:50:23-08:00</expiration>
+  <resourceItemInfo>
+    <resource>urn:uuid:00000000-0000-0000-0000-000005471269</resource>
+    <resourceItem>0</resourceItem>
+    <metadata>
+      <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/">Discrete Mathematics and Its Applications</dc:title>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rosen, Kenneth; Rosen, Kenneth H.; </dc:creator>
+      <dc:publisher xmlns:dc="http://purl.org/dc/elements/1.1/">McGraw-Hill US Higher Ed USE Legacy</dc:publisher>
+      <dc:identifier xmlns:dc="http://purl.org/dc/elements/1.1/">5471269</dc:identifier>
+      <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">application/pdf</dc:format>
+    </metadata>
+    <licenseToken>
+      <resource>urn:uuid:00000000-0000-0000-0000-000005471269</resource>
+      <permissions>
+        <display>
+          <duration>86399</duration>
+        </display>
+        <excerpt>
+          <duration>86399</duration>
+          <count initial="54" max="54" incrementInterval="1599"/>
+        </excerpt>
+        <print>
+          <duration>86399</duration>
+          <count initial="54" max="54" incrementInterval="1599"/>
+        </print>
+        <play>
+          <duration>86399</duration>
+        </play>
+      </permissions>
+    </licenseToken>
+  </resourceItemInfo>
+  <hmac>VJgsFweJmuQSjE/KiT2XsIpj5U0=</hmac>
+</fulfillmentToken>
