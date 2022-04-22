@@ -67,17 +67,10 @@ class Spaceship {
 
   setNearEarth(){
     //YOUR CODE HERE (6 lines approx)
-    //When the spaceship enters the earth's atmosphere it's affected by the earth's gravity. Create a "downwards-pointing" vector of strength 0.05 which pulls the spaceship towards the earth. The atmosphere also introduces friction and the spaceship can't move forever like in empty space. It will decelerate unless it fires its engines. Create a force called friction that's 30 times smaller than the velocity of the spaceship, points the opposite direction to velocity and is then applied in the the opposite direction.
     this.applyForce(createVector(0, 0.05));
-    var friction = createVector(this.velocity.x, this.velocity.y);
+    var friction = this.velocity.copy();
     friction.mult(-0.3);
     this.applyForce(friction);
-    
-    
 
-    // spaceship.applyForce(createVector(0, 0.05));
-    // var friction = spaceship.velocity.copy();
-    // friction.mult(-30);
-    // spaceship.applyForce(friction);
   }
 }
