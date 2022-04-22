@@ -5,10 +5,16 @@
 // released under MIT license
 
 var ball;
+var rectLocation = {};
 ////////////////////////////////////////////////////
 function setup() {
   createCanvas(900, 600);
   balls = [];
+  rectLocation = {
+    x: width / 2,
+    y: height / 2 + 50,
+    size: 100,
+  };
 }
 ////////////////////////////////////////////////////
 function draw() {
@@ -22,11 +28,25 @@ function draw() {
     friction.mult(0.01);
     balls[i].applyForce(friction);
     balls[i].applyForce(gravity);
-    balls[i].run();
-    balls[i].age--;
 
-  
+    //collision detection with rectangle
+    if (
+      balls[i].location.x > rectLocation.x - rectLocation.size /2 &&
+      balls[i].location.x < rectLocation.x + rectLocation.size/2 &&
+      balls[i].location.y > rectLocation.y - rectLocation.size/2 &&
+      balls[i].location.y < rectLocation.y + rectLocation.size/2
+    ) {
+      balls[i].color = color(255, 0, 0);
+      balls[i].age = 255;
+    }
+
+    // console.log(balls[i].age);
+    balls[i].run();
+    balls[i].age -= 0.3;
   }
+
+  fill(255, 0, 0);
+  rect(rectLocation.x, rectLocation.y, rectLocation.size, rectLocation.size);
 }
 //////////////////////////////////////////////////////
 class Ball {
@@ -36,6 +56,7 @@ class Ball {
     this.acceleration = new createVector(0, 0);
     this.size = random(20, 40);
     this.age = 255;
+    this.color = color(0, 255, 0);
   }
 
   run() {
@@ -45,7 +66,8 @@ class Ball {
   }
 
   draw() {
-    fill(random(255), random(255), random(255), this.age);
+    this.color.setAlpha(this.age); 
+    fill(this.color);
     ellipse(this.location.x, this.location.y, this.size, this.size);
   }
 
@@ -79,5 +101,7 @@ function mouseDragged() {
 }
 
 function keyPressed() {
-  balls = [];
+  if (key == " ") {
+    balls = [];
+  }
 }
