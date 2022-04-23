@@ -13,7 +13,7 @@ var engine;
 var balls = [];
 var ground;
 var plinkos = [];
-
+var ground;
 function setup() {
   createCanvas(900, 600);
 
@@ -39,10 +39,15 @@ function keyPressed(){
 ///////////////////////////////////////////////////////////
 function setupGround(){
   //your code here
+  ground = Bodies.rectangle(width/2, height-25, width, 15, {isStatic: true});
+  World.add(engine.world, [ground]);
 }
 ///////////////////////////////////////////////////////////
 function drawGround(){
   //your code here
+  fill(127);
+  drawVertices(ground.vertices);
+  
 }
 ///////////////////////////////////////////////////////////
 function setupPins(){
@@ -75,10 +80,17 @@ function drawPins(){
 ///////////////////////////////////////////////////////////
 function generateNewBall(){
   //your code here
+  var b = Bodies.circle(random(width), 0, 20, {restitution: 1});
+  World.add(engine.world, [b]);
+  balls.push(b);
 }
 ///////////////////////////////////////////////////////////
 function drawBalls(){
   //your code here
+  fill(255,0,0);
+  for (var i=0; i<balls.length; i++){
+    drawVertices(balls[i].vertices);
+  }
 }
 
 ///////////////////////////////////////////////////////////

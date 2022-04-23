@@ -38,18 +38,50 @@ function draw() {
 /////////////////////////////////////////////////////////////
 function setupCatapult(){
   // your code here
+  catapult = Bodies.rectangle(width/2, height-20, 600, 10);
+  constraint = Constraint.create({
+    // bodyA: catapult,
+    pointB: { x: -10, y: -10 },
+    // bodyB: catapult,
+    pointA: { x: width/2, y: height-20 },
+    stiffness: 1,
+    length: 0
+  });
+
+  World.add(engine.world, [catapult, constraint]);
+  catapultSpacer = Bodies.rectangle(width/2 - 200, height, 25, 150, {isStatic: true});
+  World.add(engine.world, [catapultSpacer]);
+
+
 }
 /////////////////////////////////////////////////////////////
 function drawCatapult(){
   // your code here
+  noStroke();
+  fill(255);
+  drawVertices(catapult.vertices);
+  fill(255, 0, 0);
+  drawVertices(catapultSpacer.vertices);
+
 }
 /////////////////////////////////////////////////////////////
 function setupBalls(){
   // your code here
+  ball1 = Bodies.circle(width/2 -270, 100, 20, {
+    density: 0.01,
+  });
+  ball2 = Bodies.circle(width/2 - 200, 100, 20, {
+    density: 0.01,
+  });
+  World.add(engine.world, [ ball1, ball2]);
 }
 /////////////////////////////////////////////////////////////
 function drawBalls(){
   // your code here
+  fill(0, 255, 0);
+  drawVertices(ball1.vertices);
+  fill(0, 0, 255);
+  drawVertices(ball2.vertices);
 }
 /////////////////////////////////////////////////////////////
 function setupGround(){
