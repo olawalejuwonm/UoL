@@ -34,7 +34,7 @@ class BulletSystem {
   edges() {
     // YOUR CODE HERE (3 lines approx)
     for (var i = 0; i < this.bullets.length; i++) {
-      if (this.bullets[i].y > height) this.bullets.splice(i, 1);
+      if (this.bullets[i].y < 0) {this.bullets.splice(i, 1); i -= 1;};
     }
   }
 }
