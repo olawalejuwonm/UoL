@@ -31,8 +31,12 @@ var boxes = [];
 
 var canvas;
 
+var countdown;
+
 function setup() {
   canvas = createCanvas(800, 600);
+  
+  countdown = 60;
 
   //create an engine
   engine = Engine.create();
@@ -104,6 +108,13 @@ function setup() {
 function draw() {
   background(0);
   Engine.update(engine);
+
+  //Draw time remaining
+  textSize(32);
+  textAlign(CENTER);
+  stroke(255);
+  fill(255);
+  text("countdown", width / 2, height / 2, width, height);
 
   fill(255);
   drawVertices(poly1A.vertices);

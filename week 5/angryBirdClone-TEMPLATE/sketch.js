@@ -17,14 +17,19 @@ var birds = [];
 var colors = [];
 var ground;
 var slingshotBird, slingshotConstraint;
-var angle=0;
-var angleSpeed=0;
+var angle = 0;
+var angleSpeed = 0;
 var canvas;
+
+var countdown; //This hold the time remaining
+var lastSecond; //This holds the second function in draw function
 ////////////////////////////////////////////////////////////
 function setup() {
   canvas = createCanvas(1000, 600);
 
-  engine = Engine.create();  // create an engine
+  countdown = 60; //Initialize the countdown to 60 seconds
+
+  engine = Engine.create(); // create an engine
 
   setupGround();
 
@@ -42,6 +47,46 @@ function draw() {
 
   Engine.update(engine);
 
+  textSize(32);
+  // textAlign(CENTER);
+  stroke(255);
+  fill(255);
+  text(countdown, width / 2, 20, width, height);
+  if (lastSecond !== second()) {
+    //if the second has changed
+    countdown--; //decrement the countdown
+  }
+  lastSecond = second(); //set the last second to the current second
+
+  if (countdown <= 0) {
+    //remove boxes that are off-screen
+    for (var i = 0; i < boxes.length; i++) {
+      if (isOffScreen(boxes[i])) {
+        World.remove(engine.world, boxes[i]);
+        boxes.splice(i, 1);
+        i--;
+      }
+    }
+    console.log(boxes, "boxes");
+
+    if (boxes.length > 0) {
+      textSize(64);
+      // textAlign(CENTER);
+      stroke(255);
+      fill(255);
+      text("GAME OVER", width / 2, 20, width, height);
+    }
+
+    else {
+      textSize(64);
+      stroke(255);
+      fill(255);
+      text("YOU WIN", width / 2, 20, width, height);
+    }
+
+    noLoop(); //stop the draw loop
+  }
+
   drawGround();
 
   drawPropeller();
@@ -54,25 +99,24 @@ function draw() {
 }
 ////////////////////////////////////////////////////////////
 //use arrow keys to control propeller
-function keyPressed(){
-  if (keyCode == LEFT_ARROW){
+function keyPressed() {
+  if (keyCode == LEFT_ARROW) {
     //your code here
     angleSpeed += 0.01;
-  }
-  else if (keyCode == RIGHT_ARROW){
+  } else if (keyCode == RIGHT_ARROW) {
     //your code here
     angleSpeed -= 0.01;
   }
 }
 ////////////////////////////////////////////////////////////
-function keyTyped(){
+function keyTyped() {
   //if 'b' create a new bird to use with propeller
-  if (key==='b'){
+  if (key === "b") {
     setupBird();
   }
 
   //if 'r' reset the slingshot
-  if (key==='r'){
+  if (key === "r") {
     removeFromWorld(slingshotBird);
     removeFromWorld(slingshotConstraint);
     setupSlingshot();
@@ -85,7 +129,7 @@ function keyTyped(){
 
 //if mouse is released destroy slingshot constraint so that
 //slingshot bird can fly off
-function mouseReleased(){
+function mouseReleased() {
   setTimeout(() => {
     slingshotConstraint.bodyB = null;
     slingshotConstraint.pointA = { x: 0, y: 0 };
@@ -93,9 +137,9 @@ function mouseReleased(){
 }
 ////////////////////////////////////////////////////////////
 //tells you if a body is off-screen
-function isOffScreen(body){
+function isOffScreen(body) {
   var pos = body.position;
-  return (pos.y > height || pos.x<0 || pos.x>width);
+  return pos.y > height || pos.x < 0 || pos.x > width;
 }
 ////////////////////////////////////////////////////////////
 //removes a body from the physics world
@@ -114,12 +158,12 @@ function drawVertices(vertices) {
 function drawConstraint(constraint) {
   push();
   var offsetA = constraint.pointA;
-  var posA = {x:0, y:0};
+  var posA = { x: 0, y: 0 };
   if (constraint.bodyA) {
     posA = constraint.bodyA.position;
   }
   var offsetB = constraint.pointB;
-  var posB = {x:0, y:0};
+  var posB = { x: 0, y: 0 };
   if (constraint.bodyB) {
     posB = constraint.bodyB.position;
   }
