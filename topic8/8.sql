@@ -12,6 +12,7 @@ INSERT INTO Publisher (name, address) VALUES ('McGrawHill', 'Somewhere1');
 INSERT INTO Book (publisher_id, name, price) VALUES ((SELECT id FROM Publisher WHERE 
 Publisher.name = 'McGrawHill'), 'Database Book', 40.25); 
 SELECT * FROM book;
+SELECT * FROM publisher;
 INSERT INTO Publisher (name, address) VALUES ('Cambridge press',
 'somewhere3');
 INSERT INTO book (publisher_id, name, price) VALUES ((select id from publisher 
