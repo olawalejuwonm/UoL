@@ -36,11 +36,14 @@ function colorGrid() {
 ///////////////////////////////////////////////////////////////////////
 function compassGrid() {
   // your code here
+  //TODO: Amend the compassGrid() function to create a grid of 25x25 lines of length stepSize. Make sure each compass is at the center of each tile. By default they should all be pointing up. You should use translate() to move to the center of each grid.
   for (var x = 0; x < width; x += stepSize) {
     for (var y = 0; y < height; y += stepSize) {
       push();
       translate(x + stepSize / 2, y + stepSize / 2);
-      
+      //TODO: For each of the compasses generate a 3D noise value, using the compass’ x and y coordinate as well as the frameCount so that the noise values change over time. Make sure you scale the input parameters of the noise function appropriately so that you get organic values out of it. Use that noise value with map() to generate an angle between 0 and 720 degrees. Use that value to rotate the compass.
+      //TODO: Make sure you scale the input parameters of the noise function appropriately so that you get organic values out of it
+          
      
       const n = noise(
         x / 10000 + mouseX,
