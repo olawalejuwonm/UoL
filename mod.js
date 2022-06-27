@@ -30,7 +30,7 @@ function remainder(n, m) {
   const floor = Math.floor(n / m);
   console.log("floor", floor);
   const remainder = n - floor * m;
-  console.log("remainder", remainder);
+  console.log("remainder last", remainder);
   return remainder;
 }
 
@@ -56,4 +56,5 @@ function modulo(n, m) {
   //   return moduloOfSum;
 }
 
-modulo(-5, 3);
+modulo(15, 3);
+// console.log(remainder(-21, 4));
