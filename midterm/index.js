@@ -18,6 +18,17 @@ db.connect((err) => {
   if (err) {
     throw err;
   }
+  //create a devices table if it doesn't exist
+  db.query(
+    "CREATE TABLE IF NOT EXISTS devices (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), type VARCHAR(255), status VARCHAR(255))",
+    (err, result) => {
+      if (err) {
+        throw err;
+      }
+      console.log("Table devices created");
+    }
+  );
+
   console.log("Connected to database");
 });
 global.db = db;

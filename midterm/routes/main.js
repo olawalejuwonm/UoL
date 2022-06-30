@@ -1,53 +1,50 @@
 // The main.js file of your application
 module.exports = function (app) {
-    app.get("/", function (req, res) {
-      res.render("index.html");
+  app.get("/", function (req, res) {
+    res.render("index");
+  });
+  app.get("/about", function (req, res) {
+    res.render("about");
+  });
+  app.get("/add-device", function (req, res) {
+    res.render("add-device");
+  });
+  app.post("/add-device", function (req, res) {
+    let sqlquery = "INSERT INTO devices (name, type, status) VALUES (?,?,?)";
+    let newrecord = [req.body.name, req.body.type, req.body.status];
+    db.query(sqlquery, newrecord, (err, result) => {
+      if (err) {
+        console.log("An error occurred while inserting data", err);
+        res.redirect("/");
+      }
+      console.log("Data inserted successfully", result);
+      res.redirect("/list-devices");
     });
-    app.get("/search", function (req, res) {
-      res.render("search.html");
+  });
+  app.get("/list-devices", function (req, res) {
+    let sqlquery = "SELECT * FROM devices";
+    db.query(sqlquery, (err, result) => {
+      if (err) {
+        console.log("An error occurred while selecting data", err);
+        res.redirect("/");
+      }
+      console.log("Data selected successfully", result);
+      res.render("list-devices", { devices: result });
     });
-    app.get("/about", function (req, res) {
-      res.render("about.html");
+  });
+  app.get("/device-status", function (req, res) {
+    let sqlquery = "SELECT * FROM devices";
+    db.query(sqlquery, (err, result) => {
+      if (err) {
+        console.log("An error occurred while selecting data", err);
+        res.redirect("/");
+      }
+      console.log("Data selected successfully", result);
+      const id = req.query.id;
+      let device = result.find((device) => device.id == id);
+      console.log("Device found", device);
+      res.render("device-status", { devices: result, device: device });
     });
-  
-    app.get("/search-result", function (req, res) {
-      //searching in the database
-      res.send(req.query);
-      // res.send(
-      //   "This is the keyword you entered: " +
-      //     req.query.keyword +
-      //     "<br>" +
-      //     "This is the result of the search:"
-      // );
-    });
-  
-    app.get("/register", function (req, res) {
-      res.render("register.html");
-    });
-    app.post("/registered", function (req, res) {
-      // saving data in database
-      // res.send(req.body)
-      res.send(
-        "Hello " +
-          req.body.first +
-          " " +
-          req.body.last +
-          ", you are now registered!" +
-          "We'll send email to:" +
-          req.body.email
-      );
-    });
-    app.get("/list", function(req, res) { 
-        // query database to get all the books
-        let sqlquery = "SELECT * FROM books";
-        // execute sql query
-        db.query(sqlquery, (err, result) => { 
-        if (err) { 
-        res.redirect("/"); 
-        } 
-        res.send(result)
-        });
-       });
-  };
+  });
 
-  
+};
