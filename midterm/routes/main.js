@@ -41,10 +41,23 @@ module.exports = function (app) {
       }
       console.log("Data selected successfully", result);
       const id = req.query.id;
-      let device = result.find((device) => device.id == id);
+      let device = result.find((device) => device.id == id); //This will return the device with the id that was passed in the query
       console.log("Device found", device);
       res.render("device-status", { devices: result, device: device });
     });
   });
-
+  app.get("/control-device", function (req, res) {
+    let sqlquery = "SELECT * FROM devices";
+    db.query(sqlquery, (err, result) => {
+      if (err) {
+        console.log("An error occurred while selecting data", err);
+        res.redirect("/");
+      }
+      console.log("Data selected successfully", result);
+      const id = req.query.id;
+      let device = result.find((device) => device.id == id); //This will return the device with the id that was passed in the query
+      console.log("Device found", device);
+      res.render("control-device", { devices: result, device: device });
+    });
+  });
 };
