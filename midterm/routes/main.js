@@ -1,5 +1,13 @@
 // The main.js file of your application
 let message; // global variable to store the message
+
+//This function will set message to  undefined after 3 seconds when called
+function clearMessage() {
+  setTimeout(() => {
+    message = undefined;
+  }, 1000);
+}
+
 module.exports = function (app) {
   app.get("/", function (req, res) {
     res.render("index");
@@ -8,7 +16,9 @@ module.exports = function (app) {
     res.render("about");
   });
   app.get("/add-device", function (req, res) {
-    res.render("add-device");
+    res.render("add-device", {
+      message,
+    });
   });
   app.post("/add-device", function (req, res) {
     let sqlquery = "INSERT INTO devices (name, type, status) VALUES (?,?,?)";
@@ -19,6 +29,7 @@ module.exports = function (app) {
         res.redirect("/");
       }
       console.log("Data inserted successfully", result);
+      message = `Device ${req.body.name} added successfully`;
       res.redirect("/list-devices");
     });
   });
@@ -58,7 +69,11 @@ module.exports = function (app) {
       const id = req.query.id;
       let device = result.find((device) => device.id == id); //This will return the device with the id that was passed in the query
       console.log("Device found", device);
-      res.render("control-device", { devices: result, device: device, message });
+      res.render("control-device", {
+        devices: result,
+        device: device,
+        message,
+      });
     });
   });
   app.post("/control-device", function (req, res) {
@@ -74,6 +89,7 @@ module.exports = function (app) {
       console.log("Data updated successfully", result);
       message = `The status of ${req.body.name} has been updated to ${req.body.status} successfully`;
       res.redirect("/control-device"); //For hot reloading
+      clearMessage();
     });
   });
   app.get("/delete-device", function (req, res) {
@@ -87,7 +103,8 @@ module.exports = function (app) {
       const id = req.query.id;
       let device = result.find((device) => device.id == id); //This will return the device with the id that was passed in the query
       console.log("Device found", device);
-      res.render("delete-device", { devices: result, device: device });
+      res.render("delete-device", { devices: result, device: device, message });
+      message = undefined; //This will clear the message
     });
   });
   app.post("/delete-device", function (req, res) {
@@ -102,6 +119,8 @@ module.exports = function (app) {
       }
       console.log("Data deleted successfully", result);
       res.redirect("/delete-device");
+      clearMessage();
+
     });
   });
 };
