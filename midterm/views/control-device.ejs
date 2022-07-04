@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -29,7 +29,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deviceModalLabel">Device</h5>
+                    <h5 class="modal-title" id="deviceModalLabel">Control Device</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -40,52 +40,40 @@
                     <form id="deviceForm" action="/control-device" method="POST">
                         <div class="form-group">
                             <label for="deviceName">Device Name</label>
-                            <input type="text" class="form-control" id="deviceName" name="deviceName"
-                                placeholder="Device Name" readonly>
+                            <input type="text" class="form-control" id="deviceName" name="name"
+                                placeholder="Device Name" readonly value="<%= device?.name %>">
+
                         </div>
                         <div class="form-group">
                             <label for="deviceType">Device Type</label>
-                            <input type="text" class="form-control" id="deviceType" name="deviceType"
-                                placeholder="Device Type" readonly>
+                            <input type="text" class="form-control" id="deviceType" name="type" placeholder="
+                                <%= device?.type %>
+                                " readonly>
                         </div>
                         <div class="form-group">
                             <label for="deviceStatus">Device Status</label>
-                            <input type="text" class="form-control" id="deviceStatus" name="deviceStatus"
-                                placeholder="Device Status" readonly>
+                            <select class="form-control" id="deviceStatus" name="status"
+                            defaultValue="<%= device?.status %>"
+                            >
+                                <option value="On">On</option>
+                                <option value="Off">Off</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label for="deviceStatus">Device Status</label>
-                            <input type="text" class="form-control" id="deviceStatus" name="deviceStatus"
-                                placeholder="Device Status" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="deviceStatus">Device Status</label>
-                            <input type="text" class="form-control" id="deviceStatus" name="deviceStatus"
-                                placeholder="Device Status" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="deviceStatus">Device Status</label>
-                            <input type="text" class="form-control" id="deviceStatus" name="deviceStatus"
-                                placeholder="Device Status" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="deviceStatus">Device Status</label>
-                            <input type="text" class="form-control" id="deviceStatus" name="deviceStatus"
-                                placeholder="Device Status" readonly>
-                        </div>
+                        <!-- A submit button to change the settings -->
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-<!-- This is A device selector input which allows the user to select a device from a list of created
+    <!-- This is A device selector input which allows the user to select a device from a list of created
     devices -->
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <form class="form-group">
                     <label for="deviceSelector">Select Device</label>
-                    <select class="form-control" id="deviceSelector" name="deviceSelector">
+                    <select class="form-control" id="deviceSelector" name="id">
                         <option value="" disabled selected>Select a device</option>
                         <% for (var i=0; i < devices.length; i++) { %>
                             <option value="<%= devices[i].id %>" <% if (device?.id==devices[i].id) { %>
@@ -104,6 +92,15 @@
             </div>
         </div>
     </div>
+    <!-- link bootstrap js from public folder of the expressjs app -->
+    <script src="css/bootstrap/js/bootstrap.min.js"></script>
+
+    <% if (device) { %>
+        <script>
+            const deviceModal = new bootstrap.Modal(document.getElementById('deviceModal'));
+            deviceModal.show();
+        </script>
+        <% } %>
 
 </body>
 
