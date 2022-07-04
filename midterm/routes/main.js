@@ -1,4 +1,5 @@
 // The main.js file of your application
+let message; // global variable to store the message
 module.exports = function (app) {
   app.get("/", function (req, res) {
     res.render("index");
@@ -57,7 +58,7 @@ module.exports = function (app) {
       const id = req.query.id;
       let device = result.find((device) => device.id == id); //This will return the device with the id that was passed in the query
       console.log("Device found", device);
-      res.render("control-device", { devices: result, device: device });
+      res.render("control-device", { devices: result, device: device, message });
     });
   });
   app.post("/control-device", function (req, res) {
@@ -71,7 +72,8 @@ module.exports = function (app) {
         res.redirect("/");
       }
       console.log("Data updated successfully", result);
-      res.redirect("/list-devices");
+      message = `The status of ${req.body.name} has been updated to ${req.body.status} successfully`;
+      res.redirect("/control-device"); //For hot reloading
     });
   });
   app.get("/delete-device", function (req, res) {
@@ -99,7 +101,7 @@ module.exports = function (app) {
         res.redirect("/");
       }
       console.log("Data deleted successfully", result);
-      res.redirect("/list-devices");
+      res.redirect("/delete-device");
     });
   });
 };

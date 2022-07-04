@@ -53,9 +53,13 @@
             if (hrefAttribue == path) {
                 // console.log("match", links[i].href);
                 // console.log("match class name", links[i].className);
+                const linkClassName = links[i].className;
+                if (linkClassName == "nav-link") { //To ensure that the active class is only added to a link tag
+                    links[i].className += " active";
+                    links[i].innerHTML += srOnly;
 
-                links[i].className += " active";
-                links[i].innerHTML += srOnly;
+                } 
+
             }
         }
     }

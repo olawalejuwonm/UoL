@@ -15,6 +15,12 @@
 
     <!-- This will include the ejs nav partial -->
     <%- include('partials/nav') %>
+     <!-- This will display success message whenever there's a response from the server with ejs syntax. -->
+     <% if (message) { %>
+        <div class="alert alert-success" role="alert">
+            <%= message %>
+        </div>
+    <% } %>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -55,10 +61,19 @@
                         <div class="form-group">
                             <label for="deviceStatus">Device Status</label>
                             <select class="form-control" id="deviceStatus" name="status"
-                            defaultValue="<%= device?.status %>"
                             >
-                                <option value="On">On</option>
-                                <option value="Off">Off</option>
+                                <!-- This will make default selected value to be the current status of the device. -->
+                                <option
+                                <% if (device?.status == "on") { %>
+                                    selected
+                                <% } %>
+                                value="on">On</option>
+                                <option
+                                <% if (device?.status == "off") { %>
+                                    selected
+                                <% } %>
+                                value="off">Off</option>
+
                             </select>
                         </div>
                         <!-- A submit button to change the settings -->

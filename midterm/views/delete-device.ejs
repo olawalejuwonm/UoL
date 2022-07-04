@@ -13,6 +13,12 @@
 <body>
         <!-- This will include the ejs nav partial -->
         <%- include('partials/nav') %>
+        <!-- This will display success message whenever there's a response from the server with ejs syntax. -->
+        <% if (success) { %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
     <!-- This is A device selector input which allows the user to select a device from a list of created
     devices -->
     <div class="container">
