@@ -23,15 +23,34 @@ module.exports = function (app) {
   app.post("/add-device", function (req, res) {
     let sqlquery = "INSERT INTO devices (name, type, status) VALUES (?,?,?)";
     let newrecord = [req.body.name, req.body.type, req.body.status];
-    db.query(sqlquery, newrecord, (err, result) => {
-      if (err) {
-        console.log("An error occurred while inserting data", err);
-        res.redirect("/");
+    //This will check if the name is already in the database
+    db.query(
+      "SELECT * FROM devices WHERE name = ?",
+      [req.body.name],
+      (err, result) => {
+        if (err) {
+          message = "An error occurred";
+          res.redirect("/add-device");
+          clearMessage();
+        } else if (result.length > 0) {
+          message = "Device already exists";
+          res.redirect("/add-device");
+          clearMessage();
+        } else {
+          db.query(sqlquery, newrecord, (err, result) => {
+            if (err) {
+              console.log("An error occurred while inserting data", err);
+              res.redirect("/");
+              clearMessage();
+            }
+            console.log("Data inserted successfully", result);
+            message = `Device ${req.body.name} added successfully`;
+            res.redirect("/add-device");
+            clearMessage();
+          });
+        }
       }
-      console.log("Data inserted successfully", result);
-      message = `Device ${req.body.name} added successfully`;
-      res.redirect("/list-devices");
-    });
+    );
   });
   app.get("/list-devices", function (req, res) {
     let sqlquery = "SELECT * FROM devices";
@@ -85,6 +104,7 @@ module.exports = function (app) {
       if (err) {
         console.log("An error occurred while updating data", err);
         res.redirect("/");
+        clearMessage();
       }
       console.log("Data updated successfully", result);
       message = `The status of ${req.body.name} has been updated to ${req.body.status} successfully`;
@@ -98,6 +118,7 @@ module.exports = function (app) {
       if (err) {
         console.log("An error occurred while selecting data", err);
         res.redirect("/");
+        clearMessage();
       }
       console.log("Data selected successfully", result);
       const id = req.query.id;
@@ -116,11 +137,11 @@ module.exports = function (app) {
       if (err) {
         console.log("An error occurred while deleting data", err);
         res.redirect("/");
+        clearMessage();
       }
       console.log("Data deleted successfully", result);
       res.redirect("/delete-device");
       clearMessage();
-
     });
   });
 };
