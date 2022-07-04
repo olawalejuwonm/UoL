@@ -3,28 +3,32 @@
 
 <head>
     <title>About Us</title>
+    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+
 </head>
 
 <body>
+    <!-- This will include the ejs nav partial -->
+    <%- include('partials/nav') %>
 
-    <main>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>About Us</h1>
-                    <p>
-                        This is a simple web application that allows you to control your home.
-                        You can control your lights, thermostat, and more.
-                    </p>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>About Us</h1>
+                        <p>
+                            This is a simple web application that allows you to control your home.
+                            You can control your lights, thermostat, and more.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- include a carousel of smart home devices images -->
-        <p>
-            This was developed by:
-            Olawale Micheal Juwon
-        </p>
-    </main>
+            <!-- include a carousel of smart home devices images -->
+            <p>
+                This was developed by:
+                Olawale Micheal Juwon
+            </p>
+        </main>
 
 </body>
 

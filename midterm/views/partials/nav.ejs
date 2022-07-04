@@ -1,0 +1,62 @@
+<!-- This is a responsive Css Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">My Smart Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+            <!-- Add device page -->
+            <li class="nav-item">
+                <a class="nav-link" href="/add-device">Add Device</a>
+            </li>
+            <!-- Device status page -->
+            <li class="nav-item">
+                <a class="nav-link" href="/device-status">Device Status</a>
+            </li>
+            <!-- Control device page -->
+            <li class="nav-item">
+                <a class="nav-link" href="/control-device">Control Device</a>
+            </li>
+            <!-- Delete device page -->
+            <li class="nav-item">
+                <a class="nav-link" href="/delete-device">Delete Device</a>
+            </li>
+
+
+
+
+        </ul>
+    </div>
+</nav>
+
+<script>
+    //This will automatically add active to any link with href equal to the current page
+    const srOnly = '<span class="sr-only">(current)</span>';
+    window.onload = function () {
+        var path = window.location.pathname;
+        var page = "/"+ path.split("/").pop(); // get the last part of the path
+        console.log(page, "page");
+        var links = document.getElementsByTagName("a");
+        for (var i = 0; i < links.length; i++) {
+            const hrefAttribue = links[i].getAttribute("href");
+            // console.log(hrefAttribue, "links[i].href", path);
+            if (hrefAttribue == path) {
+                // console.log("match", links[i].href);
+                // console.log("match class name", links[i].className);
+
+                links[i].className += " active";
+                links[i].innerHTML += srOnly;
+            }
+        }
+    }
+</script>
