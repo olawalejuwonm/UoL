@@ -140,6 +140,7 @@ module.exports = function (app) {
         clearMessage();
       }
       console.log("Data deleted successfully", result);
+      message = `Device ${req.body.name} deleted successfully`;
       res.redirect("/delete-device");
       clearMessage();
     });

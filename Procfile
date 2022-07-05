@@ -1,0 +1,1 @@
+web: cd midterm && node index.js
