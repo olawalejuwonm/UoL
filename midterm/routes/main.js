@@ -30,6 +30,7 @@ module.exports = function (app) {
       (err, result) => {
         if (err) {
           message = "An error occurred";
+          console.log(err);
           res.redirect("/add-device");
           clearMessage();
         } else if (result.length > 0) {
@@ -40,6 +41,7 @@ module.exports = function (app) {
           db.query(sqlquery, newrecord, (err, result) => {
             if (err) {
               console.log("An error occurred while inserting data", err);
+              message = "An error occurred";
               res.redirect("/");
               clearMessage();
             }
@@ -57,7 +59,9 @@ module.exports = function (app) {
     db.query(sqlquery, (err, result) => {
       if (err) {
         console.log("An error occurred while selecting data", err);
+        message = "An error occurred";
         res.redirect("/");
+        clearMessage();
       }
       console.log("Data selected successfully", result);
       res.render("list-devices", { devices: result });
@@ -68,7 +72,9 @@ module.exports = function (app) {
     db.query(sqlquery, (err, result) => {
       if (err) {
         console.log("An error occurred while selecting data", err);
+        message = "An error occurred";
         res.redirect("/");
+        clearMessage();
       }
       console.log("Data selected successfully", result);
       const id = req.query.id;
@@ -82,7 +88,9 @@ module.exports = function (app) {
     db.query(sqlquery, (err, result) => {
       if (err) {
         console.log("An error occurred while selecting data", err);
+        message = "An error occurred";
         res.redirect("/");
+        clearMessage();
       }
       console.log("Data selected successfully", result);
       const id = req.query.id;
@@ -103,6 +111,7 @@ module.exports = function (app) {
     db.query(sqlquery, newrecord, (err, result) => {
       if (err) {
         console.log("An error occurred while updating data", err);
+        message = "An error occurred";
         res.redirect("/");
         clearMessage();
       }
@@ -117,6 +126,7 @@ module.exports = function (app) {
     db.query(sqlquery, (err, result) => {
       if (err) {
         console.log("An error occurred while selecting data", err);
+        message = "An error occurred";
         res.redirect("/");
         clearMessage();
       }
@@ -136,6 +146,7 @@ module.exports = function (app) {
     db.query(sqlquery, newrecord, (err, result) => {
       if (err) {
         console.log("An error occurred while deleting data", err);
+        message = "An error occurred";
         res.redirect("/");
         clearMessage();
       }

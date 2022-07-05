@@ -13,54 +13,66 @@
 </head>
 
 <body>
-        <!-- This will include the ejs nav partial -->
-        <%- include('partials/nav') %>
-         <!-- This will display success message whenever there's a response from the server with ejs syntax. -->
-         <% if (message) { %>
+    <!-- This will include the ejs nav partial -->
+    <%- include('partials/nav') %>
+        <!-- This will display success message whenever there's a response from the server with ejs syntax. -->
+        <% if (message) { %>
             <div class="alert alert-info" role="alert">
                 <%= message %>
             </div>
-        <% } %>
-    <main>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Add Device</h1>
-                    <p>
-                        On this page you can add a new device to your home.
+            <% } %>
+                <main>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Add Device</h1>
+                                <p>
+                                    On this page you can add a new device to your home.
 
-                    </p>
-                </div>
-            </div>
-        </div>
-        <form action="/add-device" method="POST">
-            <div class="form-group">
-                <label for="deviceName">Device Name</label>
-                <input type="text" class="form-control" id="deviceName" placeholder="Device Name" required minlength="3"
-                    maxlength="20" name="name">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <form action="/add-device" method="POST">
+                        <div class="form-group">
+                            <label for="deviceName">Device Name</label>
+                            <input type="text" class="form-control" id="deviceName" placeholder="Device Name" required
+                                minlength="3" maxlength="20" name="name">
 
-            </div>
-            <div class="form-group">
-                <label for="deviceType">Device Type</label>
-                <select class="form-control" id="deviceType" required name="type">
-                    <option>Light</option>
-                    <option>Thermostat</option>
-                    <option>Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="deviceStatus">Device Status</label>
-                <select class="form-control" id="deviceStatus" name="status">
-                    <option value="On">On</option>
-                    <option value="Off">Off</option>
-                </select>
-            </div>
-            <!-- submit button -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="deviceType">Device Type</label>
+                            <select class="form-control" id="deviceType" required name="type">
+                                <option>Light</option> on/off
+                                <option>Thermostat</option> temp
+                                <option>Door</option> open/close
+                                <option>Window</option> open/close
+                                <option>Television</option> volume down button
+                                <option>Cooker</option> on/off
+                                <option>Fridge</option> on/off
+                                <option>AC</option> temp
+                                <option>Water Heater</option>
+                                <option>Washing Machine</option>
+                                <option>Microwave</option>
+                                <option>Oven</option> on/off
+                                <option>Dishwasher</option> on/off
 
 
-        </form>
-    </main>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="deviceStatus">Device Status</label>
+                            <select class="form-control" id="deviceStatus" name="status">
+                                <option value="On">On</option>
+                                <option value="Off">Off</option>
+                            </select>
+                        </div>
+                        <!-- submit button -->
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+                    </form>
+                </main>
 
 </body>
 
