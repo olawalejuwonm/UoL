@@ -10,7 +10,7 @@
     <title>Device Status</title>
     <link rel="stylesheet" href="../public/css/style.css">
     <!-- link bootstrap css from public folder of the expressjs app -->
-    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -101,6 +101,7 @@
 
     <% if (device) { %>
         <script>
+            //This will open the modal when there is device value in the ejs variable due to query
             const statusModal = new bootstrap.Modal(document.getElementById('statusModal'));
             statusModal.show();
         </script>

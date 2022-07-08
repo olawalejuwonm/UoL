@@ -6,91 +6,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Device</title>
-    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
 </head>
 
 <body>
-        <!-- This will include the ejs nav partial -->
-        <%- include('partials/nav') %>
+    <!-- This will include the ejs nav partial -->
+    <%- include('partials/nav') %>
         <!-- This will display success message whenever there's a response from the server with ejs syntax. -->
         <% if (message) { %>
             <div class="alert alert-info" role="alert">
                 <%= message %>
             </div>
-        <% } %>
-    <!-- This is A device selector input which allows the user to select a device from a list of created
+            <% } %>
+                <!-- This is A device selector input which allows the user to select a device from a list of created
     devices -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Delete Device</h1>
-                <p>
-                    On this page you can delete a device.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <form action="/delete-device" method="POST">
-                    <div class="form-group">
-                        <label for="device-selector">Select a device to delete</label>
-                        <select class="form-control" id="device-selector" name="name">
-                            <% devices.forEach(function(device) { %>
-                                <option value="<%= device?.name %>">
-                                    <%= device?.name %>
-                                </option>
-                                <% }); %>
-                        </select>
-                    </div>
-
-                    <button type="button" onclick="handleDelete()" class="btn btn-primary">Delete Device</button>
-
-                    <!-- This is the delete device conformation modal. -->
-                    <div class="modal fade" id="delete-device-modal" tabindex="-1" role="dialog"
-                        aria-labelledby="delete-device-modal-label" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="delete-device-modal-label">Delete Device</h5>
-                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Are you sure you want to delete this device?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                </div>
-                            </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Delete Device</h1>
+                            <p>
+                                On this page you can delete a device.
+                            </p>
                         </div>
                     </div>
-                </form>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="/delete-device" method="POST">
+                                <div class="form-group">
+                                    <label for="device-selector">Select a device to delete</label>
+                                    <select class="form-control" id="device-selector" name="name" required>
+                                        <% devices.forEach(function(device) { %>
+                                            <option value="<%= device?.name %>">
+                                                <%= device?.name %>
+                                            </option>
+                                            <% }); %>
+                                    </select>
+                                </div>
 
-            </div>
-        </div>
-    </div>
+                                <button type="button" onclick="handleDelete()" class="btn btn-primary">Delete
+                                    Device</button>
+
+                                <!-- This is the delete device conformation modal. -->
+                                <div class="modal fade" id="delete-device-modal" tabindex="-1" role="dialog"
+                                    aria-labelledby="delete-device-modal-label" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="delete-device-modal-label">Delete Device
+                                                </h5>
+                                                <button type="button" class="close" data-bs-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete this device?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
 
 
 
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+                <script src="bootstrap/js/bootstrap.min.js"></script>
 
 
 
-    <script>
-        //This will ask  the user’s confirmation with a confirm modal before the delete operation
-        //The function below will trigger the confirm modal.
-        function handleDelete() {
-            const deleteDeviceModal = new bootstrap.Modal(document.getElementById('delete-device-modal'));
-            deleteDeviceModal.show();
-        }
-
-    </script>
+                <script src="scripts/delete-device.js"></script>
 
 
 </body>

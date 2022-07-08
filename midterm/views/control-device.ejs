@@ -8,7 +8,7 @@
     <title>Control Device</title>
     <link rel="stylesheet" href="../public/css/style.css">
     <!-- link bootstrap css from public folder of the expressjs app -->
-    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -60,20 +60,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="deviceStatus">Device Status</label>
-                                        <select class="form-control" id="deviceStatus" name="status">
-                                            <!-- This will make default selected value to be the current status of the device. -->
-                                            <option <% if (device?.status=="on" ) { %>
-                                                selected
-                                                <% } %>
-                                                    value="on">On
-                                            </option>
-                                            <option <% if (device?.status=="off" ) { %>
-                                                selected
-                                                <% } %>
-                                                    value="off">Off
-                                            </option>
-
-                                        </select>
+                                        <div id="statusType">
+                                            
+                                        </div>
                                     </div>
                                     <!-- A submit button to change the settings -->
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -89,7 +78,7 @@
                         <div class="col-md-12">
                             <form class="form-group">
                                 <label for="deviceSelector">Select Device</label>
-                                <select class="form-control" id="deviceSelector" name="id">
+                                <select class="form-control" id="deviceSelector" name="id" required>
                                     <option value="" disabled selected>Select a device</option>
                                     <% for (var i=0; i < devices.length; i++) { %>
                                         <option value="<%= devices[i].id %>" <% if (device?.id==devices[i].id) { %>
@@ -103,18 +92,24 @@
                                         <% } %>
                                 </select>
                                 <!-- This is  A submit button to change the settings -->
-                                <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+                                <button type="submit" class="btn btn-primary" id="submitButton">Control Device</button>
                             </form>
                         </div>
                     </div>
                 </div>
                 <!-- link bootstrap js from public folder of the expressjs app -->
                 <script src="bootstrap/js/bootstrap.min.js"></script>
+                <script src="scripts/select.js"></script>
 
                 <% if (device) { %>
                     <script>
+                        //This will open the modal when there is device value in the ejs variable due to query
+                        const deviceType = '<%= device?.type %>';
+                        const deviceStatus = '<%= device?.status %>';
+                        chooseDevice(deviceType, deviceStatus);
                         const deviceModal = new bootstrap.Modal(document.getElementById('deviceModal'));
                         deviceModal.show();
+
                     </script>
                     <% } %>
 
