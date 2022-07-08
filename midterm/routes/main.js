@@ -2,6 +2,8 @@
 let message; // global variable to store the message
 
 //This function will set message to  undefined after 3 seconds when called
+//This will ensure that message from previous page is not displayed on
+//newly navigated page
 function clearMessage() {
   setTimeout(() => {
     message = undefined;
@@ -23,7 +25,6 @@ module.exports = function (app) {
   app.post("/add-device", function (req, res) {
     let sqlquery = "INSERT INTO devices (name, type, status) VALUES (?,?,?)";
     let newrecord = [req.body.name, req.body.type, req.body.status];
-    //This will check if the name is already in the database
     db.query(
       "SELECT * FROM devices WHERE name = ?",
       [req.body.name],
@@ -34,6 +35,8 @@ module.exports = function (app) {
           res.redirect("/add-device");
           clearMessage();
         } else if (result.length > 0) {
+          //This will check if the name is already in the database
+
           message = "Device already exists";
           res.redirect("/add-device");
           clearMessage();
@@ -54,19 +57,7 @@ module.exports = function (app) {
       }
     );
   });
-  app.get("/list-devices", function (req, res) {
-    let sqlquery = "SELECT * FROM devices";
-    db.query(sqlquery, (err, result) => {
-      if (err) {
-        console.log("An error occurred while selecting data", err);
-        message = "An error occurred";
-        res.redirect("/");
-        clearMessage();
-      }
-      console.log("Data selected successfully", result);
-      res.render("list-devices", { devices: result });
-    });
-  });
+
   app.get("/device-status", function (req, res) {
     let sqlquery = "SELECT * FROM devices";
     db.query(sqlquery, (err, result) => {
@@ -78,7 +69,8 @@ module.exports = function (app) {
       }
       console.log("Data selected successfully", result);
       const id = req.query.id;
-      let device = result.find((device) => device.id == id); //This will return the device with the id that was passed in the query
+      let device = result.find((device) => device.id == id);
+      //This will return the device with the id that was passed in the query
       console.log("Device found", device);
       res.render("device-status", { devices: result, device: device });
     });
@@ -94,7 +86,8 @@ module.exports = function (app) {
       }
       console.log("Data selected successfully", result);
       const id = req.query.id;
-      let device = result.find((device) => device.id == id); //This will return the device with the id that was passed in the query
+      let device = result.find((device) => device.id == id);
+      //This will return the device with the id that was passed in the query
       console.log("Device found", device);
       res.render("control-device", {
         devices: result,
@@ -154,6 +147,21 @@ module.exports = function (app) {
       message = `Device ${req.body.name} deleted successfully`;
       res.redirect("/delete-device");
       clearMessage();
+    });
+  });
+
+  //PERSONAL EXTENSION: List all device
+  app.get("/list-devices", function (req, res) {
+    let sqlquery = "SELECT * FROM devices";
+    db.query(sqlquery, (err, result) => {
+      if (err) {
+        console.log("An error occurred while selecting data", err);
+        message = "An error occurred";
+        res.redirect("/");
+        clearMessage();
+      }
+      console.log("Data selected successfully", result);
+      res.render("list-devices", { devices: result });
     });
   });
 };

@@ -33,7 +33,7 @@ function chooseDevice(value, selectedValue) {
         `;
     //pick the selected value
     document.getElementById("deviceStatus").value = selectedValue;
-  } else {
+  } else { //For Non - appliicable fields
     document.getElementById("statusType").innerHTML = `
         <input type="text" class="form-control" name="status" placeholder="Not Applicable" value="${selectedValue}" >
         `;
