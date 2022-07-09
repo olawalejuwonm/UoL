@@ -16,13 +16,13 @@ function chooseDevice(value, selectedValue) {
   } else if (updown.includes(value)) {
     document.getElementById("statusType").innerHTML = `
         <input type="range" class="form-control slider" name="status" min="0" id="slider"
-        max="100" value="${selectedValue}">
+        max="100" value="${selectedValue || "50"}">
     <!-- slider value -->
-    <span id="sliderValue">${selectedValue}</span>
+    <span id="sliderValue">${selectedValue || "50"}</span>
         `;
 
     document.getElementById("slider").addEventListener("input", function () {
-      document.getElementById("sliderValue").innerHTML = this.value;
+      document.getElementById("sliderValue").innerHTML = this.value || "50";
     });
   } else if (openclose.includes(value)) {
     document.getElementById("statusType").innerHTML = `
