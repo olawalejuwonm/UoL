@@ -2,113 +2,105 @@
 <html>
 
 <head>
-    <title>Welcome to My Smart Home</title>
-    <!-- link bootstrap css from public folder of the expressjs app -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <title>Welcome to My Smart Home</title>
+  <!-- link bootstrap css from public folder of the expressjs app -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 
 
 <body>
-    <!-- This will include the ejs nav partial -->
-    <%- include('partials/nav') %>
+  <!-- This will include the ejs nav partial -->
+  <%- include('partials/nav') %>
 
-        <main>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1>Welcome to My Smart Home</h1>
-                        <p>
-                            This is a simple web application that allows you to control your home.
-                            You can control your lights, thermostat, and more.
-                        </p>
-                    </div>
-                </div>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Welcome to My Smart Home</h1>
+          <p>
+            This is a simple web application that allows you to control your home.
+            You can control your lights, thermostat, and more.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- include a carousel of smart home devices images -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="carouselIndicator" class="carousel slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-bs-target="#carouselIndicator" data-bs-slide-to="0" class="active"></li>
+              <li data-bs-target="#carouselIndicator" data-bs-slide-to="1"></li>
+              <li data-bs-target="#carouselIndicator" data-bs-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="500">
+                <img class="d-block w-100" src="https://th.bing.com/th/id/R.d7d373420ddf0bfe33f9ee8d641b3e6c?rik=TOATDxgp9MoPag&pid=ImgRaw&r=0" alt="First slide">
+              </div>
+              <div class="carousel-item" data-bs-interval="500">
+                <img class="d-block w-100" src="https://lh6.googleusercontent.com/proxy/2kxRsOWZ6HuLUep3i-HTYcYtsPGhaTfAWxjN6ai71QolNnnHpSdBvfN5kzF8FyQZd_0D_Gvne1l-h9B9I1zXon5krrjqeQG7-Ex3VuzHIQ=s0-d" alt="Second slide">
+              </div>
+              <div class="carousel-item" data-bs-interval="500">
+                <img class="d-block w-100" src="https://th.bing.com/th/id/R.74952833544db09906a0e7db2b1b0428?rik=5%2fqdyJn1Y21yyQ&pid=ImgRaw&r=0" alt="Third slide">
+              </div>
             </div>
-            <!-- include a carousel of smart home devices images -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="carouselIndicator" class="carousel slide" data-bs-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-bs-target="#carouselIndicator" data-bs-slide-to="0" class="active"></li>
-                                <li data-bs-target="#carouselIndicator" data-bs-slide-to="1"></li>
-                                <li data-bs-target="#carouselIndicator" data-bs-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active" data-bs-interval="500">
-                                    <img class="d-block w-100"
-                                        src="https://th.bing.com/th/id/R.d7d373420ddf0bfe33f9ee8d641b3e6c?rik=TOATDxgp9MoPag&pid=ImgRaw&r=0"
-                                        alt="First slide">
-                                </div>
-                                <div class="carousel-item" data-bs-interval="500">
-                                    <img class="d-block w-100"
-                                        src="https://lh6.googleusercontent.com/proxy/2kxRsOWZ6HuLUep3i-HTYcYtsPGhaTfAWxjN6ai71QolNnnHpSdBvfN5kzF8FyQZd_0D_Gvne1l-h9B9I1zXon5krrjqeQG7-Ex3VuzHIQ=s0-d"
-                                        alt="Second slide">
-                                </div>
-                                <div class="carousel-item" data-bs-interval="500">
-                                    <img class="d-block w-100"
-                                        src="https://th.bing.com/th/id/R.74952833544db09906a0e7db2b1b0428?rik=5%2fqdyJn1Y21yyQ&pid=ImgRaw&r=0"
-                                        alt="Third slide">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselIndicator" role="button"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselIndicator" role="button"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a class="carousel-control-prev" href="#carouselIndicator" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselIndicator" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>What is My Smart Home?</h2>
-                        <p>
-                            My Smart Home is a web application that allows you to control your home.
-                            You can control your lights, thermostat, and more.
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>What is My Smart Home?</h2>
+          <p>
+            My Smart Home is a web application that allows you to control your home.
+            You can control your lights, thermostat, and more.
+          </p>
+        </div>
+      </div>
+    </div>
 
-            <!-- Basic how to use the application -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>How to use My Smart Home</h2>
-                        <!-- Number 1: Navigate to the device page -->
-                        <p>
-                            <strong>Number 1:</strong> Navigate to the add device page.
-                        </p>
-                        <!-- Number 2: Click on the device name -->
-                        <p>
-                            <strong>Number 2:</strong> Add your device to your home.
-                        </p>
-                        <!-- Number 3: Click on the device name -->
-                        <p>
-                            <strong>Number 3:</strong> Then you can control and manage your device anytime and anywhere.
-                        </p>
+    <!-- Basic how to use the application -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>How to use My Smart Home</h2>
+          <!-- Number 1: Navigate to the device page -->
+          <p>
+            <strong>Number 1:</strong> Navigate to the add device page.
+          </p>
+          <!-- Number 2: Click on the device name -->
+          <p>
+            <strong>Number 2:</strong> Add your device to your home.
+          </p>
+          <!-- Number 3: Click on the device name -->
+          <p>
+            <strong>Number 3:</strong> Then you can control and manage your device anytime and anywhere.
+          </p>
 
-                    </div>
+        </div>
 
-                </div>
-            </div>
-
-
-        </main>
+      </div>
+    </div>
 
 
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+  </main>
+
+
+  <script src="bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 

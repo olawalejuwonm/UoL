@@ -2,116 +2,110 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Device</title>
-    <link rel="stylesheet" href="../public/css/style.css">
-    <!-- link bootstrap css from public folder of the expressjs app -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control Device</title>
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- link bootstrap css from public folder of the expressjs app -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
 
-    <!-- This will include the ejs nav partial -->
-    <%- include('partials/nav') %>
-        <!-- This will display success message whenever there's a response from the server with ejs syntax. -->
-        <% if (message) { %>
-            <div class="alert alert-info" role="alert">
-                <%= message %>
-            </div>
-            <% } %>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1>Control Device</h1>
-                            <p>
-                                On this page you can control your devices.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- This is a modal that displays the status of the device selected -->
-                <div class="modal fade" id="deviceModal" tabindex="-1" role="dialog" aria-labelledby="deviceModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deviceModalLabel">Control Device</h5>
-                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <!-- This is  A form with inputs to control the chosen device’s settings (eg. on/off, temperature,
+  <!-- This will include the ejs nav partial -->
+  <%- include('partials/nav') %>
+  <!-- This will display success message whenever there's a response from the server with ejs syntax. -->
+  <% if (message) { %>
+  <div class="alert alert-info" role="alert">
+    <%= message %>
+  </div>
+  <% } %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Control Device</h1>
+        <p>
+          On this page you can control your devices.
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- This is a modal that displays the status of the device selected -->
+  <div class="modal fade" id="deviceModal" tabindex="-1" role="dialog" aria-labelledby="deviceModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deviceModalLabel">Control Device</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- This is  A form with inputs to control the chosen device’s settings (eg. on/off, temperature,
                     etc) -->
-                                <form id="deviceForm" action="/control-device" method="POST">
-                                    <div class="form-group">
-                                        <label for="deviceName">Device Name</label>
-                                        <input type="text" class="form-control" id="deviceName" name="name"
-                                            placeholder="Device Name" readonly value="<%= device?.name %>">
+          <form id="deviceForm" action="/control-device" method="POST">
+            <div class="form-group">
+              <label for="deviceName">Device Name</label>
+              <input type="text" class="form-control" id="deviceName" name="name" placeholder="Device Name" readonly value="<%= device?.name %>">
 
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="deviceType">Device Type</label>
-                                        <input type="text" class="form-control" id="deviceType" name="type" placeholder="
+            </div>
+            <div class="form-group">
+              <label for="deviceType">Device Type</label>
+              <input type="text" class="form-control" id="deviceType" name="type" placeholder="
                                 <%= device?.type %>
                                 " readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="deviceStatus">Device Status</label>
-                                        <div id="statusType">
-                                            
-                                        </div>
-                                    </div>
-                                    <!-- A submit button to change the settings -->
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- This is A device selector input which allows the user to select a device from a list of created
+            </div>
+            <div class="form-group">
+              <label for="deviceStatus">Device Status</label>
+              <div id="statusType">
+
+              </div>
+            </div>
+            <!-- A submit button to change the settings -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- This is A device selector input which allows the user to select a device from a list of created
     devices -->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <form class="form-group">
-                                <label for="deviceSelector">Select Device</label>
-                                <select class="form-control" id="deviceSelector" name="id" required>
-                                    <option value="" disabled selected>Select a device</option>
-                                    <% for (var i=0; i < devices.length; i++) { %>
-                                        <option value="<%= devices[i].id %>" <% if (device?.id==devices[i].id) { %>
-                                            selected
-                                            <% } %>
-                                                >
-                                                <!-- mark as selected if device?.id == devices[i].id -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form class="form-group">
+          <label for="deviceSelector">Select Device</label>
+          <select class="form-control" id="deviceSelector" name="id" required>
+            <option value="" disabled selected>Select a device</option>
+            <% for (var i=0; i < devices.length; i++) { %>
+            <option value="<%= devices[i].id %>" <% if (device?.id==devices[i].id) { %> selected <% } %>>
+              <!-- mark as selected if device?.id == devices[i].id -->
 
-                                                <%= devices[i].name %>
-                                        </option>
-                                        <% } %>
-                                </select>
-                                <!-- This is  A submit button to change the settings -->
-                                <button type="submit" class="btn btn-primary" id="submitButton">Control Device</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- link bootstrap js from public folder of the expressjs app -->
-                <script src="bootstrap/js/bootstrap.min.js"></script>
-                <script src="scripts/select.js"></script>
+              <%= devices[i].name %>
+            </option>
+            <% } %>
+          </select>
+          <!-- This is  A submit button to change the settings -->
+          <button type="submit" class="btn btn-primary" id="submitButton">Control Device</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- link bootstrap js from public folder of the expressjs app -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="scripts/select.js"></script>
 
-                <% if (device) { %>
-                    <script>
-                        //This will open the modal when there is device value in the ejs variable due to query
-                        const deviceType = '<%= device?.type %>';
-                        const deviceStatus = '<%= device?.status %>';
-                        chooseDevice(deviceType, deviceStatus);
-                        const deviceModal = new bootstrap.Modal(document.getElementById('deviceModal'));
-                        deviceModal.show();
-
-                    </script>
-                    <% } %>
+  <% if (device) { %>
+  <script>
+    //This will open the modal when there is device value in the ejs variable due to query
+    const deviceType = '<%= device?.type %>';
+    const deviceStatus = '<%= device?.status %>';
+    chooseDevice(deviceType, deviceStatus);
+    const deviceModal = new bootstrap.Modal(document.getElementById('deviceModal'));
+    deviceModal.show();
+  </script>
+  <% } %>
 
 </body>
 

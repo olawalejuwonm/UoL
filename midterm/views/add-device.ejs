@@ -2,82 +2,80 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Device</title>
-    <!-- link css from public folder of the expressjs app -->
-    <link rel="stylesheet" href="../public/css/style.css">
-    <!-- link bootstrap css from public folder of the expressjs app -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Device</title>
+  <!-- link css from public folder of the expressjs app -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- link bootstrap css from public folder of the expressjs app -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
-    <!-- This will include the ejs nav partial -->
-    <%- include('partials/nav') %>
-        <!-- This will display success message whenever there's a response from the server with ejs syntax. -->
-        <% if (message) { %>
-            <div class="alert alert-info" role="alert">
-                <%= message %>
-            </div>
-            <% } %>
-                <main>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h1>Add Device</h1>
-                                <p>
-                                    On this page you can add a new device to your home.
+  <!-- This will include the ejs nav partial -->
+  <%- include('partials/nav') %>
+  <!-- This will display success message whenever there's a response from the server with ejs syntax. -->
+  <% if (message) { %>
+  <div class="alert alert-info" role="alert">
+    <%= message %>
+  </div>
+  <% } %>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Add Device</h1>
+          <p>
+            On this page you can add a new device to your home.
 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <form action="/add-device" method="POST">
-                        <div class="form-group">
-                            <label for="deviceName">Device Name</label>
-                            <input type="text" class="form-control" id="deviceName" placeholder="Device Name" required
-                                minlength="3" maxlength="20" name="name">
+          </p>
+        </div>
+      </div>
+    </div>
+    <form action="/add-device" method="POST">
+      <div class="form-group">
+        <label for="deviceName">Device Name</label>
+        <input type="text" class="form-control" id="deviceName" placeholder="Device Name" required minlength="3" maxlength="20" name="name">
 
-                        </div>
-                        <div class="form-group">
-                            <label for="deviceType">Device Type</label>
-                            <select class="form-control" id="deviceType" required name="type"
-                                onchange="chooseDevice(event.target.value)">
-                                <option>Light</option>
-                                <option>Thermostat</option>
-                                <option>Door</option>
-                                <option>Window</option>
-                                <option>Television</option>
-                                <option>Cooker</option>
-                                <option>Fridge</option>
-                                <option>Air Conditioner</option>
-                                <option>Washing Machine</option>
-                                <option>Oven</option>
-                                <option>Dishwasher</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="deviceStatus">Device Status</label>
-                            <div id="statusType">
-                                <select class="form-control" id="deviceStatus" name="status">
-                                    <option value="On">On</option>
-                                    <option value="Off">Off</option>
-                                </select>
-                            </div>
-                        </div>
+      </div>
+      <div class="form-group">
+        <label for="deviceType">Device Type</label>
+        <select class="form-control" id="deviceType" required name="type" onchange="chooseDevice(event.target.value)">
+          <option>Light</option>
+          <option>Thermostat</option>
+          <option>Door</option>
+          <option>Window</option>
+          <option>Television</option>
+          <option>Cooker</option>
+          <option>Fridge</option>
+          <option>Air Conditioner</option>
+          <option>Washing Machine</option>
+          <option>Oven</option>
+          <option>Dishwasher</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="deviceStatus">Device Status</label>
+        <div id="statusType">
+          <select class="form-control" id="deviceStatus" name="status">
+            <option value="On">On</option>
+            <option value="Off">Off</option>
+          </select>
+        </div>
+      </div>
 
 
 
-                        <!-- submit button -->
-                        <button type="submit" class="btn btn-primary">Submit</button>
+      <!-- submit button -->
+      <button type="submit" class="btn btn-primary">Submit</button>
 
 
-                    </form>
-                </main>
+    </form>
+  </main>
 
-                <script src="scripts/select.js"></script>
+  <script src="scripts/select.js"></script>
 </body>
 
 </html>

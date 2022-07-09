@@ -2,110 +2,106 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A device selector input which allows the user to select a device from a list of created
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A device selector input which allows the user to select a device from a list of created
     devices">
-    <title>Device Status</title>
-    <link rel="stylesheet" href="../public/css/style.css">
-    <!-- link bootstrap css from public folder of the expressjs app -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <title>Device Status</title>
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- link bootstrap css from public folder of the expressjs app -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
-        <!-- This will include the ejs nav partial -->
-        <%- include('partials/nav') %>
-    <!-- A device selector input which allows the user to select a device from a list of created
+  <!-- This will include the ejs nav partial -->
+  <%- include('partials/nav') %>
+  <!-- A device selector input which allows the user to select a device from a list of created
     devices -->
-    <!-- A status viewer which, for the selected device, will display the status data found in
+  <!-- A status viewer which, for the selected device, will display the status data found in
     the database (eg. on/off, temperature, etc) -->
-    <!-- using ejs devices variable to get the devices from the database  -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Device Status</h1>
-                <p>
-                    On this page you can view the status of your devices.
-                </p>
-            </div>
-        </div>
+  <!-- using ejs devices variable to get the devices from the database  -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Device Status</h1>
+        <p>
+          On this page you can view the status of your devices.
+        </p>
+      </div>
     </div>
-    <!-- A status viewer which, for the selected device, will display the status data found in
+  </div>
+  <!-- A status viewer which, for the selected device, will display the status data found in
     the database (eg. on/off, temperature, etc) -->
-    <!-- This will be a modal that displays the status of the device selected-->
-    <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="statusModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="statusModalLabel">Status</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        <strong>Device Name:</strong> <span id="deviceName">
-                            <%= device?.name %>
-                        </span>
-                    </p>
-                    <p>
-                        <strong>Device Type:</strong> <span id="deviceType">
-                            <%= device?.type %>
-                        </span>
-                    </p>
-                    <p>
-                        <strong>Device Status:</strong> <span id="deviceStatus">
-                            <%= device?.status %>
-                        </span>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
+  <!-- This will be a modal that displays the status of the device selected-->
+  <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="statusModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="statusModalLabel">Status</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <form action="/device-status" method="GET">
-                    <div class="form-group">
-                        <label for="deviceSelector">Select a device</label>
-                        <select class="form-control" id="deviceSelector" required name="id">
-                            <option value="" disabled selected>Select a device</option>
-                            <!-- This will list all devices from database using devices variable ejs -->
-                            <% for (var i=0; i < devices.length; i++) { %>
-                                <option value="<%= devices[i].id %>" <% if (device?.id==devices[i].id) { %>
-                                    selected
-                                    <% } %>
-                                        >
-                                        <!-- mark as selected if device?.id == devices[i].id -->
-
-                                        <%= devices[i].name %>
-                                </option>
-                                <% } %>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        View Device Status</button>
-                </form>
-            </div>
+        <div class="modal-body">
+          <p>
+            <strong>Device Name:</strong> <span id="deviceName">
+              <%= device?.name %>
+            </span>
+          </p>
+          <p>
+            <strong>Device Type:</strong> <span id="deviceType">
+              <%= device?.type %>
+            </span>
+          </p>
+          <p>
+            <strong>Device Status:</strong> <span id="deviceStatus">
+              <%= device?.status %>
+            </span>
+          </p>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
-    <!-- open the modal when there is device value in the ejs variable -->
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form action="/device-status" method="GET">
+          <div class="form-group">
+            <label for="deviceSelector">Select a device</label>
+            <select class="form-control" id="deviceSelector" required name="id">
+              <option value="" disabled selected>Select a device</option>
+              <!-- This will list all devices from database using devices variable ejs -->
+              <% for (var i=0; i < devices.length; i++) { %>
+              <option value="<%= devices[i].id %>" <% if (device?.id==devices[i].id) { %> selected <% } %>>
+                <!-- mark as selected if device?.id == devices[i].id -->
 
-    <!-- link bootstrap js from public folder of the expressjs app -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+                <%= devices[i].name %>
+              </option>
+              <% } %>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            View Device Status</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- open the modal when there is device value in the ejs variable -->
 
-    <% if (device) { %>
-        <script>
-            //This will open the modal when there is device value in the ejs variable due to query
-            const statusModal = new bootstrap.Modal(document.getElementById('statusModal'));
-            statusModal.show();
-        </script>
-        <% } %>
+  <!-- link bootstrap js from public folder of the expressjs app -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+
+  <% if (device) { %>
+  <script>
+    //This will open the modal when there is device value in the ejs variable due to query
+    const statusModal = new bootstrap.Modal(document.getElementById('statusModal'));
+    statusModal.show();
+  </script>
+  <% } %>
 
 
 
