@@ -6,59 +6,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Device List</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
 </head>
 
 <body>
-    <main>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Device List</h1>
-                    <p>
-                        On this page you can view all of your devices.
-                    </p>
+    <!-- This will include the ejs nav partial -->
+    <%- include('partials/nav') %>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Device List</h1>
+                        <p>
+                            On this page you can view all of your devices.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table table-striped">
-                        <thead>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped">
+                            <thead>
 
-                            <tr>
-                                <th>Device Name</th>
-                                <th>Device Type</th>
-                                <th>Device Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- ejs map result variable -->
-                            <% devices.forEach(function(device) { %>
                                 <tr>
-                                    <td>
-                                        <%= device.name %>
-                                    </td>
-                                    <td>
-                                        <%= device.type %>
-                                    </td>
-                                    <td>
-                                        <%= device.status %>
-                                    </td>
-                                    <td>
-                                        <a href="/edit-device/<%= device.id %>">Edit</a>
-                                        <a href="/delete-device/<%= device.id %>">Delete</a>
-                                    </td>
+                                    <th>Device Name</th>
+                                    <th>Device Type</th>
+                                    <th>Device Status</th>
+                                    <th>Actions</th>
                                 </tr>
-                                <% }); %>
+                            </thead>
+                            <tbody>
+                                <!-- ejs map result variable -->
+                                <% devices.forEach(function(device) { %>
+                                    <tr>
+                                        <td>
+                                            <%= device.name %>
+                                        </td>
+                                        <td>
+                                            <%= device.type %>
+                                        </td>
+                                        <td>
+                                            <%= device.status %>
+                                        </td>
+                                        <td>
+                                            <a href="/control-device?id=<%= device.id %>">Edit</a>
+                                            <a href="/delete-device?id=<%= device.id %>">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
 
 
 

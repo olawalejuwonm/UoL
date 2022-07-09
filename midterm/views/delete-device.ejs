@@ -38,10 +38,12 @@
                                 <div class="form-group">
                                     <label for="device-selector">Select a device to delete</label>
                                     <select class="form-control" id="device-selector" name="name" required>
-                                        <% devices.forEach(function(device) { %>
-                                            <option value="<%= device?.name %>">
-                                                <%= device?.name %>
+                                        <% devices.forEach(function(dev) { %>
+                                            <option value="<%= dev?.name %>" <% if (dev?.name==device?.name) { %>
+                                                selected
+                                                <% } %>><%= dev?.name %>
                                             </option>
+
                                             <% }); %>
                                     </select>
                                 </div>
@@ -86,6 +88,15 @@
 
 
                 <script src="scripts/delete-device.js"></script>
+
+                <% if (device) { %>
+                    <script>
+                        handleDelete();
+
+                    </script>
+                    <% } %>
+
+
 
 
 </body>
