@@ -8,10 +8,11 @@ const mysql = require("mysql");
 const xss = require('xss-clean')
 const path = require("path") //for static files
 
-const port = 8089;
+const port = process.env.PORT || 8089; //For production
 
 console.log("process.env.host", process.env.host);
 
+//All process.env.host are for production
 const db = mysql.createConnection({
   host: process.env.host || "localhost",
   user: process.env.user || "root",
