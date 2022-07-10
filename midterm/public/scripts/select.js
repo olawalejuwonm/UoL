@@ -12,7 +12,7 @@ function chooseDevice(value, selectedValue) {
 
         `;
     //pick the selected value
-    document.getElementById("deviceStatus").value = selectedValue;
+    document.getElementById("deviceStatus").value = selectedValue || "On";
   } else if (updown.includes(value)) {
     document.getElementById("statusType").innerHTML = `
         <input type="range" class="form-control slider" name="status" min="0" id="slider"
@@ -32,11 +32,13 @@ function chooseDevice(value, selectedValue) {
         </select>
         `;
     //pick the selected value
-    document.getElementById("deviceStatus").value = selectedValue;
-  } else { //For Non - appliicable fields
+    document.getElementById("deviceStatus").value = selectedValue || "Open";
+  } else {
+    //For Non - appliicable fields
     document.getElementById("statusType").innerHTML = `
-        <input type="text" class="form-control" name="status" placeholder="Not Applicable" value="${selectedValue}" >
+        <input type="text" class="form-control" name="status" placeholder="Not Applicable" value="${
+          selectedValue || "Not applicable"
+        }" >
         `;
-
   }
 }
