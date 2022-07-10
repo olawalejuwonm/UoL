@@ -5,7 +5,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const mysql = require("mysql");
-var xss = require('xss-clean')
+const xss = require('xss-clean')
+const path = require("path") //for static files
 
 const port = 8089;
 
@@ -48,12 +49,16 @@ db.connect((err) => {
   );
 });
 global.db = db;
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
-//serve the static files from the public folder
-app.use(express.static("public"));
+
 
 app.use(xss()); //prevent Cross-Site Scripting attacks
 require("./routes/main")(app);
+
+//serve the static files from the public folder
+app.use(express.static(path.join(__dirname, 'public')));
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
