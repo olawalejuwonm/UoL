@@ -8,8 +8,6 @@ const mysql = require("mysql");
 const xss = require("xss-clean");
 const path = require("path"); //for static files
 const axios = require("axios");
-//library for running cron jobs
-const cron = require("node-cron");
 
 const port = process.env.PORT || 8089; //For production
 
@@ -56,8 +54,11 @@ global.db = db;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const herokuDynoUpgrade = async (quantity) => {
+//console request body
+app.use(async (req, res, next) => {
   try {
+    console.log(req.body);
+    next();
     //upgrade heroku dyno to web:1 using fromation
     const apiKey = process.env.apiKey;
     const appName = "mysmarthome-uol";
@@ -71,7 +72,7 @@ const herokuDynoUpgrade = async (quantity) => {
     //   -H "Accept: application/vnd.heroku+json; version=3"
     const url = `https://api.heroku.com/apps/${appName}/formation/${fromationType}`;
     const data = {
-      quantity,
+      quantity: 1,
       // size: "web",
     };
     const headers = {
@@ -81,17 +82,6 @@ const herokuDynoUpgrade = async (quantity) => {
     };
     const response = await axios.patch(url, data, { headers });
     console.log(response.data, "response");
-  } catch (error) {
-    throw error;
-  }
-};
-
-//console request body
-app.use(async (req, res, next) => {
-  try {
-    await herokuDynoUpgrade(1);
-    console.log(req.body);
-    next();
   } catch (err) {
     console.log(err);
   } finally {
@@ -109,16 +99,6 @@ app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
 app.listen(port, () => console.log(`Node server is running on port ${port}!`));
-
-//run cron jobs every 15 minutes
-cron.schedule("*/1 * * * *", async () => {
-  try {
-    console.log("cron job running");
-    await herokuDynoUpgrade(0);
-  } catch (error) {
-    console.log(error, "error in cron job");
-  }
-});
 
 // http
 //   .createServer(function(req, res) {
