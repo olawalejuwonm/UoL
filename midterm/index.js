@@ -7,6 +7,9 @@ const app = express();
 const mysql = require("mysql");
 const xss = require("xss-clean");
 const path = require("path"); //for static files
+const axios = require("axios");
+//library for running cron jobs
+const cron = require("node-cron");
 
 const port = process.env.PORT || 8089; //For production
 
@@ -53,10 +56,47 @@ global.db = db;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const herokuDynoUpgrade = async (quantity) => {
+  try {
+    //upgrade heroku dyno to web:1 using fromation
+    const apiKey = process.env.apiKey;
+    const appName = "mysmarthome-uol";
+    const fromationType = "web";
+    //     $ curl -n -X PATCH https://api.heroku.com/apps/$APP_ID_OR_NAME/formation/$FORMATION_ID_OR_TYPE \
+    //   -d '{
+    //   "quantity": 1,
+    //   "size": "standard-1X"
+    // }' \
+    //   -H "Content-Type: application/json" \
+    //   -H "Accept: application/vnd.heroku+json; version=3"
+    const url = `https://api.heroku.com/apps/${appName}/formation/${fromationType}`;
+    const data = {
+      quantity,
+      // size: "web",
+    };
+    const headers = {
+      "Content-Type": "application/json",
+      Accept: "application/vnd.heroku+json; version=3",
+      Authorization: `Bearer ${apiKey}`,
+    };
+    const response = await axios.patch(url, data, { headers });
+    console.log(response.data, "response");
+  } catch (error) {
+    throw error;
+  }
+};
+
 //console request body
-app.use((req, res, next) => {
-  console.log(req.body);
-  next();
+app.use(async (req, res, next) => {
+  try {
+    await herokuDynoUpgrade(1);
+    console.log(req.body);
+    next();
+  } catch (err) {
+    console.log(err);
+  } finally {
+    next();
+  }
 });
 
 app.use(xss()); //prevent Cross-Site Scripting attacks
@@ -69,6 +109,16 @@ app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
 app.listen(port, () => console.log(`Node server is running on port ${port}!`));
+
+//run cron jobs every 15 minutes
+cron.schedule("*/1 * * * *", async () => {
+  try {
+    console.log("cron job running");
+    await herokuDynoUpgrade(0);
+  } catch (error) {
+    console.log(error, "error in cron job");
+  }
+});
 
 // http
 //   .createServer(function(req, res) {
