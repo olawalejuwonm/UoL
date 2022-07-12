@@ -16,7 +16,7 @@ const port = process.env.PORT || 8089; //For production
 console.log("process.env.host", process.env.host);
 
 //All process.env.host are for production
-const db = mysql.createConnection({
+let db = mysql.createConnection({
   host: process.env.host || "localhost",
   user: process.env.user || "root",
   password: process.env.password || "root",
@@ -52,7 +52,6 @@ db.connect((err) => {
     }
   );
 });
-global.db = db;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -110,11 +109,18 @@ app.engine("html", require("ejs").renderFile);
 app.listen(port, () => console.log(`Node server is running on port ${port}!`));
 
 //run cron jobs every 15 minutes
-cron.schedule("*/15 * * * *", async () => {
+cron.schedule("*/5 * * * *", async () => {
   try {
     console.log("cron job running");
     //Terminate sql connection and reconnect
     db.end();
+    db = mysql.createConnection({
+      host: process.env.host || "localhost",
+      user: process.env.user || "root",
+      password: process.env.password || "root",
+      database: process.env.database || "mySmartHome",
+      port: process.env.port || "3306",
+    });
     db.connect((err) => {
       if (err) {
         console.log("An error occurred while connecting to the database", err);
@@ -147,3 +153,4 @@ cron.schedule("*/15 * * * *", async () => {
 //   .listen(8089, function() {
 //     console.log("Node server is running on 8089...");
 //   });
+global.db = db;
