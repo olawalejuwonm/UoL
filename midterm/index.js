@@ -89,7 +89,7 @@ const herokuDynoUpgrade = async (quantity) => {
 //console request body
 app.use(async (req, res, next) => {
   try {
-    await herokuDynoUpgrade(1);
+    // await herokuDynoUpgrade(1);
     console.log(req.body);
     next();
   } catch (err) {
