@@ -109,9 +109,9 @@ app.engine("html", require("ejs").renderFile);
 app.listen(port, () => console.log(`Node server is running on port ${port}!`));
 
 //run cron jobs every 15 minutes
-cron.schedule("*/5 * * * *", async () => {
+cron.schedule("*/15 * * * *", async () => {
   try {
-    console.log("cron job running");
+    // console.log("cron job running");
     //Terminate sql connection and reconnect
     db.end();
     db = mysql.createConnection({
@@ -128,7 +128,7 @@ cron.schedule("*/5 * * * *", async () => {
         setInterval(() => {
           db.connect((err) => {
             if (!err) {
-              console.log("Connected to the database");
+              // console.log("Connected to the database");
               //stop retrying
               clearInterval(this);
             }
@@ -136,6 +136,9 @@ cron.schedule("*/5 * * * *", async () => {
         }, 1000);
 
         // throw err;
+      }
+      else {
+        // console.log("Connected to the database");
       }
     });
   } catch (error) {
