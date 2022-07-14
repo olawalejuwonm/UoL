@@ -45,7 +45,6 @@ function draw() {
   fill(0);
   stroke(255);
 
-
   translate(0, height / 2);
   beginShape();
 
@@ -57,4 +56,20 @@ function draw() {
   }
 
   endShape();
+ 
+  // //create a circle
+  // background(0);
+  // fill(255);
+  // translate(width / 2, height / 2);
+  // var radius = 200;
+  // // ellipse(0, 0, radius * 2, radius * 2);
+  // //use sine to move circle on y axis
+  // //modulate the circle's size
+  // var theta = frameCount;
+  // var radius = frameCount / 10;
+  // var x = cos(theta) * radius;
+  // var y = sin(theta) * radius;
+  // ellipse(x, y, 25, 25);
+
+
 }
