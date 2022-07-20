@@ -47,7 +47,7 @@ const processFileZip = async () => {
     console.log(zipFileBuffer);
     // const base64ZipFile = zipFileBuffer.toString("base64");
     // clipboardy.writeSync(base64ZipFile);
-    pbcopy(zipFileBuffer);
+    //    pbcopy(zipFileBuffer);
     //save the file
     fs.writeFileSync(`${zipFilePath}/${zipDirectory}.zip`, zipFileBuffer);
     console.log(`Zip file ${zipDirectory} copied to clipboard`);
