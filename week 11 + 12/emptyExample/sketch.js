@@ -96,8 +96,53 @@
 //     box(80, 80, 500)
 //     pop();
 
-  
 //   }
 
-
 // }
+
+//Simple Texture
+// var img;
+
+// function preload() {
+//   img = loadImage("assets/rocks.jpg");
+// }
+
+// function setup() {
+//   createCanvas(900, 600, WEBGL);
+//   angleMode(DEGREES);
+// }
+
+// function draw() {
+//   background(0);
+//   texture(img);
+//   noStroke();
+//   rotateY(frameCount);
+//   //   box(300);
+//   plane(500, 500);
+// }
+
+//graphics as Texture
+var buffer;
+function setup() {
+  createCanvas(900, 600, WEBGL);
+  noStroke();
+  buffer = createGraphics(500, 300);
+  buffer.background(255);
+  angleMode(DEGREES);
+}
+
+function draw() {
+  background(125);
+
+  buffer.fill(255, 0, 255);
+
+  buffer.noStroke();
+  buffer.ellipse(random(0, buffer.width), random(0, buffer.height), 10, 10);
+
+  rotateY(frameCount);
+
+  texture(buffer);
+  //   box(200)
+  sphere(100, 50, 50);
+  //   image(buffer, mouseX, mouseY);
+}
