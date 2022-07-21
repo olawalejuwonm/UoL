@@ -15,8 +15,8 @@ function setup() {
   angleMode(DEGREES);
   //Create a "stars plane" that is in the background of the scene and apply to it a dynamic texture (an off-screen buffer) which you have generated using the createGraphics() function. Remember to rotate your plane by 40 degrees or so, so that it faces the camera at the appropriate angle.
   buffer = createGraphics(500, 300);
-  buffer.background(255);
-  buffer.noStroke();
+  buffer.background(0);
+  // buffer.noStroke();
   //Create an array called starLocs which you populate with 200 random locations on that buffer in your setup function.
   for (var i = 0; i < 200; i++) {
     starsLoc[i] = createVector(
@@ -24,19 +24,27 @@ function setup() {
       random(0, buffer.height)
     );
   }
+  sky();
+
 }
 
 // Write a function sky() that loops over starLocs and draws a small white rectangle in each location specified
 function sky() {
   for (var i = 0; i < starsLoc.length; i++) {
+    // console.log(starsLoc[i]);
     buffer.fill(255);
-    buffer.rect(starsLoc[i].x, starsLoc[i].y, 1, 1);
+    buffer.rect(starsLoc[i].x, starsLoc[i].y, 10, 10);
   }
 }
 
 function draw() {
+
+  texture(buffer);
+
+
   background(125);
   noStroke();
+
 
   //Sun at the center of the screen
   // //The camera should be slightly lifted, so that you see the scene from slightly above
@@ -46,25 +54,26 @@ function draw() {
   // plane(width, height);
 
   push();
+
+
   // pointLight(0, 255, 0, 0, 0, 0);
   //Rotate the sun on its Y-axis
-  rotateY(frameCount);
+  rotateZ(frameCount / 10);
   texture(sunImg);
   ellipse(0, 0, 120, 120);
 
-
   pop();
 
-    ///The sun should have two point lights at its centre emitting white colour
-    pointLight(255, 0, 0, 0, 0, 0);
-    pointLight(0, 255, 0, 0, 0, 0);
+  ///The sun should have two point lights at its centre emitting white colour
+  pointLight(255, 0, 0, 0, 0, 0);
+  pointLight(0, 255, 0, 0, 0, 0);
 
   push();
   // The earth should have an ambient white material
   ambientMaterial(255, 255, 255);
   //The earth should rotate around the sun and around its own axis
   // rotateX(frameCount);
-  rotateY(0)
+  rotateY(0);
   rotateZ(frameCount);
 
   // rotateY(frameCount);
