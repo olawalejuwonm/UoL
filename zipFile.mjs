@@ -11,10 +11,13 @@ import child_process from "child_process";
 
 import util from "util";
 
-const zipFileArg = process.argv[2];
+let zipFileArg = process.argv[2];
+//replace / with \ and remove "" from the path
+zipFileArg = path.normalize(zipFileArg).replace(/\\/g, "/")
+  .replace(/"/g, "");
 const zipDirectory = path.basename(zipFileArg);
 const zipFilePath = path.dirname(zipFileArg);
-console.log(`Zipping ${zipFileArg}`, `to ${zipDirectory}`, `in ${zipFilePath}`);
+console.log(`ZipFileArg ${zipFileArg}`);
 function pbcopy(data) {
   // const proc = child_process.spawn("pbcopy");
   const proc = child_process.spawn("clip");
@@ -26,11 +29,13 @@ function pbcopy(data) {
 }
 const processFileZip = async () => {
   try {
-    console.log("Zipping...", `${zipFilePath}/${zipDirectory}`);
+    console.log("Zipping...", `${zipFilePath}\\${zipDirectory}`);
     const zipFile = new zip();
     await new Promise((resolve, reject) => {
       zipFile.addLocalFolderAsync(
-        `${zipFilePath}/${zipDirectory}`,
+        // `${zipFilePath}/${zipDirectory}`,
+        `${zipFileArg}`,
+        // "./week 11 + 12/basicsolar copy",
         (succ, err) => {
           if (err && succ === false) {
             console.log("Error zipping", err);
@@ -49,7 +54,7 @@ const processFileZip = async () => {
     // clipboardy.writeSync(base64ZipFile);
     //    pbcopy(zipFileBuffer);
     //save the file
-    fs.writeFileSync(`${zipFilePath}/${zipDirectory}.zip`, zipFileBuffer);
+    fs.writeFileSync(`zippedFile.zip`, zipFileBuffer);
     console.log(`Zip file ${zipDirectory} copied to clipboard`);
   } catch (err) {
     console.log("Error", err);

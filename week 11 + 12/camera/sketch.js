@@ -8,7 +8,7 @@ function draw() {
 
 //    does nothing
     var zLoc = height;
-    camera(0, 0, zLoc, 0, 0, 0, 0, 1, 0);
+    // camera(0, 0, zLoc, 0, 0, 0, 0, 1, 0);
     
 //     zLoc goes from 200 to 800
 //     var zLoc = (sin(frameCount)+1)/2 * height + 200;
@@ -21,10 +21,10 @@ function draw() {
 //     camera(xLoc, yLoc, zLoc, 0, 0, 0, 0, 1, 0);
 
     // rotate around object in a wavey motion
-//     var xLoc = cos(frameCount) * height;
-//     var yLoc = sin(frameCount) * 300;
-//     var zLoc = sin(frameCount) * height;
-//     camera(xLoc, yLoc, zLoc, 0, 0, 0, 0, 1, 0);
+    var xLoc = cos(frameCount) * height;
+    var yLoc = sin(frameCount) * 300;
+    var zLoc = sin(frameCount) * height;
+    camera(xLoc, yLoc, zLoc, 0, 0, 0, 0, 1, 0);
 
     // point of interest moves
 //     var xAim = sin(frameCount) * height; // xAim range from -600 to 600
