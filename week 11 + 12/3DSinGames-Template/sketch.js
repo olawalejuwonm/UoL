@@ -91,7 +91,16 @@ function draw() {
       // Add frameCount to distance in order to animate the wave.
 
       push();
+
       translate(x, 0, z);
+    //   Add red and green pointLight to the box
+        pointLight(255, 0, 0, 0, 0, 0);
+        pointLight(0, 255, 0, 0, 0, 0);
+        // pointLight(0, 0, 255, 0, 0, 0);
+
+      //   ambientMaterial(255, 255, 255);
+      specularMaterial(255, 255, 255);
+
       box(50, length, 50);
       pop();
     }
