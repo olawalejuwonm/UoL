@@ -94,8 +94,8 @@ function draw() {
 
       translate(x, 0, z);
     //   Add red and green pointLight to the box
-        pointLight(255, 0, 0, 0, 0, 0);
-        pointLight(0, 255, 0, 0, 0, 0);
+        pointLight(255, 0, 20, 0, 0, 0);
+        pointLight(10, 255, 50, 0, 0, 0);
         // pointLight(0, 0, 255, 0, 0, 0);
 
       //   ambientMaterial(255, 255, 255);
