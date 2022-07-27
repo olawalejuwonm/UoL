@@ -8,9 +8,15 @@ var imgIn;
 
 //blur
 var matrix = [
-    [1/9, 1/9, 1/9],
-    [1/9, 1/9, 1/9],
-    [1/9, 1/9, 1/9]
+    [-1, -2, -1],
+    [0, 0, 0],
+    [1, 2, 1]
+];
+
+var matrixY = [
+    [-1, 0, 1],
+    [-2, 0, 2],
+    [-1, 0, 1]
 ];
 ////////////////////////////////////////////////////////////
 function preload() {
@@ -24,34 +30,45 @@ function setup() {
 /////////////////////////////////////////////////////////////
 function draw() {
     background(255);
+    imgIn.filter(GRAY);
 
     image(imgIn, 0, 0);
     image(myFilter(imgIn), imgIn.width + 20, 0);
     noLoop();
 }
 /////////////////////////////////////////////////////////////
-function myFilter(img){
-  var imgOut = createImage(img.width, img.height);
-  var matrixSize = matrix.length;
+function myFilter(img) {
+    var imgOut = createImage(img.width, img.height);
+    var matrixSize = matrixY.length;
 
-  imgOut.loadPixels();
-  img.loadPixels();
+    imgOut.loadPixels();
+    img.loadPixels();
 
-  // read every pixel
-  for (var x = 0; x < imgOut.width; x++) {
-      for (var y = 0; y < imgOut.height; y++) {
+    // read every pixel
+    for (var x = 0; x < imgOut.width; x++) {
+        for (var y = 0; y < imgOut.height; y++) {
 
-          var index = (x + y * imgOut.width) * 4;
-          var c = convolution(x, y, matrix, matrixSize, img);
+            var index = (x + y * imgOut.width) * 4;
+            //(1 *2 + 1) * 255 =1020
 
-          imgOut.pixels[index + 0] = 0;
-          imgOut.pixels[index + 1] = 0
-          imgOut.pixels[index + 2] = 0;
-          imgOut.pixels[index + 3] = 255;
-      }
-  }
-  imgOut.updatePixels();
-  return imgOut;
+            var cX = convolution(x, y, matrix, matrixSize, img);
+            cX = map(abs(cX[0]), 0, 1020, 0, 255); //does the vertical line
+
+            var cY = convolution(x, y, matrixY, matrixSize, img);
+            cY = map(abs(cY[0]), 0, 1020, 0, 255); //does the horizontal line
+
+            var c = convolution(x, y, matrix, matrixSize, img);
+
+            var combo = cX + cY;
+
+            imgOut.pixels[index + 0] = combo;
+            imgOut.pixels[index + 1] = combo
+            imgOut.pixels[index + 2] = combo;
+            imgOut.pixels[index + 3] = 255;
+        }
+    }
+    imgOut.updatePixels();
+    return imgOut;
 }
 /////////////////////////////////////////////////////////////
 function convolution(x, y, matrix, matrixSize, img) {

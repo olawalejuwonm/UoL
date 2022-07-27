@@ -47,7 +47,7 @@ function blur(img){
   // read every pixel
   for (var x = 0; x < imgOut.width; x++) {
       for (var y = 0; y < imgOut.height; y++) {
-
+        
           var index = (x + y * imgOut.width) * 4;
           var c = convolution(x, y, matrix, matrixSize, img);
 
