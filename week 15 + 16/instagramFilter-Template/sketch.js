@@ -404,8 +404,7 @@ function keyPressed() {
 //Additional functions
 async function handleFile(file) {
   if (file.type === 'image') {
-    const resultingImg =  createImg(file.data, "", "uploaded image", function success(img, arg)  {
-      console.log(img, createImg, arg, resultingImg);
+    const resultingImg =  createImg(file.data, "", "uploaded image", function success()  {
       // resultingImg.resize(imgIn.width, imgIn.height);
       resultingImg.hide();
       let imgBuffer = createGraphics(resultingImg.width, resultingImg.height);
