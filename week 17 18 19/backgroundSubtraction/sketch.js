@@ -29,11 +29,6 @@ function setup() {
     grid = new Grid(640, 480);
     // mimics the autoplay policy
     getAudioContext().suspend();
-
-    let mySynth = new p5.MonoSynth();
-
-    // This won't play until the context has resumed
-    mySynth.play('A6');
 }
 
 function draw() {
@@ -96,10 +91,10 @@ function draw() {
     // console.log(grid);
 }
 
-function keyPressed() {
-    userStartAudio();
+// function keyPressed() {
+//     userStartAudio();
 
-}
+// }
 
 function mousePressed() {
     userStartAudio();

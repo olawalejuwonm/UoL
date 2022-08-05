@@ -32,7 +32,7 @@ class Grid {
     noStroke();
     //The variable below determine whether to play a sound or not
     var playSound = false;
-    const randomIndex = floor(random(0, soundsArray.length));
+    const randomIndex = floor(map(noise(frameCount / 100), 0, 1, 0, soundsArray.length));
 
     //The function below check if any of the sound is playing
     function aSoundPlaying() {
@@ -74,17 +74,16 @@ class Grid {
           var s = this.noteState[i][j];
           ellipse(x, y, this.noteSize * s, this.noteSize * s);
           //Play a sound
-          // soundsArray[i].play();
-          // playSound = true;
-          // if (!aSoundPlaying()) {
+          playSound = true;
+          // if (!aSoundPlaying()) {  
           //   soundsArray[randomIndex]?.play(0, 1, 1).stop(0.5);
           //   //  playSound = true;
           // }
           // soundsArray[randomIndex]?.play(0, 1, 1)?.stop(0.5);
-          if (!nSoundPlaying(3)) {
-            soundsArray[randomIndex]?.play()?.ouputVolume(mappedMix)?.stop(0.5);
+          // if (!nSoundPlaying(1)) {
+          //   soundsArray[randomIndex]?.play()?.ouputVolume(mappedMix)?.stop(0.5);
             
-          }
+          // }
 
         }
         // else {
@@ -94,13 +93,14 @@ class Grid {
         this.noteState[i][j] = constrain(this.noteState[i][j], 0, 1);
       }
     }
-    // if (playSound) {
-    //   soundsArray[randomIndex]?.play(0, 1, 1);
-    // }
-    // else {
-    //   //This will stop all sound being played p5js
-    //   // soundsArray.forEach(sound => sound?.stop());
-    // }
+    if (playSound) {
+      soundsArray[randomIndex]?.isPlaying() ? soundsArray[randomIndex]?.play() : soundsArray[randomIndex]?.play();
+    }
+    else {
+      //This will stop all sound being played p5js
+      // soundsArray.forEach(sound => sound?.stop(0.5));
+      // soundsArray[randomIndex]?.stop();
+    }
 
   }
   /////////////////////////////////
