@@ -9,6 +9,7 @@ var thresholdSlider;
 var threshold;
 var grid;
 var allSounds = [];
+var startApp = false; //This is a flag to ensure that the app only start after user interaction
 
 function preload() {
     soundFormats('wav');
@@ -26,12 +27,31 @@ function setup() {
 
     thresholdSlider = createSlider(0, 255, 50);
     thresholdSlider.position(20, 20);
+    thresholdSlider.hide();
     grid = new Grid(640, 480);
     // mimics the autoplay policy
     getAudioContext().suspend();
 }
 
 function draw() {
+    if (!startApp) { //This is to ensure that the app only start after user interaction
+        //Push and pop are used to ensure that other settings are not affected by the drawing of intro text
+        push();
+        //This will write a text to the screen to let the user know that they must interact with the screen to start the app
+        textSize(32);
+        //This fill with a blue color
+        fill(0, 0, 255);
+        textAlign(CENTER, CENTER); //This aligns the text to the center of the screen
+        text(`Hi there!\n
+        This is a simple app that uses a webcam to detect your movement.\n
+        You can move your hand around the screen to play a sound.\n
+        To start the app, you need to allow access to your camera.\n
+        Then, click on the screen or press a key on the keyboard. \n
+        Thanks for checking this out!`, width / 2, height / 2);
+        pop();
+        return;
+    }
+    thresholdSlider.show();
     background(0);
     image(video, 0, 0);
 
@@ -87,17 +107,20 @@ function draw() {
     prevImg = createImage(currImg.width, currImg.height);
     prevImg.copy(currImg, 0, 0, currImg.width, currImg.height, 0, 0, currImg.width, currImg.height);
     // console.log("saved new background");
-    grid.run(diffImg, allSounds);
+    ////allSounds is an array of all the sounds that are loaded in the preload function
+    grid.run(diffImg, allSounds);  //It's passed to the run function so that it can be used to play sounds to encourage modular code
     // console.log(grid);
 }
 
-// function keyPressed() {
-//     userStartAudio();
+function keyPressed() {
+    userStartAudio();
+    startApp = true;
 
-// }
+}
 
 function mousePressed() {
     userStartAudio();
+    startApp = true;
 }
 
 // faster method for calculating color similarity which does not calculate root.

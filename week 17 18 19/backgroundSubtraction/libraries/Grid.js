@@ -20,19 +20,20 @@ class Grid {
     }
   }
   /////////////////////////////////
-  run(img, sounds) {
+  run(img, sounds) { //sounds is an array of sounds passed from the draw function in sketch.js
     img.loadPixels();
     this.findActiveNotes(img);
-    this.drawActiveNotes(img, sounds);
+    this.drawActiveNotes(img, sounds); //The sounds array is passed to the drawActiveNotes function
   }
   /////////////////////////////////
   drawActiveNotes(img, soundsArray) {
+    //soundArray is an array of sounds passed from the draw function in sketch.js implementing modular code
     // draw active notes
     fill(255);
     noStroke();
     //The variable below determine whether to play a sound or not
     var playSound = false;
-    const randomIndex = floor(map(noise(frameCount / 100), 0, 1, 0, soundsArray.length));
+    const randomIndex = floor(random(0, soundsArray.length)); //This is used to pick a random sound from the array of sounds
 
     //The function below check if any of the sound is playing
     function aSoundPlaying() {
@@ -44,7 +45,7 @@ class Grid {
       return false;
     }
 
-    //This function check if n number of sounds are playing
+    //This function check if n number of sounds are(is) playing
     function nSoundPlaying(n) {
       var count = 0;
       for (var i = 0; i < soundsArray.length; i++) {
@@ -65,42 +66,46 @@ class Grid {
         var x = this.notePos[i][j].x;
         var y = this.notePos[i][j].y;
         if (this.noteState[i][j] > 0) {
-          var alpha = this.noteState[i][j] * 200;
-          var c1 = color(255, 0, 0, alpha);
-          var c2 = color(0, 255, 0, alpha);
+          var s = this.noteState[i][j]; // get state of note
+          var alpha = constrain(s * 255, 0, 255);
+          var c1 = color(0, 0, 255, alpha);
+          var c2 = color(0, 255, 255, alpha);
           var mappedMix = map(i, 0, this.notePos.length, 0, 1)
           var mix = lerpColor(c1, c2, mappedMix);
           fill(mix);
-          var s = this.noteState[i][j];
-          ellipse(x, y, this.noteSize * s, this.noteSize * s);
-          //Play a sound
+          if (s > 0.75) { // if note is very active, this draw a triangle
+            triangle(x - this.noteSize / 2, y - this.noteSize / 2, x + this.noteSize / 2, y - this.noteSize / 2, x, y + this.noteSize / 2);
+          }
+          else if (s > 0.5) { // if note is active, this draw a rectangle
+            rect(x - this.noteSize / 2, y - this.noteSize / 2, this.noteSize, this.noteSize);
+          }
+          else {
+            //If note is getting inactive, this draw an ellipse
+            ellipse(x, y, this.noteSize * s, this.noteSize * s);
+
+          }
+
+
+
+          //This flag is used to set the sound to play or not
           playSound = true;
-          // if (!aSoundPlaying()) {  
-          //   soundsArray[randomIndex]?.play(0, 1, 1).stop(0.5);
-          //   //  playSound = true;
-          // }
-          // soundsArray[randomIndex]?.play(0, 1, 1)?.stop(0.5);
-          // if (!nSoundPlaying(1)) {
-          //   soundsArray[randomIndex]?.play()?.ouputVolume(mappedMix)?.stop(0.5);
-            
-          // }
+          outputVolume(s, 1); //This function sets the volume of the sound and a second ramp is used to make it fade in and out
 
         }
-        // else {
-        //   playSound = false;
-        // }
         this.noteState[i][j] -= 0.05;
         this.noteState[i][j] = constrain(this.noteState[i][j], 0, 1);
       }
     }
-    if (playSound) {
-      soundsArray[randomIndex]?.isPlaying() ? soundsArray[randomIndex]?.play() : soundsArray[randomIndex]?.play();
+    if (playSound) { //if the playSound flag is set to true, then this will play a sound
+
+      soundsArray[randomIndex]?.play()
+
     }
     else {
-      //This will stop all sound being played p5js
-      // soundsArray.forEach(sound => sound?.stop(0.5));
-      // soundsArray[randomIndex]?.stop();
+
+      outputVolume(0, 0.2); //This function sets the volume of the sound to 0 once the sound is not to be played
     }
+
 
   }
   /////////////////////////////////
