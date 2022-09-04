@@ -17,7 +17,6 @@ class Grid {
       }
       this.notePos.push(posColumn);
       this.noteState.push(stateColumn);
-      // console.log(loadedSounds)
     }
   }
   /////////////////////////////////
@@ -36,7 +35,7 @@ class Grid {
     var playSound = false;
     let selectedIndex; //This is used to pick a sound from the array of sounds
 
-   
+
 
     //This function check if n number of sounds are(is) playing
     function nSoundPlaying(n) {
@@ -53,17 +52,12 @@ class Grid {
       }
     }
 
-    
-
-   
-
     for (var i = 0; i < this.notePos.length; i++) {
       for (var j = 0; j < this.notePos[i].length; j++) {
         var x = this.notePos[i][j].x;
         var y = this.notePos[i][j].y;
         if (this.noteState[i][j] > 0.01) { //This reduces the amount of times the sound is played
           var s = this.noteState[i][j]; // get state of note
-          // console.log(s)
           var alpha = constrain(s * 255, 0, 255);
           var c1 = color(0, 0, 255, alpha);
           var c2 = color(0, 255, 255, alpha);
@@ -82,7 +76,7 @@ class Grid {
           }
           //This flag is used to set the sound to play or not
           playSound = true;
-          selectedIndex = round(map(x, 0, width/2, 0, soundsArray.length, true)); //This round the value to get the closest sound to the note
+          selectedIndex = round(map(x, 0, width / 2, 0, soundsArray.length, true)); //This round the value to get the closest sound to the note
           //The selectedIndex is used to pick a sound from the array of sounds based on the x position of the note
           //This will ensure that the sound is played at the same time for each note at the same x position
           outputVolume(s, 1); //This function sets the volume of the sound and a second ramp is used to make it fade in and out
@@ -101,7 +95,6 @@ class Grid {
 
     }
     else {
-
       outputVolume(0, 0.2); //This function sets the volume of the sound to 0 once the sound is not to be played
     }
 

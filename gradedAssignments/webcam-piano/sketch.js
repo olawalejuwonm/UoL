@@ -8,7 +8,7 @@ let currImg;
 let thresholdSlider;
 let threshold;
 let grid;
-let allSounds = [];
+let allSounds = []; //This is an array that will hold all the sounds that are loaded in the preload function
 let startApp = false; //This is a flag to ensure that the app only start after user interaction
 
 function preload() {
@@ -58,11 +58,12 @@ function draw() {
 
     currImg = createImage(video.width, video.height);
     currImg.copy(video, 0, 0, video.width, video.height, 0, 0, video.width, video.height);
-    //Right before using the blur filter on the currImg, use the resize command to scale it down to a quarter of the size it was
+    //Right before using the blur filter on the currImg
+    //This uses the resize command to scale it down to a quarter of the size it was
     currImg.resize(video.width / 4, video.height / 4);
     currImg.filter(BLUR, 3);
 
-    //Make sure you do the same for the diffImg a couple of lines later
+    //This do the same for the diffImg a couple of lines later
     diffImg = createImage(video.width, video.height);
     diffImg.resize(video.width / 4, video.height / 4);
     diffImg.loadPixels();
@@ -110,7 +111,6 @@ function draw() {
     // console.log("saved new background");
     ////allSounds is an array of all the sounds that are loaded in the preload function
     grid.run(diffImg, allSounds);  //It's passed to the run function so that it can be used to play sounds to encourage modular code
-    // console.log(grid);
 }
 
 function keyPressed() {
