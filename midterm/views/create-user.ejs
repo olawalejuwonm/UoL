@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create An Account - ABS</title>
+</head>
+
+<body>
+    <!-- This is the create account page for Abs App (Fitness Tracker Company) -->
+    <h1>Create An Account</h1>
+    <p>Create an account to start tracking your fitness goals!</p>
+    <!-- This will display  message whenever there's a response from the server with ejs syntax. -->
+    <% if (message) { %>
+        <div class="alert alert-info" role="alert">
+            <%= message %>
+        </div>
+        <% } %>
+            <!-- This is the HTML form with username, email and password fields -->
+            <form action="/create-user" method="POST">
+                <!-- The form tag create a form in the browser that will send the data to the server -->
+                <!-- The action attribute specifies where to send the form-data when a form is submitted. -->
+                <!-- The method attribute specifies how to send form-data (the form-data is sent to the page specified in the action attribute) -->
+                <!-- Since sensitive data is being sent to the server, the method attribute POST is used. -->
+                <!-- On submitting the form, it post the form data to a route called ”create-user.” -->
+
+                <label for="username">Username</label>
+                <!-- The label tag defines a label for the <input> element (which is the username field) -->
+                <!-- The for attribute of the <label> tag is equal to the id attribute of the <input> element to bind them together -->
+                <input type="text" name="username" id="username" placeholder="Enter Desired Username">
+                <!-- The input tag defines the input field where the user can enter data -->
+                <!-- The type attribute specifies the type of input field which for this case is text -->
+                <!-- The name attribute specifies the name of the input field which is used to reference the input field in the form and 
+        in the server side code -->
+                <!-- The id attribute specifies a unique id for the input field which is used to reference the input field with the label tag -->
+                <!-- The placeholder attribute specifies a short hint that describes the expected value of the input field for a better user experience -->
+                <br>
+                <label for="email">Email</label>
+                <!-- The label tag defines a label for the <input> element (which is the email field) -->
+                <!-- The for attribute of the <label> tag is equal to the id attribute of the <input> element to bind them together -->
+                <input type="email" name="email" id="email" placeholder="Enter Email">
+                <!-- The input tag defines the input field where the user can enter data -->
+                <!-- The type attribute specifies the type of input field which for this case is email, which is a text field with an email address format
+            this is to ensure that the user enters a valid email address and it is validated by the browser before submitting the form -->
+                <!-- The name attribute specifies the name of the input field which is used to reference the input field in the form and
+        in the server side code -->
+                <!-- The id attribute specifies a unique id for the input field which is used to reference the input field with the label tag -->
+                <!-- The placeholder attribute specifies a short hint that describes the expected value of the input field for a better user experience -->
+                <br>
+                <label for="password">Password</label>
+                <!-- The label tag defines a label for the <input> element (which is the password field) -->
+                <!-- The for attribute of the <label> tag is equal to the id attribute of the <input> element to bind them together -->
+                <input type="password" name="password" id="password" placeholder="Enter Password">
+                <!-- The input tag defines the input field where the user can enter data -->
+                <!-- The type attribute specifies the type of input field which for this case is password, which is a text field with the characters
+            hidden for security purposes -->
+                <!-- The name attribute specifies the name of the input field which is used to reference the input field in the form and
+        in the server side code -->
+                <!-- The id attribute specifies a unique id for the input field which is used to reference the input field with the label tag -->
+                <!-- The placeholder attribute specifies a short hint that describes the expected value of the input field for a better user experience -->
+                <br>
+                <input type="submit" value="Create Account">
+                <!-- This input tag defines a submit button which is used to submit the form data to the server -->
+                <!-- The value attribute specifies the value of the input field which is displayed on the button -->
+            </form>
+            <!-- This closes the form tag -->
+</body>
+
+</html>

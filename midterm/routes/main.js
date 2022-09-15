@@ -11,7 +11,7 @@ function clearMessage() {
 }
 
 module.exports = function (app) {
-  app.get("/", function (req, res) { 
+  app.get("/", function (req, res) {
     //This is the main and initial page of the application
     //It renders the home page of the application
     res.render("index");
@@ -92,7 +92,7 @@ module.exports = function (app) {
       let device = result.find((device) => device.id == id);
       //This will return the device with the id that was passed in the query
       console.log("Device found", device);
-      res.render("device-status", { devices: result, device});
+      res.render("device-status", { devices: result, device });
     });
   });
   app.get("/control-device", function (req, res) {
@@ -208,4 +208,50 @@ module.exports = function (app) {
       res.render("list-devices", { devices: result });
     });
   });
-};
+
+  //This create-user post endpoint retrieves username, email and password from the request. It will then insert the data into 
+  //the database assuming that db variable is the mysql connection. It also handle an error condition where the database query fails and 
+  //display a message once the new user is successfully created. The app variable is assumed to be the express app that has been created just
+  // like the db variable is the mysql connection. Likewise the body-parser middleware has been added to the app like this app.use(bodyParser.urlencoded({ extended: true })); 
+  //to be able to retrieve the data from the request body and the ejs view engine has been added to the app like this app.set("view engine", "ejs"); in order to render the views.
+
+  app.post("/create-user", function (req, res) { //The app.post method is defined inside the express app and it takes the path and a callback function as parameters
+    //The callback function takes the request and response as parameters called req and res respectively, it also takes a next parameter which is a function that is called to move to the next middleware in the stack
+    //The request object contains the data sent by the client to the server which includes the data sent in the request body, query parameters, url parameters, headers, cookies, etc.
+    //The response object contains the data that will be sent back to the client by the server. It contains methods to send data back to the client like res.send, res.json, res.render, etc. This is also responsible for setting the status code and headers to the client.
+    //The next parameter is a function that is called to move to the next middleware in the stack. It is optional and is only used when there are multiple middlewares in the stack.
+    let sqlquery = "INSERT INTO users (username, email, password) VALUES (?,?,?)"; //This is the sql query to insert data into the users table
+    //The query adds a new record to the users table with the username, email and password from the request body. The VALUES (?, ?, ?) is a placeholder for the values that will be inserted into the table.
+    // The ? are placeholders for the data that will be inserted into the table. Each order corresponds to the username, email and password in the request body. The values will be inserted into the table in the order of the placeholder in the query as an array.
+    const { username, email, password } = req.body; //This is destructuring the request body object to get the username, email and password name fields from the html form
+    let data = [username, email, password]; //This is the data that will be inserted into the table
+    db.query(sqlquery, data, (err, result) => {
+      if (err) { // If the error is not null, it means that there was an error while inserting the data into the table
+        console.log("An error occurred while inserting data", err); //This logs the error to the console. It's useful as a backend developer to know what the error is when checking through the application logs
+        message = "An error occurred"; //This sets the message to be displayed to the user
+        res.redirect("/create-user", { message }); //This redirects to the create-user page and sends the message to the page
+      }
+      //If the error is null, it means that the data was inserted successfully and the result variable will contain the result of the query
+      message = "New user created successfully";
+      res.redirect("/create-user", { message });
+    });
+  });
+
+  //This ‘workouts’ route which will query the database to retrieve all of the workout routines for a given user and then render them in an ejs template fle called ‘workouts.ejs.’
+  //The app.get method is defined inside the express app and it takes the path and a callback function as parameters
+  app.get("/workouts", function (req, res) {
+    let sqlquery = "SELECT * FROM workouts WHERE user_id = ?"; //This is the sql query to select data from the workouts table. It's assumed that the workouts table has a user_id column that is a foreign key to the users table. 
+    //The user_id column is used to filter the workouts for a given user.
+    let data = [req.query.user_id]; //This is the data that will be inserted into the table
+    db.query(sqlquery, data, (err, result) => {
+      if (err) { // If the error is not null, it means that there was an error while inserting the data into the table
+        console.log("An error occurred while selecting data", err); //This logs the error to the console. It's useful as a backend developer to know what the error is when checking through the application logs
+        message = "An error occurred"; //This sets the message to be displayed to the user
+        res.redirect("/workouts", { message, workouts: [] }); //This redirects to the workouts page and sends the message and an empty array to the page so that the page doesn't break
+      }
+      res.render("workouts", { workouts: result }); //This renders the workouts page and sends the workouts to the page
+    });
+  });
+
+}
+
