@@ -28,20 +28,23 @@ class HashTable {
 
   insert(key) {
     let h = (this.a * key + this.c) % this.m; //h(k)=(a*k+c) mod m
-    // let i = 0;
-    // while (this.buckets[h] !== -1) {
-    //   h = (h + 1) % this.m;
-    //   i++;
-    // }
-    if (this.loadFactor() >= 1) { // My addition
-        // collision resolution
-        console.log("extend when load factor is 1 for key: " + key);
-        this.extend();
-        this.rehash();
+    let i = 0;
+    while (this.buckets[h] !== -1) {
+      console.log(
+        "collision at " + h,
+        "with already " + this.buckets[h],
+        "and key " + key, "i is " + i
+      );
+      h = (h + 1) % this.m;
+      i++;
     }
-    // if (this.buckets[h] === -1) {
-    //     console.log("inserting key: " + key);
-    // }
+    if (this.loadFactor() >= 1) {
+      // My addition
+      // collision resolution
+      console.log("should not run extend when load factor is 1 for key: " + key);
+      this.extend();
+      this.rehash();
+    }
     this.buckets[h] = key;
     return i;
   }
@@ -118,24 +121,24 @@ class HashTable {
 //For a=31, c=37 and m=50, what is the load factor of the hash table after calling the function insert 20 times? In the i-th call, the value to insert is given by 2*i*i+3*i-5. That is, the first value to insert is 0, the second value is 9 and so on.
 // The answer is 0.4
 let hashTable = new HashTable(31, 37, 50);
-for (let i = 0; i < 20; i++) {
-    hashTable.insert(2 * i * i + 3 * i - 5);
-}
+// for (let i = 0; i < 20; i++) {
+//   hashTable.insert(2 * i * i + 3 * i - 5);
+// }
 // console.log(hashTable.loadFactor());
 
 //For a=21, c=7 and m=30, numbers are inserted in the hash table in the following way: In the i-th insertion, the value to insert is given by 2*i*i+5*i-5. That is, the first value to insert is 2, the second value is 13 and so on. What is the content of index position 13 in the hash table after inserting 20 numbers?
 // The answer is 2
 let hashTable2 = new HashTable(21, 7, 30);
-for (let i = 1; i < 21; i++) {
-    hashTable2.insert(2 * i * i + 5 * i - 5);
-}
+// for (let i = 1; i < 21; i++) {
+//   hashTable2.insert(2 * i * i + 5 * i - 5);
+// }
 // console.log(hashTable2.buckets[13]);
 
 //For a=31, c=37 and m=50, numbers are inserted in the hash table in the following way: In the i-th insertion, the value to insert is given by 2*i*i+5*i-5. That is, the first value to insert is 2, the second value is 13 and so on. What is the index position where the first collision occurs?
 // The answer is 0
 let hashTable3 = new HashTable(31, 37, 50);
 for (let i = 0; i < 20; i++) {
-    hashTable3.insert(2 * i * i + 5 * i - 5);
+  hashTable3.insert(2 * i * i + 5 * i - 5);
 }
 // console.log(hashTable3.find(2 * 1 * 1 + 5 * 1 - 5));
 
@@ -147,8 +150,6 @@ function TraverseArray(A, N, i) {
 }
 
 // TraverseArray([34, 4, 21, 7, 12], 5, 1);
-
-
 
 function A(H, N, k) {
   let i = (2 * k + 1) % N;
@@ -162,13 +163,12 @@ function A(H, N, k) {
 
 // What is the content of the 5-bucket hash table H – originally empty – after executing the following instructions?
 let H = [-1, -1, -1, -1, -1];
-A(H,5,4)
-A(H,5,9)
-A(H,5,14)
-A(H,5,2)
+A(H, 5, 4);
+A(H, 5, 9);
+A(H, 5, 14);
+A(H, 5, 2);
 // console.log(H);
 // The answer is [4, 9, 14, 2, -1]
-
 
 // Consider the following algorithm A, where the function hash(k) returns the hash value of number k.
 
