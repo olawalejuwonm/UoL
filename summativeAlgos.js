@@ -277,3 +277,30 @@ function Sort3(A, N, max) {
 // max: maximum value stored in A
 
 console.log(Sort3([2,45,13,76,58], 5, 76));
+
+
+// Question 1
+// A hash table with 10 buckets uses the hash function f(x) = x % 10, and linear probing to resolve collisions. If the keys 
+
+// [238, 40, 128, 59, 212, 185, 215]
+// [238,40,128,59,212,185,215]
+//  are inserted in that order into the hash table, what is the greatest number of steps a key can be from its natural position in the table?
+// The greatest number of steps a key can be from its natural position in the table is 5.
+
+// Question 2
+// A hash table with 20 buckets currently stores 16 keys. What is the load factor of the hash table?
+// The load factor of the hash table is 0.8.
+
+// Question 3
+// Question 3
+// A separate-chaining hash table with 11 buckets uses the hash function f(x) = x % 11. If the hash table stores the keys 
+
+// [219, 129, 244, 112, 236, 233, 125]
+// [219,129,244,112,236,233,125]
+//  what is the length of the longest chain in the hash table?
+
+// The length of the longest chain in the hash table is 3.
+
+// Question 4
+// An empty hash table is created with 10 buckets initially, and is resized to double its current number of buckets whenever the load factor reaches or exceeds 0.5. After inserting 30 keys, what is the load factor of the hash table?
+// The load factor of the hash table is 0.6.
