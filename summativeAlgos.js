@@ -303,4 +303,12 @@ console.log(Sort3([2,45,13,76,58], 5, 76));
 
 // Question 4
 // An empty hash table is created with 10 buckets initially, and is resized to double its current number of buckets whenever the load factor reaches or exceeds 0.5. After inserting 30 keys, what is the load factor of the hash table?
-// The load factor of the hash table is 0.6.
+// Immediately after inserting the 5th number in the original hash table, the load factor is 0.5. Thus the table is resized to 20 buckets. Next, when the 10th number is inserted, the load factor is 0.5 again, so the table is resized to 40 buckets. 
+// When the 20th number is inserted, the load factor is 0.5 again, so the table is resized to 80 buckets.
+// When the 30th number is inserted, the load factor is 0.375, so the table is not resized.
+
+// Question 5
+// An empty hash table is created with 100 buckets initially, and is resized to double its current number of buckets whenever the load factor reaches or exceeds 0.5. After inserting 220 keys (assuming no collisions), what is the load factor of the hash table?
+// Immediately after inserting the 50th number in the original hash table, the load factor is 0.5. Thus the table is resized to 200 buckets. Next, when the 100th number is inserted, the load factor is 0.5 again, so the table is resized to 400 buckets. 
+// When the 200th number is inserted, the load factor is 0.5 again, so the table is resized to 800 buckets.
+// When the 220th number is inserted, the load factor is 0.275, so the table is not resized.
