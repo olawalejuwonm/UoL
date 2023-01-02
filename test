@@ -1,0 +1,1 @@
+// T(N) = line 2 (C + (ceil(N/2) + 1) + ceil(N/2)) + line 3 and 4 (ceil(N/2) + C) + line 5  (C + (floor(N/2) + 1) + floor(N/2)) + line 6 and 7 (floor(N/2) + C) + line 8 (C)
