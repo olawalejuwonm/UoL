@@ -279,3 +279,20 @@ const b = 1;
 // console.log(R1(4, 3, 1, [7, 5, 6, 4], createHashB(3, 1, [7, 5, 6, 4], 4), 4));
 console.log(R1RepeatedIntegers(5, a, b, arr2, createHashB(a, b, arr2, arr2.length), arr2.length));
 // console.log(R1LinearProbing(4, a, b, arr2, createHashB(a, b, arr2, arr2.length), arr2.length));
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Redundant Data Storage is as follows:
+
+// One way to store and search the data in an array of non-negative integers redundantly is to use a hash table with a secondary data structure such as a linked list or a binary search tree.
+
+// In this setting, the data is first stored in the primary hash table using a hashing function that maps the data to indices in the table. The secondary data structure is then used to store the data at each index in the primary hash table, allowing multiple elements to be stored at the same index if necessary.
+
+// To search for a specific key in the array, the algorithm would first hash the key to find the index in the primary hash table where the key is likely to be stored. It would then search the secondary data structure at that index for the key. If the key is not found in the secondary data structure, the algorithm could search the other indices in the primary hash table using a probing sequence such as linear probing or quadratic probing.
+
+// Hardware failures can be detected in this method by periodically checking the integrity of the data stored in the primary hash table and the secondary data structure. For example, the algorithm could compute the checksum of the data in both structures and compare the checksums to a reference value. If the checksums do not match the reference value, it could indicate that the data has been altered unintentionally and a hardware failure has occurred.
+
+//Implementation of the redundant data storage method
