@@ -186,14 +186,17 @@ function R1(key, a, b, A, B, N) {
   console.log("j", j);
 
   if (B[j] == key) {
-    for (let i = 0; i < N; i++) { // This finds the index i where the value key is stored in array A
+    for (let i = 0; i < N; i++) {
+      // This finds the index i where the value key is stored in array A
       if (A[i] == key) {
         return i;
       }
     }
-  } else if (B[j] == undefined) { //if the value does not exist in B
+  } else if (B[j] == undefined) {
+    //if the value does not exist in B
     return -1;
-  } else { //if B[j] has another value apart from key it means that there was an error in the data storage
+  } else {
+    //if B[j] has another value apart from key it means that there was an error in the data storage
     return -2;
   }
 }
@@ -212,32 +215,33 @@ function R1(key, a, b, A, B, N) {
 //   return -2
 // end function
 
-
-//Briefly explain how the method above could be adapted to allow for repeated integers in 
+//Briefly explain how the method above could be adapted to allow for repeated integers in
 // array A
 //The method above could be adapted to allow for repeated integers in array A by using a
 //hash table to store the indices of the values in array A using linear probing.
-// The hash function would be the same as the one used to store the values in array B. The function   
+// The hash function would be the same as the one used to store the values in array B. The function
 //R1 would be modified to return an array of indices of the values in array A that are equal
 //to the key.
 // Implementation of R1 with linear probing
 function R1LinearProbing(key, a, b, A, B, N) {
-    const j = (a * key + b) % N;
-    if (B[j] == key) {
-        const indices = [];
-        for (let i = 0; i < N; i++) { // This finds the index i where the value key is stored in array A
-            if (A[i] == key) {
-                indices.push(i);
-            }
-        }
-        return indices;
-    } else if (B[j] == undefined) { //if the value does not exist in B
-        return -1;
-    } else { //if B[j] has another value apart from key it means that there was an error in the data storage
-        return -2;
+  const j = (a * key + b) % N;
+  if (B[j] == key) {
+    const indices = [];
+    for (let i = 0; i < N; i++) {
+      // This finds the index i where the value key is stored in array A
+      if (A[i] == key) {
+        indices.push(i);
+      }
     }
+    return indices;
+  } else if (B[j] == undefined) {
+    //if the value does not exist in B
+    return -1;
+  } else {
+    //if B[j] has another value apart from key it means that there was an error in the data storage
+    return -2;
+  }
 }
-
 
 //The method above could be adapted to allow for repeated integers in array A by adding an additional step to the algorithm that checks for repeated integers in A.
 
@@ -249,39 +253,48 @@ function R1LinearProbing(key, a, b, A, B, N) {
 
 //Implementation of R1 with repeated integers in A
 function R1RepeatedIntegers(key, a, b, A, B, N) {
-    const j = (a * key + b) % N;
-    //Array C stores a count of the number of times each element appears in A
-    //new array filled with 0s
-    const C = new Array(N).fill(0);
+  const j = (a * key + b) % N;
+  //Array C stores a count of the number of times each element appears in A
+  //new array filled with 0s
+  const C = new Array(N).fill(0);
+  for (let i = 0; i < N; i++) {
+    C[A[i]]++;
+  }
+  if (B[j] == key) {
     for (let i = 0; i < N; i++) {
-        C[A[i]]++;
-    }
-    if (B[j] == key) {
-        for (let i = 0; i < N; i++) { // This finds the index i where the value key is stored in array A
-            if (A[i] == key) {
-                if (C[i] > 1) {
-                    continue;
-                } else {
-                    return i;
-                }
-            }
+      // This finds the index i where the value key is stored in array A
+      if (A[i] == key) {
+        if (C[i] > 1) {
+          continue;
+        } else {
+          return i;
         }
-    } else if (B[j] == undefined) { //if the value does not exist in B
-        return -1;
-    } else { //if B[j] has another value apart from key it means that there was an error in the data storage
-        return -2;
+      }
     }
+  } else if (B[j] == undefined) {
+    //if the value does not exist in B
+    return -1;
+  } else {
+    //if B[j] has another value apart from key it means that there was an error in the data storage
+    return -2;
+  }
 }
 
 const arr2 = [7, 5, 5, 6, 4];
 const a = 3;
 const b = 1;
 // console.log(R1(4, 3, 1, [7, 5, 6, 4], createHashB(3, 1, [7, 5, 6, 4], 4), 4));
-console.log(R1RepeatedIntegers(5, a, b, arr2, createHashB(a, b, arr2, arr2.length), arr2.length));
+console.log(
+  R1RepeatedIntegers(
+    5,
+    a,
+    b,
+    arr2,
+    createHashB(a, b, arr2, arr2.length),
+    arr2.length
+  )
+);
 // console.log(R1LinearProbing(4, a, b, arr2, createHashB(a, b, arr2, arr2.length), arr2.length));
-
-
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -296,3 +309,109 @@ console.log(R1RepeatedIntegers(5, a, b, arr2, createHashB(a, b, arr2, arr2.lengt
 // Hardware failures can be detected in this method by periodically checking the integrity of the data stored in the primary hash table and the secondary data structure. For example, the algorithm could compute the checksum of the data in both structures and compare the checksums to a reference value. If the checksums do not match the reference value, it could indicate that the data has been altered unintentionally and a hardware failure has occurred.
 
 //Implementation of the redundant data storage method
+
+function createArrayBSeparateChaining(a, b, A, N) {
+  //using separate chaining
+  const B = new Array(N);
+  for (let i = 0; i < N; i++) {
+    B[i] = new Array();
+  }
+  for (let i = 0; i < N; i++) {
+    const j = (a * A[i] + b) % N;
+    // console.log("j: ", j, "A[i]: ", A[i]);
+    B[j].push(A[i]); //This adds the value A[i] to the end of the array B[j]. It takes O(1) time.
+  }
+  return B;
+}
+
+//Additionally, This is pseudocode for that create a hash table with separate chaining
+//function createArrayBSeparateChaining(key, a, b, A, N)
+//  B = new array of length N
+//  for i = 0 to N - 1
+//    B[i] = new array
+//  end for
+//  for i = 0 to N - 1
+//    j = (a * A[i] + b) % N
+//    B[j].push(A[i]) //This adds the value A[i] to the end of the array B[j]. It takes O(1) time.
+//  end for
+//  return B
+//end function
+
+function SearchDataWithSeparateChaining(key, a, b, A, B, N) {
+  const j = (a * key + b) % N;
+
+  //Detecting data storage error check if all the elements in A are in correct position in B
+  for (let i = 0; i < N; i++) {
+    const j = (a * A[i] + b) % N;
+    for (let k = 0; k < B[j].length; k++) {
+      //This checks if the value A[i] is in the array B[j]
+      if (B[j][k] == A[i]) {
+        break;
+      } else if (k == B[j].length - 1) {
+        return -2;
+      }
+      // if (B[j].includes(A[i])) { //Includes method checks if the array contains the element
+      //   continue; //If the element is in the correct position, continue to the next element
+      // } else {
+      //   return -2;
+      // }
+    }
+  }
+  //Search for key in B[j]
+  for (let i = 0; i < B[j].length; i++) {
+    if (B[j][i] == key) {
+      //if the key is found in B[j]
+      for (let k = 0; k < N; k++) {
+        if (A[k] == key) {
+          //find the index k where the key is stored in A
+          return k;
+        }
+      }
+    }
+  }
+  //if the key is not found in B[j]
+  return -1;
+}
+
+//The pseudocode for the search algorithm is as follows:
+//function SearchDataWithSeparateChaining(key, a, b, A, B, N)
+//  j = (a * key + b) % N
+// Detecting data storage error by checking if all the elements in A are in correct position in B
+//  for i = 0 to N - 1
+//    j = (a * A[i] + b) % N
+//    for k = 0 to length(B[j]) - 1 //This checks if the value A[i] is in the array B[j]
+//      if B[j][k] == A[i]
+//        break
+//      else if k == length(B[j]) - 1
+//        return -2
+//    end for
+//  end for
+//  for i = 0 to length(B[j]) - 1 //Search for key in B[j]
+//    if B[j][i] == key
+//      for k = 0 to N - 1
+//        if A[k] == key //find the index k where the key is stored in A
+//          return k
+//      end for
+//    end if
+//  end for
+//  return -1
+//end function
+
+const arr3 = [7, 5, 6, 4];
+const a2 = 3;
+const b2 = 1;
+// console.log(createArrayBSeparateChaining(a2, b2, arr3, arr3.length));
+console.log(
+  SearchDataWithSeparateChaining(
+    4,
+    a2,
+    b2,
+    arr3,
+    createArrayBSeparateChaining(a2, b2, [7, 5, 6, 4], 4),
+    arr3.length
+  )
+);
+// function RedundantDataStorage(key, a, b, A, B, N) {
+//     const j = (a * key + b) % N;
+
+// }
