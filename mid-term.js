@@ -118,8 +118,7 @@ function R2(key, A, B, N) {
       //if i is even
       A1[i / 2] = A[i]; //i/2 will always be an integer that's an index of A1
     } else {
-      A2[(i - 1) / 2] = A[i]; //i-1 will always be an even number, and (i-1)/2 will always be an integer that's an index
-      // of A2
+      A2[(i - 1) / 2] = A[i]; //i-1 will always be an even number, and (i-1)/2 will always be an integer that's an index of A2
     }
   }
   console.log("A1", A1, "A2", A2);
