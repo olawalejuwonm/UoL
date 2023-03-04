@@ -19,6 +19,15 @@ class Edge {
   }
 }
 
+// This constructor create dijkstra's algorithm routing table
+class RoutingTable {
+  constructor(vertex, distance, previous) {
+    this.vertex = vertex;
+    this.distance = distance;
+    this.previous = previous;
+  }
+}
+
 class Graph {
   // Note: G is for undirected graphs
   // addVertex(v):	This	method	creates	a	new	vertex	(using	the	constructor	Vertex)	and
@@ -126,8 +135,8 @@ class Graph {
   // SP(v1, v2): This	method returns	a	graph containing	 the	sequence	of	vertices	of	 the
   // shortest	path	from	v1	to	v2.
   SP(v1, v2) {
-    // using algorithm of Dijkstra
     let sp = new Graph();
+    let edges = new Array();
     let visited = new Array();
     let v = this.getVertex(v1);
     sp.addVertex(v.name);
@@ -135,14 +144,60 @@ class Graph {
     while (!visited.includes(v2)) {
       for (let i = 0; i < v.adj.length; i++) {
         if (!visited.includes(v.adj[i].to)) {
-          sp.addVertex(v.adj[i].to);
-          sp.addEdge(v.adj[i].from, v.adj[i].to, v.adj[i].weight);
+          edges.push(v.adj[i]);
         }
       }
-      visited.push(v.name);
-      v = this.getVertex(v.adj[0].to);
+      edges.sort((a, b) => {
+        return a.weight - b.weight;
+      });
+      let edge = edges.shift();
+      if (!visited.includes(edge.to)) {
+        sp.addVertex(edge.to);
+        sp.addEdge(edge.from, edge.to, edge.weight);
+        visited.push(edge.to);
+        v = this.getVertex(edge.to);
+      }
+      if (edges.length == 0) {
+        return sp;
+      }
     }
     return sp;
+  }
+
+  // This create dijkstra's algorithm routing table for shortest path of the graph
+  dijkstra(v1) {
+    let v = this.getVertex(v1);
+    // initialize routing table
+    let table = new Array();
+    for (let i = 0; i < this.vlist.length; i++) {
+      table.push({
+        name: this.vlist[i].name,
+        distance: Infinity,
+        previous: null,
+      });
+    }
+    table[0].distance = 0;
+    table[0].previous = v.name;
+    console.log(table);
+    // initialize unexplored vertices
+    let unexplored = new Array();
+    for (let i = 0; i < this.vlist.length; i++) {
+      unexplored.push(this.vlist[i].name);
+    }
+    while (unexplored.length > 0) {
+      // select next vertex to explore with minimum distance to v1
+      //check all edges weight of unexplored vertices
+      let min = Infinity;
+      let u = null;
+      for (let i = 0; i < unexplored.length; i++) {
+        let vertex = this.getVertex(unexplored[i]);
+        
+      }
+
+      unexplored.splice(unexplored.indexOf(u), 1);
+    }
+
+    return table;
   }
 
   // SPCost(v1, v2): This	method	returns	the	cost	of	the	shortest	path	between	v1	and	v2
@@ -214,7 +269,8 @@ g3.addEdge("N", "K", 1);
 g3.addEdge("N", "M", 6);
 
 // g3.SP("J", "N").display()
-console.log(g3.SPCost("J", "L"));
+console.log(g3.dijkstra("J"));
+// console.log(g3.SPCost("J", "L"));
 // console.log(g.getVertex("A"));
 
 // console.log(g.getVertex("B"));
