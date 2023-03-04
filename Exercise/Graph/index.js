@@ -126,8 +126,8 @@ class Graph {
   // SP(v1, v2): This	method returns	a	graph containing	 the	sequence	of	vertices	of	 the
   // shortest	path	from	v1	to	v2.
   SP(v1, v2) {
+    // using algorithm of Dijkstra
     let sp = new Graph();
-    let edges = new Array();
     let visited = new Array();
     let v = this.getVertex(v1);
     sp.addVertex(v.name);
@@ -135,17 +135,12 @@ class Graph {
     while (!visited.includes(v2)) {
       for (let i = 0; i < v.adj.length; i++) {
         if (!visited.includes(v.adj[i].to)) {
-          edges.push(v.adj[i]);
+          sp.addVertex(v.adj[i].to);
+          sp.addEdge(v.adj[i].from, v.adj[i].to, v.adj[i].weight);
         }
       }
-      edges.sort((a, b) => {
-        return a.weight - b.weight;
-      });
-      let edge = edges.shift();
-      sp.addVertex(edge.to);
-      sp.addEdge(edge.from, edge.to, edge.weight);
-      visited.push(edge.to);
-      v = this.getVertex(edge.to);
+      visited.push(v.name);
+      v = this.getVertex(v.adj[0].to);
     }
     return sp;
   }
@@ -219,7 +214,7 @@ g3.addEdge("N", "K", 1);
 g3.addEdge("N", "M", 6);
 
 // g3.SP("J", "N").display()
-console.log(g3.SPCost("J", "N"));
+console.log(g3.SPCost("J", "L"));
 // console.log(g.getVertex("A"));
 
 // console.log(g.getVertex("B"));
