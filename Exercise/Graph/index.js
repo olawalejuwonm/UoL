@@ -20,6 +20,7 @@ class Edge {
 }
 
 class Graph {
+  // Note: G is for undirected graphs
   // addVertex(v):	This	method	creates	a	new	vertex	(using	the	constructor	Vertex)	and
   // appends	it	to	the	list	of	vertices	(vlist
   constructor() {
@@ -92,11 +93,21 @@ class Graph {
         return a.weight - b.weight;
       });
       let edge = edges.shift();
-      mst.addVertex(edge.to);
-      mst.addEdge(edge.from, edge.to, edge.weight);
-      visited.push(edge.to);
-      v = this.getVertex(edge.to);
+      if (!visited.includes(edge.to)) {
+        mst.addVertex(edge.to);
+        mst.addEdge(edge.from, edge.to, edge.weight);
+        visited.push(edge.to);
+        v = this.getVertex(edge.to);
+      }
     }
+    // console.log(mst.vlist);
+    //print all vertices of mst
+    console.log("MST:");
+    for (let i = 0; i < mst.vlist.length; i++) {
+      console.log(mst.vlist[i]);
+    }
+    console.log("MST End");
+
     return mst;
   }
 
@@ -110,7 +121,7 @@ class Graph {
       }
     }
     return cost / 2;
-    }
+  }
 
   // SP(v1, v2): This	method returns	a	graph containing	 the	sequence	of	vertices	of	 the
   // shortest	path	from	v1	to	v2.
@@ -150,6 +161,12 @@ class Graph {
     }
     return cost;
   }
+
+  display() {
+    for (let i = 0; i < this.vlist.length; i++) {
+      console.log(this.vlist[i]);
+    }
+  }
 }
 
 const g = new Graph();
@@ -176,10 +193,56 @@ g.addEdge("C", "C", 11);
 g.addEdge("D", "D", 9);
 g.addEdge("E", "E", 10);
 
-console.log(g.getVertex("A"));
-console.log(g.getVertex("B"));
-console.log(g.getVertex("C"));
-console.log(g.getVertex("D"));
-console.log(g.getVertex("E"));
-console.log(g.MST());
-console.log(g.MSTCost());
+const g3 = new Graph();
+g3.addVertex("J");
+g3.addVertex("K");
+g3.addVertex("L");
+g3.addVertex("M");
+g3.addVertex("N");
+
+g3.addEdge("J", "K", 7);
+g3.addEdge("J", "L", 4);
+g3.addEdge("J", "M", 3);
+
+g3.addEdge("K", "N", 1);
+g3.addEdge("K", "J", 7);
+g3.addEdge("K", "M", 2);
+
+g3.addEdge("L", "J", 4);
+g3.addEdge("L", "M", 5);
+
+g3.addEdge("M", "J", 3);
+g3.addEdge("M", "K", 2);
+g3.addEdge("M", "N", 6);
+
+g3.addEdge("N", "K", 1);
+g3.addEdge("N", "M", 6);
+
+// g3.SP("J", "N").display()
+console.log(g3.SPCost("J", "N"));
+// console.log(g.getVertex("A"));
+
+// console.log(g.getVertex("B"));
+// console.log(g.getVertex("C"));
+// console.log(g.getVertex("D"));
+// console.log(g.getVertex("E"));
+// console.log(g.MST());
+// console.log(g.MSTCost());
+
+// const g2 = new Graph();
+// g2.addVertex("H");
+// g2.addVertex("I");
+// g2.addVertex("J");
+// g2.addVertex("K");
+
+// g2.addEdge("H", "I", 8);
+// g2.addEdge("I", "K", 2);
+// g2.addEdge("J", "H", 1);
+// g2.addEdge("J", "I", 4);
+// g2.addEdge("J", "J", 3);
+// g2.addEdge("J", "K", 5);
+// g2.addEdge("K", "I", 6);
+// g2.addEdge("K", "K", 1);
+
+// console.log(g2.vlist);
+// console.log(g2.getVertex("H"));
