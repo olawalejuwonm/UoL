@@ -19,7 +19,7 @@ function right(index) {
 // constructor	creates	the	storage	area	for	a	heap	of	size	n and	initialises	the	heap	size.
 
 class Heap {
-    // write docstring
+  // write docstring
   constructor(n, bool) {
     if (!Array.isArray(n)) {
       this.heap = new Array(n);
@@ -138,27 +138,30 @@ class Heap {
   //   array.
   sort() {
     let sorted = [];
-    let heap = new Heap(this.heap, false);
+    let heap = new Heap(this.heap, false); // build in place
     while (heap.heapSize > 0) {
-      sorted.push(heap.extractMax());
+      //   sorted.push(heap.extractMax());
+      let i = heap.heapSize - 1;
+      this.heap[i] = heap.extractMax();
     }
     return sorted;
   }
   display() {
     // display from 0 to heapSize
-    let result = []
+    let result = [];
     for (let i = 0; i < this.heapSize; i++) {
-        result.push(this.heap[i]);
+      result.push(this.heap[i]);
     }
     console.log(result);
     return result;
   }
 }
 
-const myHeap = new Heap([14,21,48,36,30,71,52,15], true);
+const myHeap = new Heap([14, 21, 48, 36, 30, 71, 52, 15], true);
 // console.log(myHeap.theParent(myHeap.heap.indexOf(16)));
+myHeap.display();
 myHeap.sort();
-myHeap.display()
+myHeap.display();
 
 // var HeapF = function (source, incremental) {
 //   var array = source;
