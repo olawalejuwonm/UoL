@@ -165,40 +165,37 @@ class Graph {
   }
 
   // This create dijkstra's algorithm routing table for shortest path of the graph
-  dijkstra(v1) {
-    let v = this.getVertex(v1);
-    // initialize routing table
+  dijkstra(A) {
     let table = new Array();
-    for (let i = 0; i < this.vlist.length; i++) {
-      table.push({
-        name: this.vlist[i].name,
-        distance: Infinity,
-        previous: null,
-      });
+    let visited = new Array();
+    let v = this.getVertex(A);
+    table.push({
+        vertex: v.name,
+        distance: 0,
+        previous: null
+    })
+    visited.push(v.name);
+    while (visited.length < this.vlist.length) {
+        for (let i = 0; i < v.adj.length; i++) {
+            if (!visited.includes(v.adj[i].to)) {
+                table.push({
+                    vertex: v.adj[i].to,
+                    distance: v.adj[i].weight + edge.distance,
+                    previous: v.name
+                })
+            }
+        }
+        table.sort((a, b) => {
+            return a.distance - b.distance;
+        })
+        let edge = table.shift();
+        if (!visited.includes(edge.vertex)) {
+            visited.push(edge.vertex);
+            v = this.getVertex(edge.vertex);
+        }
     }
-    table[0].distance = 0;
-    table[0].previous = v.name;
-    console.log(table);
-    // initialize unexplored vertices
-    let unexplored = new Array();
-    for (let i = 0; i < this.vlist.length; i++) {
-      unexplored.push(this.vlist[i].name);
-    }
-    while (unexplored.length > 0) {
-      // select next vertex to explore with minimum distance to v1
-      //check all edges weight of unexplored vertices
-      let min = Infinity;
-      let u = null;
-      for (let i = 0; i < unexplored.length; i++) {
-        let vertex = this.getVertex(unexplored[i]);
-        
-      }
-
-      unexplored.splice(unexplored.indexOf(u), 1);
-    }
-
     return table;
-  }
+    }
 
   // SPCost(v1, v2): This	method	returns	the	cost	of	the	shortest	path	between	v1	and	v2
   SPCost(v1, v2) {

@@ -206,10 +206,13 @@ function insertionSort(vecArr) {
       noOfComp += 1;
     }
     shift(vecArr, iindex, j);
+    console.log(`After ${iindex}th iteration of for loop`, vecArr);
   }
   console.log("No of shift was", noShift, "and No Of Comparison was", noOfComp);
   return vecArr;
 }
+
+console.log("here", insertionSort([2,5,3,1,7]))
 
 // console.log("Insertion Sort", insertionSort([ 6, 7, 3, 4]));
 // console.log("Insertion Sort", insertionSort([9, 5, 1, 4, 1, 5]));

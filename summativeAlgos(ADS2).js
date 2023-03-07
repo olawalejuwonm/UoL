@@ -49,26 +49,33 @@ function pos_min(A, a, b) {
   return min;
 }
 
+console.log(pos_min([11, 3, 5, 2, 5, 1, 8], 0, 3));
 function SelectionSort(A, N) {
+  if (!N) {
+    N = A.length;
+  }
   //asc
-  //   for (let i = 0; i < N-1; i++) {
-  //psedo code says N-1
-  //desc
-  for (let i = 1; i <= N - 1; i++) {
-    //asc
-    // let min = pos_min(A, i, N - 1);
+  for (let i = 0; i < N - 1; i++) {
+    //psedo code says N-1
+    //desc
+    // for (let i = 1; i <= N - 1; i++) {
+    // asc
+    let min = pos_min(A, i, N - 1);
 
     //desc
-    let min = pos_min(A, 0, i);
+    // let min = pos_min(A, 0, i);
 
     //asc
-    // Swap(A, i, min);
+    Swap(A, i, min);
 
     //desc
-    Swap(A, min, i);
+    // Swap(A, min, i);
+
+    console.log(`i: ${i} min: ${min} A: ${A}`);
   }
   return A;
 }
+console.log(SelectionSort([2, 5, 3, 1, 7]));
 // console.log(SelectionSort([5, 2, 7, 3, 4], 5));
 
 //selection sort for descending order
@@ -276,11 +283,10 @@ function Sort3(A, N, max) {
 
 // max: maximum value stored in A
 
-console.log(Sort3([2,45,13,76,58], 5, 76));
-
+// console.log(Sort3([2, 45, 13, 76, 58], 5, 76));
 
 // Question 1
-// A hash table with 10 buckets uses the hash function f(x) = x % 10, and linear probing to resolve collisions. If the keys 
+// A hash table with 10 buckets uses the hash function f(x) = x % 10, and linear probing to resolve collisions. If the keys
 
 // [238, 40, 128, 59, 212, 185, 215]
 // [238,40,128,59,212,185,215]
@@ -293,7 +299,7 @@ console.log(Sort3([2,45,13,76,58], 5, 76));
 
 // Question 3
 // Question 3
-// A separate-chaining hash table with 11 buckets uses the hash function f(x) = x % 11. If the hash table stores the keys 
+// A separate-chaining hash table with 11 buckets uses the hash function f(x) = x % 11. If the hash table stores the keys
 
 // [219, 129, 244, 112, 236, 233, 125]
 // [219,129,244,112,236,233,125]
@@ -303,12 +309,12 @@ console.log(Sort3([2,45,13,76,58], 5, 76));
 
 // Question 4
 // An empty hash table is created with 10 buckets initially, and is resized to double its current number of buckets whenever the load factor reaches or exceeds 0.5. After inserting 30 keys, what is the load factor of the hash table?
-// Immediately after inserting the 5th number in the original hash table, the load factor is 0.5. Thus the table is resized to 20 buckets. Next, when the 10th number is inserted, the load factor is 0.5 again, so the table is resized to 40 buckets. 
+// Immediately after inserting the 5th number in the original hash table, the load factor is 0.5. Thus the table is resized to 20 buckets. Next, when the 10th number is inserted, the load factor is 0.5 again, so the table is resized to 40 buckets.
 // When the 20th number is inserted, the load factor is 0.5 again, so the table is resized to 80 buckets.
 // When the 30th number is inserted, the load factor is 0.375, so the table is not resized.
 
 // Question 5
 // An empty hash table is created with 100 buckets initially, and is resized to double its current number of buckets whenever the load factor reaches or exceeds 0.5. After inserting 220 keys (assuming no collisions), what is the load factor of the hash table?
-// Immediately after inserting the 50th number in the original hash table, the load factor is 0.5. Thus the table is resized to 200 buckets. Next, when the 100th number is inserted, the load factor is 0.5 again, so the table is resized to 400 buckets. 
+// Immediately after inserting the 50th number in the original hash table, the load factor is 0.5. Thus the table is resized to 200 buckets. Next, when the 100th number is inserted, the load factor is 0.5 again, so the table is resized to 400 buckets.
 // When the 200th number is inserted, the load factor is 0.5 again, so the table is resized to 800 buckets.
 // When the 220th number is inserted, the load factor is 0.275, so the table is not resized.

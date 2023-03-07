@@ -42,8 +42,8 @@ function swap(vector, i, j) {
 }
 let TotalPartition = 0;
 
-//This is correct
-function Partition(vector, i, j) {
+//This is somwehat  incorrect
+function PartitionOld(vector, i, j) {
   TotalPartition++;
   console.log("Input Vector: ", vector,  "i: ", i,  "j: ", j, "\n");
   const m = Math.floor(i + j / 2); //middle index, This is perfect for the course or floor((vector.length - 1) / 2)
@@ -90,6 +90,23 @@ function Partition(vector, i, j) {
   return final; //This is the final location of the pivot value (index + 1)
 }
 
+//This is correct
+function Partition(A, low, high) {
+  //A: array of numbers
+  // low: lowest index of array A
+  // high: highest index of array A
+  let pivot = A[high];
+  let i = low;
+  for (let j = i; j < high; j++) {
+    if (A[j] <= pivot) {
+      swap(A, i, j);
+      i = i + 1;
+    }
+  }
+  swap(A, high, i);
+  return i;
+}
+console.log(Partition([3, 18, 21, 73, 59, 23, 45], 2, 6));
 function Quicksort(arr) {
   if (arr.length <= 1) {
     return arr;
@@ -113,4 +130,4 @@ function Quicksort(arr) {
 // console.log(Quicksort([9, 8, 3, 1, 2, 5]));
 
 // console.log(Quicksort([0, 1, 16, 4, 9, 25]))
-console.log(Quicksort([6, 2, 3, 5, 4]))
+// console.log(Quicksort([6, 2, 3, 5, 4]))
