@@ -117,10 +117,10 @@ class LinkedList {
 }
 
 //Testing
-let list = new LinkedList();
-list.insertSorted(list.getHead(), 3);
-list.insertSorted(list.getHead(), 2);
-list.display(list.getHead());
+// let list = new LinkedList();
+// list.insertSorted(list.getHead(), 3);
+// list.insertSorted(list.getHead(), 2);
+// list.display(list.getHead());
 
 function searchList(L, k) {
   let x = L.head;
@@ -131,10 +131,59 @@ function searchList(L, k) {
 }
 
 function listInsert(L, x) {
-    x.next = L.head;
-    if (L.head != null) {
-        L.head.prev = x;
-    }
-    L.head = x;
-    x.prev = null;
+  x.next = L.head;
+  if (L.head != null) {
+    L.head.prev = x;
+  }
+  L.head = x;
+  x.prev = null;
 }
+
+// Bucket sort using linked list
+// A: array to be sorted
+// N: size of array A
+// max: maximum value in A
+// function Bucketsort(A,N,max)
+//    B ←  new array(N)
+//    for 0 ≤ i < N
+//       B[i] ← empty linked list
+//    for 0 ≤ i < N
+//       B[floor(A[i]*N/(max+1))] ← A[i]
+//    for 0 ≤ i < N
+//       sort(B[i])
+//    for 0 ≤ i < N
+//       copy list B[i] back to A
+// end function
+
+//please check the file bucket sort itself for array version
+function bucketSort(A, N, max) {
+  let B = [];
+  for (let i = 0; i < N; i++) {
+    B[i] = new LinkedList();
+    console.log(`First loop ${i} ${B[i]}`);
+  }
+  for (let i = 0; i < N; i++) {
+    let index = Math.floor((A[i] * N) / (max + 1));
+    B[index].insertSorted(B[index].getHead(), A[i]);
+    console.log(`Second loop ${i} ${B[index]}`);
+  }
+  for (let i = 0; i < N; i++) {
+    B[i].display(B[i].getHead());
+    console.log(`Third loop ${i} ${B[i]}`);
+  }
+  let k = 0;
+  for (let i = 0; i < N; i++) {
+    let current = B[i].getHead();
+    while (current != null) {
+      A[k] = current.data;
+      k++;
+      current = current.next;
+    }
+  }
+  return A;
+}
+
+console.log(
+  "Bucket sort using linked list",
+  bucketSort([17, 1, 5, 250, 45, 78], 6, 250)
+);

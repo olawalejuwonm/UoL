@@ -38,6 +38,8 @@ const radixSort = (arr, size = arr.length) => {
   return arr;
 };
 
+// console.log(radixSort([24, 8, 17, 33, 25, 14]));
+//This is correct Radix Sort
 function Sort1(A, d) {
   //number of digits of the largest number
   if (d == undefined) {
@@ -49,6 +51,12 @@ function Sort1(A, d) {
   }
   return A;
 }
+
+// console.log(Sort1([24, 8, 17, 33, 25, 14]));
+
+// console.log(Sort1([24, 8, 17, 33, 25, 14]));
+
+console.log(Sort1([24, 8, 17, 33, 25, 14]));
 
 //Sort 1 is radix sort
 
@@ -69,4 +77,4 @@ function Sort2(A, N, d) {
 
 //Sort 2 is counting sort
 
-console.log(Sort1([13, 18, 4, 21]));
+// console.log(Sort1([13, 18, 4, 21]));

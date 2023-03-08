@@ -18,7 +18,7 @@ function countingSort(A, k) {
     // k + 1
     // for (let i = k; i >= 0; i--) {
     // for descending order
-    for (let r = pos; r < pos + C[i]; r++) {
+    for (let r = pos; r < pos + C[i]; r++) { // r >= pos 
       R[r] = i;
     }
     pos += C[i];
@@ -32,7 +32,8 @@ function countingSort(A, k) {
   return R;
 }
 
-function Sort3(A, N, max) {
+//Very correct
+function Bucketsort(A, N, max) {
   if (!N) {
     N = A.length;
   }
@@ -60,4 +61,6 @@ function Sort3(A, N, max) {
   return A;
 }
 
-console.log(Sort3([20,2,1,0,5]));
+// console.log(Bucketsort([17, 1, 5, 250, 45, 78], 6, 250));
+console.log(Bucketsort([58, 17, 45, 1, 25, 37], 6, 58));
+// console.log(Sort3([20,2,1,0,5]));

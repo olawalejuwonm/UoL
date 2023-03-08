@@ -1,5 +1,5 @@
 function merge(w, v) {
-  console.log("Input Vectors: W: ", w, "V: ", v, "\n");
+  console.log("Input Vectors To Merge: Left: ", w, "Right: ", v, "\n");
   let m = w.length;
   let n = v.length;
   let s = [];
@@ -30,8 +30,6 @@ function merge(w, v) {
   return s;
 }
 
-
-
 function mergeSort(vector) {
   let n = vector.length;
   if (n <= 1) {
@@ -40,7 +38,7 @@ function mergeSort(vector) {
   let m = Math.floor((n + 1) / 2); //no need to do n+1
   let l = vector.slice(0, m);
   let r = vector.slice(m, n);
-  console.log("\n", "m: ", m, " n: ", n, "l: ", l, " r: ", r, " \n");
+  console.log("\n", "mid: ", m, " length: ", n, "l: ", l, " r: ", r, " \n");
   return merge(mergeSort(l), mergeSort(r));
 }
 
@@ -48,10 +46,12 @@ function mergeSort(vector) {
 
 console.group("\n\n\n", "Another Example: ");
 
+// console.log(mergeSort([34,65,823,12,6]));
+console.log(mergeSort([7,3,5]));
+
 // console.log(mergeSort([8, 5, 3, 1, 1, 10]))
 
 // console.log(mergeSort([0, 1, 16, 4, 9, 25]));
-
 
 // function Mergesort(A,l,h)
 //     if(l<h)
@@ -61,15 +61,19 @@ console.group("\n\n\n", "Another Example: ");
 //         Merge(A,l,mid,h)
 // end function
 
+// Below is incorrect
 function Merge2(A, low, mid, high) {
   let L = [];
   let R = [];
-  for (let i = 0; i <= mid; i++) {
-    L[i] = A[i];
+  //fill L from low to mid
+  for (let i = low; i <= mid; i++) {
+    L.push(A[i]);
   }
-  for (let i = 0; i < high - mid; i++) {
-    R[i] = A[i + mid + 1];
+  //fill R from mid+1 to high
+  for (let i = mid + 1; i <= high; i++) {
+    R.push(A[i]);
   }
+  console.log("L: ", L, " R: ", R);
   let i = 0;
   let j = 0;
   let k = 0;
@@ -83,17 +87,15 @@ function Merge2(A, low, mid, high) {
     }
     k = k + 1;
   }
-  if (i > mid) {
-    for (let m = j; m < high - mid; m++) {
-      A[k] = R[m];
-      k = k + 1;
-    }
+  while (i <= mid) {
+    A[k] = L[i];
+    k = k + 1;
+    i = i + 1;
   }
-  if (j >= high - mid) {
-    for (let m = i; m < mid + 1; m++) {
-      A[k] = L[m];
-      k = k + 1;
-    }
+  while (j < high - mid) {
+    A[k] = R[j];
+    k = k + 1;
+    j = j + 1;
   }
   return A;
 }
@@ -103,15 +105,45 @@ function mergeSort2(A, low, high) {
   // if (!high) high = A.length - 1;
   console.log(" low: ", low, " high: ", high, " A: ", A);
   if (low < high) {
-    let mid = Math.floor((low + high) / 2);
+    let mid = low + Math.floor((high - low) / 2);
     mergeSort2(A, low, mid);
-    console.log("first call", "mid: ", mid, " low: ", low, " high: ", high, " A: ", A);
+    console.log(
+      "first call",
+      "mid: ",
+      mid,
+      " low: ",
+      low,
+      " high: ",
+      high,
+      " A: ",
+      A
+    );
     mergeSort2(A, mid + 1, high);
-    console.log("second call", "mid: ", mid, " low: ", low, " high: ", high, " A: ", A);
+    console.log(
+      "second call",
+      "mid: ",
+      mid,
+      " low: ",
+      low,
+      " high: ",
+      high,
+      " A: ",
+      A
+    );
     Merge2(A, low, mid, high);
-    console.log("third call merge", "mid: ", mid, " low: ", low, " high: ", high, " A: ", A);
+    console.log(
+      "third call merge",
+      "mid: ",
+      mid,
+      " low: ",
+      low,
+      " high: ",
+      high,
+      " A: ",
+      A
+    );
   }
   return A;
 }
 
-console.log(mergeSort2([4,6,5,1], 0, 3));
+// console.log(mergeSort2([4, 6, 5, 1], 0, 3));

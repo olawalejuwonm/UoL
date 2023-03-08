@@ -9,9 +9,10 @@ function countingSort(A, k) {
   for (let j = 0; j < A.length; j++) {
     C[A[j]]++;
   }
-  // for (let i = 0; i < C.length; i++) { // k + 1
-  for (let i = k; i >= 0; i--) {
-    // for descending order
+  console.log("Array C", C);
+  for (let i = 0; i < C.length; i++) { // k + 1
+  // for descending order
+  // for (let i = k; i >= 0; i--) {
     for (let r = pos; r < pos + C[i]; r++) {
       R[r] = i;
     }
@@ -23,10 +24,12 @@ function countingSort(A, k) {
     //   C[i]--;
     // }
   }
+  // log ascending order value in R
   return R;
 }
 
-console.log(countingSort([8,3,1,5,1,4]));
+console.log(countingSort([1, 2, 0, 2], 3));
+// console.log(countingSort([8,3,1,5,1,4]));
 
 // Below is for sorting numbers from smallest to largest, considering positive and negative numbers
 // A: array of integer numbers
@@ -70,4 +73,4 @@ function countingSortNeg(A, k, k1) {
   }
   return R;
 }
-  console.log(countingSortNeg([0,-3,-3,1,2]));
+// console.log(countingSortNeg([0,-3,-3,1,2]));
