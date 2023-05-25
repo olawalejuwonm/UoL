@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html>
-
-
-<head>
-    <meta name="keywords" content="HTML,Django,Tutorial">
-</head>
-
-<body>
+{% extends 'base.html' %}
+  {% block content %}
     <h1>Simple Title For This Page</h1>
     <p>
-        Name: {% name.upper() %}<br />
-        Address: {{ address }}<br />
-        {% if True %}Hello there.{% endif %}
+      Name: {% name.upper() %}<br />
+      Address: {{ address }}
+      {% if True %}Hello there.{% endif %}
     </p>
-</body>
-
-
-</html>
+  {% endblock %}
