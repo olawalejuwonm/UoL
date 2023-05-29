@@ -24,4 +24,4 @@ class MerkelMain
 
         std::vector<OrderBookEntry> orders;
 
-};
+}; 

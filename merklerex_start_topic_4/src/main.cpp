@@ -3,12 +3,14 @@
 #include <vector>
 #include "OrderBookEntry.h"
 #include "MerkelMain.h"
+#include "CSVReader.h"
 
 int main()
-{   
+{
+
     MerkelMain app{};
     app.init();
-    
+
 }
 
 
@@ -51,3 +53,4 @@ int main()
 
 
 
+ 
