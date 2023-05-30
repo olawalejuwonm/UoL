@@ -30,10 +30,10 @@ ALLOWED_HOSTS = ['localhost',
                  '.coursera-apps.org',
                  '.coursera.org', ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap4',
     'genedata.apps.GenedataConfig',
     'django.contrib.admin',
     'django.contrib.auth',
