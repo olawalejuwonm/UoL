@@ -9,7 +9,7 @@ def index(request):
 
 def simple_view(request):
     addresses = Address.object.all()
-    first_address = addresses[0]
+    first_address = address[0]
     resident_name = str(first_address.resident)
     # html = "<html><body>Name: "+resident_name+"<br />Address: "+first_address.street_name+"</body></html>"
     return render(request, 'helloworld/simple.html', {'address': first_address,'name': resident_name})
