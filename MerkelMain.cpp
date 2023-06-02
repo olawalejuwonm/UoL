@@ -2,18 +2,17 @@
 #include <iostream>
 #include <vector>
 #include "OrderBookEntry.h"
+#include "CSVReader.h"
 
 MerkelMain::MerkelMain()
 {
-
-
 }
 
 void MerkelMain::init()
 {
     loadOrderBook();
     int input;
-    while(true)
+    while (true)
     {
         printMenu();
         input = getUserOption();
@@ -24,18 +23,7 @@ void MerkelMain::init()
 void MerkelMain::loadOrderBook()
 {
 
-    orders.push_back(  OrderBookEntry{1000, 
-                          0.02, 
-                        "2020/03/17 17:01:24.884492", 
-                        "BTC/USDT", 
-                        OrderBookType::bid}    );
-
-    orders.push_back(  OrderBookEntry{2000, 
-                          0.02, 
-                        "2020/03/17 17:01:24.884492", 
-                        "BTC/USDT", 
-                        OrderBookType::bid}    );
-     
+    orders = CSVReader::readCSV("20200317.csv");
 }
 
 void MerkelMain::printMenu()
@@ -46,11 +34,11 @@ void MerkelMain::printMenu()
     std::cout << "2: Print exchange stats" << std::endl;
     // 3 make an offer
     std::cout << "3: Make an offer " << std::endl;
-    // 4 make a bid 
+    // 4 make a bid
     std::cout << "4: Make a bid " << std::endl;
     // 5 print wallet
     std::cout << "5: Print wallet " << std::endl;
-    // 6 continue   
+    // 6 continue
     std::cout << "6: Continue " << std::endl;
 
     std::cout << "============== " << std::endl;
@@ -63,7 +51,22 @@ void MerkelMain::printHelp()
 
 void MerkelMain::printMarketStats()
 {
-    std::cout << "OrderBook contains :  " << orders.size() << "entries" << std::endl;
+    std::cout << "OrderBook contains :  " << orders.size() << " entries" << std::endl;
+    unsigned int bids = 0;
+    unsigned int asks = 0;
+    for (OrderBookEntry &e : orders)
+    {
+        if (e.orderType == OrderBookType::ask)
+        {
+            asks++;
+        }
+        if (e.orderType == OrderBookType::bid)
+        {
+            bids++;
+        }
+    }
+
+    std::cout << "Orderbook asks: " << asks << " bids:" << bids;
 }
 
 void MerkelMain::enterOffer()
@@ -80,12 +83,12 @@ void MerkelMain::printWallet()
 {
     std::cout << "Your wallet is empty. " << std::endl;
 }
-        
+
 void MerkelMain::gotoNextTimeframe()
 {
     std::cout << "Going to next time frame. " << std::endl;
 }
- 
+
 int MerkelMain::getUserOption()
 {
     int userOption;
@@ -102,28 +105,28 @@ void MerkelMain::processUserOption(int userOption)
     {
         std::cout << "Invalid choice. Choose 1-6" << std::endl;
     }
-    if (userOption == 1) 
+    if (userOption == 1)
     {
         printHelp();
     }
-    if (userOption == 2) 
+    if (userOption == 2)
     {
         printMarketStats();
     }
-    if (userOption == 3) 
+    if (userOption == 3)
     {
         enterOffer();
     }
-    if (userOption == 4) 
+    if (userOption == 4)
     {
         enterBid();
     }
-    if (userOption == 5) 
+    if (userOption == 5)
     {
         printWallet();
     }
-    if (userOption == 6) 
+    if (userOption == 6)
     {
         gotoNextTimeframe();
-    }       
+    }
 }
