@@ -26,7 +26,7 @@ class GeneSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         ec_data = self.initial_data.get('ec')
         seq_data = self.initial_data.get('sequencing')
-        gene = Gene(**{**validated_data,
+        gene = Gene(**{**validated_data, # This is a dictionary unpacking
                     'ec': EC.objects.get(pk=ec_data['id']),
                     'sequencing': Sequencing.objects.get(pk=seq_data['id'])}
                                   )
