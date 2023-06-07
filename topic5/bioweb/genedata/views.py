@@ -8,6 +8,9 @@ from django.views.generic.edit import CreateView
 from django.views.generic.edit import DeleteView
 from django.views.generic.edit import UpdateView
 
+def SPA(request):
+ return render(request, 'genedata/spa.html')
+
 class GeneList(ListView):
     model = Gene
     context_object_name = 'master_genes'
