@@ -93,6 +93,7 @@ void MerkelMain::enterAsk()
     {
         std::cout << "MerkelMain::enterAsk Bad input! " << input << std::endl;
     }
+    // TODO: Do more validation here!
     else {
         try {
             OrderBookEntry obe = CSVReader::stringsToOBE(

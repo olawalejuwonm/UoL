@@ -72,6 +72,7 @@ std::string Wallet::toString()
 
 bool Wallet::canFulfillOrder(OrderBookEntry order)
 {
+    //BTC/ETH,1,10 curr,price,amount have 10 BTC for 1 ETH qauntity
     std::vector<std::string> currs = CSVReader::tokenise(order.product, '/');
     // ask
     if (order.orderType == OrderBookType::ask)
@@ -85,8 +86,9 @@ bool Wallet::canFulfillOrder(OrderBookEntry order)
     // bid
     if (order.orderType == OrderBookType::bid)
     {
-        double amount = order.amount * order.price;
-        std::string currency = currs[1];
+        //ETH/BTC,0.5,20
+        double amount = order.amount * order.price; 
+        std::string currency = currs[1]; // Takes BTC and do 20*0.5 
         std::cout << "Wallet::canFulfillOrder " << currency << " : " << amount << std::endl;
         return containsCurrency(currency, amount);
     }
