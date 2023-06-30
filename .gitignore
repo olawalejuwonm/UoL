@@ -1,5 +1,8 @@
 node_modules
 .venv
 tmp_db
-pycache/*/**
-*.pyc
+# pycache/*/**
+# *.pyc
+topic5/bioweb/genedata/__pycache__/api.cpython-310.pyc
+topic5/bioweb/bioweb/__pycache__/__init__.cpython-310.pyc
+topic5/bioweb/genedata/__pycache__/api.cpython-310.pyc
