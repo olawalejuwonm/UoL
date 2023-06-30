@@ -1,5 +1,5 @@
 node_modules
 .venv
 tmp_db
-pycache
+__pycache__
 *.pyc
