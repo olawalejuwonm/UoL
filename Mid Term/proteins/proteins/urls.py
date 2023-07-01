@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from . import api
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # TODO: Homepage that'll display all links
+    path('api/protein/<int:pk>/', api.proteinRequestHandler, name='protein_api'),
 ]
