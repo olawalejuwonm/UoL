@@ -13,11 +13,17 @@ class Domain(models.Model):
         return self.domain_id
     
 class DomainAnnotation(models.Model):
+    #protein and pfam are named as such because i noticed that when i named 
+    #them protein_id and pfam_id respectively, it was automatically sufficed with _id
+    # and this could cause unexpected behaviour and also naming them without the
+    # _id suffix makes it intuitive to understand that they could have their 
+    # own data too in form of dictionaries
     protein = models.ForeignKey(Detail, on_delete=models.CASCADE, 
                             related_name='protein', null=False, blank=False)
     # related_name='protein' so that it can be accessed from the Detail model
     pfam = models.ForeignKey(Domain, on_delete=models.CASCADE, 
-                            related_name='domain', null=False, blank=False)
+                            # related_name='domain',
+                              null=False, blank=False)
     start = models.IntegerField(null=False, blank=True)
     stop = models.IntegerField(null=False, blank=True)
     taxa_id = models.IntegerField(null=False, blank=True)
