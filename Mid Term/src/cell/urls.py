@@ -15,9 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import  path
+from protein import api as protein_api
+from pfam import api as pfam_api
 
 urlpatterns = [
-    path('api/protein/', include('protein.urls')),
+    path('api/protein/<str:pk>/', protein_api.proteinRequestHandler, name='protein_api'),
+    path('api/proteins/<int:pk>/', protein_api.organismProteins, name='proteins_api'),
+    path('api/pfam/<str:pk>/', pfam_api.domainDetails, name='pfam_api'),
+    path('api/pfams/<int:pk>/', pfam_api.domainByTaxaId, name='pfam_api'),
     path('admin/', admin.site.urls),
 ]

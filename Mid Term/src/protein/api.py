@@ -7,7 +7,7 @@ from .serializers import ProteinSerializer
 
 
 
-@api_view(['GET', 'POST', 'PUT'])
+@api_view(['GET'])
 def proteinRequestHandler(request, pk):
     try:
         protein = Model.Detail.objects.get(pk=pk)
@@ -31,3 +31,6 @@ def proteinRequestHandler(request, pk):
         # This finds the domain annotations for the protein
         return Response(proteinData)
 
+@api_view(['GET'])
+def organismProteins(request, pk):
+    return Response(PfamService.proteins_by_taxa_id(pk))
