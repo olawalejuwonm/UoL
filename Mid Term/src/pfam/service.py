@@ -55,3 +55,14 @@ def domains_by_taxa_id(taxa_id):
         filteredDomainAnnotations.append(domain) # This add the domain dictionary to the end of the list
 
     return filteredDomainAnnotations
+
+#This return the domain coverage for a given protein which is sum of the protein domain lengths (stop-start)/length of protein.
+# Stop - start was used so that the length of the domain is not affected by the gaps in the alignment which will result
+# in negative value for the coverage
+def coverage(protein_id):
+    domainAnnotations = DomainAnnotation.objects.filter(protein=protein_id)
+    proteinLength = domainAnnotations[0].length
+    coverage = 0
+    for domainAnnotation in domainAnnotations:
+        coverage += (domainAnnotation.stop - domainAnnotation.start)/proteinLength
+    return coverage

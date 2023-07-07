@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -10,3 +11,11 @@ class Detail(models.Model): # Instead of naming this as Protein It was called De
     def __str__(self):
         return self.protein_id
     
+    def clean(self):
+        print("cleaning")
+        if len(self.sequence) < 10 or len(self.sequence) > 40000:
+            raise ValidationError("Sequence must be between 10 and 40000 in length")
+    def create(self, validated_data):
+        raise ValidationError("Sequence must be between 10 and 40000 in length")
+
+        # return Detail.objects.create(**validated_data)

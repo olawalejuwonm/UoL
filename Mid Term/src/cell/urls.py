@@ -20,9 +20,10 @@ from protein import api as protein_api
 from pfam import api as pfam_api
 
 urlpatterns = [
-    path('api/protein/<str:pk>/', protein_api.proteinRequestHandler, name='protein_api'),
+    path('api/protein/<str:pk>/', protein_api.ProteinDetail.as_view(), name='protein_api'),
     path('api/proteins/<int:pk>/', protein_api.organismProteins, name='proteins_api'),
     path('api/pfam/<str:pk>/', pfam_api.domainDetails, name='pfam_api'),
     path('api/pfams/<int:pk>/', pfam_api.domainByTaxaId, name='pfam_api'),
+    path('api/coverage/<str:pk>/', protein_api.coverage, name='coverage_api'),
     path('admin/', admin.site.urls),
 ]
