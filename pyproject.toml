@@ -3,3 +3,7 @@ plugins = ["mypy_django_plugin.main"]
 
 [tool.django-stubs]
 django_settings_module = "cell.settings"
+
+[[tool.mypy.overrides]]
+module = "django.*"
+ignore_missing_imports = true
