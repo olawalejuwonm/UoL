@@ -1,4 +1,5 @@
 #include "OrderBookEntry.h"
+#include <iostream>
 
 OrderBookEntry::OrderBookEntry( double _price, 
                         double _amount, 
@@ -23,9 +24,13 @@ OrderBookType OrderBookEntry::stringToOrderBookType(std::string s)
   {
     return OrderBookType::ask;
   }
+ 
   if (s == "bid")
   {
     return OrderBookType::bid;
   }
-  return OrderBookType::unknown;
+  // To avoid error with unaccepted order types, this will throw an exception
+  // if the order type is not recognized.
+  throw std::runtime_error{"OrderBookEntry::stringToOrderBookType unknown OrderBookType " + s};
+  // return OrderBookType::unknown;
 }

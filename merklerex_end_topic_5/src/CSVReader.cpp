@@ -15,6 +15,8 @@ CSVReader::CSVReader()
 {
 }
 
+
+
 std::vector<OrderBookEntry> CSVReader::readCSV(std::string csvFilename)
 {
     std::vector<OrderBookEntry> entries;
@@ -28,6 +30,11 @@ std::vector<OrderBookEntry> CSVReader::readCSV(std::string csvFilename)
             try
             {
                 OrderBookEntry obe = stringsToOBE(tokenise(line, ','));
+                // Stringify the class object using the overridden operator<<
+                // std::string str = static_cast<std::ostringstream &>(std::ostringstream{} << obe).str();
+
+                // Print the string representation
+                // std::cout << "String representation: " << str << std::endl;
                 entries.push_back(obe);
             }
             catch (const std::exception &e)
@@ -80,6 +87,7 @@ std::vector<std::string> CSVReader::tokenise(std::string csvLine, char separator
 OrderBookEntry CSVReader::stringsToOBE(std::vector<std::string> tokens)
 {
     double price, amount;
+    OrderBookType orderType;
 
     if (tokens.size() != 5) // bad
     {
@@ -91,11 +99,23 @@ OrderBookEntry CSVReader::stringsToOBE(std::vector<std::string> tokens)
     {
         price = std::stod(tokens[3]);
         amount = std::stod(tokens[4]);
+        try
+        {
+            /* code */
+            orderType = OrderBookEntry::stringToOrderBookType(tokens[2]);
+
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << e.what() << '\n';
+            // throw;
+        }
     }
     catch (const std::exception &e)
     {
         std::cout << "CSVReader::stringsToOBE Bad float! " << tokens[3] << std::endl;
         std::cout << "CSVReader::stringsToOBE Bad float! " << tokens[4] << std::endl;
+        std::cout << "CSVReader::stringsToOBE Bad order type! " << tokens[2] << std::endl;
         throw;
     }
 
@@ -107,7 +127,7 @@ OrderBookEntry CSVReader::stringsToOBE(std::vector<std::string> tokens)
                        amount,
                        tokens[0],
                        tokens[1],
-                       OrderBookEntry::stringToOrderBookType(tokens[2])};
+                       orderType};
 
     return obe;
 }
