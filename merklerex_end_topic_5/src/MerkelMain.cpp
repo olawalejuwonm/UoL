@@ -3,6 +3,7 @@
 #include <vector>
 #include "OrderBookEntry.h"
 #include "CSVReader.h"
+#include "Candlestick.h"
 
 MerkelMain::MerkelMain()
 {
@@ -37,6 +38,8 @@ void MerkelMain::printMenu()
     std::cout << "5: Print wallet " << std::endl;
     // 6 continue
     std::cout << "6: Continue " << std::endl;
+    // 7 Analyze
+    std::cout << "7: Compute Candle Stick " << std::endl;
 
     std::cout << "============== " << std::endl;
 
@@ -198,6 +201,17 @@ int MerkelMain::getUserOption()
     }
     std::cout << "You chose: " << userOption << std::endl;
     return userOption;
+}
+
+void MerkelMain::computeCandlestick()
+{
+    std::cout << "Enter the product and orderbook type eg ETH/BTC,ask" << std::endl;
+    std::string input;
+    std::getline(std::cin, input);
+    // This will get all previous time frames so we can see the history
+    // this is relative to the current time frame.
+    Candlestick candlestick { input, currentTime, orderBook };
+    
 }
 
 void MerkelMain::processUserOption(int userOption)

@@ -15,8 +15,6 @@ CSVReader::CSVReader()
 {
 }
 
-
-
 std::vector<OrderBookEntry> CSVReader::readCSV(std::string csvFilename)
 {
     std::vector<OrderBookEntry> entries;
@@ -30,11 +28,6 @@ std::vector<OrderBookEntry> CSVReader::readCSV(std::string csvFilename)
             try
             {
                 OrderBookEntry obe = stringsToOBE(tokenise(line, ','));
-                // Stringify the class object using the overridden operator<<
-                // std::string str = static_cast<std::ostringstream &>(std::ostringstream{} << obe).str();
-
-                // Print the string representation
-                // std::cout << "String representation: " << str << std::endl;
                 entries.push_back(obe);
             }
             catch (const std::exception &e)
@@ -43,21 +36,6 @@ std::vector<OrderBookEntry> CSVReader::readCSV(std::string csvFilename)
             }
         } // end of while
     }
-
-    // std::ostream& operator<<(std::ostream& os, const OrderBookType& obj) {
-    //     os << "UnknownType(" << obj.orderType << ")";
-    //     return os;
-    // }
-
-    // print last element of entries
-    // std::ostream << "CSVReader::readCSV last element of entries " <<  entries.back();
-    // printVector(entries);
-
-    std::cout << "The vector elements are: ";
-
-    std::cout << std::endl;
-
-    std::cout << "CSVReader::readCSV read " << entries.size() << " entries" << std::endl;
 
     return entries;
 }
@@ -103,12 +81,13 @@ OrderBookEntry CSVReader::stringsToOBE(std::vector<std::string> tokens)
         {
             /* code */
             orderType = OrderBookEntry::stringToOrderBookType(tokens[2]);
-
         }
         catch (const std::exception &e)
         {
+            // since only ask and bid are accepted for the candlestick plot
+            // this will throw an exception if the order type is not recognized
             std::cerr << e.what() << '\n';
-            // throw;
+            throw;
         }
     }
     catch (const std::exception &e)
@@ -119,10 +98,6 @@ OrderBookEntry CSVReader::stringsToOBE(std::vector<std::string> tokens)
         throw;
     }
 
-    // print tokens[0]
-    //   std::cout << "CSVReader::stringsToOBE tokens[0] " << tokens[0] << std::endl;
-    //   std::cout << "CSVReader::stringsToOBE tokens[1] " << tokens[1] << std::endl;
-    //   std::cout << "CSVReader::stringsToOBE tokens[2] " << tokens[2] << std::endl;
     OrderBookEntry obe{price,
                        amount,
                        tokens[0],

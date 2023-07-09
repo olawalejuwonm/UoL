@@ -17,7 +17,10 @@ class OrderBookEntry
                         std::string username = "dataset");
 
         static OrderBookType stringToOrderBookType(std::string s);
-
+        
+        //The method compares the timestamp attribute of the two objects and 
+        //returns true if the timestamp of the first object is less than the 
+        //timestamp of the second object. Otherwise, it returns false.
         static bool compareByTimestamp(OrderBookEntry& e1, OrderBookEntry& e2)
         {
             return e1.timestamp < e2.timestamp;
