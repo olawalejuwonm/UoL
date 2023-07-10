@@ -79,12 +79,10 @@ void Candlestick::computeData()
         if (e.price > highestPrice)
         {
             highestPrice = e.price;
-            std::cout << "Highest price is: " << highestPrice << std::endl;
         }
         if (e.price < lowestPrice)
         {
             lowestPrice = e.price;
-            std::cout << "Lowest price is: " << lowestPrice << std::endl;
         }
     }
 
