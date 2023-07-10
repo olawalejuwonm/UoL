@@ -93,6 +93,40 @@ std::string OrderBook::getNextTime(std::string timestamp)
     return next_timestamp;
 }
 
+std::string OrderBook::getPreviousTime(std::string timestamp)
+{
+    std::string previous_timestamp = "";
+    for (OrderBookEntry &e : orders)
+    {
+        if (e.timestamp < timestamp)
+        {
+            previous_timestamp = e.timestamp;
+        }
+    }
+    if (previous_timestamp == "")
+    {
+        previous_timestamp = timestamp; // returns the same timestamp if there is no previous timestamp
+    }
+    return previous_timestamp;
+}
+
+std::vector<std::string> OrderBook::getPreviousTimes(std::string timestamp)
+{
+    std::vector<std::string> previous_timestamps;
+    for (OrderBookEntry &e : orders)
+    {
+        if (e.timestamp < timestamp)
+        {
+            // It only push if e.timestamp is not already in the vector
+            if (std::find(previous_timestamps.begin(), previous_timestamps.end(), e.timestamp) == previous_timestamps.end())
+            {
+                previous_timestamps.push_back(e.timestamp);
+            }
+        }
+    }
+    return previous_timestamps;
+}
+
 void OrderBook::insertOrder(OrderBookEntry &order)
 {
     orders.push_back(order);

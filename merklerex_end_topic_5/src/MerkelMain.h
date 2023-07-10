@@ -4,6 +4,7 @@
 #include "OrderBookEntry.h"
 #include "OrderBook.h"
 #include "Wallet.h"
+#include "Candlestick.h"
 
 class MerkelMain
 {
@@ -21,7 +22,7 @@ private:
     void printWallet();
     void gotoNextTimeframe();
     int getUserOption();
-    void computeCandlestick();
+    std::vector<Candlestick> computeCandlestick();
     void processUserOption(int userOption);
 
     std::string currentTime;

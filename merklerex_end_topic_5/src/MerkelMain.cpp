@@ -203,15 +203,26 @@ int MerkelMain::getUserOption()
     return userOption;
 }
 
-void MerkelMain::computeCandlestick()
+std::vector<Candlestick> MerkelMain::computeCandlestick()
 {
     std::cout << "Enter the product and orderbook type eg ETH/BTC,ask" << std::endl;
     std::string input;
     std::getline(std::cin, input);
-    // This will get all previous time frames so we can see the history
-    // this is relative to the current time frame.
-    Candlestick candlestick { input, currentTime, orderBook };
-    
+    std::vector<Candlestick> candlesticks;
+    Candlestick candlestick{input, currentTime, orderBook};
+    candlesticks.push_back(candlestick); // TODO: It was done this way so that if an
+    // error occured the program doesn't have to loop through all orders
+    //  This will get all previous time frames so we can see the history
+    //  this is relative to the current time frame.
+    std::vector<std::string> previousTimes = orderBook.getPreviousTimes(currentTime);
+    // I loop through the previous time to generate their history
+    for (std::string &previousTime : previousTimes)
+    {
+        Candlestick candlestick(input, previousTime, orderBook);
+        candlesticks.push_back(candlestick);
+    }
+
+    return candlesticks;
 }
 
 void MerkelMain::processUserOption(int userOption)
@@ -243,5 +254,9 @@ void MerkelMain::processUserOption(int userOption)
     if (userOption == 6)
     {
         gotoNextTimeframe();
+    }
+    if (userOption == 7)
+    {
+        computeCandlestick();
     }
 }

@@ -24,6 +24,9 @@ public:
      * */
     std::string getNextTime(std::string timestamp);
 
+    std::string getPreviousTime(std::string timestamp);
+    std::vector<std::string> getPreviousTimes(std::string timestamp);
+
     void insertOrder(OrderBookEntry &order);
 
     std::vector<OrderBookEntry> matchAsksToBids(std::string product, std::string timestamp);
