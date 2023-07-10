@@ -8,6 +8,10 @@ class Candlestick
 {
 public:
     Candlestick(std::string input, std::string currentTime, OrderBook orderBook);
+    double open;
+    double high;
+    double low;
+    double close;
 
 private:
     std::string timestamp;
@@ -21,13 +25,10 @@ private:
     OrderBookType orderType;
     // Product is the currency pair eg ETH/BTC
     std::string product;
-    double computeOpen(OrderBook orderBook, OrderBookType orderType, std::string product, std::string currentTime);
-    // Calculates the average price per unit in the current time frame
-    // calculated as Total value/Total price. Total value is sum of each price
-    // multiplied by the amount. Total price is the sum of the amount.
+    // Calculates the average price per unit in the previous time frame
+    //  calculated as Total value/Total price. Total value is sum of each price
+    //  multiplied by the amount. Total price is the sum of the amount.
+    void computeOpen(OrderBook orderBook, OrderBookType orderType, std::string product, std::string currentTime);
+    // Calculates the close, low and high value for currentTime
     void computeData();
-    double open;
-    double high;
-    double low;
-    double close;
 };

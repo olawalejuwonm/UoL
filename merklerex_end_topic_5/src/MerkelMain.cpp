@@ -4,6 +4,7 @@
 #include "OrderBookEntry.h"
 #include "CSVReader.h"
 #include "Candlestick.h"
+#include <ctime>
 
 MerkelMain::MerkelMain()
 {
@@ -38,8 +39,11 @@ void MerkelMain::printMenu()
     std::cout << "5: Print wallet " << std::endl;
     // 6 continue
     std::cout << "6: Continue " << std::endl;
-    // 7 Analyze
+    // 7 Compute
     std::cout << "7: Compute Candle Stick " << std::endl;
+    // 8 Visualise plot
+    std::cout << "8: Visualise plot " << std::endl;
+
 
     std::cout << "============== " << std::endl;
 
@@ -205,22 +209,31 @@ int MerkelMain::getUserOption()
 
 std::vector<Candlestick> MerkelMain::computeCandlestick()
 {
+    // empty vector of candlesticks
+    std::vector<Candlestick> candlesticks;
     std::cout << "Enter the product and orderbook type eg ETH/BTC,ask" << std::endl;
     std::string input;
     std::getline(std::cin, input);
-    std::vector<Candlestick> candlesticks;
+    std::cout << "Computing candlestick for " << input << " at time " << currentTime << std::endl;
     Candlestick candlestick{input, currentTime, orderBook};
-    candlesticks.push_back(candlestick); // TODO: It was done this way so that if an
+    std::cout << "Candlestick: " << candlestick.open << std::endl;
+    candlesticks.push_back(candlestick);
+
+    // It was done this way so that if an
     // error occured the program doesn't have to loop through all orders
     //  This will get all previous time frames so we can see the history
     //  this is relative to the current time frame.
     std::vector<std::string> previousTimes = orderBook.getPreviousTimes(currentTime);
+    // std::cout << "Previous times: " << previousTimes.size() << std::endl;
     // I loop through the previous time to generate their history
     for (std::string &previousTime : previousTimes)
     {
+        std::cout << "Computing candlestick for " << input << " at time " << previousTime << std::endl;
         Candlestick candlestick(input, previousTime, orderBook);
         candlesticks.push_back(candlestick);
     }
+
+    std::cout << "Number of candlesticks computed: " << candlesticks.size() << std::endl;
 
     return candlesticks;
 }

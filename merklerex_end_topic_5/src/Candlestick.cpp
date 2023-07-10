@@ -12,6 +12,8 @@ Candlestick::Candlestick(std::string input, std::string currentTime, OrderBook o
     if (tokens.size() != 2)
     {
         std::cout << "You entered a bad input! It should be in the form of product,orderType eg ETH/BTC,ask" << std::endl;
+        // Terminate the function
+        
         return;
     }
     // TODO: check if the product is valid
@@ -41,28 +43,43 @@ Candlestick::Candlestick(std::string input, std::string currentTime, OrderBook o
 
     computeData();
 
-    open = computeOpen(orderBook, orderType, product, currentTime);
+    // console the system time and date for the machine
+    // std::cout << "The current time is: " << std::time(nullptr) << std::endl;
+    std::cout << "Compute open starts" << std::endl;
+    computeOpen(orderBook, orderType, product, currentTime);
+    std::cout << "Compute open completed" << std::endl;
 
-    // NEXT get the top, bottom, open, close, high, low.
 }
 
-// Candlestick::computeOpen()
-// {
-// }
-
-double Candlestick::computeOpen(OrderBook orderBook, OrderBookType orderType,
-                                std::string product, std::string currentTime)
+void Candlestick::computeOpen(OrderBook orderBook, OrderBookType orderType,
+                              std::string product, std::string currentTime)
 {
     previousTimestamp = orderBook.getPreviousTime(currentTime);
-    previousOrderBook = orderBook.getOrders(orderType, product, previousTimestamp);
-    double totalValue = 0;
-    double totalPrice = 0;
-    for (OrderBookEntry &e : previousOrderBook)
+    // If the previous time stamp is the same as the current time stamp
+    // then there is no open value, it is the same as the close value
+    std::cout << "Previous time stamp: " + previousTimestamp << std::endl;
+    if (previousTimestamp == currentTime)
     {
-        totalValue += e.amount * e.price;
-        totalPrice += e.amount;
+        std::cout << "Previous time stamp is the same as current time stamp" << std::endl;
+        open = close;
+        std::cout << "Open is: " << open << std::endl;
     }
-    return totalValue / totalPrice;
+    else
+    {
+        previousOrderBook = orderBook.getOrders(orderType, product, previousTimestamp);
+
+        double totalValue = 0;
+        double totalPrice = 0;
+        for (OrderBookEntry &e : previousOrderBook)
+        {
+            totalValue += e.amount * e.price;
+            totalPrice += e.amount;
+        }
+        open = totalValue / totalPrice;
+    }
+
+
+    std::cout << "Open  end is: " << open << std::endl;
 }
 
 void Candlestick::computeData()

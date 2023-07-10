@@ -28,7 +28,7 @@ private:
     std::string currentTime;
 
     // This will hold the currency and orderType to visualise
-    std::string visualiseItems;
+    // std::vector<Candlestick> candlesticks;
 
     OrderBook orderBook{"20200317.csv"};
 
