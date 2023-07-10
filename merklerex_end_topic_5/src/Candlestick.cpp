@@ -13,7 +13,7 @@ Candlestick::Candlestick(std::string input, std::string currentTime, OrderBook o
     {
         std::cout << "You entered a bad input! It should be in the form of product,orderType eg ETH/BTC,ask" << std::endl;
         // Terminate the function
-        
+
         return;
     }
     // TODO: check if the product is valid
@@ -48,7 +48,6 @@ Candlestick::Candlestick(std::string input, std::string currentTime, OrderBook o
     std::cout << "Compute open starts" << std::endl;
     computeOpen(orderBook, orderType, product, currentTime);
     std::cout << "Compute open completed" << std::endl;
-
 }
 
 void Candlestick::computeOpen(OrderBook orderBook, OrderBookType orderType,
@@ -57,12 +56,9 @@ void Candlestick::computeOpen(OrderBook orderBook, OrderBookType orderType,
     previousTimestamp = orderBook.getPreviousTime(currentTime);
     // If the previous time stamp is the same as the current time stamp
     // then there is no open value, it is the same as the close value
-    std::cout << "Previous time stamp: " + previousTimestamp << std::endl;
     if (previousTimestamp == currentTime)
     {
-        std::cout << "Previous time stamp is the same as current time stamp" << std::endl;
         open = close;
-        std::cout << "Open is: " << open << std::endl;
     }
     else
     {
@@ -78,8 +74,6 @@ void Candlestick::computeOpen(OrderBook orderBook, OrderBookType orderType,
         open = totalValue / totalPrice;
     }
 
-
-    std::cout << "Open  end is: " << open << std::endl;
 }
 
 void Candlestick::computeData()
@@ -104,7 +98,6 @@ void Candlestick::computeData()
     }
 
     close = totalValue / totalPrice;
-    std::cout << "Close is: " << close << std::endl;
     high = highestPrice;
     low = lowestPrice;
 }

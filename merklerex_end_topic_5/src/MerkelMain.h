@@ -22,13 +22,14 @@ private:
     void printWallet();
     void gotoNextTimeframe();
     int getUserOption();
-    std::vector<Candlestick> computeCandlestick();
     void processUserOption(int userOption);
+    std::vector<Candlestick> computeCandlestick();
+    void visualisePlot();
 
     std::string currentTime;
 
     // This will hold the currency and orderType to visualise
-    // std::vector<Candlestick> candlesticks;
+    std::vector<Candlestick> computedCandlesticks;
 
     OrderBook orderBook{"20200317.csv"};
 

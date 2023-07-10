@@ -12,9 +12,10 @@ public:
     double high;
     double low;
     double close;
+    std::string timestamp;
+
 
 private:
-    std::string timestamp;
     // Previous time stamp used for calculating open value
     std::string previousTimestamp;
     // All order based on the current time stamp

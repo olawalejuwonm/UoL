@@ -4,7 +4,7 @@
 #include "OrderBookEntry.h"
 #include "CSVReader.h"
 #include "Candlestick.h"
-#include <ctime>
+#include "TextPlot.h"
 
 MerkelMain::MerkelMain()
 {
@@ -207,37 +207,6 @@ int MerkelMain::getUserOption()
     return userOption;
 }
 
-std::vector<Candlestick> MerkelMain::computeCandlestick()
-{
-    // empty vector of candlesticks
-    std::vector<Candlestick> candlesticks;
-    std::cout << "Enter the product and orderbook type eg ETH/BTC,ask" << std::endl;
-    std::string input;
-    std::getline(std::cin, input);
-    std::cout << "Computing candlestick for " << input << " at time " << currentTime << std::endl;
-    Candlestick candlestick{input, currentTime, orderBook};
-    std::cout << "Candlestick: " << candlestick.open << std::endl;
-    candlesticks.push_back(candlestick);
-
-    // It was done this way so that if an
-    // error occured the program doesn't have to loop through all orders
-    //  This will get all previous time frames so we can see the history
-    //  this is relative to the current time frame.
-    std::vector<std::string> previousTimes = orderBook.getPreviousTimes(currentTime);
-    // std::cout << "Previous times: " << previousTimes.size() << std::endl;
-    // I loop through the previous time to generate their history
-    for (std::string &previousTime : previousTimes)
-    {
-        std::cout << "Computing candlestick for " << input << " at time " << previousTime << std::endl;
-        Candlestick candlestick(input, previousTime, orderBook);
-        candlesticks.push_back(candlestick);
-    }
-
-    std::cout << "Number of candlesticks computed: " << candlesticks.size() << std::endl;
-
-    return candlesticks;
-}
-
 void MerkelMain::processUserOption(int userOption)
 {
     if (userOption == 0) // bad input
@@ -272,4 +241,44 @@ void MerkelMain::processUserOption(int userOption)
     {
         computeCandlestick();
     }
+}
+
+std::vector<Candlestick> MerkelMain::computeCandlestick()
+{
+    // empty vector of candlesticks
+    std::vector<Candlestick> candlesticks;
+    std::cout << "Enter the product and orderbook type eg ETH/BTC,ask" << std::endl;
+    std::string input;
+    std::getline(std::cin, input);
+    std::cout << "Computing candlestick for " << input << " at time " << currentTime << std::endl;
+    Candlestick candlestick{input, currentTime, orderBook};
+    std::cout << "Candlestick: " << candlestick.open << std::endl;
+    candlesticks.push_back(candlestick);
+
+    // It was done this way so that if an
+    // error occured the program doesn't have to loop through all orders
+    //  This will get all previous time frames so we can see the history
+    //  this is relative to the current time frame.
+    std::vector<std::string> previousTimes = orderBook.getPreviousTimes(currentTime);
+    // std::cout << "Previous times: " << previousTimes.size() << std::endl;
+    // I loop through the previous time to generate their history
+    for (std::string &previousTime : previousTimes)
+    {
+        std::cout << "Computing candlestick for " << input << " at time " << previousTime << std::endl;
+        Candlestick candlestick(input, previousTime, orderBook);
+        candlesticks.push_back(candlestick);
+    }
+
+    std::cout << "Number of candlesticks computed: " << candlesticks.size() << std::endl;
+    computedCandlesticks = candlesticks;
+    visualisePlot();
+    return candlesticks;
+}
+
+
+void MerkelMain::visualisePlot()
+{
+    std::cout << "Visualising plot" << std::endl;
+    TextPlot plot{computedCandlesticks};
+    plot.plot();
 }

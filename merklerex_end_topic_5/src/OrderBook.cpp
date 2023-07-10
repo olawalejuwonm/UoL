@@ -10,7 +10,10 @@ OrderBook::OrderBook(std::string filename)
     orders = CSVReader::readCSV(filename);
 }
 
-/** return vector of all know products in the dataset*/
+/** return vector of all know products in the dataset "ETH/USDT", "ETH/BTC", "DOGE/USDT", "DOGE/BTC", 
+ * 
+ * "BTC/USDT"
+*/
 std::vector<std::string> OrderBook::getKnownProducts()
 {
     std::vector<std::string> products;
