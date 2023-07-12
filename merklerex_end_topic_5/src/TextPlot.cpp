@@ -55,9 +55,10 @@ void TextPlot::calculatePlotValues(std::vector<Candlestick> candlesticks)
             minPrice = candlesticks[i].low;
         }
         std::string timestamp = splitString(candlesticks[i].timestamp, " ")[1];
+        int start = (timestamps[i - 1].end + 1) / 14;
         timestamps.push_back({timestamp,
-                              (timestamps[i - 1].end + 1) / 14,
-                              timestamps[i - 1].end + 1 +
+                              start,
+                              (start) +
                                   static_cast<int>(timestamp.length())});
     }
     averagePrice = (maxPrice + minPrice) / 2;
@@ -94,7 +95,35 @@ void TextPlot::horizontalPrint()
     }
     std::cout << std::endl;
 }
+void printAtPosition(int row, int column, const std::string &text)
+{
+    std::cout << "\033[" << row << ";" << column << "H" << text;
+}
 
+const int ROWS = 10;
+const int COLUMNS = 10;
+void printGrid(const char grid[ROWS][COLUMNS])
+{
+    for (int i = 0; i < ROWS; ++i)
+    {
+        for (int j = 0; j < COLUMNS; ++j)
+        {
+            std::cout << grid[i][j];
+        }
+        std::cout << std::endl;
+    }
+    // This adds a new line 
+    // std::cout << "\n" << std::endl;
+}
+void clearGrid()
+{
+    std::cout << "\033[2J";
+}
+
+void printAtPosition(int row, int column, char ch)
+{
+    std::cout << "\033[" << row << ";" << column << "H" << ch;
+}
 void TextPlot::plot()
 {
     int offset = 10;
@@ -102,12 +131,47 @@ void TextPlot::plot()
     std::cout << "Min price: " << minPrice << std::endl;
     std::cout << "Average price: " << averagePrice << std::endl;
     std::cout << "Timestamps: " << std::endl;
-    for (int i = 0; i < timestamps.size(); i++)
-    {
-        columnPrint(timestamps[i].start);
-        std::cout << timestamps[i].value;
-    }
-    std::cout << std::endl;
+
+   char grid[ROWS][COLUMNS] = {
+        {'*', '-', '*', '-', '*', '-', '*', '-', '*', '-'},
+        {'|', ' ', '|', ' ', '|', ' ', '|', ' ', '|', ' '},
+        {'*', '-', '*', '-', '*', '-', '*', '-', '*', '-'},
+        {'|', ' ', '|', ' ', '|', ' ', '|', ' ', '|', ' '},
+        {'*', '-', '*', '-', '*', '-', '*', '-', '*', '-'}
+    };
+
+     // Clear the console
+    clearGrid();
+
+    // Print the grid
+    printGrid(grid);
+
+    // Print characters at specific positions
+    printAtPosition(0, 10, 'X');
+    printAtPosition(0, 10, 'Y');
+
+    // for (int i = 0; i < theCandlesticks.size(); i++)
+    // {
+    //     columnPrint(timestamps[i].end);
+    //     std::cout << "|";
+    //     // verticalPrintD(theCandlesticks[i].low);
+    //     std::cout << "|";
+    //     // verticalPrintD(theCandlesticks[i].high);
+    //     // std::cout << "|";
+    //     // verticalPrintD(theCandlesticks[i].open);
+    //     // std::cout << "|";
+    //     // verticalPrintD(theCandlesticks[i].close);
+    //     // std::cout << "|";
+    // }
+    // std::cout << std::endl;
+
+    // for (int i = 0; i < timestamps.size(); i++)
+    // {
+    //     columnPrint(timestamps[i].start);
+    //     std::cout << timestamps[i].value;
+    // }
+    // std::cout << std::endl;
+
     // std::cout << "Horizontal: " << std::endl;
 
     // std::cout << "Vertical: " << std::endl;

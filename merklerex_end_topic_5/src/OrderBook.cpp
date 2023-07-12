@@ -10,10 +10,10 @@ OrderBook::OrderBook(std::string filename)
     orders = CSVReader::readCSV(filename);
 }
 
-/** return vector of all know products in the dataset "ETH/USDT", "ETH/BTC", "DOGE/USDT", "DOGE/BTC", 
- * 
+/** return vector of all know products in the dataset "ETH/USDT", "ETH/BTC", "DOGE/USDT", "DOGE/BTC",
+ *
  * "BTC/USDT"
-*/
+ */
 std::vector<std::string> OrderBook::getKnownProducts()
 {
     std::vector<std::string> products;
@@ -91,7 +91,8 @@ std::string OrderBook::getNextTime(std::string timestamp)
     }
     if (next_timestamp == "")
     {
-        next_timestamp = orders[0].timestamp;
+        next_timestamp = timestamp; 
+        // returns the same timestamp if there is no next timestamp instead of going to the beginning
     }
     return next_timestamp;
 }
