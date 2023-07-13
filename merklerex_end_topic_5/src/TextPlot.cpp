@@ -55,9 +55,9 @@ void TextPlot::calculatePlotValues(std::vector<Candlestick> candlesticks)
 
 void TextPlot::printGrid(const Grid &grid)
 {
-    for (int i = 0; i < ROWS; ++i)
+    for (int i = 0; i < ROWS + extension; ++i)
     {
-        for (int j = 0; j < COLUMNS; ++j)
+        for (int j = 0; j < COLUMNS + extension; ++j)
         {
             std::cout << grid[i][j];
         }
@@ -214,15 +214,15 @@ void TextPlot::plot()
     int internalROWS = ROWS + extension;
     int internalCOLUMNS = COLUMNS + extension;
     Grid grid(internalROWS, std::vector<char>(internalCOLUMNS, ' '));
-    enterTextOnGridHorizontlly(grid, ROWS - 1, COLUMNS / 2, "TIMESTAMPS");
-    enterTextOnGridVertically(grid, ROWS / 3, 0, "PRICE");
-    for (int i = 0; i < ROWS - 2; ++i)
+    enterTextOnGridHorizontlly(grid, internalROWS - 1, internalCOLUMNS / 2, "TIMESTAMPS");
+    enterTextOnGridVertically(grid, internalROWS / 3, 0, "PRICE");
+    for (int i = 0; i < internalROWS - 2; ++i)
     {
         updateGrid(grid, i, 1, '|'); // Valid row and column index: 0, 0
     }
-    for (int i = 2; i < COLUMNS; ++i)
+    for (int i = 2; i < internalCOLUMNS; ++i)
     {
-        updateGrid(grid, ROWS - 3, i, '_'); // Valid row and column index: 0, 0
+        updateGrid(grid, internalROWS - 3, i, '_'); // Valid row and column index: 0, 0
     }
 
     // updateGrid(grid, 1.5, 9, 'X'); // Valid column index: 9
@@ -251,8 +251,8 @@ void TextPlot::plot()
         int multiplier = i + 1;
         int minColumn = base * i + 2;
         int maxColumn = minColumn + base;
-        enterTextOnGridHorizontlly(grid, ROWS - 4, minColumn, "S");
-        enterTextOnGridHorizontlly(grid, ROWS - 4, maxColumn - 1, "E");
+        enterTextOnGridHorizontlly(grid, internalROWS - 4, minColumn, "S");
+        enterTextOnGridHorizontlly(grid, internalROWS - 4, maxColumn - 1, "E");
 
         // Print the updated grid
 
