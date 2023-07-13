@@ -214,15 +214,15 @@ void TextPlot::plot()
     int internalROWS = ROWS + extension;
     int internalCOLUMNS = COLUMNS + extension;
     Grid grid(internalROWS, std::vector<char>(internalCOLUMNS, ' '));
-    enterTextOnGridHorizontlly(grid, internalROWS - 1, COLUMNS / 2, "TIMESTAMPS");
+    enterTextOnGridHorizontlly(grid, ROWS - 1, COLUMNS / 2, "TIMESTAMPS");
     enterTextOnGridVertically(grid, ROWS / 3, 0, "PRICE");
-    for (int i = 0; i < internalROWS - 2; ++i)
+    for (int i = 0; i < ROWS - 2; ++i)
     {
         updateGrid(grid, i, 1, '|'); // Valid row and column index: 0, 0
     }
-    for (int i = 2; i < internalCOLUMNS; ++i)
+    for (int i = 2; i < COLUMNS; ++i)
     {
-        updateGrid(grid, internalROWS - 3, i, '_'); // Valid row and column index: 0, 0
+        updateGrid(grid, ROWS - 3, i, '_'); // Valid row and column index: 0, 0
     }
 
     // updateGrid(grid, 1.5, 9, 'X'); // Valid column index: 9
