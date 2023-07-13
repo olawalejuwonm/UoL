@@ -59,7 +59,7 @@ void clearGrid()
     std::cout << "\033[2J";
 }
 
-void updateGrid(Grid &grid, double row, double column, char ch)
+void updateGrid(Grid &grid, int row, int column, char ch)
 {
     // I used this wrapper because of segfaults error when accessing the grid memory
     // that is out of bounds
@@ -168,11 +168,13 @@ void fillStalk(Grid &grid, int high, int low, int column)
     {
         nonNegativeDifference = nonNegativeDifference * -1;
     }
+    // The stalk picks the lowest value between the high and low
+    int start = std::min(reveredHigh, reveredLow);
 
     for (int i = 0; i < (nonNegativeDifference); ++i)
     {
         // enterTextOnGridVertically(grid, i, column, "*");
-        updateGrid(grid, reveredHigh + i, column, '#');
+        updateGrid(grid, start + i, column, '#');
     }
     // for (int i = high; i > low; --i)
     // {
@@ -272,12 +274,14 @@ int main()
         // fillTop(grid, close, 10, 5);
         // fillTop(grid, open, 10, 5);
 
-        fillStalk(grid, close, open, mapValue(5, 0, 15, minColumn, maxColumn));
         fillCandleStick(grid, high, low, mapValue(10, 0, 15, minColumn, maxColumn));
-        fillStalk(grid, close, open, mapValue(15, 0, 15, minColumn, maxColumn));
 
         fillTop(grid, close, 15, mapValue(5, 0, 15, minColumn, maxColumn));
         fillTop(grid, open, 15, mapValue(5, 0, 15, minColumn, maxColumn));
+
+        fillStalk(grid, close, open, mapValue(5, 0, 15, minColumn, maxColumn));
+
+        fillStalk(grid, close, open, mapValue(15, 0, 15, minColumn, maxColumn));
 
         //  fillTop(grid, close,
         //         mapValueToRow(10, minPrice, maxPrice), mapValueToColumn(5, minColumn, maxColumn));

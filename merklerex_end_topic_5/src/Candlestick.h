@@ -14,7 +14,6 @@ public:
     double close;
     std::string timestamp;
 
-
 private:
     // Previous time stamp used for calculating open value
     std::string previousTimestamp;
@@ -29,7 +28,8 @@ private:
     // Calculates the average price per unit in the previous time frame
     //  calculated as Total value/Total price. Total value is sum of each price
     //  multiplied by the amount. Total price is the sum of the amount.
-    void computeOpen(OrderBook orderBook, OrderBookType orderType, std::string product, std::string currentTime);
+    void computeOpen(OrderBook orderBook, OrderBookType orderType,
+                     std::string product, std::string currentTime);
     // Calculates the close, low and high value for currentTime
     void computeData();
 };

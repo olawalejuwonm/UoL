@@ -75,6 +75,11 @@ double OrderBook::getLowPrice(std::vector<OrderBookEntry> &orders)
 
 std::string OrderBook::getEarliestTime()
 {
+    // this is a wrapper to prevent segmenation fault
+    if (orders.size() == 0)
+    {
+        return "";
+    }
     return orders[0].timestamp;
 }
 

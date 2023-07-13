@@ -45,9 +45,9 @@ Candlestick::Candlestick(std::string input, std::string currentTime, OrderBook o
 
     // console the system time and date for the machine
     // std::cout << "The current time is: " << std::time(nullptr) << std::endl;
-    std::cout << "Compute open starts" << std::endl;
+    // std::cout << "Compute open starts" << std::endl;
     computeOpen(orderBook, orderType, product, currentTime);
-    std::cout << "Compute open completed" << std::endl;
+    // std::cout << "Compute open completed" << std::endl;
 }
 
 void Candlestick::computeOpen(OrderBook orderBook, OrderBookType orderType,
@@ -55,10 +55,10 @@ void Candlestick::computeOpen(OrderBook orderBook, OrderBookType orderType,
 {
     previousTimestamp = orderBook.getPreviousTime(currentTime);
     // If the previous time stamp is the same as the current time stamp
-    // then there is no open value, it is the same as the close value
+    // then there is no open value, it is the same as the low value
     if (previousTimestamp == currentTime)
     {
-        open = close;
+        open = low;
     }
     else
     {
