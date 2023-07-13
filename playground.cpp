@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-const int ROWS = 25;
+const int ROWS = 35;
 const int COLUMNS = 145;
 // double maxPrice = 0.022270419999999999;
 // double minPrice = 0.021890929999999999;
@@ -227,7 +227,7 @@ int main()
     enterTextOnGridHorizontlly(grid, ROWS - 2, 20 + 20 + 20 + 20 + 20 + 20 + 9, "14:56:35.210165");
 
     int base = 20;
-    for (int i = 2; i < 3; ++i)
+    for (int i = 0; i < candles.size(); ++i)
     {
         int multiplier = i + 1;
         int minColumn = base * i + 2;
