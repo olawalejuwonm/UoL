@@ -33,6 +33,7 @@ public:
 
     static double getHighPrice(std::vector<OrderBookEntry> &orders);
     static double getLowPrice(std::vector<OrderBookEntry> &orders);
+    static std::vector<OrderBookEntry> searchByTimestamp(std::vector<OrderBookEntry> &orders, std::string timestamp);
 
 private:
     std::vector<OrderBookEntry> orders;
