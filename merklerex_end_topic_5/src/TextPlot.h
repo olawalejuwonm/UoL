@@ -40,7 +40,9 @@ private:
     static std::string convertCharacterToRepeatedString(char ch, int times);
 
     void fillTop(Grid &grid, int row, int steps, int column);
-    int ROWS = 35;
-    int COLUMNS = 145;
+    // int ROWS = 35;
+    // int COLUMNS = 140;
+     int ROWS;
+    int COLUMNS;
     int extension = 5;
 };

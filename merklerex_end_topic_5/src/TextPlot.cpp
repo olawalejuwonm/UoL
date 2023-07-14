@@ -1,11 +1,14 @@
 #include "TextPlot.h"
 #include "Candlestick.h"
 #include <iostream>
+#include <cmath>
 
 TextPlot::TextPlot(std::vector<Candlestick> candlesticks)
 {
     calculatePlotValues(candlesticks);
     theCandlesticks = candlesticks;
+    ROWS = theCandlesticks.size() * 5;
+    COLUMNS = theCandlesticks.size() * 20;
 }
 
 std::vector<std::string> splitString(std::string str, std::string delimiter)
@@ -91,6 +94,8 @@ void TextPlot::enterTextOnGridVertically(Grid &grid, int row, int column, const 
 {
     // This function calls updateGrid() for each character in the text
     // at the specified row and column
+    std::cout << "i: " << text << std::endl;
+
     for (int i = 0; i < text.size(); ++i)
     {
         updateGrid(grid, row + i, column, text[i]);
@@ -139,7 +144,7 @@ void TextPlot::fillCandleStick(Grid &grid, int high, int low, int column)
     for (int i = 0; i < nonNegativeDiff; ++i)
     {
         // enterTextOnGridVertically(grid, i, column, "|");
-        updateGrid(grid, reveredHigh + i, column, '|');
+        updateGrid(grid, reveredHigh + i, column, '!');
     }
     // for (int i = reveredHigh; i < reveredLow; ++i)
     // {
@@ -215,11 +220,12 @@ void TextPlot::plot()
     int internalCOLUMNS = COLUMNS + extension;
     Grid grid(internalROWS, std::vector<char>(internalCOLUMNS, ' '));
     enterTextOnGridHorizontlly(grid, internalROWS - 1, internalCOLUMNS / 2, "TIMESTAMPS");
-    enterTextOnGridVertically(grid, internalROWS / 3, 0, "PRICE");
+    enterTextOnGridVertically(grid, (internalROWS / 3) - 2, 0, "PRICE");
     for (int i = 0; i < internalROWS - 2; ++i)
     {
         updateGrid(grid, i, 1, '|'); // Valid row and column index: 0, 0
     }
+
     for (int i = 2; i < internalCOLUMNS; ++i)
     {
         updateGrid(grid, internalROWS - 3, i, '_'); // Valid row and column index: 0, 0
@@ -251,8 +257,8 @@ void TextPlot::plot()
         int multiplier = i + 1;
         int minColumn = base * i + 2;
         int maxColumn = minColumn + base;
-        enterTextOnGridHorizontlly(grid, internalROWS - 4, minColumn, "S");
-        enterTextOnGridHorizontlly(grid, internalROWS - 4, maxColumn - 1, "E");
+        enterTextOnGridHorizontlly(grid, internalROWS - 4, minColumn + 6, "S");
+        enterTextOnGridHorizontlly(grid, internalROWS - 4, maxColumn, "E");
 
         // Print the updated grid
 
@@ -297,13 +303,29 @@ void TextPlot::plot()
         fillStalk(grid, close, open, mapValue(5, 0, 15, minColumn, maxColumn));
 
         fillStalk(grid, close, open, mapValue(15, 0, 15, minColumn, maxColumn));
-
-        //  fillTop(grid, close,
-        //         mapValueToRow(10, minPrice, maxPrice), mapValueToColumn(5, minColumn, maxColumn));
-        // fillTop(grid, open,
-        //         mapValueToRow(10, minPrice, maxPrice),
-        //         mapValueToColumn(5, minColumn, maxColumn));
     }
+
+    enterTextOnGridHorizontlly(grid, 0, 0, std::to_string(maxPrice).substr(0, 8));
+    enterTextOnGridHorizontlly(grid, (ROWS / 2), 0, std::to_string(averagePrice).substr(0, 8));
+    enterTextOnGridHorizontlly(grid, ROWS - 1, 0, std::to_string(minPrice).substr(0, 8));
+
+    // The code below prints price on the left side of the grid
+    // for (int i = 0; i < ROWS; ++i)
+    // {
+    //     double price = mapValue(i, 0, ROWS, minPrice, maxPrice);
+    //     // this round price to 4 decimal places
+    //     // The round function is in the cmath library
+    //     // price = std::round(price * 100) / 100; // The round function is in the cmath library
+    //     // std::cout << "price: " << price << std::endl;
+    //     //This turns price to exponential notation 2.3e+05
+    //     // std::cout << "price: " << std::scientific << price << std::endl;
+
+    //     // convert price to string
+    //     std::string priceString = std::to_string(price);
+    //     // This picks the first 5 character of price and return it as string
+    //     priceString = priceString.substr(0, 5);
+    //     enterTextOnGridHorizontlly(grid, i, 2, priceString);
+    // }
 
     printGrid(grid);
 }

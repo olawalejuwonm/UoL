@@ -31,7 +31,7 @@ private:
     // This will hold the currency and orderType to visualise
     std::vector<Candlestick> computedCandlesticks;
 
-    OrderBook orderBook{"20200317.csv"};
+    OrderBook orderBook{"20200601.csv"};
 
     Wallet wallet;
 };
