@@ -44,8 +44,38 @@ std::vector<OrderBookEntry> OrderBook::searchByTimestamp(std::vector<OrderBookEn
         }
     }
 
-    std::cout << "Timestamp not found in the vector" << std::endl;
+    std::cout << "The number of matching elements is: " << filteredOrders.size() << std::endl;
     return filteredOrders; // Target not found in the vector
+}
+int timeStampBinarySearch(const std::vector<OrderBookEntry> &sortedArray,
+                          std::string timestamp,
+                          int left,
+                          int right)
+{
+
+    
+
+    while (left <= right)
+    {
+        int mid = left + (right - left) / 2;
+
+        if (sortedArray[mid].timestamp == timestamp)
+        {
+            std::cout << "The matching element is: " << sortedArray[mid].timestamp << std::endl;
+            return mid; // Target found at index 'mid'
+        }
+        else if (sortedArray[mid].timestamp < timestamp)
+        {
+            left = mid + 1; // Target is in the right half
+        }
+        else
+        {
+            right = mid - 1; // Target is in the left half
+        }
+    }
+
+    std::cout << "No matching element found" << std::endl;
+    return -1; // Target not found in the array
 }
 // End of code that i modified
 
@@ -128,97 +158,55 @@ std::string OrderBook::getEarliestTime()
 // This function returns the next timestamp after the given timestamp
 std::string OrderBook::getNextTime(std::string timestamp)
 {
-    std::string next_timestamp = ""; // Initialize an empty string to store the next timestamp
-    int l = 0, r = orders.size() - 1; // Initialize left and right indices for binary search
-    while (l <= r) // Continue until left index is greater than right index
+    std::string next_timestamp = "";
+    for (OrderBookEntry &e : orders)
     {
-        int mid = l + (r - l) / 2; // Calculate the middle index
-        if (orders[mid].timestamp == timestamp) // If the timestamp at the middle index is equal to the given timestamp
+        if (e.timestamp > timestamp)
         {
-            if (mid + 1 < orders.size()) // If there is a next timestamp
-            {
-                next_timestamp = orders[mid + 1].timestamp; // Set the next timestamp to the timestamp at the next index
-            }
-            break; // Exit the loop
-        }
-        else if (orders[mid].timestamp < timestamp) // If the timestamp at the middle index is less than the given timestamp
-        {
-            l = mid + 1; // Update the left index to search the right half of the array
-        }
-        else // If the timestamp at the middle index is greater than the given timestamp
-        {
-            next_timestamp = orders[mid].timestamp; // Set the next timestamp to the timestamp at the middle index
-            r = mid - 1; // Update the right index to search the left half of the array
+            next_timestamp = e.timestamp;
+            break;
         }
     }
-    if (next_timestamp == "") // If there is no next timestamp
+    if (next_timestamp == "")
     {
-        next_timestamp = timestamp; // Set the next timestamp to the given timestamp
+        next_timestamp = timestamp; 
         // returns the same timestamp if there is no next timestamp instead of going to the beginning
     }
-    std::cout << "getNextTime: " << next_timestamp << std::endl; // Print the next timestamp
-    return next_timestamp; // Return the next timestamp
+    return next_timestamp;
 }
 
-// This function returns the previous timestamp before the given timestamp
 std::string OrderBook::getPreviousTime(std::string timestamp)
 {
-    std::string previous_timestamp = ""; // Initialize an empty string to store the previous timestamp
-    int l = 0, r = orders.size() - 1;    // Initialize left and right indices for binary search
-    while (l <= r)                       // Continue until left index is greater than right index
+    std::string previous_timestamp = "";
+    for (OrderBookEntry &e : orders)
     {
-        int mid = l + (r - l) / 2;              // Calculate the middle index
-        if (orders[mid].timestamp == timestamp) // If the timestamp at the middle index is equal to the given timestamp
+        if (e.timestamp < timestamp)
         {
-            if (mid - 1 >= 0) // If there is a previous timestamp
-            {
-                previous_timestamp = orders[mid - 1].timestamp; // Set the previous timestamp to the timestamp at the previous index
-            }
-            break; // Exit the loop
-        }
-        else if (orders[mid].timestamp < timestamp) // If the timestamp at the middle index is less than the given timestamp
-        {
-            previous_timestamp = orders[mid].timestamp; // Set the previous timestamp to the timestamp at the middle index
-            l = mid + 1;                                // Update the left index to search the right half of the array
-        }
-        else // If the timestamp at the middle index is greater than the given timestamp
-        {
-            r = mid - 1; // Update the right index to search the left half of the array
+            previous_timestamp = e.timestamp;
         }
     }
-    if (previous_timestamp == "") // If there is no previous timestamp
+    if (previous_timestamp == "")
     {
-        previous_timestamp = timestamp; // Set the previous timestamp to the given timestamp
-        // returns the same timestamp if there is no previous timestamp instead of going to the end
+        previous_timestamp = timestamp; // returns the same timestamp if there is no previous timestamp
     }
-    std::cout << "getPreviousTime: " << previous_timestamp << std::endl; // Print the previous timestamp
-    return previous_timestamp;                                           // Return the previous timestamp
+    return previous_timestamp;
 }
 
-// Returns a vector of previous timestamps before the given timestamp
 std::vector<std::string> OrderBook::getPreviousTimes(std::string timestamp)
 {
-    std::vector<std::string> previous_timestamps; // Initialize an empty vector to store previous timestamps
-    int l = 0, r = orders.size() - 1;             // Initialize left and right indices for binary search
-    while (l <= r)                                // Continue until left index is greater than right index
+    std::vector<std::string> previous_timestamps;
+    for (OrderBookEntry &e : orders)
     {
-        int mid = l + (r - l) / 2;             // Calculate the middle index
-        if (orders[mid].timestamp < timestamp) // If the timestamp at the middle index is less than the given timestamp
+        if (e.timestamp < timestamp)
         {
-            // Add the timestamp to the vector if it's not already there
-            if (previous_timestamps.empty() || previous_timestamps.back() != orders[mid].timestamp)
+            // It only push if e.timestamp is not already in the vector
+            if (std::find(previous_timestamps.begin(), previous_timestamps.end(), e.timestamp) == previous_timestamps.end())
             {
-                previous_timestamps.push_back(orders[mid].timestamp);
+                previous_timestamps.push_back(e.timestamp);
             }
-            l = mid + 1; // Update the left index to search the right half of the array
-        }
-        else // If the timestamp at the middle index is greater than or equal to the given timestamp
-        {
-            r = mid - 1; // Update the right index to search the left half of the array
         }
     }
-    std::cout << "getPreviousTimes: " << previous_timestamps.size() << std::endl;
-    return previous_timestamps; // Return the vector of previous timestamps
+    return previous_timestamps;
 }
 
 void OrderBook::insertOrder(OrderBookEntry &order)
