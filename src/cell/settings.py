@@ -19,14 +19,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+# This is used for the deployment
+import dotenv
+
+dotenv.load_dotenv()
+
+import os
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bs+t&g4)2+2o!v#zp$gfyv@6i6)r4b*5b%tfh74$m_6z_hq$yl'
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'True'
 
 ALLOWED_HOSTS = [
-    '127.0.0.1'
+    '127.0.0.1',
+    'bio-science-research-eb2589b82ae4.herokuapp.com' # This is the host name of the Heroku app deployment
 ]
 
 
