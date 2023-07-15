@@ -1,1 +1,1 @@
-web: gunicorn cell.wsgi --log-file -
+web: gunicorn cell.wsgi --chdir src
