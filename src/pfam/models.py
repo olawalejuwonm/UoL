@@ -1,7 +1,10 @@
 from django.db import models
 from protein.models import Detail
-# Create your models here.
+
 class Domain(models.Model):
+    """
+    A model representing a domain in the Pfam database.
+    """
     domain_id = models.CharField(max_length=256, null=False,
     blank=False, db_index=True, primary_key=True) # db_index=True so that it is
     # indexed in the database and can be searched quickly
@@ -10,14 +13,15 @@ class Domain(models.Model):
     blank=False)
 
     def __str__(self):
+        """
+        Returns a string representation of the domain_id.
+        """
         return self.domain_id
     
 class DomainAnnotation(models.Model):
-    #protein and pfam are named as such because i noticed that when i named 
-    #them protein_id and pfam_id respectively, it was automatically sufficed with _id
-    # and this could cause unexpected behaviour and also naming them without the
-    # _id suffix makes it intuitive to understand that they could have their 
-    # own data too in form of dictionaries
+    """
+    A model representing a domain annotation in the Pfam database.
+    """
     protein = models.ForeignKey(Detail, on_delete=models.CASCADE, 
                             related_name='protein', null=False, blank=False)
     # related_name='protein' so that it can be accessed from the Detail model
@@ -43,10 +47,16 @@ class DomainAnnotation(models.Model):
     length = models.IntegerField(null=False, blank=False)
     
     def __str__(self):
+        """
+        Returns a string representation of the name.
+        """
         return self.name
-    def save(self, *args, **kwargs): # This function is used to split the name into genus and species
-        # and assign them to the respective fields
-        # Learnt this via https://docs.djangoproject.com/en/4.2/topics/db/models/#overriding-predefined-model-methods
+    
+    def save(self, *args, **kwargs):
+        """
+        Overrides the save method to split the name into genus and species
+        and assign them to the respective fields.
+        """
         name_parts = self.name.split(' ', 1)
         self.genus = name_parts[0]
         self.species = name_parts[1] if len(name_parts) > 1 else ''
