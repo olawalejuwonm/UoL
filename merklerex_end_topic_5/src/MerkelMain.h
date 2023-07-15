@@ -26,12 +26,14 @@ private:
     std::vector<Candlestick> computeCandlestick();
     void visualisePlot();
 
+    void visualiseGraph();
+
     std::string currentTime;
 
     // This will hold the currency and orderType to visualise
     std::vector<Candlestick> computedCandlesticks;
 
-    OrderBook orderBook{"20200601.csv"};
+    OrderBook orderBook{"20200317.csv"};
 
     Wallet wallet;
 };

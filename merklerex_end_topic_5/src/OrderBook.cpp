@@ -10,75 +10,6 @@ OrderBook::OrderBook(std::string filename)
     orders = CSVReader::readCSV(filename);
 }
 
-// I modified this code
-// Based on the code from https://www.geeksforgeeks.org/binary-search/
-std::vector<OrderBookEntry> OrderBook::searchByTimestamp(std::vector<OrderBookEntry> &orders, std::string timestamp)
-{
-    // My modification starts here
-    std::vector<OrderBookEntry> filteredOrders;
-    // My modification ends here
-    int left = 0;
-    int right = orders.size() - 1;
-
-    while (left <= right)
-    {
-        int mid = left + (right - left) / 2;
-
-        // My modification starts here
-        if (orders[mid].timestamp == timestamp)
-        {
-            filteredOrders.push_back(orders[mid]); // Store the order of the matching element
-
-            // Store the index of the matching element
-            left = mid + 1;  // Search in the right half
-            right = mid - 1; // Search in the left half
-        }
-        // My modification ends here
-        else if (orders[mid].timestamp < timestamp)
-        {
-            left = mid + 1; // Target is in the right half
-        }
-        else
-        {
-            right = mid - 1; // Target is in the left half
-        }
-    }
-
-    std::cout << "The number of matching elements is: " << filteredOrders.size() << std::endl;
-    return filteredOrders; // Target not found in the vector
-}
-int timeStampBinarySearch(const std::vector<OrderBookEntry> &sortedArray,
-                          std::string timestamp,
-                          int left,
-                          int right)
-{
-
-    
-
-    while (left <= right)
-    {
-        int mid = left + (right - left) / 2;
-
-        if (sortedArray[mid].timestamp == timestamp)
-        {
-            std::cout << "The matching element is: " << sortedArray[mid].timestamp << std::endl;
-            return mid; // Target found at index 'mid'
-        }
-        else if (sortedArray[mid].timestamp < timestamp)
-        {
-            left = mid + 1; // Target is in the right half
-        }
-        else
-        {
-            right = mid - 1; // Target is in the left half
-        }
-    }
-
-    std::cout << "No matching element found" << std::endl;
-    return -1; // Target not found in the array
-}
-// End of code that i modified
-
 /** return vector of all know products in the dataset "ETH/USDT", "ETH/BTC", "DOGE/USDT", "DOGE/BTC",
  *
  * "BTC/USDT"
@@ -108,18 +39,15 @@ std::vector<OrderBookEntry> OrderBook::getOrders(OrderBookType type,
                                                  std::string timestamp)
 {
     std::vector<OrderBookEntry> orders_sub;
-    // Start of code that i wrote
-    std::vector<OrderBookEntry> filteredOrders = searchByTimestamp(orders, timestamp);
-    for (OrderBookEntry &e : filteredOrders)
+    for (OrderBookEntry &e : orders)
     {
-        std::cout << "getOrders: " << e.timestamp << std::endl;
         if (e.orderType == type &&
-            e.product == product)
+            e.product == product &&
+            e.timestamp == timestamp)
         {
             orders_sub.push_back(e);
         }
     }
-    // End of code that i wrote
     return orders_sub;
 }
 
@@ -155,7 +83,6 @@ std::string OrderBook::getEarliestTime()
     return orders[0].timestamp;
 }
 
-// This function returns the next timestamp after the given timestamp
 std::string OrderBook::getNextTime(std::string timestamp)
 {
     std::string next_timestamp = "";

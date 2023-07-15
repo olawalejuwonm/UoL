@@ -5,6 +5,7 @@
 #include "CSVReader.h"
 #include "Candlestick.h"
 #include "TextPlot.h"
+#include "TextGraph.h"
 
 MerkelMain::MerkelMain()
 {
@@ -43,7 +44,8 @@ void MerkelMain::printMenu()
     std::cout << "7: Compute Candle Stick " << std::endl;
     // 8 Visualise plot
     std::cout << "8: Visualise plot " << std::endl;
-
+    // 9 Visualise Ask and Bid
+    std::cout << "9: Visualise Ask and Bid " << std::endl;
 
     std::cout << "============== " << std::endl;
 
@@ -241,6 +243,11 @@ void MerkelMain::processUserOption(int userOption)
     {
         computeCandlestick();
     }
+
+    if (userOption == 9)
+    {
+        visualiseGraph();
+    }
 }
 
 std::vector<Candlestick> MerkelMain::computeCandlestick()
@@ -275,10 +282,18 @@ std::vector<Candlestick> MerkelMain::computeCandlestick()
     return candlesticks;
 }
 
-
 void MerkelMain::visualisePlot()
 {
     std::cout << "Visualising plot" << std::endl;
     TextPlot plot{computedCandlesticks};
     plot.plot();
+}
+
+void MerkelMain::visualiseGraph()
+{
+    std::cout << "Visualising graph" << std::endl;
+    std::cout << "Enter the product to visualise eg ETH/BTC" << std::endl;
+    std::string input;
+    TextGraph graph{orderBook, currentTime, input};
+    graph.printGraph();
 }
