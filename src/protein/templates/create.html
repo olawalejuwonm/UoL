@@ -1,7 +1,23 @@
 {% load django_bootstrap5 %}
 
-<form action="/api/protein/" method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <input type="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Protein</title>
+</head>
+<body>
+    <header>
+        <h1>Add Protein Record</h1>
+    </header>
+
+    <form action="/api/protein/" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Submit">
+    </form>
+
+    <footer>
+        <a href="/">Back to Homepage</a>
+    </footer>
+</body>
+</html>
