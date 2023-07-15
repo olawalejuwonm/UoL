@@ -7,3 +7,4 @@ class ProteinCreate(CreateView):
     template_name = 'protein/create_protein.html'
     form_class = ProteinDetailForm
     success_url = "/"
+
