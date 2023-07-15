@@ -294,6 +294,7 @@ void MerkelMain::visualiseGraph()
     std::cout << "Visualising graph" << std::endl;
     std::cout << "Enter the product to visualise eg ETH/BTC" << std::endl;
     std::string input;
+    std::getline(std::cin, input);
     TextGraph graph{orderBook, currentTime, input};
     graph.printGraph();
 }
