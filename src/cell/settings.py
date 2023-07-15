@@ -19,7 +19,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# This is used for the deployment
+# I used this for deployment to Heroku so as to follow the guideline stated
+# in django documentation above
 import dotenv
 
 dotenv.load_dotenv()
