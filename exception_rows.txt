@@ -1,0 +1,1995 @@
+[
+    ['A0A044TJ01', '6282', 'E', 'Onchocerca volvulus', 'disorder_prediction', 'mobidb-lite', '43', '119', '608'
+    ],
+    ['A0A061BH09', '5286', 'E', 'Rhodotorula toruloides', 'Acetate transporter GPR1/FUN34/SatP family', 'PF01184', '26', '205', '251'
+    ],
+    ['A0A068X732', '85433', 'E', 'Hymenolepis microstoma', 'disorder_prediction', 'mobidb-lite', '1420', '1443', '2200'
+    ],
+    ['A0A068X8F4', '85433', 'E', 'Hymenolepis microstoma', 'disorder_prediction', 'mobidb-lite', '355', '399', '399'
+    ],
+    ['A0A068XKF6', '85433', 'E', 'Hymenolepis microstoma', 'disorder_prediction', 'mobidb-lite', '1', '31', '328'
+    ],
+    ['A0A068XMJ4', '85433', 'E', 'Hymenolepis microstoma', 'Cadherin', 'PF00028', '306', '398', '1413'
+    ],
+    ['A0A068XS64', '85433', 'E', 'Hymenolepis microstoma', 'RNA polymerase Rpb2 domain 7', 'PF04560', '1066', '1185', '1190'
+    ],
+    ['A0A074SVP7', '99158', 'E', 'Hammondia hammondi', 'disorder_prediction', 'mobidb-lite', '360', '396', '803'
+    ],
+    ['A0A074T061', '99158', 'E', 'Hammondia hammondi', 'disorder_prediction', 'mobidb-lite', '5118', '5138', '6014'
+    ],
+    ['A0A074T248', '99158', 'E', 'Hammondia hammondi', 'disorder_prediction', 'mobidb-lite', '836', '955', '1028'
+    ],
+    ['A0A074T902', '99158', 'E', 'Hammondia hammondi', 'disorder_prediction', 'mobidb-lite', '1527', '1546', '1585'
+    ],
+    ['A0A074TB92', '99158', 'E', 'Hammondia hammondi', 'disorder_prediction', 'mobidb-lite', '477', '506', '506'
+    ],
+    ['A0A074TDF8', '99158', 'E', 'Hammondia hammondi', 'GHMP kinase N-terminal domain', 'PF00288', '435', '498', '885'
+    ],
+    ['A0A074TPT7', '99158', 'E', 'Hammondia hammondi', 'GPI transamidase component Gaa1', 'PF04114', '314', '537', '1012'
+    ],
+    ['A0A078C1V2', '3708', 'E', 'Brassica napus', 'disorder_prediction', 'mobidb-lite', '25', '191', '285'
+    ],
+    ['A0A078C694', '3708', 'E', 'Brassica napus', 'Protein of unknown function DUF241 plant', 'PF03087', '48', '256', '257'
+    ],
+    ['A0A078CA80', '3708', 'E', 'Brassica napus', 'ATPase AAA-type core', 'PF00004', '174', '287', '743'
+    ],
+    ['A0A078CF80', '3708', 'E', 'Brassica napus', 'Leucine-rich repeat', 'PF00560', '448', '465', '540'
+    ],
+    ['A0A078CIM2', '3708', 'E', 'Brassica napus', 'Polycomb protein VEFS-Box', 'PF09733', '249', '384', 
+'423'
+    ],
+    ['A0A078CU36', '3708', 'E', 'Brassica napus', 'Kinesin motor domain', 'PF00225', '117', '410', '628'
+    ],
+    ['A0A078D5D2', '3708', 'E', 'Brassica napus', 'Terpene synthase N-terminal domain', 'PF01397', '21', '182', '537'
+    ],
+    ['A0A078DV18', '3708', 'E', 'Brassica napus', 'Haem peroxidase plant/fungal/bacterial', 'PF00141', '39', '273', '312'
+    ],
+    ['A0A078DWT4', '3708', 'E', 'Brassica napus', 'disorder_prediction', 'mobidb-lite', '37', '62', '296'
+    ],
+    ['A0A078DYU8', '3708', 'E', 'Brassica napus', 'DYW domain', 'PF14432', '552', '676', '686'
+    ],
+    ['A0A078DZV1', '3708', 'E', 'Brassica napus', 'Seven-in-absentia protein TRAF-like domain', 'PF03145', '85', '284', '305'
+    ],
+    ['A0A078E2G4', '3708', 'E', 'Brassica napus', 'Helicase C-terminal', 'PF00271', '552', '680', '1180'
+    ],
+    ['A0A078E3Q3', '3708', 'E', 'Brassica napus', 'MORN motif', 'PF02493', '205', '226', '397'
+    ],
+    ['A0A078E3X0', '3708', 'E', 'Brassica napus', 'CO/COL/TOC1 conserved site', 'PF09425', '210', '235', '263'
+    ],
+    ['A0A078E4X2', '3708', 'E', 'Brassica napus', 'Toll/interleukin-1 receptor homology (TIR) domain', 'PF01582', '12', '172', '1204'
+    ],
+    ['A0A078E5A8', '3708', 'E', 'Brassica napus', 'Rapid ALkalinization Factor', 'PF05498', '46', '108', '111'
+    ],
+    ['A0A078ECC4', '3708', 'E', 'Brassica napus', 'Leucine-rich repeat', 'PF13855', '84', '130', '628'
+    ],
+    ['A0A078EQ35', '3708', 'E', 'Brassica napus', 'Hexokinase C-terminal', 'PF03727', '247', '487', '499'
+    ],
+    ['A0A078ERF8', '3708', 'E', 'Brassica napus', 'disorder_prediction', 'mobidb-lite', '106', '127', '446'
+    ],
+    ['A0A078ERI9', '3708', 'E', 'Brassica napus', 'SANT/Myb domain', 'PF00249', '67', '112', '328'
+    ],
+    ['A0A078ES12', '3708', 'E', 'Brassica napus', 'MORN motif', 'PF02493', '189', '206', '427'
+    ],
+    ['A0A078ESM5', '3708', 'E', 'Brassica napus', 'Oxoglutarate/iron-dependent dioxygenase', 'PF03171', '223', '321', '372'
+    ],
+    ['A0A078EV27', '3708', 'E', 'Brassica napus', 'Heat shock protein 70 family', 'PF00012', '15', '169', '179'
+    ],
+    ['A0A078EVZ0', '3708', 'E', 'Brassica napus', 'disorder_prediction', 'mobidb-lite', '184', '206', '223'
+    ],
+    ['A0A078EWM2', '3708', 'E', 'Brassica napus', 'Ubiquitin carboxyl-terminal hydrolase 7 ICP0-binding domain', 'PF12436', '625', '875', '1116'
+    ],
+    ['A0A078F1D5', '3708', 'E', 'Brassica napus', 'Atypical Arm repeat', 'PF16186', '455', '502', '533'
+    ],
+    ['A0A078F2V6', '3708', 'E', 'Brassica napus', 'AP2/ERF domain', 'PF00847', '26', '76', '270'
+    ],
+    ['A0A096MLS5', '9555', 'E', 'Papio anubis', 'disorder_prediction', 'mobidb-lite', '774', '793', '939'
+    ],
+    ['A0A096NX74', '9555', 'E', 'Papio anubis',
+        "WAP-type 'four-disulfide core' domain", 'PF00095', '31', '75', '132'
+    ],
+    ['A0A096UMZ0', '4565', 'E', 'Triticum aestivum', 'Ribosomal protein L30 N-terminal', 'PF08079', '10', '81', '244'
+    ],
+    ['A0A096UU51', '4565', 'E', 'Triticum aestivum', 'Kelch repeat type 1', 'PF01344', '99', '152', '353'
+    ],
+    ['A0A0B2NWA9', '3848', 'E', 'Glycine soja', 'disorder_prediction', 'mobidb-lite', '1242', '1297', '1673'
+    ],
+    ['A0A0B2NZQ4', '3848', 'E', 'Glycine soja', 'Plant organelle RNA recognition domain', 'PF11955', '21', '82', '421'
+    ],
+    ['A0A0B2P1D6', '3848', 'E', 'Glycine soja', 'RNA recognition motif domain', 'PF00076', '268', '325', '425'
+    ],
+    ['A0A0B2P3I6', '3848', 'E', 'Glycine soja', 'disorder_prediction', 'mobidb-lite', '1', '36', '413'
+    ],
+    ['A0A0B2PKF1', '3848', 'E', 'Glycine soja', 'ABC transporter-like', 'PF00005', '58', '206', '620'
+    ],
+    ['A0A0B2PL29', '3848', 'E', 'Glycine soja', 'Kinesin motor domain', 'PF00225', '38', '342', '1273'
+    ],
+    ['A0A0B2QAW4', '3848', 'E', 'Glycine soja', 'Ribosomal protein L7Ae/L30e/S12e/Gadd45', 'PF01248', '40', '123', '157'
+    ],
+    ['A0A0B2QEK7', '3848', 'E', 'Glycine soja', 'Leucine-rich 
+repeat', 'PF13516', '574', '591', '971'
+    ],
+    ['A0A0B2QXY5', '3848', 'E', 'Glycine soja', 'Domain of unknown function DUF4101', 'PF13355', 
+'686', '803', '812'
+    ],
+    ['A0A0B2S4J1', '3848', 'E', 'Glycine soja', 'Spo11/DNA topoisomerase VI subunit A N-terminal', 'PF04406', '133', 
+'194', '419'
+    ],
+    ['A0A0B2SC36', '3848', 'E', 'Glycine soja', 'disorder_prediction', 'mobidb-lite', '687', '708', '887'
+    ],
+    ['A0A0B2SJI5', '3848', 'E', 'Glycine soja', 'Pentatricopeptide repeat', 'PF01535', '26', '49', '171'
+    ],
+    ['A0A0B2SV19', '3848', 'E', 'Glycine soja', 'disorder_prediction', 'mobidb-lite', '239', '273', '573'
+    ],
+    ['A0A0F5BVR9', '54126', 'E', 'Pristionchus pacificus', 'Beta-ketoacyl synthase 
+C-terminal', 'PF02801', '161', '279', '2502'
+    ],
+    ['A0A0F5C6A0', '54126', 'E', 'Pristionchus pacificus', 'SKP1 component dimerisation', 'PF01466', '124', '171', '175'
+    ],
+    ['A0A0F5CPF4', '54126', 'E', 'Pristionchus pacificus', 'Acyl-CoA-binding protein ACBP', 'PF00887', '92', '171', '257'
+    ],
+    ['A0A0F5CVI1', '54126', 'E', 'Pristionchus pacificus', 'Nuclear hormone receptor ligand-binding domain', 'PF00104', '27', '123', '160'
+    ],
+    ['A0A0F5CW68', '54126', 'E', 'Pristionchus pacificus', 'F-box domain', 'PF00646', '78', '116', '415'
+    ],
+    ['A0A0F5D0Q2', '54126', 'E', 'Pristionchus pacificus', 'disorder_prediction', 'mobidb-lite', '685', '710', '1096'
+    ],
+    ['A0A0H2UJH4', '7955', 'E', 'Danio rerio', 'Protein kinase domain', 'PF00069', '43', '208', '225'
+    ],
+    ['A0A0K0JKZ2', '6279', 'E', 'Brugia malayi', 'Domain of unknown function DB', 'PF01682', '24', '126', '555'
+    ],
+    ['A0A0K3CBY6', '5286', 'E', 'Rhodotorula toruloides', 'disorder_prediction', 'mobidb-lite', '940', '1055', '1109'
+    ],
+    ['A0A0K3CGN7', '5286', 'E', 'Rhodotorula toruloides', 'WD40 repeat', 'PF00400', '216', '254', '375'
+    ],
+    ['A0A0K3CJW3', '5286', 'E', 'Rhodotorula toruloides', 'disorder_prediction', 'mobidb-lite', '412', '606', '987'
+    ],
+    ['A0A0K3CLI3', '5286', 'E', 'Rhodotorula toruloides', 'GDP dissociation inhibitor', 'PF00996', '8', '265', '595'
+    ],
+    ['A0A0L1HCC0', '183478', 'E', 'Stemphylium lycopersici', 'disorder_prediction', 'mobidb-lite', '726', '791', '1255'
+    ],
+    ['A0A0L1HG00', '183478', 'E', 'Stemphylium lycopersici', 'disorder_prediction', 'mobidb-lite', '1174', '1201', '1416'
+    ],
+    ['A0A0L1HJH5', '183478', 'E', 'Stemphylium lycopersici', 'disorder_prediction', 'mobidb-lite', '233', '268', '329'
+    ],
+    ['A0A0L1HKZ0', '183478', 'E', 'Stemphylium lycopersici', 'disorder_prediction', 'mobidb-lite', '402', '527', '1180'
+    ],
+    ['A0A0L1HLB9', '183478', 'E', 'Stemphylium lycopersici', 'disorder_prediction', 'mobidb-lite', '119', '201', '556'
+    ],
+    ['A0A0L1HLU1', '183478', 'E', 'Stemphylium lycopersici', 'ABC transporter type 1 transmembrane domain', 'PF00664', '101', '274', '1225'
+    ],
+    ['A0A0L1HM58', '183478', 'E', 'Stemphylium lycopersici', 'Glycosylphosphatidylinositol-mannosyltransferase I PIG-X/PBN1', 'PF08320', 
+'293', '523', '539'
+    ],
+    ['A0A0L1HNL0', '183478', 'E', 'Stemphylium lycopersici', 'disorder_prediction', 'mobidb-lite', '1027', '1052', '1154'
+    ],
+    ['A0A0L1HR39', '183478', 'E', 'Stemphylium lycopersici', 'GTP binding protein second domain', 'PF16897', '185', '291', '1127'
+    ],
+    ['A0A0L1HRK3', '183478', 'E', 'Stemphylium lycopersici', 'disorder_prediction', 'mobidb-lite', '302', '356', '577'
+    ],
+    ['A0A0L1HSZ7', '183478', 'E', 'Stemphylium lycopersici', 'disorder_prediction', 'mobidb-lite', '16', '114', '918'
+    ],
+    ['A0A0L1HUF8', '183478', 'E', 'Stemphylium lycopersici', 'PAP/25A-associated', 'PF03828', '591', '647', '750'
+    ],
+    ['A0A0L9SWK5', '268505', 'E', 'Ophiocordyceps unilateralis', 'Uncharacterised protein family UPF0646', 'PF10336', '315', '415', '871'
+    ],
+    ['A0A0L9SYF5', '268505', 'E', 'Ophiocordyceps unilateralis', 'disorder_prediction', 'mobidb-lite', '1077', '1124', '1700'
+    ],
+    ['A0A0L9SZU2', '268505', 'E', 'Ophiocordyceps unilateralis', 'TauD/TfdA-like domain', 'PF02668', '13', '302', '326'
+    ],
+    ['A0A0L9T1G4', '268505', 'E', 'Ophiocordyceps unilateralis', 'Glucose-methanol-choline 
+oxidoreductase N-terminal', 'PF00732', '134', '398', '1094'
+    ],
+    ['A0A0L9T2D4', '268505', 'E', 'Ophiocordyceps unilateralis', 'Phytanoyl-CoA dioxygenase', 'PF05721', '27', '223', '291'
+    ],
+    ['A0A0N5DVB9', '70415', 'E', 'Trichuris muris', 'disorder_prediction', 'mobidb-lite', 
+'115', '141', '530'
+    ],
+    ['A0A0N5E3Q4', '70415', 'E', 'Trichuris muris', 'BAR domain', 'PF03114', '62', '204', '215'
+    ],
+    ['A0A0N7ZNA1', '35525', 'E', 'Daphnia magna', 'Ubiquitin domain', 'PF00240', '166', '237', '322'
+    ],
+    ['A0A0N8A072', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '799', '887', '1598'
+    ],
+    ['A0A0N8AK24', '35525', 'E', 'Daphnia magna', 'EF-hand domain', 'PF00036', '238', '265', '311'
+    ],
+    ['A0A0N8AKE5', '35525', 'E', 'Daphnia magna', 'Receptor L-domain', 'PF01030', '103', '214', '1442'
+    ],
+    ['A0A0N8ASW8', '35525', 'E', 'Daphnia magna', 'Cyclophilin-type peptidyl-prolyl cis-trans isomerase domain', 'PF00160', '160', '188', '278'
+    ],
+    ['A0A0N8ASW9', '35525', 'E', 'Daphnia magna', 'Phospholipid/glycerol acyltransferase', 'PF01553', '80', '177', '302'
+    ],
+    ['A0A0N8AZS8', '35525', 'E', 
+'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '513', '532', '689'
+    ],
+    ['A0A0N8B0K4', '35525', 'E', 'Daphnia magna', 'Fibronectin type III', 'PF00041', '607', '691', '1593'
+    ],
+    ['A0A0N8B5B2', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '204', '298', '351'
+    ],
+    ['A0A0N8BBR8', '35525', 'E', 'Daphnia magna', 'Ferrochelatase', 'PF00762', '79', '333', '368'
+    ],
+    ['A0A0N8BC95', '35525', 'E', 'Daphnia magna', 'Dynactin subunit 4', 'PF05502', '144', '313', '331'
+    ],
+    ['A0A0N8BVI0', '35525', 'E', 'Daphnia magna', 'Sec23/Sec24 helical domain', 'PF04815', '556', '654', '787'
+    ],
+    ['A0A0N8BVN1', '35525', 'E', 'Daphnia magna', 'Alpha-globin transcription factor CP2 OS=Daphnia magna PE=4 SV=1', 'LowComplexity', '95', '118', '767'
+    ],
+    ['A0A0N8BWZ4', '35525', 'E', 'Daphnia magna', 'Helicase domain', 
+'PF05127', '247', '360', '1993'
+    ],
+    ['A0A0N8BYU9', '35525', 'E', 'Daphnia magna', 'Phosphopantetheine binding ACP domain', 'PF00550', '586', '648', '878'
+    ],
+    ['A0A0N8CA00', '35525', 'E', 'Daphnia magna', 'Serine proteases trypsin domain', 'PF00089', '24', '111', '271'
+    ],
+    ['A0A0N8CJI5', '35525', 'E', 'Daphnia magna', 'Immunoglobulin I-set', 'PF07679', '9', '102', '8170'
+    ],
+    ['A0A0N8CNT8', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '477', '506', '558'
+    ],
+    ['A0A0N8CPF3', '35525', 'E', 'Daphnia magna', 'Fork head domain-containing protein crocodile (Fragment) OS=Daphnia magna PE=4 SV=1', 'LowComplexity', '553', '574', '914'
+    ],
+    ['A0A0N8CPI5', '35525', 'E', 'Daphnia magna', 'Fibronectin type III', 'PF00041', '1298', '1371', '1727'
+    ],
+    ['A0A0N8CVT1', '35525', 'E', 'Daphnia magna', 'Tubulin/FtsZ 2-layer sandwich domain', 'PF03953', '93', '221', '280'
+    ],
+    ['A0A0N8CXJ0', '35525', 'E', 'Daphnia magna', 'G protein-coupled receptor 
+rhodopsin-like', 'PF00001', '8', '321', '452'
+    ],
+    ['A0A0N8D663', '35525', 'E', 'Daphnia magna', 'Cysteine-rich Golgi apparatus protein 1 
+repeat', 'PF00839', '310', '361', '913'
+    ],
+    ['A0A0N8D6H0', '35525', 'E', 'Daphnia magna', 'GPCR family 3 C-terminal', 'PF00003', '156', '392', '526'
+    ],
+    ['A0A0N8DD06', '35525', 'E', 'Daphnia magna', 'Ankyrin repeat-containing domain', 'PF12796', '651', '747', '1062'
+    ],
+    ['A0A0N8DF83', '35525', 'E', 'Daphnia magna', 'Tudor domain', 'PF00567', '1803', '1916', '2003'
+    ],
+    ['A0A0N8DFA2', '35525', 'E', 'Daphnia magna', 'Cadherin', 'PF00028', '903', '997', '2912'
+    ],
+    ['A0A0N8DVD7', '35525', 'E', 'Daphnia magna', 'Ankyrin repeat-containing domain', 'PF12796', '39', '125', '910'
+    ],
+    ['A0A0N8DVP1', '35525', 'E', 'Daphnia magna', 'Globin', 'PF00042', '52', '157', '227'
+    ],
+    ['A0A0N8DYC2', '35525', 'E', 'Daphnia magna', 'Dehydrogenase E1 component', 'PF00676', '196', '513', '952'
+    ],
+    ['A0A0N8DYG1', '35525', 'E', 'Daphnia magna', 'Calcium-activated chloride channel protein', 'PF08434', '32', '711', '1013'
+    ],
+    ['A0A0N8E2C0', '35525', 'E', 'Daphnia magna', 'Domain 
+of unknown function DUF4874', 'PF16173', '66', '248', '490'
+    ],
+    ['A0A0N8E8E5', '35525', 'E', 'Daphnia magna', 'CUB domain', 'PF00431', '775', '881', '884'
+    ],
+    ['A0A0N8EE96', '35525', 'E', 'Daphnia magna', 'Peptidase M1 membrane alanine aminopeptidase N-terminal', 'PF01433', '51', '162', '716'
+    ],
+    ['A0A0N8EG21', '35525', 'E', 'Daphnia magna', 'ABC transporter-like', 'PF00005', '1637', '1783', '1848'
+    ],
+    ['A0A0N8EQX4', '35525', 'E', 'Daphnia magna', 'Histidine phosphatase superfamily clade-2', 'PF00328', '66', '404', '471'
+    ],
+    ['A0A0P4WPI5', '35525', 'E', 'Daphnia magna', 'Cytochrome c oxidase subunit VIa', 'PF02046', '49', '121', '134'
+    ],
+    ['A0A0P4WZJ5', '35525', 'E', 'Daphnia magna', 'Cell morphogenesis central region', 'PF14228', '1270', '1451', '3141'
+    ],
+    ['A0A0P4XLS7', '35525', 'E', 'Daphnia magna', 'Low-density lipoprotein (LDL) receptor class A repeat', 'PF00057', '69', '107', '1342'
+    ],
+    ['A0A0P4XTD1', '35525', 'E', 'Daphnia magna', 'EGF-like calcium-binding domain', 'PF07645', '2683', '2711', '10280'
+    ],
+    ['A0A0P4XUT8', '35525', 'E', 'Daphnia magna', 'Ankyrin repeat-containing domain', 'PF12796', '91', '148', '276'
+    ],
+    ['A0A0P4XUW6', '35525', 'E', 'Daphnia magna', 'EGF-like calcium-binding domain', 'PF07645', '723', '763', '1457'
+    ],
+    ['A0A0P4XV23', '35525', 'E', 'Daphnia magna', 'Receptor ligand binding region', 'PF01094', '74', '480', '973'
+    ],
+    ['A0A0P4XWG6', '35525', 'E', 'Daphnia magna', 'Nucleoporin Nup153 N-terminal', 'PF08604', '466', '603', '1517'
+    ],
+    ['A0A0P4Y1E2', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '1', '31', '3142'
+    ],
+    ['A0A0P4Y1L2', '35525', 'E', 'Daphnia magna', 'Domain 
+of unknown function DB', 'PF01682', '417', '508', '1444'
+    ],
+    ['A0A0P4Y4Z4', '35525', 'E', 'Daphnia magna', 'Ferric reductase transmembrane component-like domain', 'PF01794', '410', '561', '1089'
+    ],
+    ['A0A0P4YCR5', '35525', 'E', 'Daphnia magna', 'NHL repeat', 'PF01436', '515', '543', '818'
+    ],
+    ['A0A0P4YLD1', '35525', 'E', 'Daphnia magna', 'Putative Cuticle protein (Fragment) OS=Daphnia magna PE=4 SV=1', 'LowComplexity', '224', '240', '295'
+    ],
+    ['A0A0P4YLP5', '35525', 'E', 'Daphnia magna', 'Actin family', 'PF00022', '1', '345', '345'
+    ],
+    ['A0A0P4YMT7', '35525', 'E', 'Daphnia magna', 'P-type trefoil domain', 'PF00088', '82', '117', '965'
+    ],
+    ['A0A0P4YY64', '35525', 'E', 'Daphnia magna', 'Transcription factor E2F2 (Fragment) OS=Daphnia magna PE=3 SV=1', 'LowComplexity', '328', '341', '341'
+    ],
+    ['A0A0P4Z1D6', '35525', 'E', 'Daphnia magna', 'Ras-associating (RA) domain', 'PF00788', '440', '531', '1842'
+    ],
+    ['A0A0P4Z4A8', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '1', '20', '486'
+    ],
+    ['A0A0P4Z598', '35525', 'E', 'Daphnia magna', 'Fibronectin type III', 'PF00041', '3186', '3267', '8135'
+    ],
+    ['A0A0P4ZIW0', '35525', 'E', 'Daphnia magna', 'Spectrin repeat', 'PF00435', '1291', '1391', '4128'
+    ],
+    ['A0A0P4ZLK9', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '11813', '11847', '22242'
+    ],
+    ['A0A0P4ZMH3', '35525', 'E', 'Daphnia magna', 'FG-GAP repeat', 'PF01839', '56', '98', '437'
+    ],
+    ['A0A0P4ZST9', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '460', '489', '537'
+    ],
+    ['A0A0P4ZU71', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '580', '633', '735'
+    ],
+    ['A0A0P5A4Q9', '35525', 'E', 'Daphnia magna', 'Lustrin cysteine-rich repeated domain', 'PF14625', '951', '995', '2143'
+    ],
+    ['A0A0P5A5C0', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '88', '128', '886'
+    ],
+    ['A0A0P5AA04', '35525', 'E', 'Daphnia 
+magna', 'Protein phosphatase 2A regulatory B subunit B56', 'PF01603', '14', '382', '413'
+    ],
+    ['A0A0P5ABJ5', '35525', 'E', 'Daphnia magna', 'Dbl homology (DH) domain', 'PF00621', '73', '248', '610'
+    ],
+    ['A0A0P5ACI3', '35525', 'E', 'Daphnia magna', 'Helicase C-terminal', 'PF00271', '257', '340', '354'
+    ],
+    ['A0A0P5AHX3', '35525', 'E', 'Daphnia magna', 'Antistasin-like domain', 'PF02822', '882', '910', '2157'
+    ],
+    ['A0A0P5AJ97', '35525', 'E', 'Daphnia magna', 'DNA polymerase alpha subunit B N-terminal', 'PF08418', '19', '239', '572'
+    ],
+    ['A0A0P5AKV2', '35525', 'E', 'Daphnia magna', 'Laminin EGF domain', 'PF00053', '665', '715', '1796'
+    ],
+    ['A0A0P5BDA8', '35525', 'E', 'Daphnia magna', 'Protein kinase domain', 'PF00069', '311', '586', '891'
+    ],
+    ['A0A0P5BPZ4', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '639', '661', '682'
+    ],
+    ['A0A0P5BRF9', '35525', 'E', 'Daphnia magna', 'MIF4G-like type 3', 'PF02854', '36', '152', '836'
+    ],
+    ['A0A0P5BS28', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '1181', '1212', '1853'
+    ],
+    ['A0A0P5BSQ6', '35525', 'E', 'Daphnia magna', 'Regulator of chromosome condensation RCC1', 'PF00415', '318', '367', '621'
+    ],
+    ['A0A0P5BTQ3', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '130', '149', '916'
+    ],
+    ['A0A0P5C078', '35525', 'E', 'Daphnia magna', 'EF-hand domain', 'PF13499', '4728', '4790', '5113'
+    ],
+    ['A0A0P5C0J8', '35525', 'E', 'Daphnia magna', 'RNA polymerase alpha subunit', 'PF00623', '358', '523', '1247'
+    ],
+    ['A0A0P5C8I6', '35525', 'E', 'Daphnia magna', 'EGF-like calcium-binding domain', 'PF07645', '423', '451', '1514'
+    ],
+    ['A0A0P5CNU0', 
+'35525', 'E', 'Daphnia magna', 'Nuclear receptor coactivator CREB-bp-like interlocking', 'PF09030', '54', '127', '218'
+    ],
+    ['A0A0P5CQG2', '35525', 'E', 'Daphnia magna', 'Collagen triple helix repeat', 'PF01391', '895', '955', '1725'
+    ],
+    ['A0A0P5CR94', '35525', 'E', 'Daphnia magna', 'Phospholipase C phosphatidylinositol-specific Y domain', 'PF00387', '488', '599', '599'
+    ],
+    ['A0A0P5CT72', '35525', 'E', 'Daphnia magna', 'BRCA2 repeat', 'PF00634', '603', '628', '1014'
+    ],
+    ['A0A0P5CV85', '35525', 'E', 'Daphnia magna', 'Insect cuticle protein', 'PF00379', '61', '95', '420'
+    ],
+    ['A0A0P5CWG0', '35525', 'E', 'Daphnia magna', 'Serine-threonine/tyrosine-protein kinase catalytic domain', 'PF07714', '196', '367', '479'
+    ],
+    ['A0A0P5CYV6', '35525', 'E', 'Daphnia magna', 'Uncharacterised protein family zinc metallopeptidase-like', 'PF12044', '8', '349', '498'
+    ],
+    ['A0A0P5DAR2', '35525', 'E', 'Daphnia magna', 'BTB/Kelch-associated', 'PF07707', '145', '251', '492'
+    ],
+    ['A0A0P5DB71', '35525', 'E', 'Daphnia magna', 'Nuclear protein MDM1', 'PF15501', '183', '608', '865'
+    ],
+    ['A0A0P5DVC8', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '228', '277', '854'
+    ],
+    ['A0A0P5DZR7', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '490', '509', '716'
+    ],
+    ['A0A0P5E359', '35525', 'E', 'Daphnia magna', 'Peptidyl-prolyl cis-trans isomerase G 
+OS=Daphnia magna PE=4 SV=1', 'LowComplexity', '130', '148', '613'
+    ],
+    ['A0A0P5E6T7', '35525', 'E', 'Daphnia magna', 'Kelch repeat type 1', 'PF01344', '465', '509', '569'
+    ],
+    ['A0A0P5E9W0', '35525', 'E', 'Daphnia magna', 'Vacuolar fusion protein Mon1', 'PF03164', '33', '415', '416'
+    ],
+    ['A0A0P5EHW8', '35525', 'E', 'Daphnia magna', 'Nuclear protein DGCR14', 'PF09751', '34', '408', '494'
+    ],
+    ['A0A0P5ES44', '35525', 'E', 'Daphnia magna', 'EGF-like calcium-binding domain', 'PF07645', '358', '404', '8857'
+    ],
+    ['A0A0P5FFU7', '35525', 'E', 'Daphnia magna', 'ABC transporter-like', 'PF00005', '165', '316', '404'
+    ],
+    ['A0A0P5FJP5', '35525', 'E', 'Daphnia magna', 'Thyroglobulin type-1', 'PF00086', '564', '604', '2146'
+    ],
+    ['A0A0P5FKZ1', '35525', 'E', 'Daphnia magna', 'Sulfatase-modifying factor enzyme', 'PF03781', '1', '368', '369'
+    ],
+    ['A0A0P5FUX8', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '985', '1007', '1095'
+    ],
+    ['A0A0P5FW39', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '571', '673', '2003'
+    ],
+    ['A0A0P5G198', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '953', '998', '1654'
+    ],
+    ['A0A0P5G2E6', '35525', 'E', 'Daphnia magna', 'Cytochrome P450', 'PF00067', '19', '395', '409'
+    ],
+    ['A0A0P5G647', '35525', 'E', 'Daphnia magna', 'Symplekin/Pta1 N-terminal', 'PF11935', '13', '209', '970'
+    ],
+    ['A0A0P5G9I2', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '36', '259', '744'
+    ],
+    ['A0A0P5GF06', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '487', '527', '1714'
+    ],
+    ['A0A0P5GHH1', '35525', 'E', 'Daphnia magna', 'Alcohol dehydrogenase C-terminal', 'PF00107', '112', '174', '199'
+    ],
+    ['A0A0P5GHM7', '35525', 'E', 'Daphnia magna', 'Spectrin repeat', 'PF00435', '315', '420', '769'
+    ],
+    ['A0A0P5GLC4', '35525', 'E', 'Daphnia magna', 'Chitin binding domain', 'PF01607', '206', '257', '362'
+    ],
+    ['A0A0P5GNS8', 
+'35525', 'E', 'Daphnia magna', 'DNA replication complex GINS protein SLD5 C-terminal', 'PF16922', '170', '226', '227'
+    ],
+    ['A0A0P5GRP4', 
+'35525', 'E', 'Daphnia magna', 'Glycerol-3-phosphate dehydrogenase NAD-dependent N-terminal', 'PF01210', '6', '175', '361'
+    ],
+    ['A0A0P5HDG2', '35525', 'E', 'Daphnia magna', 'Gas2-related domain', 'PF02187', '203', '271', '870'
+    ],
+    ['A0A0P5HFP8', '35525', 'E', 'Daphnia magna', 'Aminoacyl-tRNA synthetase class Ia', 'PF00133', '18', '290', '1229'
+    ],
+    ['A0A0P5HL02', '35525', 'E', 'Daphnia magna', 'Radical SAM', 
+'PF04055', '436', '617', '758'
+    ],
+    ['A0A0P5HLE1', '35525', 'E', 'Daphnia magna', 'Biotin carboxylase C-terminal', 'PF02785', '564', '670', '1491'
+    ],
+    ['A0A0P5HQ07', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '2753', '2784', '4193'
+    ],
+    ['A0A0P5HQ90', 
+'35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '990', '1020', '1577'
+    ],
+    ['A0A0P5HR80', '35525', 'E', 'Daphnia magna', 'Smoothelin', 'PF12510', '2249', '2281', '4239'
+    ],
+    ['A0A0P5HSW8', '35525', 'E', 'Daphnia magna', 'Sec23/Sec24 trunk domain', 'PF04811', '431', '676', '1014'
+    ],
+    ['A0A0P5I157', '35525', 'E', 'Daphnia magna', 'EF-hand domain', 'PF13499', '42', '106', '405'
+    ],
+    ['A0A0P5I355', '35525', 'E', 'Daphnia magna', 'EGF-like calcium-binding domain', 'PF07645', '269', '309', '1834'
+    ],
+    ['A0A0P5I379', '35525', 'E', 'Daphnia magna', 'WHEP-TRS domain', 'PF00458', '825', '872', '1630'
+    ],
+    ['A0A0P5I878', '35525', 'E', 'Daphnia magna', 'Low-density lipoprotein (LDL) receptor class A repeat', 'PF00057', '107', '143', '3656'
+    ],
+    ['A0A0P5IA66', '35525', 'E', 'Daphnia magna', 'Sushi/SCR/CCP domain', 'PF00084', '1479', '1539', '1919'
+    ],
+    ['A0A0P5IGI0', '35525', 'E', 'Daphnia magna', 'VWFC domain', 'PF00093', '4258', '4319', '4511'
+    ],
+    ['A0A0P5IGI0', '35525', 'E', 'Daphnia magna', 'von Willebrand factor type D domain', 'PF00094', '3415', '3577', '4511'
+    ],
+    ['A0A0P5IL77', '35525', 'E', 'Daphnia magna', 'Raf-like Ras-binding', 'PF02196', '304', '362', '1428'
+    ],
+    ['A0A0P5ILF6', '35525', 'E', 'Daphnia magna', 'Ribosomal protein L2 C-terminal', 'PF03947', '97', '142', '179'
+    ],
+    ['A0A0P5IMQ7', '35525', 'E', 'Daphnia magna', 'Enhancer of polycomb-like N-terminal', 'PF10513', '82', '231', '1159'
+    ],
+    ['A0A0P5IP29', '35525', 'E', 'Daphnia magna', 'Laminin EGF domain', 'PF00053', '510', '552', '3075'
+    ],
+    ['A0A0P5IQE0', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '314', '336', '928'
+    ],
+    ['A0A0P5IZ47', '35525', 'E', 'Daphnia magna', 'Insect cuticle protein', 'PF00379', '90', '124', '240'
+    ],
+    ['A0A0P5IZX5', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '107', '152', '737'
+    ],
+    ['A0A0P5J030', '35525', 'E', 'Daphnia magna', 'EGF-like domain', 'PF00008', '459', '488', '1752'
+    ],
+    ['A0A0P5J2U5', '35525', 'E', 'Daphnia magna', 'Bromo adjacent homology (BAH) domain', 'PF01426', '36', '168', '765'
+    ],
+    ['A0A0P5J620', '35525', 'E', 'Daphnia magna', 'WD40 repeat', 'PF00400', '335', '369', '608'
+    ],
+    ['A0A0P5J8S9', '35525', 'E', 'Daphnia magna', 'WD40 repeat', 'PF00400', '486', '522', '578'
+    ],
+    ['A0A0P5JFD0', '35525', 'E', 'Daphnia magna', 'OST-HTH/LOTUS domain', 'PF12872', '851', '896', '1425'
+    ],
+    ['A0A0P5JJZ0', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '95', '131', '457'
+    ],
+    ['A0A0P5JK41', '35525', 'E', 'Daphnia magna', 'Laminin EGF domain', 'PF00053', '510', '556', '1188'
+    ],
+    ['A0A0P5JKN6', '35525', 'E', 'Daphnia magna', 'DNA/RNA-binding domain Est1-type', 'PF10373', '198', '359', '806'
+    ],
+    ['A0A0P5JM79', '35525', 'E', 'Daphnia magna', 'Cadherin cytoplasmic domain', 'PF01049', '2932', '3078', '3093'
+    ],
+    ['A0A0P5JSP7', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 
+'mobidb-lite', '1326', '1365', '1824'
+    ],
+    ['A0A0P5K3F3', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '1178', '1273', '1411'
+    ],
+    ['A0A0P5K5I2', '35525', 'E', 'Daphnia magna', 'Major facilitator superfamily', 'PF07690', '96', '508', '598'
+    ],
+    ['A0A0P5KCM0', '35525', 'E', 'Daphnia magna', 'HAD-like domain', 'PF08282', '742', '812', '953'
+    ],
+    ['A0A0P5KFT4', '35525', 'E', 'Daphnia magna', 'WD40 repeat', 'PF00400', '131', '166', '346'
+    ],
+    ['A0A0P5KMY1', '35525', 'E', 'Daphnia magna', 'Antistasin-like domain', 'PF02822', '623', '649', '2155'
+    ],
+    ['A0A0P5KSI3', '35525', 'E', 'Daphnia magna', 'Elongation factor 1 beta central acidic region eukaryote', 'PF10587', 
+'95', '121', '216'
+    ],
+    ['A0A0P5KU38', '35525', 'E', 'Daphnia magna', 'Proteasome subunit alpha/beta', 'PF00227', '65', '246', '306'
+    ],
+    ['A0A0P5KU52', '35525', 'E', 'Daphnia magna', 'ERV/ALR sulfhydryl oxidase domain', 'PF04777', '407', '488', '495'
+    ],
+    ['A0A0P5KUH5', '35525', 'E', 'Daphnia magna', 'PDZ domain', 'PF00595', '251', '334', '580'
+    ],
+    ['A0A0P5KV52', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '3598', '3751', '5778'
+    ],
+    ['A0A0P5KWJ9', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '1275', '1402', '1639'
+    ],
+    ['A0A0P5L253', '35525', 'E', 'Daphnia magna', 'Septin-type guanine nucleotide-binding (G) domain', 'PF00735', '308', '389', '846'
+    ],
+    ['A0A0P5L888', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '313', '343', '343'
+    ],
+    ['A0A0P5LZ35', '35525', 'E', 'Daphnia magna', 'Sema domain', 'PF01403', '65', '491', '1196'
+    ],
+    ['A0A0P5M568', '35525', 'E', 'Daphnia magna', 'Pancreatic trypsin inhibitor Kunitz domain', 'PF00014', '1578', '1629', '2082'
+    ],
+    ['A0A0P5M8V3', '35525', 'E', 'Daphnia magna', 'Homeobox domain', 'PF00046', '464', '524', '634'
+    ],
+    ['A0A0P5MD12', '35525', 'E', 'Daphnia magna', 'ABC transporter-like', 'PF00005', '424', '576', '1300'
+    ],
+    ['A0A0P5MD77', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '1124', '1146', '1316'
+    ],
+    ['A0A0P5MEE4', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '32', '56', '1487'
+    ],
+    ['A0A0P5MPZ2', '35525', 'E', 'Daphnia magna', 'Uncharacterized protein (Fragment) OS=Daphnia magna PE=4 SV=1', 'LowComplexity', '311', '324', '323'
+    ],
+    ['A0A0P5MSL5', '35525', 'E', 'Daphnia magna', 'Pentatricopeptide repeat', 'PF01535', '118', '145', '859'
+    ],
+    ['A0A0P5MYC6', '35525', 'E', 'Daphnia magna', 'PDZ domain', 'PF00595', '8', '85', '441'
+    ],
+    ['A0A0P5N5E6', '35525', 'E', 'Daphnia magna', 'Glycosyl transferase family 10', 'PF00852', '143', '318', '331'
+    ],
+    ['A0A0P5NC93', '35525', 'E', 'Daphnia magna', 'Methyltransferase type 11', 'PF08241', '56', '158', '625'
+    ],
+    ['A0A0P5NU29', '35525', 'E', 'Daphnia magna', 'Type II pantothenate kinase', 'PF03630', '16', '342', '671'
+    ],
+    ['A0A0P5NU41', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '230', '249', '1564'
+    ],
+    ['A0A0P5NX37', '35525', 'E', 'Daphnia magna', 'Ion transport domain', 'PF00520', '786', '1064', '1156'
+    ],
+    ['A0A0P5P114', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '712', '745', '745'
+    ],
+    ['A0A0P5P1G8', '35525', 'E', 'Daphnia magna', 'Zinc finger TRAF-type', 'PF02176', '128', '182', '436'
+    ],
+    ['A0A0P5P1I4', '35525', 'E', 'Daphnia magna', 'Cortactin-binding protein-2 N-terminal', 'PF09727', '52', '244', '647'
+    ],
+    ['A0A0P5P7N7', '35525', 'E', 'Daphnia magna', 'K Homology domain type 1', 'PF00013', '227', '254', '641'
+    ],
+    ['A0A0P5P8N8', '35525', 'E', 'Daphnia magna', 'Thyroglobulin type-1', 'PF00086', '576', '644', '1923'
+    ],
+    ['A0A0P5P8S2', '35525', 'E', 'Daphnia magna', 'Protein kinase domain', 'PF00069', '1', '227', '250'
+    ],
+    ['A0A0P5PR38', '35525', 'E', 'Daphnia magna', 'EGF-like calcium-binding domain', 'PF07645', '1140', '1171', '1933'
+    ],
+    ['A0A0P5PWJ5', '35525', 'E', 'Daphnia magna', 'Immunoglobulin', 'PF00047', '253', '329', '1458'
+    ],
+    ['A0A0P5QE92', '35525', 'E', 'Daphnia magna', 'Cadherin', 'PF00028', '794', '887', '1590'
+    ],
+    ['A0A0P5QLM1', '35525', 'E', 'Daphnia magna', 'GPCR family 3 C-terminal', 'PF00003', '81', '307', '437'
+    ],
+    ['A0A0P5QN37', '35525', 'E', 'Daphnia magna', 'WW domain', 'PF00397', '137', '166', '511'
+    ],
+    ['A0A0P5QS47', '35525', 'E', 'Daphnia magna', 'Putative Alanine--tRNA ligase cytoplasmic OS=Daphnia magna PE=4 SV=1', 'CoiledCoil', '502', '523', '863'
+    ],
+    ['A0A0P5QSL4', '35525', 'E', 'Daphnia magna', 'LETM1-like', 'PF07766', '84', '222', '385'
+    ],
+    ['A0A0P5QT26', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '1', '20', '498'
+    ],
+    ['A0A0P5R957', '35525', 'E', 'Daphnia magna', 'WW domain', 'PF00397', '492', '521', '799'
+    ],
+    ['A0A0P5R9P7', '35525', 'E', 'Daphnia magna', 'Troponin', 'PF00992', '6', '135', '279'
+    ],
+    ['A0A0P5RC52', '35525', 'E', 'Daphnia magna', 'Ubiquitin system component Cue', 'PF02845', '223', '259', '329'
+    ],
+    ['A0A0P5RCU9', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '21', '42', '632'
+    ],
+    ['A0A0P5RIB8', '35525', 'E', 'Daphnia magna', 'RNA recognition motif domain', 'PF00076', '491', '530', '531'
+    ],
+    ['A0A0P5RK18', '35525', 'E', 'Daphnia magna', 'Protein O-mannosyl-transferase C-terminal four TM domain', 'PF16192', '565', '635', '678'
+    ],
+    ['A0A0P5RLV0', '35525', 'E', 'Daphnia magna', 'Ankyrin repeat-containing domain', 'PF12796', '608', '695', '1012'
+    ],
+    ['A0A0P5RRD7', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '173', '195', '408'
+    ],
+    ['A0A0P5RSA6', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '2623', '2744', '3373'
+    ],
+    ['A0A0P5RTF9', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '20', '43', '328'
+    ],
+    ['A0A0P5RTM8', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '123', '145', '243'
+    ],
+    ['A0A0P5RYG7', '35525', 'E', 'Daphnia magna', 'Putative Nuclear migration protein NudC (Fragment) OS=Daphnia magna PE=4 SV=1', 'CoiledCoil', '64', '85', '297'
+    ],
+    ['A0A0P5RZ65', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '29', '53', '1207'
+    ],
+    ['A0A0P5S0N6', '35525', 'E', 'Daphnia magna', 'Death domain', 'PF00531', '1439', '1516', '2917'
+    ],
+    ['A0A0P5S1G0', '35525', 'E', 'Daphnia magna', 'ELO family', 'PF01151', '12', '166', '166'
+    ],
+    ['A0A0P5S7N0', '35525', 'E', 'Daphnia magna', 'Activin types I and II 
+receptor domain', 'PF01064', '80', '162', '337'
+    ],
+    ['A0A0P5S9J3', '35525', 'E', 'Daphnia magna', 'Kazal domain', 'PF07648', '134', '163', '396'
+    ],
+    ['A0A0P5SFB5', '35525', 'E', 'Daphnia magna', 'Choline transporter-like', 'PF04515', '347', '705', '729'
+    ],
+    ['A0A0P5SH62', '35525', 'E', 'Daphnia magna', 'ERAP1-like C-terminal domain', 'PF11838', '611', '684', '754'
+    ],
+    ['A0A0P5SHB8', '35525', 'E', 'Daphnia magna', 'DENN domain', 'PF02141', '252', '479', '1875'
+    ],
+    ['A0A0P5SI99', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '668', '695', '1315'
+    ],
+    ['A0A0P5SJ72', '35525', 'E', 'Daphnia magna', 'Pancreatic trypsin inhibitor Kunitz domain', 'PF00014', '1654', '1705', '2146'
+    ],
+    ['A0A0P5SPM4', '35525', 'E', 'Daphnia magna', 'Laminin N-terminal', 'PF00055', '149', '400', '2010'
+    ],
+    ['A0A0P5SVC1', 
+'35525', 'E', 'Daphnia magna', 'Glutamate/phenylalanine/leucine/valine dehydrogenase C-terminal', 'PF00208', '255', '449', '467'
+    ],
+    ['A0A0P5SX41', '35525', 'E', 'Daphnia magna', 'Phosphatidylethanolamine-binding protein', 'PF01161', '59', '170', '298'
+    ],
+    ['A0A0P5T052', '35525', 'E', 'Daphnia magna', 'Fibrillarin', 'PF01269', '94', '273', '278'
+    ],
+    ['A0A0P5T059', '35525', 'E', 'Daphnia magna', 'Aconitase A/isopropylmalate dehydratase small subunit swivel domain', 'PF00694', '571', '699', '776'
+    ],
+    ['A0A0P5T2R1', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '1', '67', '387'
+    ],
+    ['A0A0P5T3W4', '35525', 'E', 'Daphnia magna', 'Chitin binding domain', 'PF01607', '4', '39', '234'
+    ],
+    ['A0A0P5T707', '35525', 'E', 'Daphnia magna', 'FKBP-type peptidyl-prolyl cis-trans isomerase domain', 'PF00254', '300', '389', '393'
+    ],
+    ['A0A0P5TPA1', '35525', 'E', 'Daphnia magna', 'Calmodulin-regulated spectrin-associated protein CH domain', 'PF11971', '209', '288', '1798'
+    ],
+    ['A0A0P5TPZ6', '35525', 'E', 'Daphnia magna', 'Uncharacterized protein OS=Daphnia magna PE=4 SV=1', 'LowComplexity', '169', '190', '564'
+    ],
+    ['A0A0P5TXM1', '35525', 'E', 'Daphnia magna', 'C2 domain', 'PF00168', '2', '86', '295'
+    ],
+    ['A0A0P5U000', '35525', 'E', 'Daphnia magna', 'SH3 domain', 'PF14604', '1259', '1307', '1791'
+    ],
+    ['A0A0P5U491', '35525', 'E', 'Daphnia magna', 'Hepatocyte growth factor-regulated tyrosine kinase substrate (Fragment) OS=Daphnia magna PE=4 SV=1', 'CoiledCoil', '402', '423', '554'
+    ],
+    ['A0A0P5U7N0', '35525', 'E', 'Daphnia magna', 'Seven cysteines N-terminal', 'PF07502', '81', '165', '636'
+    ],
+    ['A0A0P5UA20', '35525', 'E', 'Daphnia magna', 'Piwi domain', 'PF02171', '318', '457', '681'
+    ],
+    ['A0A0P5UA41', '35525', 'E', 'Daphnia magna', 'DNA repair metallo-beta-lactamase', 'PF07522', '329', '390', '423'
+    ],
+    ['A0A0P5UJF0', '35525', 'E', 'Daphnia magna', 'Fibronectin type III', 'PF00041', '5156', '5232', '8195'
+    ],
+    ['A0A0P5ULV0', '35525', 'E', 'Daphnia magna', 'CUB domain', 'PF00431', '720', '771', '777'
+    ],
+    ['A0A0P5V1B7', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '105', '129', '716'
+    ],
+    ['A0A0P5V4M7', '35525', 'E', 'Daphnia magna', 'Carboxypeptidase activation peptide', 'PF02244', '39', '111', '426'
+    ],
+    ['A0A0P5V6R4', '35525', 'E', 'Daphnia magna', 'Potassium channel calcium-activated SK', 'PF03530', '535', '648', '1058'
+    ],
+    ['A0A0P5VGD1', '35525', 'E', 'Daphnia magna', 'FAM60A', 'PF15396', '28', '91', '221'
+    ],
+    ['A0A0P5VKQ2', '35525', 'E', 'Daphnia magna', 'XK-related protein', 'PF09815', '64', '280', '469'
+    ],
+    ['A0A0P5VPN2', '35525', 'E', 'Daphnia magna', 'Putative Zinc finger and BTB domain-containing protein OS=Daphnia magna PE=4 SV=1', 'LowComplexity', '62', '74', '1352'
+    ],
+    ['A0A0P5VQD4', '35525', 'E', 'Daphnia magna', 'Replication factor C C-terminal', 'PF08542', '321', '384', '397'
+    ],
+    ['A0A0P5W530', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '683', '704', '1296'
+    ],
+    ['A0A0P5WEI0', '35525', 'E', 'Daphnia magna', 
+'Reeler domain', 'PF02014', '11', '126', '216'
+    ],
+    ['A0A0P5WFD1', '35525', 'E', 'Daphnia magna', 'Collagen triple helix repeat', 'PF01391', '96', '153', '290'
+    ],
+    ['A0A0P5WH40', '35525', 'E', 'Daphnia magna', 'Putative Clip-domain serine protease OS=Daphnia magna PE=3 SV=1', 'LowComplexity', '238', '339', '656'
+    ],
+    ['A0A0P5X0X6', '35525', 'E', 'Daphnia magna', 'Anticodon-binding', 'PF03129', '328', '419', '425'
+    ],
+    ['A0A0P5X177', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '345', '382', '416'
+    ],
+    ['A0A0P5X3M4', '35525', 'E', 'Daphnia magna', 'CREB-binding protein/p300 atypical RING domain', 'PF06001', '899', '937', '2253'
+    ],
+    ['A0A0P5X8I8', '35525', 'E', 'Daphnia magna', 'Phosphoenolpyruvate carboxykinase GTP-utilising', 'PF00821', '1', '197', '383'
+    ],
+    ['A0A0P5XFV7', '35525', 'E', 'Daphnia magna', 'EGF-like calcium-binding domain', 'PF07645', '1467', '1505', '4753'
+    ],
+    ['A0A0P5XKE1', '35525', 'E', 'Daphnia magna', 'Fibronectin type III', 'PF00041', '6249', '6332', '8122'
+    ],
+    ['A0A0P5XKP2', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '78', '138', '535'
+    ],
+    ['A0A0P5XUN4', '35525', 'E', 'Daphnia magna', 'PAP/25A-associated', 'PF03828', '468', '540', '549'
+    ],
+    ['A0A0P5XYS1', '35525', 'E', 'Daphnia magna', 'Fanconi anemia complex subunit FancL WD-repeat containing domain', 'PF09765', '2', '241', '393'
+    ],
+    ['A0A0P5Y1U4', '35525', 'E', 'Daphnia magna', 'PDZ domain', 'PF00595', '255', '322', '1488'
+    ],
+    ['A0A0P5Y6Y5', '35525', 'E', 'Daphnia magna', 'Annexin repeat', 'PF00191', '398', '463', '467'
+    ],
+    ['A0A0P5Y9P8', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '221', '256', '461'
+    ],
+    ['A0A0P5YBU5', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '782', '843', '1572'
+    ],
+    ['A0A0P5YKJ4', '35525', 'E', 'Daphnia magna', 'GOLD domain', 'PF01105', '246', '426', '435'
+    ],
+    ['A0A0P5YL31', '35525', 'E', 'Daphnia magna', 'Collagen triple helix repeat', 'PF01391', '275', '327', '451'
+    ],
+    ['A0A0P5YSM6', '35525', 'E', 'Daphnia magna', 'Thyroid receptor-interacting protein OS=Daphnia magna PE=4 SV=1', 'CoiledCoil', '927', '955', '1181'
+    ],
+    ['A0A0P5YUC6', '35525', 'E', 'Daphnia magna', 'ARID 
+DNA-binding domain', 'PF01388', '408', '491', '1141'
+    ],
+    ['A0A0P5ZFE7', '35525', 'E', 'Daphnia magna', 'Fibronectin type III', 'PF00041', '710', '794', '950'
+    ],
+    ['A0A0P5ZTF2', '35525', 'E', 'Daphnia magna', 'Aminotransferase class I/classII', 'PF00155', '156', '463', '521'
+    ],
+    ['A0A0P5ZTL9', '35525', 'E', 'Daphnia magna', 'PAP/25A-associated', 'PF03828', '272', '332', '435'
+    ],
+    ['A0A0P5ZU84', '35525', 'E', 'Daphnia magna', 'Ly-6 antigen/uPA receptor-like', 'PF00021', '24', '103', '184'
+    ],
+    ['A0A0P5ZYH9', '35525', 'E', 'Daphnia magna', 'SAM-dependent methyltransferase TRM5/TYW2-type', 'PF02475', '119', '200', '301'
+    ],
+    ['A0A0P6A387', '35525', 'E', 'Daphnia magna', 'Filamin/ABP280 repeat-like', 'PF00630', '1395', '1459', '2105'
+    ],
+    ['A0A0P6ACA7', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '41', '60', '769'
+    ],
+    ['A0A0P6AGN6', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '2754', '2835', '3012'
+    ],
+    ['A0A0P6B023', '35525', 'E', 'Daphnia magna', 'Kinesin protein KIF20A OS=Daphnia magna PE=3 SV=1', 'CoiledCoil', '781', '809', '1450'
+    ],
+    ['A0A0P6B4D3', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '134', '173', '1194'
+    ],
+    ['A0A0P6BCN7', '35525', 'E', 'Daphnia magna', 'CTP synthase N-terminal', 'PF06418', '94', '364', '704'
+    ],
+    ['A0A0P6BGF8', '35525', 'E', 'Daphnia magna', 'Glycosyltransferase 2-like', 'PF00535', '103', '218', '280'
+    ],
+    ['A0A0P6CD47', '35525', 'E', 'Daphnia magna', 'B-box-type zinc finger', 'PF00643', '37', '80', '230'
+    ],
+    ['A0A0P6CK51', '35525', 'E', 'Daphnia magna', 'Calcium-activated chloride channel protein', 'PF08434', '11', '720', '973'
+    ],
+    ['A0A0P6CQK2', '35525', 'E', 'Daphnia magna', 'CUB domain', 'PF00431', '97', '148', '154'
+    ],
+    ['A0A0P6D6X4', '35525', 'E', 'Daphnia magna', 'BTB/POZ domain', 'PF00651', '177', '247', '248'
+    ],
+    ['A0A0P6DAN0', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '355', '397', '1005'
+    ],
+    ['A0A0P6DCF6', '35525', 'E', 'Daphnia magna', 'Chromosome-associated kinesin KIF4A protein OS=Daphnia magna PE=3 SV=1', 'CoiledCoil', '714', '749', '1034'
+    ],
+    ['A0A0P6DKT8', '35525', 'E', 'Daphnia magna', 'Insect cuticle protein', 'PF00379', 
+'126', '179', '262'
+    ],
+    ['A0A0P6DPH2', '35525', 'E', 'Daphnia magna', 'Arginine-glutamic acid dipeptide repeats protein OS=Daphnia magna 
+PE=4 SV=1', 'LowComplexity', '1077', '1091', '2038'
+    ],
+    ['A0A0P6DWR4', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '4780', '4815', '5059'
+    ],
+    ['A0A0P6DXY8', '35525', 'E', 'Daphnia magna', 'Mitoguardin', 'PF10265', '27', '546', '552'
+    ],
+    ['A0A0P6EB89', '35525', 'E', 'Daphnia magna', 'Gelsolin-like domain', 'PF00626', '770', '839', '1161'
+    ],
+    ['A0A0P6EF48', '35525', 'E', 'Daphnia magna',
+        "WAP-type 'four-disulfide core' domain", 'PF00095', '273', '321', '2157'
+    ],
+    ['A0A0P6EFS0', '35525', 'E', 'Daphnia magna', 'Small GTPase superfamily', 'PF00071', '75', '213', '254'
+    ],
+    ['A0A0P6EGL1', '35525', 'E', 'Daphnia magna', 'Tubulin/FtsZ GTPase domain', 'PF00091', '3', '213', '450'
+    ],
+    ['A0A0P6EPI4', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '296', '318', '1384'
+    ],
+    ['A0A0P6EY34', '35525', 'E', 'Daphnia magna', 'Serine proteases trypsin domain', 'PF00089', '214', '451', '457'
+    ],
+    ['A0A0P6F0M3', '35525', 'E', 'Daphnia magna', 'Haem peroxidase animal', 'PF03098', '134', '623', '641'
+    ],
+    ['A0A0P6FA36', '35525', 'E', 'Daphnia magna', 'Rho guanine nucleotide exchange factor OS=Daphnia magna PE=4 SV=1', 'LowComplexity', '690', '702', '1789'
+    ],
+    ['A0A0P6FGL6', '35525', 'E', 'Daphnia magna', 'Inactive ubiquitin carboxyl-terminal hydrolase OS=Daphnia magna PE=4 SV=1', 'LowComplexity', '1326', '1338', '1445'
+    ],
+    ['A0A0P6FN43', '35525', 'E', 'Daphnia magna', 'FAS1 domain', 'PF02469', '967', '1079', '1084'
+    ],
+    ['A0A0P6FRA8', '35525', 'E', 'Daphnia magna', 'Histone deacetylase OS=Daphnia magna PE=4 SV=1', 'CoiledCoil', '98', '142', '1107'
+    ],
+    ['A0A0P6FUT6', '35525', 'E', 'Daphnia magna', 'Rho GTPase-activating protein domain', 'PF00620', '607', '754', '1825'
+    ],
+    ['A0A0P6FXK7', '35525', 'E', 'Daphnia magna', 'Sterile alpha motif 
+domain', 'PF00536', '609', '668', '843'
+    ],
+    ['A0A0P6G8H6', '35525', 'E', 'Daphnia magna', 'Protein phosphatase 2A regulatory B subunit B56', 'PF01603', '12', '83', '352'
+    ],
+    ['A0A0P6GH69', '35525', 'E', 'Daphnia magna', 'Helicase C-terminal', 'PF00271', '441', '567', '1993'
+    ],
+    ['A0A0P6GM05', '35525', 'E', 'Daphnia magna', 'Glycoside hydrolase family 2 immunoglobulin-like beta-sandwich', 'PF00703', '214', '317', '482'
+    ],
+    ['A0A0P6HJ16', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '191', '226', '346'
+    ],
+    ['A0A0P6HM41', '35525', 'E', 'Daphnia magna', 'WD40 repeat', 'PF00400', '68', '104', '518'
+    ],
+    ['A0A0P6HSN0', '35525', 'E', 'Daphnia magna', 'Meiotic nuclear division protein 1', 'PF03962', '43', '229', '231'
+    ],
+    ['A0A0P6HWA8', '35525', 'E', 'Daphnia magna', 'Serine proteases trypsin domain', 'PF00089', '35', '277', '380'
+    ],
+    ['A0A0P6IE45', '35525', 'E', 'Daphnia magna', 'ABC transporter type 1 transmembrane domain', 'PF00664', '146', '422', '720'
+    ],
+    ['A0A0P6IFH9', '35525', 'E', 'Daphnia magna', 'disorder_prediction', 'mobidb-lite', '2212', '2238', '2238'
+    ],
+    ['A0A0P6IK41', '35525', 'E', 'Daphnia magna', 'Pituitary homeobox Ptx1 OS=Daphnia magna PE=4 SV=1', 'LowComplexity', '638', '654', '689'
+    ],
+    ['A0A0P6IPN8', '35525', 'E', 'Daphnia magna', 'LETM1-like', 'PF07766', '235', '421', '834'
+    ],
+    ['A0A0P6J9Q3', '35525', 'E', 'Daphnia magna', 'Ionotropic glutamate receptor L-glutamate and glycine-binding domain', 'PF10613', '61', '150', '462'
+    ],
+    ['A0A0P6JC68', '35525', 'E', 'Daphnia magna', 'IQ motif EF-hand binding site', 'PF00612', '31', '47', '1144'
+    ],
+    ['A0A0P6JNT6', '35525', 'E', 'Daphnia magna', 
+'Homeobox domain', 'PF00046', '25', '65', '155'
+    ],
+    ['A0A0Q3EPD4', '15368', 'E', 'Brachypodium distachyon', 'Sorting nexin C-terminal', 'PF08628', '849', '990', '1034'
+    ],
+    ['A0A0Q3FCH6', '15368', 'E', 'Brachypodium distachyon', 'ATPase dynein-related AAA domain', 'PF07728', '1467', '1555', '5337'
+    ],
+    ['A0A0Q3IQG8', '15368', 'E', 'Brachypodium distachyon', 'NB-ARC', 'PF00931', '176', '455', '926'
+    ],
+    ['A0A0R4I9S8', '7955', 'E', 'Danio rerio', 'NADH dehydrogenase [ubiquinone
+        ] 1 beta subcomplex subunit 8', 'PF05821', '18', '119', '166'
+    ],
+    ['A0A0R4IIY9', '7955', 'E', 'Danio rerio', 'disorder_prediction', 'mobidb-lite', '4126', '4162', '4890'
+    ],
+    ['A0A0R4IWC8', '7955', 'E', 'Danio rerio', 'Domain of unknown function DUF4457', 'PF14652', '439', '597', '1544'
+    ],
+    ['A0A0S4MMC5', '85433', 'E', 'Hymenolepis microstoma', 'disorder_prediction', 'mobidb-lite', '727', '746', '836'
+    ],
+    ['A0A0S4T859', '85433', 'E', 'Hymenolepis microstoma', 'Zinc finger LIM-type', 'PF00412', '247', '302', '303'
+    ],
+    ['A0A0W7VE50', '398673', 'E', 'Trichoderma gamsii', 'Serine aminopeptidase S33', 'PF12146', '55', '274', '297'
+    ],
+    ['A0A0W7VRT2', '398673', 'E', 'Trichoderma gamsii', 'Zn(2)-C6 fungal-type DNA-binding domain', 'PF00172', '56', '88', '466'
+    ],
+    ['A0A0W7VRX8', '398673', 'E', 'Trichoderma gamsii', 'disorder_prediction', 'mobidb-lite', '120', '141', '1192'
+    ],
+    ['A0A0W7VTJ7', '398673', 'E', 'Trichoderma gamsii', 'FAD linked oxidase N-terminal', 'PF01565', '40', '173', '484'
+    ],
+    ['A0A0W7VU72', '398673', 'E', 'Trichoderma gamsii', 'disorder_prediction', 'mobidb-lite', '1', '21', '383'
+    ],
+    ['A0A0W7W0B4', '398673', 'E', 'Trichoderma gamsii', 'Ceramide glucosyltransferase', 'PF13506', '133', '177', '527'
+    ],
+    ['A0A146MPK1', '8078', 'E', 'Fundulus heteroclitus', 'Collagen triple helix repeat', 'PF01391', '1158', '1213', '1334'
+    ],
+    ['A0A146MPY8', '8078', 'E', 'Fundulus heteroclitus', 'Fibronectin type III', 'PF00041', '187', '261', '1112'
+    ],
+    ['A0A146MR52', '8078', 'E', 'Fundulus heteroclitus', 'Pyruvate carboxylase mitochondrial OS=Fundulus heteroclitus PE=4 SV=1', 'LowComplexity', '736', '748', '831'
+    ],
+    ['A0A146MRC5', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '121', '167', '1404'
+    ],
+    ['A0A146MS19', '8078', 'E', 'Fundulus heteroclitus', 'Aldehyde dehydrogenase domain', 'PF00171', '67', '441', '483'
+    ],
+    ['A0A146MUX4', '8078', 'E', 'Fundulus heteroclitus', 'E3 ubiquitin-protein ligase RNF182 OS=Fundulus heteroclitus PE=4 SV=1', 'LowComplexity', '95', '108', '179'
+    ],
+    ['A0A146NB53', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '229', '264', '716'
+    ],
+    ['A0A146NB87', '8078', 'E', 'Fundulus heteroclitus', 'Pleckstrin homology domain', 'PF00169', '20', '120', '657'
+    ],
+    ['A0A146NCX5', '8078', 'E', 'Fundulus heteroclitus', 'CAP-Gly domain-containing linker protein 1 OS=Fundulus heteroclitus PE=4 SV=1', 'CoiledCoil', '457', '478', '1414'
+    ],
+    ['A0A146ND31', '8078', 'E', 'Fundulus heteroclitus', 'Major vault protein N-terminal', 'PF01505', '126', '167', '867'
+    ],
+    ['A0A146NJC6', '8078', 'E', 'Fundulus heteroclitus', 'Chromosome segregation ATPases domain-containing protein OS=Fundulus heteroclitus PE=4 SV=1', 'CoiledCoil', '627', '648', '1592'
+    ],
+    ['A0A146NY86', '8078', 'E', 'Fundulus heteroclitus', 'Structural maintenance of chromosomes protein 4 (Fragment) OS=Fundulus heteroclitus PE=4 SV=1', 'CoiledCoil', '573', '594', '807'
+    ],
+    ['A0A146P155', '8078', 'E', 'Fundulus heteroclitus', 'Leucine-rich repeat', 'PF13516', '11', '33', '122'
+    ],
+    ['A0A146P1W4', '8078', 'E', 'Fundulus heteroclitus', 'Troponin', 'PF00992', '12', '124', '134'
+    ],
+    ['A0A146P2N7', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '1', '52', '353'
+    ],
+    ['A0A146PJT7', '8078', 'E', 'Fundulus heteroclitus', 'C2 domain', 'PF00168', '412', '499', '573'
+    ],
+    ['A0A146PRG1', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '729', '852', '925'
+    ],
+    ['A0A146Q0S0', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '569', '588', '1638'
+    ],
+    ['A0A146QB28', '8078', 'E', 'Fundulus heteroclitus', 'Peptidase U32', 'PF01136', '1', '63', '203'
+    ],
+    ['A0A146QRF7', '8078', 'E', 'Fundulus heteroclitus', 'Alpha-2-macroglobulin thiol-ester bond-forming', 'PF10569', '891', '920', '1387'
+    ],
+    ['A0A146QXN0', '8078', 'E', 'Fundulus heteroclitus', 'Shikimate kinase/gluconokinase', 'PF01202', '46', '202', '629'
+    ],
+    ['A0A146R2G1', '8078', 'E', 'Fundulus heteroclitus', 'Ribosomal RNA methyltransferase FtsJ domain', 
+'PF01728', '62', '137', '140'
+    ],
+    ['A0A146R7D9', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '267', '291', '325'
+    ],
+    ['A0A146RUB7', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '1800', '1906', '4195'
+    ],
+    ['A0A146RX17', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '40', '159', '450'
+    ],
+    ['A0A146TUF5', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '135', '171', '230'
+    ],
+    ['A0A146U305', '8078', 'E', 'Fundulus heteroclitus', 'Oligopeptide/dipeptide ABC transporter C-terminal', 'PF08352', '47', '82', '111'
+    ],
+    ['A0A146UJG0', '8078', 'E', 'Fundulus heteroclitus', 'Peptidase C12 ubiquitin carboxyl-terminal hydrolase', 'PF01088', '11', '203', '216'
+    ],
+    ['A0A146UTK6', '8078', 'E', 'Fundulus heteroclitus', 'Pumilio RNA-binding repeat', 'PF00806', '274', '301', '481'
+    ],
+    ['A0A146UUF3', '8078', 'E', 'Fundulus heteroclitus', 'Collagen alpha-1(XVII) chain OS=Fundulus heteroclitus PE=4 SV=1', 'LowComplexity', '1294', '1306', '1597'
+    ],
+    ['A0A146UV79', '8078', 'E', 'Fundulus heteroclitus', 'BTB/POZ domain', 'PF00651', '22', '123', '595'
+    ],
+    ['A0A146UW35', '8078', 'E', 'Fundulus heteroclitus', 'Cadherin', 'PF00028', '521', '611', '1957'
+    ],
+    ['A0A146UXD5', '8078', 'E', 'Fundulus heteroclitus', 'Mesothelin', 'PF06060', '886', '1216', '1268'
+    ],
+    ['A0A146UYS0', '8078', 'E', 'Fundulus heteroclitus', 'WD40 repeat', 'PF00400', '1424', '1455', '1583'
+    ],
+    ['A0A146UZ97', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '897', '997', '1356'
+    ],
+    ['A0A146V0R5', '8078', 'E', 'Fundulus heteroclitus', 'Collagen triple helix repeat', 'PF01391', '1312', '1367', '1422'
+    ],
+    ['A0A146V782', '8078', 'E', 'Fundulus heteroclitus', 'Fibronectin type 
+III', 'PF00041', '197', '281', '370'
+    ],
+    ['A0A146V973', '8078', 'E', 'Fundulus heteroclitus', 'Cadherin', 'PF00028', '2688', '2778', '4051'
+    ],
+    ['A0A146V9U1', '8078', 'E', 'Fundulus heteroclitus', 'Fibronectin type III', 'PF00041', '381', '460', '975'
+    ],
+    ['A0A146VBJ4', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '1021', '1094', '1197'
+    ],
+    ['A0A146VDJ6', '8078', 'E', 'Fundulus heteroclitus', 'Leucine-rich repeat', 'PF13855', '221', '278', '1467'
+    ],
+    ['A0A146VF28', '8078', 'E', 'Fundulus heteroclitus', 'Filamin/ABP280 repeat-like', 'PF00630', '872', '963', '2609'
+    ],
+    ['A0A146VG73', '8078', 'E', 'Fundulus heteroclitus', 'Abl-interactor homeo-domain 
+homologous domain', 'PF07815', '93', '167', '381'
+    ],
+    ['A0A146VH56', '8078', 'E', 'Fundulus heteroclitus', 'NUDE domain', 'PF04880', '106', '143', '339'
+    ],
+    ['A0A146VJA9', '8078', 'E', 'Fundulus heteroclitus', 'MAM domain', 'PF00629', '896', '1050', '1378'
+    ],
+    ['A0A146VN25', 
+'8078', 'E', 'Fundulus heteroclitus', 'Bicaudal-D protein microtubule-associated', 'PF09730', '513', '840', '914'
+    ],
+    ['A0A146VQN5', '8078', 'E', 'Fundulus heteroclitus', 'Wiskott-Aldrich syndrome-like protein (Fragment) OS=Fundulus heteroclitus PE=4 SV=1', 'LowComplexity', '158', '178', '297'
+    ],
+    ['A0A146VSK7', '8078', 'E', 'Fundulus heteroclitus', 'C-type lectin-like', 'PF00059', '926', '1047', '1726'
+    ],
+    ['A0A146VU86', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '1984', '2005', '2447'
+    ],
+    ['A0A146VVN5', '8078', 'E', 'Fundulus heteroclitus', 'WHEP-TRS domain', 'PF00458', '736', '785', '1465'
+    ],
+    ['A0A146VY73', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '107', '150', '681'
+    ],
+    ['A0A146VZ89', '8078', 'E', 'Fundulus heteroclitus', 'WD40 repeat', 'PF00400', '318', '353', '437'
+    ],
+    ['A0A146W2K5', '8078', 'E', 'Fundulus heteroclitus', 'PUB domain', 'PF09409', '200', '286', '469'
+    ],
+    ['A0A146W3C2', '8078', 'E', 'Fundulus heteroclitus', 'Zinc finger CCHC-type', 'PF00098', '41', '56', '164'
+    ],
+    ['A0A146W5G8', '8078', 'E', 'Fundulus heteroclitus', 'PUB domain', 'PF09409', '164', '250', '411'
+    ],
+    ['A0A146W9F6', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '165', '189', '432'
+    ],
+    ['A0A146WAC1', '8078', 'E', 'Fundulus heteroclitus', 'Fibronectin type III', 'PF00041', '418', '503', '1952'
+    ],
+    ['A0A146WAD5', '8078', 'E', 'Fundulus heteroclitus', 'Death effector domain', 'PF01335', '52', '94', '223'
+    ],
+    ['A0A146WG82', '8078', 'E', 'Fundulus heteroclitus', 'NAD:arginine ADP-ribosyltransferase ART', 'PF01129', '41', '145', '145'
+    ],
+    ['A0A146WHZ2', '8078', 'E', 'Fundulus heteroclitus', 'Pannexin OS=Fundulus heteroclitus GN=PANX PE=3 SV=1', 'CoiledCoil', '341', '362', '415'
+    ],
+    ['A0A146WIF1', '8078', 'E', 'Fundulus heteroclitus', 'Oxidoreductase FAD/NAD(P)-binding', 'PF00175', '51', '155', '595'
+    ],
+    ['A0A146WIZ9', '8078', 'E', 'Fundulus heteroclitus', 'EF-hand domain type 1', 'PF09068', '1907', '2024', '2457'
+    ],
+    ['A0A146WKA1', '8078', 'E', 'Fundulus heteroclitus', 'TAFH/NHR1', 'PF07531', '519', '605', '972'
+    ],
+    ['A0A146WLH2', '8078', 'E', 'Fundulus heteroclitus', 'Nesprin-1 OS=Fundulus heteroclitus PE=4 SV=1', 'CoiledCoil', '1724', '1745', '4912'
+    ],
+    ['A0A146WPG8', '8078', 'E', 'Fundulus heteroclitus', 'Fringe-like', 'PF02434', '98', '254', '504'
+    ],
+    ['A0A146WPY0', '8078', 'E', 'Fundulus heteroclitus', 'Collagen triple helix repeat', 'PF01391', '336', '394', '1430'
+    ],
+    ['A0A146WU03', '8078', 'E', 'Fundulus heteroclitus', 'BTB/POZ domain', 'PF00651', '261', '363', '754'
+    ],
+    ['A0A146WUW1', '8078', 'E', 'Fundulus heteroclitus', 'Bromodomain', 'PF00439', '595', '680', '1149'
+    ],
+    ['A0A146WXG3', '8078', 'E', 'Fundulus heteroclitus', 'Fatty acid desaturase domain', 'PF00487', '200', '357', '361'
+    ],
+    ['A0A146X1L5', '8078', 'E', 'Fundulus heteroclitus', 'Liprin-alpha-3 OS=Fundulus heteroclitus PE=4 SV=1', 'CoiledCoil', '248', '287', '1107'
+    ],
+    ['A0A146X4N8', '8078', 'E', 'Fundulus heteroclitus', 'Phospholipase C phosphatidylinositol-specific Y domain', 'PF00387', '954', '1070', '1253'
+    ],
+    ['A0A146X5Y2', '8078', 'E', 'Fundulus heteroclitus', 'Zinc finger CCCH-type with G patch domain-containing protein OS=Fundulus heteroclitus PE=4 SV=1', 'LowComplexity', '124', '140', '529'
+    ],
+    ['A0A146X683', '8078', 'E', 'Fundulus heteroclitus', 'Histone deacetylase interacting domain', 'PF08295', '557', '652', '783'
+    ],
+    ['A0A146X803', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '3115', '3168', '3445'
+    ],
+    ['A0A146X973', '8078', 'E', 'Fundulus heteroclitus', 'Protein-lysine N-methyltransferase Efm5', 'PF10237', '150', '294', '396'
+    ],
+    ['A0A146XQD3', '8078', 'E', 'Fundulus heteroclitus', 'Zinc finger LIM-type', 'PF00412', '55', '110', '282'
+    ],
+    ['A0A146XUS9', '8078', 'E', 'Fundulus heteroclitus', 'Translation elongation factor EFTu-like domain 2', 'PF03144', '494', '586', '1080'
+    ],
+    ['A0A146Y4H4', '8078', 'E', 'Fundulus heteroclitus', 'Sphingomyelin synthase-like domain', 'PF14360', '285', '358', '489'
+    ],
+    ['A0A146Y716', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '904', '1007', '1327'
+    ],
+    ['A0A146Y9P3', '8078', 'E', 'Fundulus heteroclitus', 'Spectrin repeat', 
+'PF00435', '1465', '1567', '3884'
+    ],
+    ['A0A146YD59', '8078', 'E', 'Fundulus heteroclitus', 'DNA topoisomerase type IA central', 'PF01131', '257', '668', '1090'
+    ],
+    ['A0A146YF12', '8078', 'E', 'Fundulus heteroclitus', 'WD40 repeat', 'PF00400', '540', '576', '670'
+    ],
+    ['A0A146YJD5', '8078', 'E', 'Fundulus heteroclitus', 'Sterile alpha motif domain', 'PF00536', '816', '878', '950'
+    ],
+    ['A0A146YKK2', '8078', 'E', 
+'Fundulus heteroclitus', 'PKD/REJ-like domain', 'PF02010', '1410', '1883', '3790'
+    ],
+    ['A0A146YLF2', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '483', '542', '575'
+    ],
+    ['A0A146YUZ2', '8078', 'E', 'Fundulus heteroclitus', 'Fibronectin type III', 'PF00041', '321', '413', '979'
+    ],
+    ['A0A146YV06', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '825', 
+'1047', '1368'
+    ],
+    ['A0A146YVP2', '8078', 'E', 'Fundulus heteroclitus', 'OST-HTH/LOTUS domain', 'PF12872', '234', '271', '1174'
+    ],
+    ['A0A146YXC9', '8078', 'E', 'Fundulus heteroclitus', 'Argininosuccinate lyase C-terminal', 'PF14698', '428', '495', '524'
+    ],
+    ['A0A146YZE2', '8078', 'E', 'Fundulus heteroclitus', 'DAPIN domain', 'PF02758', '238', '310', '956'
+    ],
+    ['A0A146Z0Q1', '8078', 'E', 'Fundulus heteroclitus', 'Thrombospondin type 3-like repeat', 'PF02412', '479', '514', '582'
+    ],
+    ['A0A146Z0W7', '8078', 'E', 'Fundulus heteroclitus', 'Tetraspanin/Peripherin', 'PF00335', '7', '241', '281'
+    ],
+    ['A0A146Z3A8', '8078', 'E', 'Fundulus heteroclitus', 'Leucine-rich repeat', 'PF13516', '676', '696', '787'
+    ],
+    ['A0A146Z3W2', '8078', 'E', 'Fundulus heteroclitus', 'K Homology domain type 1', 'PF00013', '370', '427', '893'
+    ],
+    ['A0A146Z4F7', '8078', 'E', 'Fundulus heteroclitus', 'Spectrin repeat', 'PF00435', '1095', '1176', '2479'
+    ],
+    ['A0A146ZEI7', '8078', 'E', 'Fundulus heteroclitus', 'Ankyrin repeat', 'PF00023', '204', '236', '299'
+    ],
+    ['A0A146ZK69', '8078', 'E', 'Fundulus heteroclitus', 'Sec63 domain', 'PF02889', '1850', '2161', '2176'
+    ],
+    ['A0A146ZNX1', '8078', 'E', 'Fundulus heteroclitus', 'Notch domain', 'PF00066', '1528', 
+'1562', '2554'
+    ],
+    ['A0A146ZSL1', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '309', '398', '1287'
+    ],
+    ['A0A147A204', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '329', '388', '638'
+    ],
+    ['A0A147A3Q0', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '484', '543', '628'
+    ],
+    ['A0A147A3Y4', '8078', 'E', 'Fundulus heteroclitus', 'Cadherin', 'PF00028', '281', '373', '1263'
+    ],
+    ['A0A147A4L7', '8078', 'E', 'Fundulus heteroclitus', 'PDZ domain', 'PF00595', '258', '328', '976'
+    ],
+    ['A0A147AE44', '8078', 'E', 'Fundulus heteroclitus', 'SEA domain', 'PF01390', '127', '208', '789'
+    ],
+    ['A0A147ALT4', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '1', '82', '571'
+    ],
+    ['A0A147AXQ1', '8078', 'E', 'Fundulus heteroclitus', 'Myc-type basic helix-loop-helix (bHLH) domain', 'PF00010', '19', '68', '203'
+    ],
+    ['A0A147AY46', '8078', 'E', 'Fundulus heteroclitus', 'Nucleoprotein TPR OS=Fundulus heteroclitus PE=4 SV=1', 'CoiledCoil', '1534', '1562', '2410'
+    ],
+    ['A0A147B4S5', '8078', 'E', 'Fundulus heteroclitus', 'disorder_prediction', 'mobidb-lite', '451', '470', '470'
+    ],
+    ['A0A151VJ66', '39966', 'E', 'Hypsizygus marmoreus', 'FAD-binding 8', 'PF08022', '303', '413', '600'
+    ],
+    ['A0A151W5U4', '39966', 'E', 'Hypsizygus marmoreus', 'RNA recognition motif domain', 'PF00076', '44', '113', '672'
+    ],
+    ['A0A158PTR3', '6279', 'E', 'Brugia malayi', 'Immunoglobulin I-set', 'PF07679', '1335', '1419', '2522'
+    ],
+    ['A0A158PXE6', '6279', 'E', 'Brugia malayi', 'disorder_prediction', 'mobidb-lite', '1091', '1134', '1420'
+    ],
+    ['A0A158Q012', '6279', 'E', 'Brugia malayi', 'Spectrin repeat', 'PF00435', '1271', '1371', '2357'
+    ],
+    ['A0A158Q2B1', '6279', 'E', 'Brugia malayi', 'Zinc finger UBP-type', 'PF02148', '66', '132', '737'
+    ],
+    ['A0A182HME5', '7173', 'E', 'Anopheles arabiensis', 'Zinc finger NF-X1-type', 'PF01422', '1052', '1063', '1299'
+    ],
+    ['A0A182ID98', '7173', 'E', 'Anopheles arabiensis', 'Pellino family', 'PF04710', '1', '299', '299'
+    ],
+    ['A0A182N952', '7168', 'E', 'Anopheles dirus', 'Snf7 family', 'PF03357', '570', '739', '762'
+    ],
+    ['A0A182R4T4', '62324', 'E', 'Anopheles funestus', 'disorder_prediction', 'mobidb-lite', '680', '778', '778'
+    ],
+    ['A0A182R583', '62324', 'E', 'Anopheles funestus', 'Major facilitator superfamily', 'PF07690', '14', '416', '997'
+    ],
+    ['A0A182RMZ2', '62324', 'E', 'Anopheles funestus', 'Leucine-rich repeat', 'PF13855', '1653', '1713', '1934'
+    ],
+    ['A0A182RSV5', '62324', 'E', 'Anopheles funestus', 'Sprouty', 'PF05210', '267', '368', '369'
+    ],
+    ['A0A182RZ03', '62324', 'E', 
+'Anopheles funestus', 'Major facilitator superfamily', 'PF07690', '67', '196', '203'
+    ],
+    ['A0A182WFF5', '112268', 'E', 'Anopheles minimus', 'GPCR family 3 C-terminal', 'PF00003', '9', '106', '250'
+    ],
+    ['A0A182XFF2', '34691', 'E', 'Anopheles quadriannulatus', 'DM DNA-binding domain', 'PF00751', '38', '83', '177'
+    ],
+    ['A0A182YTW8', '6526', 'E', 'Biomphalaria glabrata', 'Thioredoxin domain', 'PF00085', '5', '78', '146'
+    ],
+    ['A0A182YXM3', '6526', 'E', 'Biomphalaria glabrata', 'Orange domain', 'PF07527', '117', '155', '347'
+    ],
+    ['A0A182Z865', '6526', 'E', 'Biomphalaria glabrata', 'DOMON domain', 'PF03351', '137', '233', '601'
+    ],
+    ['A0A182ZEM6', '6526', 'E', 'Biomphalaria glabrata', 'Helicase C-terminal', 'PF00271', '316', '424', '463'
+    ],
+    ['A0A182ZRA4', '6526', 'E', 'Biomphalaria glabrata', 'Zinc finger nuclear hormone receptor-type', 'PF00105', '82', '105', '1126'
+    ],
+    ['A0A182ZRZ7', '6526', 'E', 'Biomphalaria glabrata', 'disorder_prediction', 'mobidb-lite', '439', '617', '617'
+    ],
+    ['A0A182ZXB1', '6526', 'E', 'Biomphalaria glabrata', 'Ribosomal protein S27a', 'PF01599', '40', '79', '91'
+    ],
+    ['A0A183XC85', '6293', 'E', 'Wuchereria bancrofti', 'RNA recognition motif domain', 'PF00076', '435', '505', '534'
+    ],
+    ['A0A183XFR8', 
+'6293', 'E', 'Wuchereria bancrofti', 'TSC-22 / Dip / Bun', 'PF01166', '67', '121', '134'
+    ],
+    ['A0A183XJY5', '6293', 'E', 'Wuchereria bancrofti', 'Conserved oligomeric Golgi complex subunit 3', 'PF04136', '28', '134', '627'
+    ],
+    ['A0A183XKZ1', '6293', 'E', 'Wuchereria bancrofti', 'ESCRT-II complex vps25 subunit', 'PF05871', '9', '137', '438'
+    ],
+    ['A0A183XND8', '6293', 'E', 'Wuchereria bancrofti', 'Autophagy-related protein 9', 'PF04109', '124', '473', '721'
+    ],
+    ['A0A183XVI1', '6293', 'E', 'Wuchereria bancrofti', 'Glycosyltransferase family 92', 'PF01697', '139', '206', '226'
+    ],
+    ['A0A183XWB8', '6293', 'E', 'Wuchereria bancrofti', 'disorder_prediction', 'mobidb-lite', '146', '166', '443'
+    ],
+    ['A0A183Y142', '6293', 'E', 'Wuchereria bancrofti', 'F-box domain', 'PF00646', '78', '110', '183'
+    ],
+    ['A0A194YIE1', '4558', 'E', 'Sorghum bicolor', 'disorder_prediction', 'mobidb-lite', '2732', '2754', '4024'
+    ],
+    ['A0A194YJK6', '4558', 'E', 'Sorghum bicolor', 'Pentatricopeptide repeat', 'PF01535', '84', '109', '650'
+    ],
+    ['A0A1A7MBM0', '5580', 'E', 'Aureobasidium pullulans', 'Fibronectin type III-like domain', 'PF14310', '541', '612', '624'
+    ],
+    ['A0A1A7MRB8', '5580', 'E', 'Aureobasidium pullulans', 'DNA-directed DNA polymerase family B multifunctional domain', 'PF00136', '778', '1226', '1472'
+    ],
+    ['A0A1A9TBL2', '30069', 'E', 'Anopheles stephensi', 'Fushi tarazu N-terminal', 'PF03867', '91', '311', '543'
+    ],
+    ['A0A1A9TGE5', '30069', 'E', 'Anopheles stephensi', 'disorder_prediction', 'mobidb-lite', '1300', '1364', '1364'
+    ],
+    ['A0A1A9TJH9', '30069', 'E', 'Anopheles stephensi', 'FR47-like', 'PF08445', '189', '270', '289'
+    ],
+    ['A0A1A9TLD6', '30069', 'E', 'Anopheles stephensi', 'disorder_prediction', 'mobidb-lite', '273', '371', '371'
+    ],
+    ['A0A1A9TUD4', '30069', 'E', 'Anopheles stephensi', 'Thrombospondin type-1 (TSP1) repeat', 'PF00090', '447', '499', '2599'
+    ],
+    ['A0A1A9TVT1', '30069', 'E', 'Anopheles stephensi', 'Tudor domain', 'PF00567', '562', '661', '953'
+    ],
+    ['A0A1A9U1F1', '30069', 'E', 'Anopheles stephensi', 'disorder_prediction', 'mobidb-lite', '116', '142', '2233'
+    ],
+    ['A0A1A9U302', '30069', 'E', 'Anopheles stephensi', 'Homeobox domain', 'PF00046', '20', '76', '87'
+    ],
+    ['A0A1A9U5D3', '30069', 'E', 'Anopheles stephensi', 'disorder_prediction', 'mobidb-lite', '1528', '1548', '2181'
+    ],
+    ['A0A1B6PE03', '4558', 'E', 'Sorghum bicolor', 'Tetratricopeptide repeat 2', 'PF07719', '310', '343', '367'
+    ],
+    ['A0A1B6QFG0', '4558', 'E', 'Sorghum bicolor', 'disorder_prediction', 'mobidb-lite', '824', '845', '1199'
+    ],
+    ['A0A1B6QMB1', '4558', 'E', 'Sorghum bicolor', 'RNA recognition motif domain', 'PF00076', '166', '211', '394'
+    ],
+    ['A0A1C1WU12', '158607', 'E', 'Diaporthe helianthi', 'Transcription factor domain fungi', 'PF04082', '195', '399', '809'
+    ],
+    ['A0A1C1WUA4', '158607', 'E', 'Diaporthe helianthi', 'NADP-dependent oxidoreductase domain', 'PF00248', '12', '319', '350'
+    ],
+    ['A0A1C1X8G2', '158607', 'E', 'Diaporthe helianthi', 'Phosphate transporter', 'PF01384', '23', '582', '596'
+    ],
+    ['A0A1C1XAG4', '158607', 'E', 'Diaporthe helianthi', 'disorder_prediction', 'mobidb-lite', '92', '134', '1067'
+    ],
+    ['A0A1C1XDK5', '158607', 'E', 'Diaporthe helianthi', 'disorder_prediction', 'mobidb-lite', '192', '224', '404'
+    ],
+    ['A0A1C1XH35', '158607', 'E', 'Diaporthe helianthi', 'ERAP1-like C-terminal domain', 'PF11838', '540', '864', '888'
+    ],
+    ['A0A1C1XNB6', '158607', 'E', 'Diaporthe helianthi', 'disorder_prediction', 'mobidb-lite', '289', '330', '365'
+    ],
+    ['A0A1C1XQ53', '158607', 'E', 'Diaporthe helianthi', 'disorder_prediction', 'mobidb-lite', '401', '486', '1324'
+    ],
+    ['A0A1C1XRL6', '158607', 'E', 'Diaporthe helianthi', 'Cytochrome P450', 'PF00067', '107', '285', '492'
+    ],
+    ['A0A1D5P290', '9031', 'E', 'Gallus gallus', 'Glycosyl transferase family 4', 'PF00953', '97', '210', '227'
+    ],
+    ['A0A1D5P3V8', '9031', 'E', 'Gallus gallus', 'disorder_prediction', 'mobidb-lite', '787', '831', '868'
+    ],
+    ['A0A1D5P4E8', '9031', 'E', 'Gallus gallus', 'disorder_prediction', 'mobidb-lite', '467', '711', '1478'
+    ],
+    ['A0A1D5P5D4', '9031', 'E', 'Gallus gallus', 'GNAT domain', 'PF00583', '8', '93', '107'
+    ],
+    ['A0A1D5P7I6', '9031', 'E', 'Gallus gallus', 'Protein N-terminal asparagine amidohydrolase', 'PF14736', '4', '161', '168'
+    ],
+    ['A0A1D5PND9', 
+'9031', 'E', 'Gallus gallus', 'Delta-1 crystallin OS=Gallus gallus GN=ASL1 PE=4 SV=1', 'CoiledCoil', '339', '360', '360'
+    ],
+    ['A0A1D5Q574', '9544', 'E', 'Macaca mulatta', 'Type I cytokine receptor cytokine-binding domain', 'PF09240', '116', '208', '393'
+    ],
+    ['A0A1D5QEE5', '9544', 'E', 'Macaca mulatta', 'RNA recognition motif domain', 'PF00076', '206', '237', '242'
+    ],
+    ['A0A1D5QN50', '9544', 'E', 'Macaca mulatta', 'Transcription factor IIS N-terminal', 'PF08711', '59', '107', '380'
+    ],
+    ['A0A1D5QQI8', '9544', 'E', 'Macaca mulatta', 'Tuberin-type domain', 'PF03542', '556', '880', '918'
+    ],
+    ['A0A1D5QW32', '9544', 'E', 'Macaca mulatta', 'Amidohydrolase-related', 'PF01979', '169', '558', '677'
+    ],
+    ['A0A1D5RED0', '9544', 'E', 'Macaca mulatta', 'disorder_prediction', 'mobidb-lite', '25', '74', '575'
+    ],
+    ['A0A1D5RKA7', '9544', 'E', 'Macaca mulatta', 'Regulator of chromosome condensation RCC1', 'PF00415', '476', '513', '542'
+    ],
+    ['A0A1D5RS07', '4565', 'E', 
+'Triticum aestivum', 'Ribosomal RNA methyltransferase Spb1 C-terminal', 'PF07780', '606', '804', '841'
+    ],
+    ['A0A1D5RTC4', '4565', 'E', 'Triticum aestivum', 'Uncharacterized protein OS=Triticum aestivum PE=4 SV=1', 'CoiledCoil', '668', '689', '1215'
+    ],
+    ['A0A1D5RWY3', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '629', '654', '714'
+    ],
+    ['A0A1D5RXH9', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '573', '607', '669'
+    ],
+    ['A0A1D5RXW0', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '1', '20', '263'
+    ],
+    ['A0A1D5SVA4', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '1', '24', '290'
+    ],
+    ['A0A1D5TU76', '4565', 'E', 'Triticum aestivum', 'Carbohydrate kinase FGGY C-terminal', 'PF02782', '306', '501', '569'
+    ],
+    ['A0A1D5U3K9', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '1', '47', '668'
+    ],
+    ['A0A1D5U8G2', '4565', 'E', 'Triticum aestivum', 'Stress responsive alpha-beta barrel', 'PF07876', '11', '106', '111'
+    ],
+    ['A0A1D5U8J5', '4565', 'E', 'Triticum aestivum', 'Pentatricopeptide repeat', 'PF13041', '312', '354', '669'
+    ],
+    ['A0A1D5UKK3', '4565', 'E', 'Triticum aestivum', 'Protein of unknown function DUF1719', 'PF08224', '100', '337', '466'
+    ],
+    ['A0A1D5UME2', '4565', 'E', 'Triticum aestivum', 'Up-frameshift suppressor 2', 'PF04050', '157', '295', '360'
+    ],
+    ['A0A1D5UPJ7', '4565', 'E', 'Triticum aestivum', 'Pyruvate kinase C-terminal', 'PF02887', '316', '441', '446'
+    ],
+    ['A0A1D5UQK5', '4565', 'E', 'Triticum aestivum', 'Regulator of chromosome condensation RCC1', 'PF00415', '70', '116', '476'
+    ],
+    ['A0A1D5UR98', '4565', 'E', 'Triticum aestivum', 'Methyltransferase type 11', 'PF08241', '31', '84', '263'
+    ],
+    ['A0A1D5URG6', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '616', '862', '862'
+    ],
+    ['A0A1D5URG7', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '120', '174', '276'
+    ],
+    ['A0A1D5UUT8', '4565', 'E', 'Triticum aestivum', 'Leucine-rich repeat', 'PF13855', '258', '318', '525'
+    ],
+    ['A0A1D5UW56', '4565', 'E', 'Triticum aestivum', 'DUF3741-associated sequence motif', 'PF14383', '85', '102', '1037'
+    ],
+    ['A0A1D5V6N8', '4565', 'E', 'Triticum aestivum', 'Leucine-rich repeat-containing N-terminal plant-type', 'PF08263', '32', '68', '316'
+    ],
+    ['A0A1D5VNE7', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '587', '607', '1273'
+    ],
+    ['A0A1D5VW77', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '213', '291', '291'
+    ],
+    ['A0A1D5W2S3', '4565', 'E', 'Triticum aestivum', 'Transcription factor DP C-terminal', 'PF08781', '148', '245', '261'
+    ],
+    ['A0A1D5W5C1', '4565', 'E', 'Triticum aestivum', 'Pumilio RNA-binding repeat', 'PF00806', '750', '779', '1043'
+    ],
+    ['A0A1D5W8A1', '4565', 'E', 'Triticum aestivum', 'Protein of unknown function DUF2921', 'PF11145', '36', '806', '816'
+    ],
+    ['A0A1D5WCF1', '4565', 'E', 'Triticum aestivum', 'F-box domain', 'PF12937', '15', '54', '367'
+    ],
+    ['A0A1D5WJ96', '4565', 'E', 'Triticum aestivum', 'NB-ARC', 'PF00931', '89', '198', '203'
+    ],
+    ['A0A1D5WP74', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '113', '151', '307'
+    ],
+    ['A0A1D5WWC3', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '279', '299', '764'
+    ],
+    ['A0A1D5X2V9', '4565', 'E', 'Triticum aestivum', 'NB-ARC', 'PF00931', '5', '184', '638'
+    ],
+    ['A0A1D5X4V8', '4565', 'E', 'Triticum aestivum', 'GDSL lipase/esterase', 'PF00657', '62', '282', '305'
+    ],
+    ['A0A1D5XBV0', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '115', '169', '1265'
+    ],
+    ['A0A1D5XGC0', '4565', 'E', 'Triticum aestivum', 'Oxoglutarate/iron-dependent dioxygenase', 'PF03171', '2', '97', '146'
+    ],
+    ['A0A1D5XPW4', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '357', '392', '718'
+    ],
+    ['A0A1D5Y4S0', '4565', 'E', 'Triticum aestivum', 'PGG domain', 'PF13962', '433', '538', '630'
+    ],
+    ['A0A1D5YCR2', '4565', 'E', 'Triticum aestivum', 'Pentatricopeptide repeat', 'PF01535', '340', '364', '858'
+    ],
+    ['A0A1D5YFG7', '4565', 'E', 'Triticum aestivum', 'Pentatricopeptide repeat', 'PF13041', '414', '462', '529'
+    ],
+    ['A0A1D5YFK1', '4565', 'E', 'Triticum aestivum', 'Actin family', 'PF00022', '4', '442', '443'
+    ],
+    ['A0A1D5YWV5', '4565', 'E', 'Triticum aestivum', 'Plant disease resistance response protein', 'PF03018', '41', '153', '186'
+    ],
+    ['A0A1D5Z6C8', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '1', '45', '554'
+    ],
+    ['A0A1D5ZAD1', '4565', 'E', 'Triticum aestivum', 'F-box domain', 'PF00646', '15', '56', '539'
+    ],
+    ['A0A1D5ZHA3', '4565', 'E', 'Triticum aestivum', 'NB-ARC', 'PF00931', '185', '460', '853'
+    ],
+    ['A0A1D5ZHF2', '4565', 'E', 'Triticum aestivum', 'NnrU domain', 'PF07298', '146', '365', '374'
+    ],
+    ['A0A1D5ZW67', '4565', 'E', 'Triticum aestivum', 'Myc-type basic helix-loop-helix (bHLH) domain', 'PF00010', '108', '153', '279'
+    ],
+    ['A0A1D5ZYA8', '4565', 'E', 'Triticum aestivum', 'Pentatricopeptide repeat', 'PF01535', '648', '670', '820'
+    ],
+    ['A0A1D6AC39', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '348', '399', '891'
+    ],
+    ['A0A1D6AJK3', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '87', '116', '340'
+    ],
+    ['A0A1D6AK17', '4565', 'E', 'Triticum aestivum', 'CBS domain', 'PF00571', '99', '150', '217'
+    ],
+    ['A0A1D6AQG2', '4565', 'E', 'Triticum aestivum', 'Cytochrome P450', 'PF00067', '44', '505', '523'
+    ],
+    ['A0A1D6AQW6', '4565', 'E', 'Triticum aestivum', 'Serine-threonine/tyrosine-protein kinase catalytic domain', 'PF07714', '355', '432', '639'
+    ],
+    ['A0A1D6AVE3', '4565', 'E', 'Triticum aestivum', 'NB-ARC', 'PF00931', '466', '743', '1266'
+    ],
+    ['A0A1D6B1Z8', '4565', 'E', 'Triticum aestivum', 'Transcription termination factor mitochondrial/chloroplastic', 'PF02536', '77', '132', '384'
+    ],
+    ['A0A1D6B3C3', '4565', 'E', 'Triticum aestivum', 'Non-haem dioxygenase N-terminal domain', 'PF14226', '48', '144', '218'
+    ],
+    ['A0A1D6BB74', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '307', '331', '720'
+    ],
+    ['A0A1D6BEE9', '4565', 'E', 'Triticum aestivum', 'F-box domain', 'PF12937', '40', '73', '398'
+    ],
+    ['A0A1D6BF60', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '670', '707', '707'
+    ],
+    ['A0A1D6BIK9', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '881', '902', '902'
+    ],
+    ['A0A1D6BJK6', '4565', 'E', 'Triticum aestivum', 'Uncharacterized protein OS=Triticum aestivum PE=4 SV=1', 'CoiledCoil', '377', '402', '549'
+    ],
+    ['A0A1D6BQQ3', '4565', 'E', 'Triticum aestivum', 'F-box associated domain type 3', 'PF08268', '228', '298', '393'
+    ],
+    ['A0A1D6BS08', '4565', 'E', 'Triticum aestivum', 'Protein kinase domain', 'PF00069', '279', '494', '519'
+    ],
+    ['A0A1D6BSU5', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '1', '125', '313'
+    ],
+    ['A0A1D6C543', '4565', 'E', 'Triticum aestivum', 'Uncharacterized protein OS=Triticum aestivum PE=4 SV=1', 'LowComplexity', '52', '66', '314'
+    ],
+    ['A0A1D6C771', '4565', 'E', 'Triticum aestivum', 'Domain of unknown function DUF4220', 
+'PF13968', '73', '143', '550'
+    ],
+    ['A0A1D6C8Q8', '4565', 'E', 'Triticum aestivum', 'Harbinger transposase-derived nuclease domain', 'PF13359', '1584', '1732', '2133'
+    ],
+    ['A0A1D6CBR1', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '72', '140', '204'
+    ],
+    ['A0A1D6CPW2', '4565', 'E', 'Triticum aestivum', 'Exoribonuclease phosphorolytic domain 1', 'PF01138', '29', '169', '286'
+    ],
+    ['A0A1D6CTF5', '4565', 'E', 'Triticum aestivum', 'Acid phosphatase/vanadium-dependent haloperoxidase-related', 'PF02681', '105', '228', '236'
+    ],
+    ['A0A1D6CXD8', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '1', '20', '159'
+    ],
+    ['A0A1D6D1G8', '4565', 'E', 'Triticum aestivum', 'Longin domain', 'PF13774', '29', '109', '221'
+    ],
+    ['A0A1D6D3Y4', '4565', 'E', 'Triticum aestivum', 'Leucine-rich repeat-containing N-terminal plant-type', 'PF08263', '39', '76', '883'
+    ],
+    ['A0A1D6D811', '4565', 'E', 'Triticum aestivum', 'ATPase AAA-type core', 'PF00004', '363', '491', '594'
+    ],
+    ['A0A1D6DAR7', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '285', '318', '853'
+    ],
+    ['A0A1D6DFQ2', '4565', 'E', 'Triticum aestivum', 'CBS domain', 'PF00571', '618', '664', '787'
+    ],
+    ['A0A1D6DGM4', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '1', '94', '596'
+    ],
+    ['A0A1D6DJA3', '4565', 'E', 'Triticum aestivum', 'Helicase C-terminal', 'PF00271', '50', '152', '1247'
+    ],
+    ['A0A1D6DK17', '4565', 'E', 'Triticum aestivum', 'Kinesin motor domain', 'PF00225', '409', '731', '749'
+    ],
+    ['A0A1D6DKY3', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '1', '28', '503'
+    ],
+    ['A0A1D6DLV3', '4565', 'E', 'Triticum aestivum', 'Ubiquitin-associated domain', 'PF00627', '733', '769', '1178'
+    ],
+    ['A0A1D6RI98', '4565', 'E', 'Triticum aestivum', 'Pentatricopeptide repeat', 'PF01535', '111', '136', '548'
+    ],
+    ['A0A1D6RRK6', '4565', 'E', 'Triticum aestivum', 'C2 domain', 'PF00168', '289', '396', '824'
+    ],
+    ['A0A1D6RXA7', '4565', 'E', 'Triticum aestivum', 'Programmed cell death protein 2 C-terminal', 'PF04194', '345', '498', '507'
+    ],
+    ['A0A1D6S2S8', '4565', 'E', 'Triticum aestivum', 'Zinc finger AN1-type', 'PF01428', '104', '139', '161'
+    ],
+    ['A0A1D6S897', '4565', 'E', 'Triticum aestivum', 'DNA polymerase V', 'PF04931', '1', '546', '808'
+    ],
+    ['A0A1D6SD15', '4565', 'E', 'Triticum aestivum', 'Pentatricopeptide repeat', 'PF13041', '562', '611', '845'
+    ],
+    ['A0A1G4E8F0', '5855', 'E', 'Plasmodium vivax', 'Plasmodium vivax Vir', 'PF05795', '218', '323', '325'
+    ],
+    ['A0A1H6PI51', '4952', 'E', 'Yarrowia lipolytica', 'RNA recognition motif domain', 'PF00076', '607', '681', '828'
+    ],
+    ['A0A1H6PTA7', '4952', 'E', 'Yarrowia lipolytica', 'disorder_prediction', 'mobidb-lite', '788', '924', '1190'
+    ],
+    ['A0A1H6Q2J1', '4952', 'E', 'Yarrowia lipolytica', 'RecF/RecN/SMC N-terminal', 'PF02463', '72', '1063', '1117'
+    ],
+    ['A0A1H6QA03', '4952', 'E', 'Yarrowia lipolytica', 'DNA mismatch repair protein MutS-like N-terminal', 'PF01624', '32', '120', '887'
+    ],
+    ['A0A1J7FR50', '3871', 'E', 'Lupinus angustifolius', 'Actin-depolymerising factor homology domain', 'PF00241', '14', '136', '139'
+    ],
+    ['A0A1J7G9Y5', '3871', 'E', 'Lupinus angustifolius', 'Uncharacterized protein OS=Lupinus angustifolius GN=TanjilG_30407 PE=4 SV=1', 'LowComplexity', '1114', '1146', '1372'
+    ],
+    ['A0A1J7GFB0', '3871', 'E', 'Lupinus angustifolius', 'disorder_prediction', 'mobidb-lite', '305', '325', '1891'
+    ],
+    ['A0A1J7GHJ4', '3871', 'E', 'Lupinus angustifolius', 'Ribosomal biogenesis regulatory protein', 'PF04939', '14', '177', '339'
+    ],
+    ['A0A1J7GSN5', '3871', 'E', 'Lupinus angustifolius', 'disorder_prediction', 'mobidb-lite', '612', '632', '753'
+    ],
+    ['A0A1J7H9N6', '3871', 'E', 'Lupinus angustifolius', 'Nucleoside phosphatase GDA1/CD39', 'PF01150', '18', '451', '644'
+    ],
+    ['A0A1J7HJ99', '3871', 'E', 'Lupinus angustifolius', 'disorder_prediction', 'mobidb-lite', '466', '489', '620'
+    ],
+    ['A0A1J7HJF3', '3871', 'E', 'Lupinus angustifolius', 'disorder_prediction', 'mobidb-lite', '372', '397', '1675'
+    ],
+    ['A0A1J7HUG1', '3871', 'E', 'Lupinus angustifolius', 'Pentatricopeptide repeat', 
+'PF12854', '156', '188', '473'
+    ],
+    ['A0A1J7HUH0', '3871', 'E', 'Lupinus angustifolius', 'Pentatricopeptide repeat', 'PF01535', '122', '150', '952'
+    ],
+    ['A0A1J7HVB5', '3871', 'E', 'Lupinus angustifolius', 'disorder_prediction', 'mobidb-lite', '130', '208', '286'
+    ],
+    ['A0A1J7HZR9', '3871', 'E', 'Lupinus angustifolius', 'USP8 dimerisation domain', 'PF08969', '67', '135', '546'
+    ],
+    ['A0A1J7I4M6', '3871', 'E', 'Lupinus angustifolius', 'Lipoxygenase C-terminal', 'PF00305', '179', '836', '853'
+    ],
+    ['A0A1J7I5D6', '3871', 'E', 'Lupinus angustifolius', 'disorder_prediction', 'mobidb-lite', '154', '180', '417'
+    ],
+    ['A0A1J7IC96', '3871', 'E', 'Lupinus angustifolius', 'Myc-type basic helix-loop-helix (bHLH) domain', 'PF00010', '33', '79', '221'
+    ],
+    ['A0A1J7IZ53', '3871', 'E', 'Lupinus angustifolius', 'Leucine-rich repeat', 'PF13855', '101', '159', '594'
+    ],
+    ['A0A1K9Y9U1', '5855', 'E', 'Plasmodium vivax', 'Plasmodium vivax Vir', 'PF05795', '299', '510', '871'
+    ],
+    ['A0A1L1RJ85', '9031', 'E', 'Gallus gallus', 'Sterile alpha motif domain', 'PF07647', '244', '308', '397'
+    ],
+    ['A0A1L1RK31', '9031', 'E', 'Gallus gallus', 'disorder_prediction', 'mobidb-lite', '82', '123', '498'
+    ],
+    ['A0A1L1RUW8', '9031', 'E', 'Gallus gallus', 'disorder_prediction', 'mobidb-lite', '305', '327', '327'
+    ],
+    ['A0A1L1VKS2', '1342085', 'E', 'Phyllobius brenskei', 'Cytochrome c oxidase subunit I', 'PF00115', '2', '219', '219'
+    ],
+    ['A0A1L7SCG8', '948311', 'E', 'Fusarium proliferatum', 'Heat shock protein 70 family', 'PF00012', '166', '242', '593'
+    ],
+    ['A0A1L7SCH6', '948311', 'E', 'Fusarium proliferatum', 'disorder_prediction', 'mobidb-lite', '600', '638', '638'
+    ],
+    ['A0A1L7STN0', '948311', 'E', 'Fusarium proliferatum', 'PI31 proteasome regulator C-terminal', 'PF08577', '275', '344', '379'
+    ],
+    ['A0A1L7TDH0', '948311', 'E', 'Fusarium proliferatum', 'Protein argonaute N-terminal', 'PF16486', '95', '233', '988'
+    ],
+    ['A0A1L7TNP6', '948311', 'E', 'Fusarium proliferatum', 'CCR4-NOT transcription complex subunit 1 HEAT repeat', 'PF16418', '520', '667', '2189'
+    ],
+    ['A0A1L7TSW1', '948311', 'E', 'Fusarium proliferatum', 'Glucose-methanol-choline oxidoreductase N-terminal', 'PF00732', '30', '326', '546'
+    ],
+    ['A0A1L7TXU6', '948311', 'E', 'Fusarium proliferatum', 'disorder_prediction', 'mobidb-lite', '1023', '1078', '1937'
+    ],
+    ['A0A1L7UC27', '948311', 'E', 'Fusarium proliferatum', 'Ubiquitin-like protein Atg12', 'PF04110', '71', '158', '158'
+    ],
+    ['A0A1L7UFR5', '948311', 'E', 'Fusarium proliferatum', 'disorder_prediction', 'mobidb-lite', '181', '252', '750'
+    ],
+    ['A0A1L7UJ22', '948311', 'E', 'Fusarium proliferatum', 'disorder_prediction', 'mobidb-lite', '1715', '1800', '1841'
+    ],
+    ['A0A1L7UPL4', '948311', 'E', 'Fusarium proliferatum', 'disorder_prediction', 'mobidb-lite', '157', '182', '355'
+    ],
+    ['A0A1L7UQE6', '948311', 'E', 'Fusarium proliferatum', 'disorder_prediction', 'mobidb-lite', '428', 
+'448', '463'
+    ],
+    ['B9HBP8', '3694', 'E', 'Populus trichocarpa', 'FAS1 domain', 'PF02469', '222', '354', '430'
+    ],
+    ['B9HGD9', '3694', 'E', 'Populus trichocarpa', 'Protein of unknown function DUF829 TMEM53', 'PF05705', '169', '432', '443'
+    ],
+    ['B9HVD7', '3694', 'E', 'Populus trichocarpa', 'Pentatricopeptide repeat', 'PF13041', '349', '394', '724'
+    ],
+    ['B9I703', '3694', 'E', 'Populus trichocarpa', 'Signal transduction response regulator receiver domain', 'PF00072', '868', '995', '1001'
+    ],
+    ['B9I8Y0', '3694', 'E', 'Populus trichocarpa', 'disorder_prediction', 'mobidb-lite', '1183', '1238', '1889'
+    ],
+    ['B9I922', '3694', 'E', 'Populus trichocarpa', 'Nop domain', 'PF01798', '103', '331', '485'
+    ],
+    ['B9MZ50', '3694', 'E', 'Populus trichocarpa', 'Senescence regulator S40', 'PF04520', '54', '151', '151'
+    ],
+    ['B9N1Y2', '3694', 'E', 'Populus trichocarpa', 'Metalloenzyme', 'PF01676', '10', '404', '495'
+    ],
+    ['B9N6N4', '3694', 'E', 'Populus trichocarpa', 'SANT/Myb domain', 'PF00249', '16', '63', '218'
+    ],
+    ['C6EMZ0', '3702', 'E', 'Arabidopsis thaliana', 'Kelch repeat type 1', 'PF01344', '181', '225', '383'
+    ],
+    ['D3YZB4', '10090', 'E', 'Mus musculus', 'disorder_prediction', 'mobidb-lite', '1091', '1111', '1194'
+    ],
+    ['E5SC36', '6334', 'E', 'Trichinella spiralis', 'PQ-loop repeat', 'PF04193', '616', '670', '724'
+    ],
+    ['E5SHV8', '6334', 'E', 'Trichinella spiralis', 'Thrombospondin type-1 (TSP1) repeat', 'PF00090', '644', '688', '1298'
+    ],
+    ['E5SNG0', '6334', 'E', 'Trichinella spiralis', 'UDP-glucuronosyl/UDP-glucosyltransferase', 'PF00201', '159', '660', '682'
+    ],
+    ['E5SRA4', '6334', 'E', 'Trichinella spiralis', 'C2 domain', 'PF00168', '3', '99', '672'
+    ],
+    ['E5SW90', '6334', 'E', 'Trichinella spiralis', 'Cation-transporting P-type ATPase N-terminal', 'PF00690', '87', '155', '1077'
+    ],
+    ['E5T4I0', '6334', 'E', 'Trichinella spiralis', 'Serine proteases trypsin domain', 'PF00089', '6', '188', '255'
+    ],
+    ['E7EYD5', '7955', 'E', 'Danio rerio', 'disorder_prediction', 'mobidb-lite', '1', '32', '407'
+    ],
+    ['F1QK39', '7955', 'E', 'Danio rerio', 'SPRY-associated', 'PF13765', '360', '408', '536'
+    ],
+    ['F1QS57', '7955', 'E', 'Danio rerio', 'disorder_prediction', 'mobidb-lite', '867', '1068', '1068'
+    ],
+    ['F1RK82', '9823', 'E', 'Sus scrofa', 'Krueppel-associated box', 'PF01352', '9', '49', '382'
+    ],
+    ['F1SLY8', '9823', 'E', 'Sus scrofa', 'Exonuclease RNase T/DNA polymerase III', 'PF00929', '978', '1150', '1205'
+    ],
+    ['F6PLP5', '9796', 'E', 'Equus caballus', 'Ankyrin repeat-containing domain', 'PF12796', '75', '148', '254'
+    ],
+    ['F6PRA6', '9483', 'E', 'Callithrix jacchus', 'disorder_prediction', 'mobidb-lite', 
+'632', '714', '714'
+    ],
+    ['F6S9D3', '9483', 'E', 'Callithrix jacchus', 'CUT domain', 'PF02376', '271', '345', '444'
+    ],
+    ['F6SHN3', '13616', 
+'E', 'Monodelphis domestica', 'G-patch domain', 'PF01585', '242', '278', '283'
+    ],
+    ['F6SRV3', '9483', 'E', 'Callithrix jacchus', 'Variant SH3 domain', 'PF07653', '248', '307', '603'
+    ],
+    ['F6SUM7', '8364', 'E', 'Xenopus tropicalis', 'disorder_prediction', 'mobidb-lite', '162', '202', '202'
+    ],
+    ['F6T121', '9483', 'E', 'Callithrix jacchus', 'Glycosyltransferase 2-like', 'PF00535', '73', '255', '527'
+    ],
+    ['F6W4X1', '8364', 'E', 'Xenopus tropicalis', 'Mitochondrial substrate/solute carrier', 'PF00153', '205', '298', '299'
+    ],
+    ['F6W6Y2', '9483', 'E', 'Callithrix jacchus', 'NADH dehydrogenase [ubiquinone
+        ] 1 alpha subcomplex assembly factor 4', 'PF06784', '1', '171', '173'
+    ],
+    ['F6WIG1', '9483', 'E', 'Callithrix jacchus', 'G protein-coupled receptor rhodopsin-like', 'PF00001', '39', '328', '467'
+    ],
+    ['F6WMZ6', '9483', 'E', 'Callithrix jacchus', 'C-type lectin-like', 'PF00059', '134', '238', '602'
+    ],
+    ['F6X262', '9483', 'E', 'Callithrix jacchus', 'Immunoglobulin-like domain', 'PF13895', '29', '116', '449'
+    ],
+    ['F6XAF9', '9796', 'E', 'Equus caballus', 'Polycystin cation channel PKD1/PKD2', 'PF08016', '2062', '2255', '2402'
+    ],
+    ['F6XR95', '9544', 'E', 'Macaca mulatta', 'SH3-binding glutamic acid-rich protein', 'PF04908', '3', 
+'93', '144'
+    ],
+    ['F6YM34', '9483', 'E', 'Callithrix jacchus', 'disorder_prediction', 'mobidb-lite', '212', '270', '970'
+    ],
+    ['F6YY09', '9483', 'E', 'Callithrix jacchus', 'B-box-type zinc finger', 'PF00643', '92', '129', '327'
+    ],
+    ['F6Z1V4', '9483', 'E', 'Callithrix jacchus', 
+'disorder_prediction', 'mobidb-lite', '1', '25', '400'
+    ],
+    ['F6ZWM1', '9796', 'E', 'Equus caballus', 'Domain of unknown function DUF1725', 'PF08333', '167', '185', '188'
+    ],
+    ['F7AD93', '9483', 'E', 'Callithrix jacchus', 'Zinc finger PHD-finger', 'PF16866', '174', '236', '420'
+    ],
+    ['F7B932', '9483', 'E', 'Callithrix jacchus', 'disorder_prediction', 'mobidb-lite', '779', '818', '818'
+    ],
+    ['F7BZ20', '9544', 'E', 
+'Macaca mulatta', 'XLR/SYCP3/FAM9 domain', 'PF04803', '104', '187', '193'
+    ],
+    ['F7C8N6', '9483', 'E', 'Callithrix jacchus', 'disorder_prediction', 'mobidb-lite', '2812', '2834', '4395'
+    ],
+    ['F7CM14', '9544', 'E', 'Macaca mulatta', 'Protein of unknown function DUF842 eukaryotic', 'PF05811', '5', '131', '138'
+    ],
+    ['F7DFQ4', '9483', 'E', 'Callithrix jacchus', 'START domain', 'PF01852', '813', '1004', '1017'
+    ],
+    ['F7E7C4', '9544', 'E', 'Macaca mulatta', 'Sushi/SCR/CCP domain', 'PF00084', '632', '685', '3323'
+    ],
+    ['F7E9D6', '9544', 'E', 'Macaca mulatta', 'Sushi/SCR/CCP domain', 'PF00084', '1805', '1862', '3117'
+    ],
+    ['F7EEE7', '8364', 'E', 'Xenopus tropicalis', 'Low-density lipoprotein (LDL) receptor class A repeat', 'PF00057', '72', '107', '4531'
+    ],
+    ['F7F171', '9544', 'E', 'Macaca mulatta', 'Pentraxin-related', 'PF00354', '266', '443', '471'
+    ],
+    ['F7F1U1', '9544', 'E', 'Macaca mulatta', 'Serine-threonine/tyrosine-protein kinase catalytic domain', 'PF07714', '327', '589', '612'
+    ],
+    ['F7G4Y3', '9483', 'E', 'Callithrix jacchus', 'disorder_prediction', 'mobidb-lite', '1', '23', '210'
+    ],
+    ['F7GNL9', '9544', 'E', 'Macaca mulatta', 'CABIT domain', 'PF12736', '18', '78', '123'
+    ],
+    ['F7H0B6', '9483', 'E', 'Callithrix jacchus', 'Spectrin repeat', 'PF00435', '423', '525', '2364'
+    ],
+    ['F7H0P5', '9544', 'E', 'Macaca mulatta', 'disorder_prediction', 'mobidb-lite', '484', '543', '759'
+    ],
+    ['F7H2D4', '9483', 'E', 'Callithrix jacchus', 'Helix-turn-helix DNA-binding domain of Spt6', 'PF14641', '184', '299', 
+'604'
+    ],
+    ['F7HTD3', '9483', 'E', 'Callithrix jacchus', 'WD repeat-containing protein 91 OS=Callithrix jacchus GN=WDR91 PE=2 SV=1', 'CoiledCoil', '192', '213', '747'
+    ],
+    ['F7HUT5', '9483', 'E', 'Callithrix jacchus', 'disorder_prediction', 'mobidb-lite', '181', '206', '871'
+    ],
+    ['F7HVJ7', '9483', 'E', 'Callithrix jacchus', 'Keratin type II head', 'PF16208', '23', '96', '492'
+    ],
+    ['F7HZB4', '9483', 'E', 'Callithrix jacchus', 'disorder_prediction', 'mobidb-lite', '840', '876', '1219'
+    ],
+    ['F7I3C3', '9483', 'E', 'Callithrix jacchus', 'Peptidase M24', 'PF00557', '146', '443', '456'
+    ],
+    ['F7IIX1', '9483', 'E', 'Callithrix jacchus', 'Transmembrane protein 214', 'PF10151', '1', '410', '416'
+    ],
+    ['F7IKY0', '9483', 'E', 'Callithrix jacchus', 'Fascin domain', 'PF06268', '21', '115', '451'
+    ],
+    ['G1QK24', '61853', 'E', 'Nomascus leucogenys', 'Zinc finger A20-type', 'PF01754', '12', '35', '211'
+    ],
+    ['G1QWS8', '61853', 'E', 'Nomascus leucogenys', 'disorder_prediction', 'mobidb-lite', '341', '406', '544'
+    ],
+    ['G1SS10', '9986', 'E', 'Oryctolagus cuniculus', 'disorder_prediction', 'mobidb-lite', '397', '496', '728'
+    ],
+    ['G1TPA5', '9986', 'E', 'Oryctolagus cuniculus', 'RNA recognition motif domain', 'PF00076', '1', '37', '248'
+    ],
+    ['G1U8B9', '9986', 'E', 'Oryctolagus cuniculus', 'Exosome complex component CSL4', 'PF10447', '95', '135', '195'
+    ],
+    ['G3N2U3', '9913', 'E', 'Bos taurus', 'HTH CenpB-type DNA-binding domain', 'PF03221', '88', '151', '153'
+    ],
+    ['G6CNT4', '13037', 'E', 'Danaus plexippus', 'Antagonist of EGFR signalling Argos', 'PF11581', '112', '241', '275'
+    ],
+    ['G6CPA5', '13037', 'E', 'Danaus plexippus', 'Uncharacterized protein OS=Danaus plexippus GN=KGM_04612 PE=4 SV=1', 'LowComplexity', '136', '175', '242'
+    ],
+    ['G6CPK3', '13037', 'E', 'Danaus plexippus', 'Cytochrome P450', 'PF00067', '12', '445', '453'
+    ],
+    ['G6CTE9', '13037', 'E', 'Danaus plexippus', 'Lipase/vitellogenin', 'PF00151', '124', '380', 
+'410'
+    ],
+    ['G6D4S3', '13037', 'E', 'Danaus plexippus', 'disorder_prediction', 'mobidb-lite', '415', '485', '1470'
+    ],
+    ['G6D8N6', '13037', 'E', 'Danaus plexippus', 'Mediator complex subunit Med23', 'PF11573', '3', '1299', '1335'
+    ],
+    ['G6DCA3', '13037', 'E', 'Danaus plexippus', 'Serine proteases trypsin domain', 'PF00089', '22', '255', '260'
+    ],
+    ['G6DD60', '13037', 'E', 'Danaus plexippus', 'disorder_prediction', 'mobidb-lite', '1115', '1160', '1187'
+    ],
+    ['G6DL79', '13037', 'E', 'Danaus plexippus', 'Small GTPase superfamily', 'PF00071', '58', '248', '281'
+    ],
+    ['G6DTW5', '13037', 'E', 'Danaus plexippus', 'disorder_prediction', 'mobidb-lite', '1', '30', '217'
+    ],
+    ['H0VI08', '10141', 'E', 'Cavia porcellus', 'Fatty acid desaturase domain', 'PF00487', '6', '205', '256'
+    ],
+    ['H0W678', '10141', 'E', 'Cavia porcellus', 'disorder_prediction', 'mobidb-lite', '202', '228', '228'
+    ],
+    ['H0YSN4', '59729', 'E', 'Taeniopygia guttata', 'Thioredoxin domain', 'PF00085', 
+'22', '106', '175'
+    ],
+    ['H0YW85', '59729', 'E', 'Taeniopygia guttata', 'Vacuolar protein sorting-associated protein 13 second N-terminal 
+domain', 'PF16908', '137', '356', '3076'
+    ],
+    ['H0ZJU5', '59729', 'E', 'Taeniopygia guttata', 'GroES chaperonin family', 'PF00166', '8', '99', '101'
+    ],
+    ['H2LCK8', '8090', 'E', 'Oryzias latipes', 'disorder_prediction', 'mobidb-lite', '1', '51', '642'
+    ],
+    ['H2M1Q5', '8090', 'E', 'Oryzias latipes', 'Homeobox domain', 'PF00046', '18', '71', '188'
+    ],
+    ['H2MDZ9', '8090', 'E', 'Oryzias latipes', 'RNA recognition motif domain', 'PF00076', '15', '59', '61'
+    ],
+    ['H2MUJ8', '8090', 'E', 'Oryzias latipes', 'Uncharacterized protein OS=Oryzias latipes GN=LOC105356853 PE=4 SV=1', 'CoiledCoil', '273', '294', '545'
+    ],
+    ['H2N557', '9601', 'E', 'Pongo abelii', 'Potassium channel inwardly rectifying Kir', 'PF01007', '32', '341', '379'
+    ],
+    ['H2QYN1', '9598', 'E', 'Pan troglodytes', 'Uncharacterized protein OS=Pan troglodytes GN=SMC1A 
+PE=4 SV=1', 'CoiledCoil', '671', '696', '947'
+    ],
+    ['H2REQ1', '9598', 'E', 'Pan troglodytes', 'disorder_prediction', 'mobidb-lite', '207', '255', '422'
+    ],
+    ['H2RM38', '31033', 'E', 'Takifugu rubripes', 'GPCR family 3 C-terminal', 'PF00003', '579', '812', '834'
+    ],
+    ['H2RRM6', '31033', 'E', 'Takifugu rubripes', 'EGF-like conserved site', 'PF12661', '293', '311', '605'
+    ],
+    ['H2RUA3', '31033', 'E', 'Takifugu rubripes', 'Gelsolin-like domain', 'PF00626', '145', '215', '727'
+    ],
+    ['H2RZG5', '31033', 'E', 'Takifugu rubripes', 'Leucine-rich repeat', 'PF13516', '255', '277', '308'
+    ],
+    ['H2SG92', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', '557', '588', '759'
+    ],
+    ['H2SHG2', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', '1202', '1230', '2319'
+    ],
+    ['H2SJ35', '31033', 'E', 'Takifugu rubripes', 'FCH domain', 'PF00611', '20', '91', '418'
+    ],
+    ['H2SN95', '31033', 'E', 'Takifugu rubripes', 'Zinc finger LIM-type', 
+'PF00412', '298', '352', '414'
+    ],
+    ['H2SP18', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', '183', '254', '1209'
+    ],
+    ['H2SP65', '31033', 'E', 'Takifugu rubripes', 'Ras-associating (RA) domain', 'PF00788', '3', '61', '373'
+    ],
+    ['H2SP73', '31033', 'E', 'Takifugu rubripes', 'Spectrin repeat', 'PF00435', '823', '922', '2134'
+    ],
+    ['H2SRC9', '31033', 'E', 'Takifugu rubripes', 'Pleckstrin homology domain', 'PF00169', '345', '433', '468'
+    ],
+    ['H2SW18', '31033', 'E', 'Takifugu rubripes', 'Uncharacterized protein OS=Takifugu rubripes GN=RPGRIP1 PE=4 SV=1', 'CoiledCoil', '360', '395', '1235'
+    ],
+    ['H2SYI6', '31033', 'E', 'Takifugu rubripes', 'ABC transporter-like', 'PF00005', '367', '516', '606'
+    ],
+    ['H2T2Z5', '31033', 'E', 'Takifugu rubripes', 'Cadherin', 'PF00028', '145', '238', '805'
+    ],
+    ['H2T4J6', '31033', 'E', 'Takifugu rubripes', 'Sushi/SCR/CCP domain', 'PF00084', '372', '436', '561'
+    ],
+    ['H2TDN7', '31033', 'E', 'Takifugu rubripes', 'Collagen triple helix repeat', 'PF01391', '1069', '1124', '1665'
+    ],
+    ['H2TFR9', '31033', 'E', 'Takifugu rubripes', 'Protein kinase 
+domain', 'PF00069', '663', '905', '936'
+    ],
+    ['H2TG79', '31033', 'E', 'Takifugu rubripes', 'Abl-interactor homeo-domain homologous domain', 'PF07815', '98', '162', '457'
+    ],
+    ['H2TII1', '31033', 'E', 'Takifugu rubripes', 'Uncharacterized protein (Fragment) OS=Takifugu rubripes GN=LOC101064982 PE=4 SV=1', 'CoiledCoil', '136', '160', '242'
+    ],
+    ['H2TJM2', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 
+'mobidb-lite', '545', '575', '764'
+    ],
+    ['H2TK49', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', '289', '402', 
+'1329'
+    ],
+    ['H2TKC1', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', '1102', '1124', '1278'
+    ],
+    ['H2TKF3', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', '3360', '3380', '4589'
+    ],
+    ['H2TT60', '31033', 'E', 'Takifugu rubripes', 'BTB/POZ domain', 'PF00651', '3', '76', '579'
+    ],
+    ['H2TUS6', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', 
+'231', '252', '762'
+    ],
+    ['H2TVV8', '31033', 'E', 'Takifugu rubripes', 'Protein kinase C-like phorbol ester/diacylglycerol-binding domain', 'PF00130', '12', '63', '478'
+    ],
+    ['H2U0W7', '31033', 'E', 'Takifugu rubripes', 'Regulator of chromosome condensation RCC1', 'PF00415', 
+'264', '312', '727'
+    ],
+    ['H2U5V1', '31033', 'E', 'Takifugu rubripes', 'Aminotransferase class I/classII', 'PF00155', '39', '416', '432'
+    ],
+    ['H2UBY6', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', '826', '851', '1141'
+    ],
+    ['H2UGK3', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', '37', '62', '369'
+    ],
+    ['H2UGQ6', '31033', 'E', 'Takifugu rubripes', 'Dual specificity phosphatase catalytic domain', 'PF00782', '186', '315', '318'
+    ],
+    ['H2UHP9', '31033', 'E', 'Takifugu rubripes', 'Uncharacterized protein OS=Takifugu rubripes GN=mboat2 PE=3 SV=1', 'LowComplexity', '333', '345', '360'
+    ],
+    ['H2UKI4', '31033', 'E', 'Takifugu rubripes', 'Nebulin repeat', 'PF00880', '1470', '1498', '3005'
+    ],
+    ['H2UM39', '31033', 'E', 'Takifugu rubripes', 'Leucine-rich glioma-inactivated  EPTP repeat', 'PF03736', '474', '520', '676'
+    ],
+    ['H2UPV9', '31033', 'E', 'Takifugu rubripes', 'Ryanodine receptor Ryr', 'PF02026', '2776', '2865', '5074'
+    ],
+    ['H2URG8', '31033', 'E', 'Takifugu rubripes', 'Adenylyl cyclase class-3/4/guanylyl cyclase', 'PF00211', '106', '266', '820'
+    ],
+    ['H2UU64', '31033', 'E', 'Takifugu rubripes', 'Retinoblastoma-associated protein A-box', 'PF01858', '194', '402', '750'
+    ],
+    ['H2UYI6', '31033', 'E', 'Takifugu rubripes', 'Alpha carbonic anhydrase', 'PF00194', '12', '273', '2148'
+    ],
+    ['H2V3H5', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', '278', '301', '391'
+    ],
+    ['H2V9K8', '31033', 'E', 'Takifugu rubripes', 'Ankyrin repeat-containing domain', 'PF12796', '40', '106', '252'
+    ],
+    ['H2VA56', '31033', 'E', 'Takifugu rubripes', 'Syndecan/Neurexin domain', 'PF01034', '1605', '1644', '1685'
+    ],
+    ['H2VB50', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', '154', '195', '430'
+    ],
+    ['H2VDG8', '31033', 'E', 'Takifugu rubripes', 'disorder_prediction', 'mobidb-lite', '383', '411', '973'
+    ],
+    ['H2VYF1', '281687', 'E', 'Caenorhabditis japonica', 'Piwi domain', 'PF02171', '513', '829', '867'
+    ],
+    ['H2W1S4', '281687', 'E', 'Caenorhabditis japonica', 'Uncharacterised  oxidoreductase Dhs-27', 'PF07914', '3', '415', '428'
+    ],
+    ['H2WIR3', '281687', 'E', 'Caenorhabditis japonica', 'Regulator of chromosome condensation RCC1', 'PF00415', '561', '582', '860'
+    ],
+    ['H2X452', '281687', 'E', 'Caenorhabditis japonica', 'Tc3 transposase DNA binding domain', 'PF11427', '7', '50', '153'
+    ],
+    ['H2X6V3', '281687', 'E', 'Caenorhabditis japonica', 'MIF4G-like type 3', 'PF02854', '125', '319', '610'
+    ],
+    ['H3E4J7', '54126', 'E', 'Pristionchus pacificus', 'UDP-glucuronosyl/UDP-glucosyltransferase', 'PF00201', '10', '163', 
+'634'
+    ],
+    ['H3EEN8', '54126', 'E', 'Pristionchus pacificus', 'Vacuolar protein sorting 55', 'PF04133', '1', '87', '97'
+    ],
+    ['H3EKD8', '54126', 'E', 'Pristionchus pacificus', 'Transposase type 1', 'PF01359', '119', '171', '286'
+    ],
+    ['H3EL30', '54126', 'E', 'Pristionchus pacificus', 'disorder_prediction', 'mobidb-lite', '2004', '2160', '2439'
+    ],
+    ['H3ET35', '54126', 'E', 'Pristionchus pacificus', 'disorder_prediction', 'mobidb-lite', '302', '326', '454'
+    ],
+    ['H3EZM1', '54126', 'E', 'Pristionchus pacificus', 'disorder_prediction', 'mobidb-lite', '76', '138', '435'
+    ],
+    ['H9Z4Y1', '9544', 'E', 'Macaca mulatta', 'Izumo sperm-egg fusion protein', 'PF15005', '17', '158', '219'
+    ],
+    ['I1F109', '400682', 'E', 'Amphimedon queenslandica', 'Fibronectin type III', 'PF00041', '461', '542', '932'
+    ],
+    ['I1F7E2', '400682', 'E', 'Amphimedon queenslandica', 'Multicopper oxidase type 2', 'PF07731', '516', '673', '746'
+    ],
+    ['I1FHZ4', '400682', 'E', 'Amphimedon queenslandica', 'IBR domain', 'PF01485', '375', '462', '795'
+    ],
+    ['I1FJD2', '400682', 'E', 'Amphimedon queenslandica', 'Orn/DAP/Arg decarboxylase 2 
+N-terminal', 'PF02784', '54', '281', '459'
+    ],
+    ['I1FK44', '400682', 'E', 'Amphimedon queenslandica', 'Receptor ligand binding region', 'PF01094', '208', '407', '814'
+    ],
+    ['I1FST5', '400682', 'E', 'Amphimedon queenslandica', 'Uncharacterised protein family UPF0573/UPF0605', 
+'PF10629', '5', '57', '190'
+    ],
+    ['I1FWH0', '400682', 'E', 'Amphimedon queenslandica', 'disorder_prediction', 'mobidb-lite', '239', '276', '381'
+    ],
+    ['I1G153', '400682', 'E', 'Amphimedon queenslandica', 'Zinc finger TFIIS-type', 'PF01096', '89', '129', '130'
+    ],
+    ['I1G7Q8', '400682', 'E', 'Amphimedon queenslandica', 'Thyroglobulin type-1', 'PF00086', '632', '673', '1485'
+    ],
+    ['I1GA16', '400682', 'E', 'Amphimedon queenslandica', 'Signal recognition particle SRP54 subunit M-domain', 'PF02978', '326', '431', '501'
+    ],
+    ['I1GAL3', '400682', 'E', 'Amphimedon queenslandica', 'Tubulin-tyrosine ligase/Tubulin polyglutamylase', 'PF03133', '671', '860', '1095'
+    ],
+    ['I1GCJ3', '400682', 'E', 'Amphimedon queenslandica', 'Phosphatidylinositol 3-kinase C2 domain', 'PF00792', '59', '202', '985'
+    ],
+    ['I1GD93', '400682', 'E', 'Amphimedon queenslandica', 'Uncharacterized protein OS=Amphimedon queenslandica PE=4 SV=1', 'CoiledCoil', '578', '606', '1460'
+    ],
+    ['I1H0U4', '15368', 'E', 'Brachypodium distachyon', 'ABC transporter-like', 'PF00005', '755', '889', '1460'
+    ],
+    ['I1HGM3', '15368', 'E', 'Brachypodium distachyon', 'Non-haem dioxygenase N-terminal domain', 'PF14226', '52', '173', '393'
+    ],
+    ['I1HQX0', '15368', 'E', 'Brachypodium distachyon', 'Uncharacterized protein OS=Brachypodium distachyon PE=3 SV=1', 'CoiledCoil', '1264', '1292', '2261'
+    ],
+    ['I1HTA5', '15368', 'E', 'Brachypodium distachyon', 'disorder_prediction', 'mobidb-lite', '263', '282', '282'
+    ],
+    ['I1I6T5', '15368', 'E', 'Brachypodium distachyon', 'Pentatricopeptide repeat', 'PF01535', '251', '277', '920'
+    ],
+    ['I1IBA3', '15368', 'E', 'Brachypodium distachyon', 'disorder_prediction', 'mobidb-lite', '589', '614', '731'
+    ],
+    ['I1IBH5', '15368', 'E', 'Brachypodium distachyon', 'SET domain', 'PF00856', '33', '138', '258'
+    ],
+    ['I1IQ00', '15368', 'E', 'Brachypodium distachyon', 'disorder_prediction', 'mobidb-lite', '385', '429', '914'
+    ],
+    ['I1IUC5', '15368', 'E', 'Brachypodium distachyon', 'Calcineurin-like phosphoesterase domain ApaH type', 'PF00149', '231', '424', '528'
+    ],
+    ['I1J2E5', '15368', 'E', 'Brachypodium distachyon', 'Glycoside hydrolase family 3 N-terminal', 'PF00933', '117', '359', '772'
+    ],
+    ['I1MG28', '3847', 'E', 'Glycine max', 'Glycoside hydrolase family 3 N-terminal', 'PF00933', '50', '376', '661'
+    ],
+    ['I1MUL3', '3847', 'E', 'Glycine max', 'Initiation factor eIF-4 gamma MA3', 'PF02847', '399', '508', '680'
+    ],
+    ['I3IUD7', '8128', 'E', 'Oreochromis niloticus', 'disorder_prediction', 'mobidb-lite', '557', '633', '633'
+    ],
+    ['I3J739', '8128', 'E', 'Oreochromis niloticus', 'Homeobox domain', 'PF00046', '247', '303', '375'
+    ],
+    ['I3JJK7', '8128', 'E', 'Oreochromis niloticus', 'GPCR family 2 secretin-like', 'PF00002', '157', '389', '467'
+    ],
+    ['I3K8S4', '8128', 'E', 'Oreochromis niloticus', 'Caudal-like activation domain', 'PF04731', '14', '155', '287'
+    ],
+    ['I3LJD1', '9823', 'E', 'Sus scrofa', 
+'Zinc finger MIZ-type', 'PF02891', '691', '739', '1021'
+    ],
+    ['I3LT14', '9823', 'E', 'Sus scrofa', 'disorder_prediction', 'mobidb-lite', '143', '187', '456'
+    ],
+    ['I3LV12', '9823', 'E', 'Sus scrofa', 'Protein phosphatase inhibitor 2 (IPP-2)', 'PF04979', '5', '119', '147'
+    ],
+    ['K4AVP6', '4081', 'E', 'Solanum lycopersicum', 'Syntaxin N-terminal domain', 'PF00804', '6', '187', '253'
+    ],
+    ['K4AZ19', '4081', 'E', 'Solanum lycopersicum', 'CCR4-NOT transcription complex subunit 1 HEAT repeat', 'PF16418', '475', '590', '2411'
+    ],
+    ['K4B064', '4081', 'E', 'Solanum lycopersicum', 'Pre-rRNA-processing protein TSR2', 'PF10273', '1', '64', '170'
+    ],
+    ['K4B5S9', '4081', 'E', 'Solanum lycopersicum', 'disorder_prediction', 'mobidb-lite', '738', '761', '761'
+    ],
+    ['K4B7T2', '4081', 'E', 'Solanum lycopersicum', 'Pentatricopeptide repeat', 'PF13041', '619', '666', '853'
+    ],
+    ['K4BBD7', '4081', 'E', 'Solanum lycopersicum', 'Wall-associated receptor kinase C-terminal', 'PF14380', '162', '236', '280'
+    ],
+    ['K4BG52', '4081', 'E', 'Solanum lycopersicum', 'Thiamine pyrophosphate enzyme central domain', 'PF00205', 
+'279', '411', '659'
+    ],
+    ['K4BL70', '4081', 'E', 'Solanum lycopersicum', 'Formin-like protein OS=Solanum lycopersicum PE=3 SV=1', 'CoiledCoil', '484', '505', '520'
+    ],
+    ['K4BRE9', '4081', 'E', 'Solanum lycopersicum', 'Uncharacterized protein OS=Solanum lycopersicum PE=3 SV=1', 'CoiledCoil', '793', '814', '1269'
+    ],
+    ['K4BU47', '4081', 'E', 'Solanum lycopersicum', 'Phosphoglucose isomerase (PGI)', 'PF00342', '478', '538', '617'
+    ],
+    ['K4BUR9', '4081', 'E', 'Solanum lycopersicum', 'WD40 repeat', 'PF00400', '292', '331', '592'
+    ],
+    ['K4C662', '4081', 'E', 'Solanum lycopersicum', 'disorder_prediction', 'mobidb-lite', '37', '58', '1138'
+    ],
+    ['K4C7K1', '4081', 'E', 'Solanum lycopersicum', 
+'DM13 domain', 'PF10517', '47', '144', '901'
+    ],
+    ['K4CGW5', '4081', 'E', 'Solanum lycopersicum', 'Pentatricopeptide repeat', 'PF01535', '523', '549', '617'
+    ],
+    ['K4CJS9', '4081', 'E', 'Solanum lycopersicum', 'Pentatricopeptide repeat', 'PF13041', '75', '124', '585'
+    ],
+    ['K4CTL7', '4081', 'E', 'Solanum lycopersicum', 'Nuclear transport factor 2', 'PF02136', '13', '129', '474'
+    ],
+    ['K4DCL5', '4081', 'E', 'Solanum lycopersicum', 'Malectin', 'PF11721', '169', '311', '1162'
+    ],
+    ['K7ASA5', '9598', 'E', 'Pan troglodytes', 'Spectrin repeat', 'PF00435', '4406', '4506', '5171'
+    ],
+    ['K7GRI2', '9823', 'E', 'Sus scrofa', 'Peptidase C19 ubiquitin carboxyl-terminal hydrolase', 'PF00443', '39', '72', '76'
+    ],
+    ['K7HEF3', '281687', 'E', 'Caenorhabditis japonica', 'High mobility group box domain', 'PF00505', '93', '143', '511'
+    ],
+    ['K7HKL6', '281687', 'E', 'Caenorhabditis japonica', 'Cleft lip and palate transmembrane 1', 'PF05602', '2', '191', '191'
+    ],
+    ['K7HZU0', '281687', 'E', 'Caenorhabditis japonica', 'SNF2-related N-terminal domain', 'PF00176', '1', '195', '196'
+    ],
+    ['K7KD18', '3847', 'E', 'Glycine max', 'Serine-threonine/tyrosine-protein kinase catalytic domain', 'PF07714', '495', '773', '819'
+    ],
+    ['K7KQ94', '3847', 'E', 'Glycine max', 'Signal transduction response regulator receiver domain', 'PF00072', '1', '57', '512'
+    ],
+    ['K7KUT8', '3847', 'E', 'Glycine max', 'Tetratricopeptide-like helical domain', 'PF13374', '400', '434', '474'
+    ],
+    ['K7LAY4', '3847', 'E', 'Glycine max', 'RNA recognition motif 
+domain', 'PF00076', '20', '55', '279'
+    ],
+    ['K7LYR5', '3847', 'E', 'Glycine max', 'Xanthine/uracil/vitamin C permease', 'PF00860', '65', '288', '378'
+    ],
+    ['K7M4X5', '3847', 'E', 'Glycine max', 'Serine-threonine/tyrosine-protein kinase catalytic domain', 'PF07714', '56', '323', '353'
+    ],
+    ['K7N3V8', '3847', 'E', 'Glycine max', 'Legume lectin domain', 'PF00139', '142', '195', '528'
+    ],
+    ['M3WD97', '9685', 'E', 'Felis catus', 'disorder_prediction', 'mobidb-lite', '838', '880', '1107'
+    ],
+    ['M3WW83', '9685', 'E', 'Felis catus', 'PTB/PI domain', 'PF00640', '19', '141', '280'
+    ],
+    ['M3X0T7', '9685', 'E', 'Felis catus', 'Immunoglobulin V-set domain', 'PF07686', '5', '106', '111'
+    ],
+    ['M3X3G1', '9685', 'E', 'Felis catus', 'Tubulin/FtsZ GTPase domain', 'PF00091', '37', '247', '482'
+    ],
+    ['M3X3P7', '9685', 'E', 'Felis catus', 'disorder_prediction', 'mobidb-lite', '192', '242', '325'
+    ],
+    ['M4ARS5', '8083', 'E', 'Xiphophorus maculatus', 'Zinc finger C3HC4 RING-type', 'PF00097', '11', '53', '455'
+    ],
+    ['M4ASZ3', '8083', 'E', 'Xiphophorus maculatus', 'Fibronectin type III', 'PF16794', '667', '766', '776'
+    ],
+    ['Q4XJY3', '5825', 'E', 'Plasmodium chabaudi', 'disorder_prediction', 'mobidb-lite', '1', '20', '85'
+    ],
+    ['U1M3Z0', '6253', 'E', 'Ascaris suum', 'Calponin homology domain', 'PF00307', '35', '150', '930'
+    ],
+    ['U1M615', '6253', 'E', 'Ascaris suum', 'NADH:ubiquinone oxidoreductase NDUFB5/SGDH subunit', 'PF09781', '36', '166', '184'
+    ],
+    ['U1MEL6', '6253', 'E', 'Ascaris suum', 'Dipeptidylpeptidase IV N-terminal domain', 'PF00930', '214', '408', '813'
+    ],
+    ['U1MFU9', '6253', 'E', 'Ascaris suum', 'Gelsolin-like domain', 'PF00626', '372', '446', '887'
+    ],
+    ['U1MTZ0', '6253', 'E', 'Ascaris suum', 'Aminoacyl-tRNA synthetase class Ia', 'PF00133', '21', '645', '1151'
+    ],
+    ['U1NAC4', '6253', 'E', 'Ascaris suum', 'disorder_prediction', 'mobidb-lite', '150', '176', '720'
+    ],
+    ['U1NC72', '6253', 'E', 'Ascaris suum', 'Rb1-inducible coiled-coil protein 1 OS=Ascaris suum GN=ASU_11768 PE=4 SV=1', 'CoiledCoil', '789', '831', '1198'
+    ],
+    ['U1NPL2', '6253', 'E', 'Ascaris 
+suum', 'disorder_prediction', 'mobidb-lite', '62', '86', '1251'
+    ],
+    ['U3IJ21', '8839', 'E', 'Anas platyrhynchos', 'Receptor L-domain', 'PF01030', '33', '142', '173'
+    ],
+    ['U5FJ77', '3694', 'E', 'Populus trichocarpa', 'AP180 N-terminal homology (ANTH) domain', 'PF07651', '34', '308', '566'
+    ],
+    ['U5FNC6', '3694', 'E', 'Populus trichocarpa', 'UDP-glucuronosyl/UDP-glucosyltransferase', 'PF00201', '236', '397', '478'
+    ],
+    ['U5FNK3', '3694', 'E', 'Populus trichocarpa', 'Acyl-CoA dehydrogenase/oxidase N-terminal', 'PF02771', '119', '228', '429'
+    ],
+    ['U5G014', '3694', 'E', 'Populus trichocarpa', 'disorder_prediction', 'mobidb-lite', '448', '467', '467'
+    ],
+    ['U5GB99', '3694', 'E', 'Populus trichocarpa', 'UVR domain', 'PF02151', '301', '330', '335'
+    ],
+    ['U5GG86', '3694', 'E', 'Populus trichocarpa', 'Major facilitator  sugar 
+transporter-like', 'PF00083', '43', '467', '474'
+    ],
+    ['U5GH92', '3694', 'E', 'Populus trichocarpa', 'CBS domain', 'PF00571', '678', '727', '743'
+    ],
+    ['U5GIR2', '3694', 'E', 'Populus trichocarpa', 'Pentatricopeptide repeat', 'PF01535', '257', '280', '609'
+    ],
+    ['U6NML4', '6289', 'E', 'Haemonchus contortus', 'Transthyretin-like', 'PF01060', '29', '104', '138'
+    ],
+    ['U6NQB7', '6289', 'E', 'Haemonchus contortus', 'disorder_prediction', 'mobidb-lite', '260', '298', '445'
+    ],
+    ['U6NR39', '6289', 'E', 'Haemonchus contortus', 'disorder_prediction', 'mobidb-lite', '120', '295', '312'
+    ],
+    ['U6NRG4', '6289', 'E', 'Haemonchus contortus', 'Glutaredoxin', 'PF00462', '139', '202', '341'
+    ],
+    ['U6NT35', '6289', 'E', 'Haemonchus contortus', 'Reverse transcriptase domain', 'PF00078', '9', '67', '76'
+    ],
+    ['U6NTQ9', '6289', 'E', 'Haemonchus contortus', 'Aminotransferase class I/classII', 'PF00155', '170', '528', '552'
+    ],
+    ['U6NUC4', '6289', 'E', 'Haemonchus contortus', 'Zinc finger NF-X1-type', 'PF01422', '563', '584', '1172'
+    ],
+    ['U6NUT7', '6289', 'E', 'Haemonchus contortus', 'Sodium/solute symporter', 'PF00474', '47', '373', '380'
+    ],
+    ['U6NVE6', '6289', 'E', 'Haemonchus contortus', 'Nucleotide-sugar transporter', 'PF04142', '9', '377', '406'
+    ],
+    ['U6P7S7', '6289', 'E', 'Haemonchus contortus', 'PPM-type phosphatase domain', 'PF00481', '255', '350', '841'
+    ],
+    ['U6PH59', '6289', 'E', 'Haemonchus contortus', 'Thioredoxin domain', 'PF00085', '28', '131', '420'
+    ],
+    ['U6PX02', '6289', 'E', 'Haemonchus contortus', 'Kelch repeat type 1', 'PF01344', '267', '305', '320'
+    ],
+    ['W4ZR89', '4565', 'E', 'Triticum aestivum', 'SET domain', 'PF00856', '518', '651', '674'
+    ],
+    ['W4ZXB2', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '386', '413', '413'
+    ],
+    ['W5A2C0', '4565', 'E', 'Triticum aestivum', 'Late embryogenesis abundant protein LEA', 'PF02987', '60', '102', '212'
+    ],
+    ['W5AR59', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '1', '23', '394'
+    ],
+    ['W5BF69', '4565', 'E', 'Triticum aestivum', 'MoaB/Mog domain', 'PF00994', '181', '328', '659'
+    ],
+    ['W5E8P2', '4565', 'E', 'Triticum aestivum', 'Domain of unknown function DUF4378', 'PF14309', '701', '845', '852'
+    ],
+    ['W5EDP5', '4565', 'E', 'Triticum aestivum', 'Glycosyltransferase subfamily 4-like N-terminal domain', 'PF13579', '213', '425', '1060'
+    ],
+    ['W5ESC1', '4565', 'E', 'Triticum aestivum', 'disorder_prediction', 'mobidb-lite', '1', '26', '440'
+    ],
+    ['W5FJT1', '4565', 'E', 'Triticum aestivum', 'Alcohol dehydrogenase C-terminal', 'PF00107', '100', '221', '274'
+    ],
+    ['W5GVC2', '4565', 'E', 'Triticum aestivum', 'Uncharacterized protein OS=Triticum aestivum PE=4 SV=1', 'CoiledCoil', '1394', '1429', '1662'
+    ],
+    ['W5H443', '4565', 'E', 'Triticum aestivum', 'PPC domain', 'PF03479', '117', '229', '309'
+    ],
+    ['W5KC87', '7994', 'E', 'Astyanax mexicanus', 'Sel1-like repeat', 'PF08238', '109', '144', '229'
+    ],
+    ['W5KGY7', '7994', 'E', 'Astyanax mexicanus', 'disorder_prediction', 'mobidb-lite', '102', '157', '157'
+    ],
+    ['X6R787', '9606', 'E', 'Homo sapiens', 'Phosphatidic acid phosphatase type 2/haloperoxidase', 'PF01569', '75', '216', '261'
+    ]
+]
