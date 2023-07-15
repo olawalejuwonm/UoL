@@ -1,19 +1,39 @@
+{% load django_bootstrap5 %}
+
+
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Protein API</title>
 </head>
+
 <body>
-    <h1>Welcome to the Protein API</h1>
-    <p>This API allows you to access information about proteins and their domains.</p>
-    <h2>Endpoints:</h2>
-    <ul>
-        <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/" target="_blank">POST https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/</a> - add a new record</li>
-        <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/A0A016S8J7" target="_blank">GET  https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/[PROTEIN ID]</a> - return the protein sequence and all we know about it</li>
-        <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfam/PF00360" target="_blank">GET  https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfam/[PFAM ID]</a> - return the domain and it's description</li>
-        <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/proteins/55661" target="_blank">GET  https://bio-science-research-eb2589b82ae4.herokuapp.com/api/proteins/[TAXA ID]</a> - return a list of all proteins for a given organism</li>
-        <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfams/55661" target="_blank">GET  https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfams/[TAXA ID]</a> - return a list of all domains in all the proteins for a given organism</li>
-        <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/coverage/" target="_blank">GET  https://bio-science-research-eb2589b82ae4.herokuapp.com/api/coverage/[PROTEIN ID]</a> - return the domain coverage for a given protein</li>
-    </ul>
+    <div class="container">
+        <h1 class="mt-5">Welcome to the Protein API</h1>
+        <p class="lead">This API allows you to access information about proteins and their domains.</p>
+        <h2 class="mt-5">Endpoints:</h2>
+        <ul>
+            <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/" target="_blank">POST
+                    https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/</a> - add a new record</li>
+            <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/A0A016S8J7"
+                    target="_blank">GET https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/[PROTEIN
+                    ID]</a> - return the protein sequence and all we know about it</li>
+            <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfam/PF00360" target="_blank">GET
+                    https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfam/[PFAM ID]</a> - return the domain
+                and it's description</li>
+            <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/proteins/55661" target="_blank">GET
+                    https://bio-science-research-eb2589b82ae4.herokuapp.com/api/proteins/[TAXA ID]</a> - return a list
+                of all proteins for a given organism</li>
+            <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfams/55661" target="_blank">GET
+                    https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfams/[TAXA ID]</a> - return a list of
+                all domains in all the proteins for a given organism</li>
+            <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/coverage/A0A016S8J7/" target="_blank">GET
+                    https://bio-science-research-eb2589b82ae4.herokuapp.com/api/coverage/[PROTEIN ID]</a> - return the
+                domain coverage for a given protein</li>
+        </ul>
+    </div>
+
 </body>
+
 </html>

@@ -1,7 +1,5 @@
 Welcome to my learning hub for programming course at UoL
 
-
-
 These are my notes using VS Code:
 1. Create a folder and open with VSCode
 C:\Users\...\APItutorial
@@ -65,18 +63,3 @@ python manage.py dbshell
 .tables
 .schema --indent api_app_user
 // to exit Ctrl+D
-
-
-ALgorithm And Data Scructure - Developed A Sudoku App
-
-
-Google IT Automation With Python 
-
-Intro To Programming 1
-To access sleuth: https://nbaqyoar.labs.coursera.org/
-type summary.status = "pro"
-https://olawalejuwonm.github.io/Game/rubies/
-
-Intro to Programming 2
-
-Web Development

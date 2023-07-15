@@ -9,22 +9,21 @@ from rest_framework import generics
 from rest_framework import mixins
 
 
-
-
 @api_view(['GET'])
 def organismProteins(request, pk):
     return Response(PfamService.proteins_by_taxa_id(pk))
 
+
 @api_view(['GET'])
 def coverage(request, pk):
-    return Response(PfamService.coverage(pk))
+    return Response({"coverage": PfamService.coverage(pk)})
 
 
 class ProteinDetail(mixins.CreateModelMixin,
-                 mixins.RetrieveModelMixin,
-                 mixins.UpdateModelMixin,
-                 mixins.DestroyModelMixin,
-                 generics.GenericAPIView):
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    mixins.DestroyModelMixin,
+                    generics.GenericAPIView):
     # queryset = Detail.objects.all()
     serializer_class = ProteinSerializer
 
@@ -39,8 +38,6 @@ class ProteinDetail(mixins.CreateModelMixin,
 
     # def put(self, request, *args, **kwargs):
     #     return self.update(request, *args, **kwargs)
-    
-    def get_queryset(self):        
+
+    def get_queryset(self):
         return Model.Detail.objects.get(pk=self.kwargs.get('pk'))
-
-
