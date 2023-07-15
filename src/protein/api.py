@@ -42,3 +42,5 @@ class ProteinDetail(mixins.CreateModelMixin,
     
     def get_queryset(self):        
         return Model.Detail.objects.get(pk=self.kwargs.get('pk'))
+
+
