@@ -22,4 +22,6 @@ private:
     void addBid(double price, double quantity);
 
     void addAsk(double price, double quantity);
+
+    std::string currentTime;
 };

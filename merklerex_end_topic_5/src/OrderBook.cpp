@@ -111,6 +111,10 @@ std::string OrderBook::getPreviousTime(std::string timestamp)
         {
             previous_timestamp = e.timestamp;
         }
+        else if (e.timestamp >= timestamp)
+        {
+            break;
+        }
     }
     if (previous_timestamp == "")
     {
@@ -131,6 +135,10 @@ std::vector<std::string> OrderBook::getPreviousTimes(std::string timestamp)
             {
                 previous_timestamps.push_back(e.timestamp);
             }
+        }
+        else if (e.timestamp >= timestamp)
+        {
+            break;
         }
     }
     return previous_timestamps;

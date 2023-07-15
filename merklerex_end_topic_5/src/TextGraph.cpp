@@ -3,18 +3,23 @@
 
 TextGraph::TextGraph(OrderBook orderBook, std::string currentTime, std::string product)
 {
-    std::vector<OrderBookEntry> orders = orderBook.getOrders(OrderBookType::bid, product, currentTime);
-    for (OrderBookEntry &order : orders)
+    std::vector<OrderBookEntry> ordersBidded = orderBook.getOrders(OrderBookType::bid, product, currentTime);
+    for (OrderBookEntry &order : ordersBidded)
     {
-        if (order.orderType == OrderBookType::bid)
-        {
-            addBid(order.price, order.amount);
-        }
-        else if (order.orderType == OrderBookType::ask)
-        {
-            addAsk(order.price, order.amount);
-        }
+
+        addBid(order.price, order.amount);
     }
+
+    std::vector<OrderBookEntry> ordersAsked = orderBook.getOrders(OrderBookType::ask, product, currentTime);
+    for (OrderBookEntry &order : ordersAsked)
+    {
+
+        addAsk(order.price, order.amount);
+    }
+    currentTime = currentTime;
+
+    std::cout << "Total bids: " << bids.size() << "\n";
+    std::cout << "Total asks: " << asks.size() << "\n";
 }
 
 void TextGraph::addBid(double price, double quantity)
@@ -60,4 +65,6 @@ void TextGraph::printGraph()
         }
         std::cout << "\n";
     }
+
+
 }
