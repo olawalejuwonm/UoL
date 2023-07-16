@@ -24,7 +24,7 @@ from pfam import views as pfam_views
 
 urlpatterns = [
     path('', pfam_views.Home.as_view(), name='index'),
-    path('api/protein/', protein_views.ProteinCreate.as_view(), name='protein_api'),
+    path('api/protein/', protein_views.ProteinCreate.as_view(), name='create_protein_api'),
     path('api/protein/<str:pk>/', protein_api.ProteinDetail.as_view(), name='protein_api'),
     path('api/proteins/<int:pk>/', protein_api.organismProteins, name='proteins_api'),
     path('api/pfam/<str:pk>/', pfam_api.domainDetails, name='pfam_api'),
