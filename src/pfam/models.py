@@ -9,6 +9,7 @@ class Domain(models.Model):
     blank=False, db_index=True, primary_key=True) # db_index=True so that it is
     # indexed in the database and can be searched quickly
     # It was made primary key because it is unique all through the record
+    # according to query optimization documented at https://docs.djangoproject.com/en/4.2/topics/db/optimization/
     domain_description = models.CharField(max_length=256, null=False,
     blank=False)
 
@@ -21,6 +22,11 @@ class Domain(models.Model):
 class DomainAnnotation(models.Model):
     """
     A model representing a domain annotation in the Pfam database.
+    #protein and pfam are named as such because i noticed that when i named 
+    #them protein_id and pfam_id respectively, it was automatically sufficed with _id
+    # and this could cause unexpected behaviour and also naming them without the
+    # _id suffix makes it intuitive to understand that they could have their 
+    # own data too in form of dictionaries
     """
     protein = models.ForeignKey(Detail, on_delete=models.CASCADE, 
                             related_name='protein', null=False, blank=False)
@@ -54,6 +60,9 @@ class DomainAnnotation(models.Model):
     
     def save(self, *args, **kwargs):
         """
+        This function is used to split the name into genus and species
+        and assign them to the respective fields
+        Learnt this via https://docs.djangoproject.com/en/4.2/topics/db/models/#overriding-predefined-model-methods
         Overrides the save method to split the name into genus and species
         and assign them to the respective fields.
         """

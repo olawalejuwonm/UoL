@@ -20,8 +20,7 @@ from protein import api as protein_api
 from protein import views as protein_views
 from pfam import api as pfam_api
 from pfam import views as pfam_views
-# from django.conf.urls import handler404 # Documented at https://docs.djangoproject.com/en/4.2/topics/http/views/#customizing-error-views
-handler404 = "pfam.views.NotFound"
+
 
 urlpatterns = [
     path('', pfam_views.Home.as_view(), name='index'),
