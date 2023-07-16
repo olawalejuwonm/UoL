@@ -19,12 +19,12 @@ def coverage(request, pk):
     return Response({"coverage": PfamService.coverage(pk)})
 
 
+
 class ProteinDetail(mixins.CreateModelMixin,
                     mixins.RetrieveModelMixin,
                     mixins.UpdateModelMixin,
                     mixins.DestroyModelMixin,
                     generics.GenericAPIView):
-    # queryset = Detail.objects.all()
     serializer_class = ProteinSerializer
 
     def post(self, request, *args, **kwargs):

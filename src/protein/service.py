@@ -2,16 +2,6 @@ from protein.serializers import ProteinSerializer
 from protein.models import Detail
 import pfam.service as PfamService
 
-# def createProteinDetail(detail):
-#     try:
-#         protein = Detail.objects.get(pk=detail['id'])
-#         protein.name = detail['name']
-#         protein.organism = detail['organism']
-#         protein.sequence = detail['sequence']
-#         protein.save()
-#     except Detail.DoesNotExist:
-#         protein = Detail.objects.create(**detail)
-#     return protein
 
 def getProteinById(id):
     try:
