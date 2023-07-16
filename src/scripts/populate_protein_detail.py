@@ -1,4 +1,6 @@
+# I wrote this code
 # Import the csv, os, sys, and django modules
+from protein.models import Detail as ProteinDetail
 import csv
 import os
 import sys
@@ -14,7 +16,8 @@ django_project_dir = os.path.normpath(os.path.join(dirname, '../'))
 
 # ../datas/assignment_data_sequences.csv
 # Get the path of the CSV file by joining the current directory with '../../datas/assignment_data_sequences.csv'
-csv_file = os.path.normpath(os.path.join(dirname, '../../datas/assignment_data_sequences.csv'))
+csv_file = os.path.normpath(os.path.join(
+    dirname, '../../datas/assignment_data_sequences.csv'))
 
 # Print the directory of the Django project and the path of the CSV file
 print("django_project_dir: ", django_project_dir)
@@ -31,7 +34,6 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cell.settings')
 django.setup()
 
 # Import the Detail model from the protein app
-from protein.models import Detail as ProteinDetail
 
 # Delete all records from the Detail table
 ProteinDetail.objects.all().delete()
@@ -50,8 +52,11 @@ with open(csv_file, 'r') as f:
         if row[0] == '':
             continue
         # Create a new ProteinDetail object with the protein_id and sequence fields set to the values in the current row
-        protein_detail = ProteinDetail.objects.create(protein_id=row[0], sequence=row[1])
+        protein_detail = ProteinDetail.objects.create(
+            protein_id=row[0], sequence=row[1])
         # Print the new ProteinDetail object
         print("protein_detail: ", protein_detail)
     # Print a success message after all rows have been processed
     print("Successfully populated ProteinDetail table")
+
+# end of code I wrote

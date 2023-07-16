@@ -1,3 +1,4 @@
+# I wrote this code using lecture as reference
 # Import the csv, os, sys, and django modules
 import csv
 import os
@@ -76,3 +77,4 @@ with open(csv_file, 'r') as f:
     # Print a success message after all rows have been processed
     print("Successfully populated PfamDomainAnnotation table")
     print("Exception rows: ", exception_rows)
+# end of code I wrote

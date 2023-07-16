@@ -1,3 +1,4 @@
+# I wrote this code
 from django.views.generic.edit import CreateView
 from .models import Detail
 from .forms import ProteinDetailForm
@@ -17,6 +18,7 @@ class ProteinCreate(CreateView):
     template_name = 'create.html'
     form_class = ProteinDetailForm
     # Redirects to the view that displays the newly created object
+
     def get_success_url(self):
         return reverse('protein_api', kwargs={'pk': self.object.pk})
-
+# end of code I wrote

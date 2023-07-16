@@ -1,4 +1,6 @@
+# I wrote this code
 # Import the csv, os, sys, and django modules
+from pfam.models import Domain as PfamDomain
 import csv
 import os
 import sys
@@ -14,7 +16,8 @@ django_project_dir = os.path.normpath(os.path.join(dirname, '../'))
 
 # ../datas/assignment_data_sequences.csv
 # Get the path of the CSV file by joining the current directory with '../../datas/assignment_data_sequences.csv'
-csv_file = os.path.normpath(os.path.join(dirname, '../../datas/pfam_descriptions.csv'))
+csv_file = os.path.normpath(os.path.join(
+    dirname, '../../datas/pfam_descriptions.csv'))
 
 # Print the directory of the Django project and the path of the CSV file
 print("django_project_dir: ", django_project_dir)
@@ -31,7 +34,6 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cell.settings')
 django.setup()
 
 # Import the Detail model from the pfam app
-from pfam.models import Domain as PfamDomain
 
 # Delete all records from the Domain table
 PfamDomain.objects.all().delete()
@@ -49,9 +51,11 @@ with open(csv_file, 'r') as f:
         if row[0] == '':
             continue
         # Create a new PfamDomain object with the protein_id and sequence fields set to the values in the current row
-        pfam_domain = PfamDomain.objects.create(domain_id=row[0], domain_description=row[1])
+        pfam_domain = PfamDomain.objects.create(
+            domain_id=row[0], domain_description=row[1])
         # Print the new PfamDomain object
         print("pfam_domain: ", pfam_domain)
     # Print a success message after all rows have been processed
     print("Successfully populated PfamDomain table")
 
+# end of code I wrote

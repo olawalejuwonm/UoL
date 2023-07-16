@@ -6,11 +6,12 @@
 from rest_framework import serializers
 from . import models as Model
 
+
 class ProteinSerializer(serializers.ModelSerializer):
     class Meta:
         model = Model.Detail
-        fields = '__all__' # This will serialize all fields in the model
-        
+        fields = '__all__'  # This will serialize all fields in the model
+
     def create(self, validated_data):
         # This calls the clean method in the model to validate the data
         # This is done because the clean method is not called when using the ModelSerializer

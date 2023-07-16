@@ -1,5 +1,5 @@
+<!-- This is the home page of the Cell API website. It provides information about the API endpoints and documentation. -->
 {% load django_bootstrap5 %}
-
 
 <!DOCTYPE html>
 <html>
@@ -10,25 +10,31 @@
 
 <body>
     <div class="container">
-        <h1 class="mt-5">Welcome to the Protein API</h1>
+        <h1 class="mt-5">Welcome to Cell API</h1>
 
         <p class="lead">This API allows you to access information about proteins and their domains.</p>
         <h2 class="mt-5">Endpoints:</h2>
         <ul>
+            <!-- This is the endpoint for adding a new protein record -->
             <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/" target="_blank">POST
                     https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/</a> - add a new record</li>
+            <!-- This is the endpoint for getting information about a specific protein -->
             <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/A0A016S8J7"
                     target="_blank">GET https://bio-science-research-eb2589b82ae4.herokuapp.com/api/protein/[PROTEIN
                     ID]</a> - return the protein sequence and all we know about it</li>
+            <!-- This is the endpoint for getting information about a specific domain -->
             <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfam/PF00360" target="_blank">GET
                     https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfam/[PFAM ID]</a> - return the domain
                 and it's description</li>
+            <!-- This is the endpoint for getting a list of all proteins for a given organism -->
             <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/proteins/55661" target="_blank">GET
                     https://bio-science-research-eb2589b82ae4.herokuapp.com/api/proteins/[TAXA ID]</a> - return a list
                 of all proteins for a given organism</li>
+            <!-- This is the endpoint for getting a list of all domains for a given organism -->
             <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfams/55661" target="_blank">GET
                     https://bio-science-research-eb2589b82ae4.herokuapp.com/api/pfams/[TAXA ID]</a> - return a list of
                 all domains in all the proteins for a given organism</li>
+            <!-- This is the endpoint for getting domain coverage for a given protein -->
             <li><a href="https://bio-science-research-eb2589b82ae4.herokuapp.com/api/coverage/A0A016S8J7/"
                     target="_blank">GET
                     https://bio-science-research-eb2589b82ae4.herokuapp.com/api/coverage/[PROTEIN ID]</a> - return the
@@ -36,12 +42,15 @@
         </ul>
 
         <h2 class="mt-5">API Documentation:</h2>
+        <!-- This is a link to the API documentation on Postman -->
         <p class="mt-3">For more detailed documentation and quick testing, please visit this link and click the "Run in
             Postman" button <a href="https://documenter.getpostman.com/view/25542349/2s946feDBy"
                 target="_blank">https://documenter.getpostman.com/view/25542349/2s946feDBy</a></p>
         {% if organism_name and kingdom_name %}
+        <!-- This is a message that displays the organism name and kingdom name if they are provided -->
         <p class="mt-5">Do you know, {{organism_name}} of the kingdom {{kingdom_name}}?</p>
 
+        <!-- This is a link to the GBIF API -->
         <sub>The organism name above was provided by <a href="https://www.gbif.org/developer/summary"
                 target="_blank">GBIF
                 API</a></sub>

@@ -1,3 +1,4 @@
+# I wrote this code
 from django.core.exceptions import ValidationError
 from django.db import models
 
@@ -8,17 +9,17 @@ class Detail(models.Model):
     Instead of naming this as Protein It was called Detail so that it'll form protein_detail table instead of protein_protein table
     """
     protein_id = models.CharField(
-        max_length=256,
-        null=False,
-        blank=False,
-        db_index=True,
-        primary_key=True
-    )  # db_index=True so that it is indexed in the database and can be searched quickly
+        max_length=256,  # Maximum length of the protein_id field
+        null=False,  # protein_id cannot be null
+        blank=False,  # protein_id cannot be blank
+        db_index=True,  # protein_id is indexed in the database for quick searching
+        primary_key=True  # protein_id is the primary key of the table
+    )
     sequence = models.CharField(
-        max_length=40000,
-        null=False,
-        blank=False
-    )  # max_length=40000 because amino acid in protein are typically between 10 and 40000
+        max_length=40000,  # Maximum length of the sequence field
+        null=False,  # sequence cannot be null
+        blank=False  # sequence cannot be blank
+    )
 
     def __str__(self):
         """
@@ -32,4 +33,5 @@ class Detail(models.Model):
         """
         if len(self.sequence) < 10 or len(self.sequence) > 40000:
             raise ValidationError(
-                "Sequence must be between 10 and 40000 in length")
+                "Sequence must be between 10 and 40000 in length")  # Raises a validation error if the sequence length is not between 10 and 40000
+# end of code I wrote
