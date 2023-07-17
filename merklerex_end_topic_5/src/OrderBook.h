@@ -24,16 +24,14 @@ public:
      * */
     std::string getNextTime(std::string timestamp);
 
-    std::string getPreviousTime(std::string timestamp);
-    std::vector<std::string> getPreviousTimes(std::string timestamp);
-
     void insertOrder(OrderBookEntry &order);
 
     std::vector<OrderBookEntry> matchAsksToBids(std::string product, std::string timestamp);
+    std::string getPreviousTime(std::string timestamp);
+    std::vector<std::string> getPreviousTimes(std::string timestamp);
 
     static double getHighPrice(std::vector<OrderBookEntry> &orders);
     static double getLowPrice(std::vector<OrderBookEntry> &orders);
-    static std::vector<OrderBookEntry> searchByTimestamp(std::vector<OrderBookEntry> &orders, std::string timestamp);
 
 private:
     std::vector<OrderBookEntry> orders;

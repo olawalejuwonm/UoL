@@ -254,48 +254,77 @@ void MerkelMain::processUserOption(int userOption)
     }
 }
 
+// I wrote this code
+// This function computes the candlestick for a given product and orderbook type at the current time frame and all previous time frames.
+// It returns a vector of candlesticks.
 std::vector<Candlestick> MerkelMain::computeCandlestick()
 {
     // empty vector of candlesticks
     std::vector<Candlestick> candlesticks;
+
+    // Prompt the user to enter the product and orderbook type
     std::cout << "Enter the product and orderbook type eg ETH/BTC,ask" << std::endl;
     std::string input;
     std::getline(std::cin, input);
+
+    // Print the product and orderbook type being computed
     std::cout << "Computing candlestick for " << input << " at time " << currentTime << std::endl;
+
+    // Compute the candlestick for the current time frame
     Candlestick candlestick{input, currentTime, orderBook};
     candlesticks.push_back(candlestick);
 
-    // It was done this way so that if an
-    // error occured the program doesn't have to loop through all orders
-    //  This will get all previous time frames so we can see the history
-    //  this is relative to the current time frame.
+    // Get all previous time frames relative to the current time frame
     std::vector<std::string> previousTimes = orderBook.getPreviousTimes(currentTime);
-    // std::cout << "Previous times: " << previousTimes.size() << std::endl;
-    // I loop through the previous time to generate their history
+
+    // Loop through the previous time frames to generate their history
     for (std::string &previousTime : previousTimes)
     {
+        // Print the product and orderbook type being computed for each previous time frame
         std::cout << "Computing candlestick for " << input << " at time " << previousTime << std::endl;
+
+        // Compute the candlestick for each previous time frame
         Candlestick candlestick(input, previousTime, orderBook);
         candlesticks.push_back(candlestick);
     }
 
+    // Print the number of candlesticks computed
     std::cout << "Number of candlesticks computed: " << candlesticks.size() << std::endl;
+
+    // Store the computed candlesticks in the class member variable
     computedCandlesticks = candlesticks;
+
+    // Return the vector of computed candlesticks
     return candlesticks;
 }
 
+// This function visualizes the computed candlestick data as a plot.
 void MerkelMain::visualisePlot()
 {
+    // Print a message indicating that the plot is being visualized.
     std::cout << "Visualising plot" << std::endl;
+
+    // Create a TextPlot object using the computed candlestick data.
     TextPlot plot{computedCandlesticks};
 }
 
+// This function visualizes the order book data as a graph for a given product.
 void MerkelMain::visualiseGraph()
 {
+    // Print a message prompting the user to enter the product to visualize.
     std::cout << "Visualising graph" << std::endl;
     std::cout << "Enter the product to visualise eg ETH/BTC" << std::endl;
+
+    // Read the user input for the product to visualize.
     std::string input;
     std::getline(std::cin, input);
+
+    // Create a TextGraph object using the order book data, current time frame, and the product to visualize.
     TextGraph graph{orderBook, currentTime, input};
+
+    // Print the graph to the console.
     graph.printGraph();
 }
+
+
+// End of code I wrote

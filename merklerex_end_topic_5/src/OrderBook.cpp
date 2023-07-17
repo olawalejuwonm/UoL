@@ -102,48 +102,6 @@ std::string OrderBook::getNextTime(std::string timestamp)
     return next_timestamp;
 }
 
-std::string OrderBook::getPreviousTime(std::string timestamp)
-{
-    std::string previous_timestamp = "";
-    for (OrderBookEntry &e : orders)
-    {
-        if (e.timestamp < timestamp)
-        {
-            previous_timestamp = e.timestamp;
-        }
-        else if (e.timestamp >= timestamp)
-        {
-            break;
-        }
-    }
-    if (previous_timestamp == "")
-    {
-        previous_timestamp = timestamp; // returns the same timestamp if there is no previous timestamp
-    }
-    return previous_timestamp;
-}
-
-std::vector<std::string> OrderBook::getPreviousTimes(std::string timestamp)
-{
-    std::vector<std::string> previous_timestamps;
-    for (OrderBookEntry &e : orders)
-    {
-        if (e.timestamp < timestamp)
-        {
-            // It only push if e.timestamp is not already in the vector
-            if (std::find(previous_timestamps.begin(), previous_timestamps.end(), e.timestamp) == previous_timestamps.end())
-            {
-                previous_timestamps.push_back(e.timestamp);
-            }
-        }
-        else if (e.timestamp >= timestamp)
-        {
-            break;
-        }
-    }
-    return previous_timestamps;
-}
-
 void OrderBook::insertOrder(OrderBookEntry &order)
 {
     orders.push_back(order);
@@ -264,4 +222,63 @@ std::vector<OrderBookEntry> OrderBook::matchAsksToBids(std::string product, std:
     return sales;
 }
 
-// std::vector<std::string> OrderBook::getpre
+
+// I wrote this code
+/**
+ * Returns the previous timestamp before the given timestamp.
+ * If there is no previous timestamp, it returns the same timestamp.
+ *
+ * @param timestamp The timestamp to find the previous timestamp for.
+ * @return The previous timestamp before the given timestamp.
+ */
+std::string OrderBook::getPreviousTime(std::string timestamp)
+{
+    std::string previous_timestamp = "";
+    for (OrderBookEntry &e : orders)
+    {
+        if (e.timestamp < timestamp)
+        {
+            previous_timestamp = e.timestamp;
+        }
+        else if (e.timestamp >= timestamp)
+        {
+            break;
+        }
+    }
+    if (previous_timestamp == "")
+    {
+        previous_timestamp = timestamp; // returns the same timestamp if there is no previous timestamp
+    }
+    return previous_timestamp;
+}
+
+/**
+ * Returns a vector of all previous timestamps before the given timestamp.
+ * If there are no previous timestamps, it returns an empty vector.
+ *
+ * @param timestamp The timestamp to find the previous timestamps for.
+ * @return A vector of all previous timestamps before the given timestamp.
+ */
+std::vector<std::string> OrderBook::getPreviousTimes(std::string timestamp)
+{
+    std::vector<std::string> previous_timestamps;
+    for (OrderBookEntry &e : orders)
+    {
+        if (e.timestamp < timestamp)
+        {
+            // It only push if e.timestamp is not already in the vector
+            if (std::find(previous_timestamps.begin(), previous_timestamps.end(), e.timestamp) == previous_timestamps.end())
+            {
+                previous_timestamps.push_back(e.timestamp);
+            }
+        }
+        else if (e.timestamp >= timestamp)
+        {
+            break;
+        }
+    }
+    return previous_timestamps;
+}
+
+
+//End of code I wrote

@@ -1,3 +1,4 @@
+// I wrote this code
 #include "TextGraph.h" // Include the header file for the TextGraph class
 #include "OrderBook.h" // Include the header file for the OrderBook class
 
@@ -38,9 +39,13 @@ void TextGraph::addAsk(double price, double quantity)
     asks.push_back({price, quantity});
 }
 
+// End of code I wrote
+
+// I modified this code
 void TextGraph::printGraph()
 {
-    // Define color codes for console output
+    // Define color codes for console output according to the 
+    //ANSI escape codes https://en.wikipedia.org/wiki/ANSI_escape_code
     const std::string reset = "\033[0m";
     const std::string red = "\033[31m";
     const std::string green = "\033[32m";
@@ -78,3 +83,4 @@ void TextGraph::printGraph()
         std::cout << "\n";
     }
 }
+// End of code I modified

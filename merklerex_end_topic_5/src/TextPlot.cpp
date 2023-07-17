@@ -1,3 +1,4 @@
+// I wrote this code
 #include "TextPlot.h"
 #include "Candlestick.h"
 #include <iostream>
@@ -10,7 +11,6 @@ TextPlot::TextPlot(std::vector<Candlestick> candlesticks)
     {
         std::cout << "Error: Candlesticks are empty"
                   << "\n";
-        // Please compute candlesticks first
         std::cout << "Please compute candlesticks first"
                   << "\n"
                   << std::endl;
@@ -20,9 +20,10 @@ TextPlot::TextPlot(std::vector<Candlestick> candlesticks)
     printByRange();
 }
 
+// End of code I wrote
+// I modified this code according to // https://stackoverflow.com/questions/14265581/parse-split-a-string-in-c-using-string-delimiter-standard-c
 std::vector<std::string> splitString(std::string str, std::string delimiter)
 {
-    // https://stackoverflow.com/questions/14265581/parse-split-a-string-in-c-using-string-delimiter-standard-c
     std::vector<std::string> splittedString;
     size_t pos = 0;
     std::string token;
@@ -35,16 +36,28 @@ std::vector<std::string> splitString(std::string str, std::string delimiter)
     return splittedString;
 }
 
+// End of code modified
+
+// I wrote this code
+/**
+ * This function calculates the minimum, maximum and average prices of the given candlesticks.
+ * It also calculates the timestamps of each candlestick and stores them in the timestamps vector.
+ * @param candlesticks A vector of Candlestick objects.
+ */
 void TextPlot::calculatePlotValues(std::vector<Candlestick> candlesticks)
 {
 
+    // Initialize the minimum and maximum prices to the first candlestick's low and high prices respectively.
     minPrice = candlesticks[0].low;
     maxPrice = candlesticks[0].high;
-    // timestamps.push_back({candlesticks[0].timestamp, 0, 2});
+
+    // Add the first timestamp to the timestamps vector.
     timestamps.push_back({splitString(candlesticks[0].timestamp,
                                       " ")[1],
                           10, static_cast<int>(candlesticks[0].timestamp.length())});
 
+    // Loop through the remaining candlesticks and update the minimum and maximum prices accordingly.
+    // Also, add the timestamp of each candlestick to the timestamps vector.
     for (int i = 1; i < candlesticks.size(); i++) // start at 1 because we already have the first value
     {
         if (candlesticks[i].high > maxPrice)
@@ -62,8 +75,11 @@ void TextPlot::calculatePlotValues(std::vector<Candlestick> candlesticks)
                               (start) +
                                   static_cast<int>(timestamp.length())});
     }
+
+    // Calculate the average price.
     averagePrice = (maxPrice + minPrice) / 2;
 }
+
 
 void TextPlot::setRowsAndColumns(int size)
 {
@@ -245,9 +261,7 @@ void TextPlot::plot(std::vector<Candlestick> tempCandlestick)
 
     int base = 20;
 
-  
-
-    for (int i = 0; i < tempCandlestick.size(); ++i)
+      for (int i = 0; i < tempCandlestick.size(); ++i)
     {
         int multiplier = i + 1;
         int minColumn = base * i + 2;
@@ -275,19 +289,6 @@ void TextPlot::plot(std::vector<Candlestick> tempCandlestick)
         std::cout << "low: " << low << std::endl;
         std::cout << "close: " << close << std::endl;
 
-        // fillStalk(grid, close, open, (base * multiplier) - 10);
-        // fillCandleStick(grid, high, low, ((base * multiplier)) - 5);
-        // fillStalk(grid, close, open, (base * multiplier));
-
-        // fillTop(grid, close, (base * multiplier) - 5, (base * multiplier) - 10);
-        // fillTop(grid, open, (base * multiplier) - 5, (base * multiplier) - 10);
-
-        // fillStalk(grid, close, open, 5);
-        // fillCandleStick(grid, high, low, 10);
-        // fillStalk(grid, close, open, 15);
-
-        // fillTop(grid, close, 10, 5);
-        // fillTop(grid, open, 10, 5);
 
         fillCandleStick(grid, high, low, mapValue(10, 0, 15, minColumn, maxColumn));
 
@@ -303,23 +304,7 @@ void TextPlot::plot(std::vector<Candlestick> tempCandlestick)
     enterTextOnGridHorizontlly(grid, (ROWS / 2), 0, std::to_string(averagePrice).substr(0, 8));
     enterTextOnGridHorizontlly(grid, ROWS - 1, 0, std::to_string(minPrice).substr(0, 8));
 
-    // The code below prints price on the left side of the grid
-    // for (int i = 0; i < ROWS; ++i)
-    // {
-    //     double price = mapValue(i, 0, ROWS, minPrice, maxPrice);
-    //     // this round price to 4 decimal places
-    //     // The round function is in the cmath library
-    //     // price = std::round(price * 100) / 100; // The round function is in the cmath library
-    //     // std::cout << "price: " << price << std::endl;
-    //     //This turns price to exponential notation 2.3e+05
-    //     // std::cout << "price: " << std::scientific << price << std::endl;
 
-    //     // convert price to string
-    //     std::string priceString = std::to_string(price);
-    //     // This picks the first 5 character of price and return it as string
-    //     priceString = priceString.substr(0, 5);
-    //     enterTextOnGridHorizontlly(grid, i, 2, priceString);
-    // }
 
     printGrid(grid);
 }
@@ -380,3 +365,5 @@ void TextPlot::printByRange()
     setRowsAndColumns(maxRange);
     plot(candlesticksRange);
 }
+
+// End of code I wrote
