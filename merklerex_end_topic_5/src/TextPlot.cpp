@@ -17,26 +17,7 @@ TextPlot::TextPlot(std::vector<Candlestick> candlesticks)
         return;
     }
     theCandlesticks = candlesticks;
-    // Ask user if they want to print by range or all with responsiveness
-    // std::cout << "Do you want to print by range? Default is responsiveness (Y/N)"
-    //           << "\n";
-    // std::string input;
-    // std::cin >> input;
-    // if (input == "Y")
-    // {
     printByRange();
-    // }
-    // else if (input == "N")
-    // {
-    // calculatePlotValues(candlesticks);
-    // setRowsAndColumns(candlesticks.size());
-    // plot(theCandlesticks);
-    // }
-    // else
-    // {
-    //     std::cout << "Invalid input"
-    //               << "\n";
-    // }
 }
 
 std::vector<std::string> splitString(std::string str, std::string delimiter)
@@ -262,18 +243,9 @@ void TextPlot::plot(std::vector<Candlestick> tempCandlestick)
         updateGrid(grid, internalROWS - 3, i, '_'); // Valid row and column index: 0, 0
     }
 
-    // updateGrid(grid, 1.5, 9, 'X'); // Valid column index: 9
-    // updateGrid(grid, 1, 11, 'X');  // Valid column index: 5
-
     int base = 20;
 
-    // enterTextOnGridHorizontlly(grid, ROWS - 2, 9, "14:56:35.210165");
-    // enterTextOnGridHorizontlly(grid, ROWS - 2, 20 + 9, "14:56:35.210165");
-    // enterTextOnGridHorizontlly(grid, ROWS - 2, 20 + 20 + 9, "14:56:35.210165");
-    // enterTextOnGridHorizontlly(grid, ROWS - 2, 20 + 20 + 20 + 9, "14:56:35.210165");
-    // enterTextOnGridHorizontlly(grid, ROWS - 2, 20 + 20 + 20 + 20 + 9, "14:56:35.210165");
-    // enterTextOnGridHorizontlly(grid, ROWS - 2, 20 + 20 + 20 + 20 + 20 + 9, "14:56:35.210165");
-    // enterTextOnGridHorizontlly(grid, ROWS - 2, 20 + 20 + 20 + 20 + 20 + 20 + 9, "14:56:35.210165");
+  
 
     for (int i = 0; i < tempCandlestick.size(); ++i)
     {
