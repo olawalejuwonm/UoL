@@ -17,7 +17,6 @@ class TextPlot
 {
 public:
     TextPlot(std::vector<Candlestick> candlesticks);
-    void plot();
 
 private:
     void calculatePlotValues(std::vector<Candlestick> candlesticks);
@@ -26,12 +25,15 @@ private:
     double averagePrice;
     std::vector<timestamp> timestamps;
     std::vector<Candlestick> theCandlesticks;
+    void setRowsAndColumns(int size);
     void printGrid(const Grid &grid);
     void updateGrid(Grid &grid, int row, int column, char value);
     void enterTextOnGridHorizontlly(Grid &grid, int row, int column, const std::string &text);
     void enterTextOnGridVertically(Grid &grid, int row, int column, const std::string &text);
     void fillCandleStick(Grid &grid, int high, int low, int column);
     void fillStalk(Grid &grid, int high, int low, int column);
+    void plot(std::vector<Candlestick> tempCandlestick);
+    void printByRange();
     int mapValueToRow(double value, double minValue, double maxValue);
     int mapValueToColumn(double value, double minValue, double maxValue);
 
@@ -42,7 +44,7 @@ private:
     void fillTop(Grid &grid, int row, int steps, int column);
     // int ROWS = 35;
     // int COLUMNS = 140;
-     int ROWS;
+    int ROWS;
     int COLUMNS;
     int extension = 5;
 };

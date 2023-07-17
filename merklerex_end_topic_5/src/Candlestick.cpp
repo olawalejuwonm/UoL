@@ -43,11 +43,7 @@ Candlestick::Candlestick(std::string input, std::string currentTime, OrderBook o
 
     computeData();
 
-    // console the system time and date for the machine
-    // std::cout << "The current time is: " << std::time(nullptr) << std::endl;
-    // std::cout << "Compute open starts" << std::endl;
     computeOpen(orderBook, orderType, product, currentTime);
-    // std::cout << "Compute open completed" << std::endl;
 }
 
 void Candlestick::computeOpen(OrderBook orderBook, OrderBookType orderType,
@@ -73,7 +69,6 @@ void Candlestick::computeOpen(OrderBook orderBook, OrderBookType orderType,
         }
         open = totalValue / totalPrice;
     }
-
 }
 
 void Candlestick::computeData()

@@ -243,6 +243,10 @@ void MerkelMain::processUserOption(int userOption)
     {
         computeCandlestick();
     }
+    if (userOption == 8)
+    {
+        visualisePlot();
+    }
 
     if (userOption == 9)
     {
@@ -259,7 +263,6 @@ std::vector<Candlestick> MerkelMain::computeCandlestick()
     std::getline(std::cin, input);
     std::cout << "Computing candlestick for " << input << " at time " << currentTime << std::endl;
     Candlestick candlestick{input, currentTime, orderBook};
-    std::cout << "Candlestick: " << candlestick.open << std::endl;
     candlesticks.push_back(candlestick);
 
     // It was done this way so that if an
@@ -278,7 +281,6 @@ std::vector<Candlestick> MerkelMain::computeCandlestick()
 
     std::cout << "Number of candlesticks computed: " << candlesticks.size() << std::endl;
     computedCandlesticks = candlesticks;
-    visualisePlot();
     return candlesticks;
 }
 
@@ -286,7 +288,6 @@ void MerkelMain::visualisePlot()
 {
     std::cout << "Visualising plot" << std::endl;
     TextPlot plot{computedCandlesticks};
-    plot.plot();
 }
 
 void MerkelMain::visualiseGraph()

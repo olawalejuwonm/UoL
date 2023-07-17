@@ -152,8 +152,6 @@ void fillStalk(Grid &grid, int high, int low, int column)
 {
     int reveredHigh = (ROWS - 1) - high;
     int reveredLow = (ROWS - 1) - low;
-    std::cout << "reveredHigh: " << reveredHigh << std::endl;
-    std::cout << "reveredLow: " << reveredLow << std::endl;
     // for (int i = reveredHigh; i < reveredLow; ++i)
     // {
     //     // enterTextOnGridVertically(grid, i, column, "*");
@@ -198,7 +196,6 @@ void fillTop(Grid &grid, int row, int steps, int column)
     // This fills the top of the candlestick horizontally
     int reverseRow = (ROWS - 1) - row;
     int nonNegativeRow = std::abs((ROWS - 1) - row);
-    std::cout << "reverseRow: " << reverseRow << std::endl;
     // enterTextOnGridHorizontlly(grid, reverseRow, column, convertCharacterToRepeatedString('"', steps));
     enterTextOnGridHorizontlly(grid, nonNegativeRow, column, convertCharacterToRepeatedString('"', steps));
 }
@@ -246,7 +243,6 @@ int main()
         double low = candles[i].low;
         double high = candles[i].high;
         // enterTextOnGridVertically(grid, open, 0, "!");
-        std::cout << "high: " << high << std::endl;
         std::cout << "minPrice: " << minPrice << std::endl;
         std::cout << "maxPrice: " << maxPrice << std::endl;
 

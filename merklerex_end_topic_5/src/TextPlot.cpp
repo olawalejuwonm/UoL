@@ -5,10 +5,38 @@
 
 TextPlot::TextPlot(std::vector<Candlestick> candlesticks)
 {
-    calculatePlotValues(candlesticks);
+    // This check is to make sure that the candlesticks are not empty
+    if (candlesticks.size() == 0)
+    {
+        std::cout << "Error: Candlesticks are empty"
+                  << "\n";
+        // Please compute candlesticks first
+        std::cout << "Please compute candlesticks first"
+                  << "\n"
+                  << std::endl;
+        return;
+    }
     theCandlesticks = candlesticks;
-    ROWS = theCandlesticks.size() * 5;
-    COLUMNS = theCandlesticks.size() * 20;
+    // Ask user if they want to print by range or all with responsiveness
+    // std::cout << "Do you want to print by range? Default is responsiveness (Y/N)"
+    //           << "\n";
+    // std::string input;
+    // std::cin >> input;
+    // if (input == "Y")
+    // {
+    printByRange();
+    // }
+    // else if (input == "N")
+    // {
+    // calculatePlotValues(candlesticks);
+    // setRowsAndColumns(candlesticks.size());
+    // plot(theCandlesticks);
+    // }
+    // else
+    // {
+    //     std::cout << "Invalid input"
+    //               << "\n";
+    // }
 }
 
 std::vector<std::string> splitString(std::string str, std::string delimiter)
@@ -56,6 +84,11 @@ void TextPlot::calculatePlotValues(std::vector<Candlestick> candlesticks)
     averagePrice = (maxPrice + minPrice) / 2;
 }
 
+void TextPlot::setRowsAndColumns(int size)
+{
+    ROWS = size * 5;
+    COLUMNS = size * 20;
+}
 void TextPlot::printGrid(const Grid &grid)
 {
     for (int i = 0; i < ROWS + extension; ++i)
@@ -163,8 +196,6 @@ void TextPlot::fillStalk(Grid &grid, int high, int low, int column)
 {
     int reveredHigh = (ROWS - 1) - high;
     int reveredLow = (ROWS - 1) - low;
-    std::cout << "reveredHigh: " << reveredHigh << std::endl;
-    std::cout << "reveredLow: " << reveredLow << std::endl;
     // for (int i = reveredHigh; i < reveredLow; ++i)
     // {
     //     // enterTextOnGridVertically(grid, i, column, "*");
@@ -209,13 +240,13 @@ void TextPlot::fillTop(Grid &grid, int row, int steps, int column)
     // This fills the top of the candlestick horizontally
     int reverseRow = (ROWS - 1) - row;
     int nonNegativeRow = std::abs((ROWS - 1) - row);
-    std::cout << "reverseRow: " << reverseRow << std::endl;
     // enterTextOnGridHorizontlly(grid, reverseRow, column, convertCharacterToRepeatedString('"', steps));
     enterTextOnGridHorizontlly(grid, nonNegativeRow, column, convertCharacterToRepeatedString('#', steps));
 }
 
-void TextPlot::plot()
+void TextPlot::plot(std::vector<Candlestick> tempCandlestick)
 {
+
     int internalROWS = ROWS + extension;
     int internalCOLUMNS = COLUMNS + extension;
     Grid grid(internalROWS, std::vector<char>(internalCOLUMNS, ' '));
@@ -244,28 +275,19 @@ void TextPlot::plot()
     // enterTextOnGridHorizontlly(grid, ROWS - 2, 20 + 20 + 20 + 20 + 20 + 9, "14:56:35.210165");
     // enterTextOnGridHorizontlly(grid, ROWS - 2, 20 + 20 + 20 + 20 + 20 + 20 + 9, "14:56:35.210165");
 
-    for (int i = 0; i < timestamps.size(); ++i)
-    {
-        int multiplier = i + 1;
-        int minColumn = base * i + 2;
-        int maxColumn = minColumn + base;
-        enterTextOnGridHorizontlly(grid, internalROWS - 2, (base * i) + 9, timestamps[i].value);
-    }
-
-    for (int i = 0; i < theCandlesticks.size(); ++i)
+    for (int i = 0; i < tempCandlestick.size(); ++i)
     {
         int multiplier = i + 1;
         int minColumn = base * i + 2;
         int maxColumn = minColumn + base;
         enterTextOnGridHorizontlly(grid, internalROWS - 4, minColumn + 6, "S");
         enterTextOnGridHorizontlly(grid, internalROWS - 4, maxColumn, "E");
+        enterTextOnGridHorizontlly(grid, internalROWS - 2, (base * i) + 9, timestamps[i].value);
 
-        // Print the updated grid
-
-        double open = theCandlesticks[i].open;
-        double close = theCandlesticks[i].close;
-        double low = theCandlesticks[i].low;
-        double high = theCandlesticks[i].high;
+        double open = tempCandlestick[i].open;
+        double close = tempCandlestick[i].close;
+        double low = tempCandlestick[i].low;
+        double high = tempCandlestick[i].high;
         // enterTextOnGridVertically(grid, open, 0, "!");
         std::cout << "high: " << high << std::endl;
         std::cout << "minPrice: " << minPrice << std::endl;
@@ -328,4 +350,61 @@ void TextPlot::plot()
     // }
 
     printGrid(grid);
+}
+
+void TextPlot::printByRange()
+{
+    std::cout << "There are " << theCandlesticks.size() << " candlesticks" << std::endl;
+    int maxRange = 7;
+    std::cout << "For easy visualisation, the maximum range is " << maxRange << std::endl;
+    // Get the range of the candlesticks to be plotted via user input
+    int start = 0;
+    int end = 0;
+    std::cout << "Enter the start of the range, starting from 1: ";
+    std::cin >> start;
+    std::cout << "Enter the end of the range, ending at " << theCandlesticks.size() << ": ";
+    std::cin >> end;
+    // This ensure that the range is within the size of the candlesticks
+    if (end > theCandlesticks.size())
+    {
+        std::cout << "The end of the range is greater than the size of the candlesticks" << std::endl;
+        return;
+    }
+    // This ensure that the start of the range is not less than 0
+    if (start < 1)
+    {
+        std::cout << "The start of the range is less than 0" << std::endl;
+        return;
+    }
+    // This ensure that the start of the range is not greater than the end of the range
+    if (start > end)
+    {
+        std::cout << "The start of the range is greater than the end of the range" << std::endl;
+        return;
+    }
+    // This ensure that the end of the range is not less than the start of the range
+    if (end < start)
+    {
+        std::cout << "The end of the range is less than the start of the range" << std::endl;
+        return;
+    }
+
+    start -= 1;
+    // Rejects the range if it is greater than the maxRange
+    if (end - start > maxRange)
+    {
+        std::cout << "The range is greater than the maximum range" << std::endl;
+        return;
+    }
+    // Set the ROWS and COLUMNS of the grid
+    // Generate a new candlestick grid from the range
+    std::vector<Candlestick> candlesticksRange;
+    for (int i = start; i < end; ++i)
+    {
+        candlesticksRange.push_back(theCandlesticks[i]);
+    }
+    std::cout << "There are " << candlesticksRange.size() << " candlesticks in the range" << std::endl;
+    calculatePlotValues(candlesticksRange);
+    setRowsAndColumns(maxRange);
+    plot(candlesticksRange);
 }
