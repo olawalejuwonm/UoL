@@ -75,6 +75,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'chat_example.wsgi.application'
 # ASGI_APPLICATION = "chat_example.routing.application"
 ASGI_APPLICATION = "chat_example.asgi.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
+
+
+
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
@@ -130,11 +141,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-#         'CONFIG': {
-#             "hosts": [('127.0.0.1', 6379)],
-#         },
-#     },
-# }
