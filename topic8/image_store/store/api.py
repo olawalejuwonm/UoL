@@ -15,7 +15,7 @@ class ImageDetail(mixins.CreateModelMixin,  generics.GenericAPIView):
 
     def create(self, request, *args, **kwargs):
         response = super(ImageDetail, self).create(request, *args, **kwargs)
-        return HttpResponseRedirect(redirect_to='/test')
+        return HttpResponseRedirect(redirect_to='/')
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)

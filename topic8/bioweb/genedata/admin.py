@@ -23,3 +23,4 @@ class SequencingAdmin(admin.ModelAdmin):
 admin.site.register(Gene, GeneAdmin)
 admin.site.register(EC, ECAdmin)
 admin.site.register(Sequencing, SequencingAdmin)
+admin.site.register(AppUser)
