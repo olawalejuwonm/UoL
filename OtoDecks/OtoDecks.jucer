@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="nY50jG" name="OtoDecks" projectType="guiapp" useAppConfig="0"
+<JUCERPROJECT id="vppuHj" name="OtoDecks" projectType="guiapp" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
-  <MAINGROUP id="EMLrv9" name="OtoDecks">
-    <GROUP id="{2EABA5CE-294A-599C-9719-3DDD6176564E}" name="Source">
-      <FILE id="XwjOvu" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
-      <FILE id="FjDZOn" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
-      <FILE id="TROt2r" name="MainComponent.cpp" compile="1" resource="0"
+  <MAINGROUP id="jhF3Zh" name="OtoDecks">
+    <GROUP id="{EAECADF3-1B74-C659-B103-B0D2114E2764}" name="Source">
+      <FILE id="Aicp9x" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="WccnN8" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="ZXHqkX" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
     </GROUP>
   </MAINGROUP>
