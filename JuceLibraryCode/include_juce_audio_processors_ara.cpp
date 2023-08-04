@@ -5,5 +5,4 @@
 
 */
 
-#include "AppConfig.h"
-#include <juce_opengl/juce_opengl.cpp>
+#include <juce_audio_processors/juce_audio_processors_ara.cpp>
