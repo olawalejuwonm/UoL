@@ -3,14 +3,15 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**",
-                "C:/JUCE/modules/"
+                "${workspaceFolder}/JuceLibraryCode/**",
+                "/home/olawalejuwonm/JUCE/**"
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": false,
                 "path": [
-                    "${workspaceFolder}/**",
-                    "C:/JUCE/modules/**"
+                    // "${workspaceFolder}/**",
+                    "${workspaceFolder}/JuceLibraryCode/**",
+                    "/home/olawalejuwonm/JUCE/**"
                 ]
             },
             "defines": [],
@@ -18,24 +19,24 @@
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64"
-        },
-        {
-            "name": "Win32",
-            "includePath": [
-                "${workspaceFolder}/**",
-                "C:/JUCE/modules/**"
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "windowsSdkVersion": "10.0.19041.0",
-            "compilerPath": "cl.exe",
-            "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "windows-msvc-x64"
         }
+        // {
+        //     "name": "Win32",
+        //     "includePath": [
+        //         "${workspaceFolder}/**",
+        //         "C:/JUCE/modules/**"
+        //     ],
+        //     "defines": [
+        //         "_DEBUG",
+        //         "UNICODE",
+        //         "_UNICODE"
+        //     ],
+        //     "windowsSdkVersion": "10.0.19041.0",
+        //     "compilerPath": "cl.exe",
+        //     "cStandard": "c17",
+        //     "cppStandard": "c++17",
+        //     "intelliSenseMode": "windows-msvc-x64"
+        // }
     ],
     "version": 4
 }
