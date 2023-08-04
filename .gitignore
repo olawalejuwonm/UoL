@@ -2,3 +2,5 @@ node_modules
 .venv
 tmp_db
 *.pyc
+Builds
+tracks
