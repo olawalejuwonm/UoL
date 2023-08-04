@@ -6,7 +6,7 @@
             "type": "shell",
             "command": "make",
             "options": {
-                "cwd": "${workspaceRoot}/../Builds/LinuxMakefile/"
+                "cwd": "${workspaceRoot}/Builds/LinuxMakefile/"
             },
             "group": {
                 "kind": "build",
