@@ -4,14 +4,14 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/JuceLibraryCode/**",
-                "/home/olawalejuwonm/JUCE/**"
+                "/home/olawalejuwonm/JUCE/modules/"
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": false,
                 "path": [
                     // "${workspaceFolder}/**",
                     "${workspaceFolder}/JuceLibraryCode/**",
-                    "/home/olawalejuwonm/JUCE/**"
+                    "/home/olawalejuwonm/JUCE/modules/**"
                 ]
             },
             "defines": [],
