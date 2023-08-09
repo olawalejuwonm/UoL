@@ -11,9 +11,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
 
-using namespace juce;
-
-
 //==============================================================================
 class OtoDecksApplication  : public JUCEApplication
 {
