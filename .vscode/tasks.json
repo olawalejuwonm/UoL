@@ -39,9 +39,9 @@
         {
             "label": "JUCE run",
             "type": "shell",
-            "command": "./build/DJ_Application",
+            "command": "./build/OtoDecks",
             "options": {
-                "cwd": "${workspaceRoot}/../Builds/LinuxMakefile/"
+                "cwd": "${workspaceRoot}/Builds/LinuxMakefile/"
             },
             "group": {
                 "kind": "test",
