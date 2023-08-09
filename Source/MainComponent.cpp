@@ -69,25 +69,6 @@ void MainComponent::prepareToPlay(int samplesPerBlockExpected, double sampleRate
 }
 void MainComponent::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill)
 {
-    // bufferToFill.clearActiveBufferRegion()
-
-    auto *leftChan = bufferToFill.buffer->getWritePointer(0,
-                                                          bufferToFill.startSample);
-    auto *rightChan = bufferToFill.buffer->getWritePointer(0,
-                                                           bufferToFill.startSample);
-    for (auto i = 0; i < bufferToFill.numSamples; ++i)
-    {
-        // double sample = rand.nextDouble() * 0.25;
-        double sample = fmod(phase, 0.2);
-        //  double sample = sin(phase) * 0.1;
-
-        leftChan[i] = sample;
-        rightChan[i] = sample;
-
-        phase += 0.05;
-
-        // phase += dphase;
-    }
     // transportSource.getNextAudioBlock(bufferToFill);
     resampleSource.getNextAudioBlock(bufferToFill);
 }
@@ -131,7 +112,6 @@ void MainComponent::paint(Graphics &g)
 
     // You can add your drawing code here!
 }
-
 void MainComponent::resized()
 {
     // This is called when the MainContentComponent is resized.
