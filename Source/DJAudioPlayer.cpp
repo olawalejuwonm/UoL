@@ -9,6 +9,7 @@ Author:  matthew
 */
 
 #include "DJAudioPlayer.h"
+using namespace juce;
 
 DJAudioPlayer::DJAudioPlayer()
 {
