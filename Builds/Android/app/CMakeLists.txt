@@ -36,6 +36,8 @@ add_library( ${BINARY_NAME}
 
     SHARED
 
+    "../../../Source/DJAudioPlayer.cpp"
+    "../../../Source/DJAudioPlayer.h"
     "../../../Source/Main.cpp"
     "../../../Source/MainComponent.h"
     "../../../Source/MainComponent.cpp"
@@ -1955,6 +1957,7 @@ add_library( ${BINARY_NAME}
 )
 
 set_source_files_properties(
+    "../../../Source/DJAudioPlayer.h"
     "../../../Source/MainComponent.h"
     "../../../../../../../JUCE/modules/juce_audio_basics/audio_play_head/juce_AudioPlayHead.cpp"
     "../../../../../../../JUCE/modules/juce_audio_basics/audio_play_head/juce_AudioPlayHead.h"
