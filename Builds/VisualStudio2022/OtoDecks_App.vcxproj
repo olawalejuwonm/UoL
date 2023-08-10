@@ -144,8 +144,8 @@
     <ClCompile Include="..\..\Source\WaveformDisplay.cpp"/>
     <ClCompile Include="..\..\Source\DeckGUI.cpp"/>
     <ClCompile Include="..\..\Source\DJAudioPlayer.cpp"/>
-    <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
+    <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>

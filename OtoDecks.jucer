@@ -13,10 +13,10 @@
       <FILE id="NzlbtV" name="DJAudioPlayer.cpp" compile="1" resource="0"
             file="Source/DJAudioPlayer.cpp"/>
       <FILE id="pdS9Ts" name="DJAudioPlayer.h" compile="0" resource="0" file="Source/DJAudioPlayer.h"/>
-      <FILE id="Aicp9x" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="WccnN8" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="ZXHqkX" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
+      <FILE id="Aicp9x" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>
