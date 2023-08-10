@@ -8,6 +8,9 @@
 
 #include "MainComponent.h"
 
+using namespace juce;
+
+
 //==============================================================================
 MainComponent::MainComponent()
 {
@@ -32,6 +35,7 @@ MainComponent::MainComponent()
     addAndMakeVisible(deckGUI2);  
 
 
+    formatManager.registerBasicFormats();
 }
 
 MainComponent::~MainComponent()
@@ -46,7 +50,7 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
     player1.prepareToPlay(samplesPerBlockExpected, sampleRate);
     player2.prepareToPlay(samplesPerBlockExpected, sampleRate);
     
-//    mixerSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
+    mixerSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
 
     mixerSource.addInputSource(&player1, false);
     mixerSource.addInputSource(&player2, false);
@@ -76,11 +80,11 @@ void MainComponent::paint (Graphics& g)
 
     // You can add your drawing code here!
 }
-    
+
 void MainComponent::resized()
 {
     deckGUI1.setBounds(0, 0, getWidth()/2, getHeight());
     deckGUI2.setBounds(getWidth()/2, 0, getWidth()/2, getHeight());
-    DBG("This is a test . resized.");
+
 }
 

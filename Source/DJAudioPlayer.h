@@ -12,13 +12,10 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-using namespace juce;
-
-
 class DJAudioPlayer : public AudioSource {
   public:
 
-    DJAudioPlayer();
+    DJAudioPlayer(AudioFormatManager& _formatManager);
     ~DJAudioPlayer();
 
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
@@ -35,8 +32,11 @@ class DJAudioPlayer : public AudioSource {
     void start();
     void stop();
 
+    /** get the relative position of the playhead */
+    double getPositionRelative();
+
 private:
-    AudioFormatManager formatManager;
+    AudioFormatManager& formatManager;
     std::unique_ptr<AudioFormatReaderSource> readerSource;
     AudioTransportSource transportSource; 
     ResamplingAudioSource resampleSource{&transportSource, false, 2};
