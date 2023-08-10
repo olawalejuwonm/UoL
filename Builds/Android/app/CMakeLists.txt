@@ -36,6 +36,8 @@ add_library( ${BINARY_NAME}
 
     SHARED
 
+    "../../../Source/WaveformDisplay.cpp"
+    "../../../Source/WaveformDisplay.h"
     "../../../Source/DeckGUI.cpp"
     "../../../Source/DeckGUI.h"
     "../../../Source/DJAudioPlayer.cpp"
@@ -1959,6 +1961,7 @@ add_library( ${BINARY_NAME}
 )
 
 set_source_files_properties(
+    "../../../Source/WaveformDisplay.h"
     "../../../Source/DeckGUI.h"
     "../../../Source/DJAudioPlayer.h"
     "../../../Source/MainComponent.h"
