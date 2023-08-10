@@ -12,6 +12,8 @@
 #include "DJAudioPlayer.h"
 #include "DeckGUI.h"
 
+using namespace juce;
+
 
 //==============================================================================
 /*

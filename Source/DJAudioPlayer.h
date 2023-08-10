@@ -12,6 +12,9 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
+using namespace juce;
+
+
 class DJAudioPlayer : public AudioSource {
   public:
 
