@@ -2,6 +2,33 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "type": "process",
+            "label": "Visual Studio JUCE build run",
+            // "command": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\VsDevCmd.bat",
+            "command": "MSBuild.exe",
+            // "options": {
+            //     "cwd": "${workspaceRoot}/Builds/VisualStudio2022/"
+            // },
+            "args": [
+                "C:\\Users\\USER\\Documents\\OOP\\Builds\\VisualStudio2022\\OtoDecks_App.vcxproj -p:Platform=x64",
+                // "&",
+                // "MSBuild OtoDecks_App.vcxproj -p:Platform=x64",
+                // "cl.exe",
+                // "/Zi",
+                // "/EHsc",
+                // "/Fe:",
+                // "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                // "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+        },
+        {
             "label": "JUCE makebuild",
             "type": "shell",
             "command": "make",
