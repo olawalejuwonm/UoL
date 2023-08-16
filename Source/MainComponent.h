@@ -12,6 +12,7 @@
 #include "DJAudioPlayer.h"
 #include "DeckGUI.h"
 #include "PlaylistComponent.h"
+#include "WaveformDisplay.h"
 
 //==============================================================================
 /*
@@ -49,7 +50,10 @@ private:
 
   MixerAudioSource mixerSource;
 
-  // PlaylistComponent playlistComponent{&player1, &player2, formatManager, &waveformDisplay1, &waveformDisplay2};
+  WaveformDisplay waveformDisplay1{formatManager, thumbCache};
+  WaveformDisplay waveformDisplay2{formatManager, thumbCache};
+
+  PlaylistComponent playlistComponent{&player1, &player2, formatManager, &waveformDisplay1, &waveformDisplay2};
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };

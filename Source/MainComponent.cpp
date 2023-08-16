@@ -34,7 +34,10 @@ MainComponent::MainComponent()
     addAndMakeVisible(deckGUI1); 
     addAndMakeVisible(deckGUI2); 
 
-    // addAndMakeVisible(playlistComponent); 
+    addAndMakeVisible(playlistComponent); 
+
+    // addAndMakeVisible(waveformDisplay1);
+    // addAndMakeVisible(waveformDisplay2);
 
 
     formatManager.registerBasicFormats();
