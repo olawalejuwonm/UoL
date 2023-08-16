@@ -49,7 +49,7 @@ private:
 
   MixerAudioSource mixerSource;
 
-  // PlaylistComponent playlistComponent{&player1, &player2, formatManager, &waveformDisplay1, &waveformDisplay2};
+  PlaylistComponent playlistComponent;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };
