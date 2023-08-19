@@ -72,7 +72,7 @@ void DeckGUI::paint(Graphics &g)
 
 void DeckGUI::resized()
 {
-    double rowH = getHeight() / 8;
+    int rowH = getHeight() / 8;
     playButton.setBounds(0, 0, getWidth(), rowH);
     stopButton.setBounds(0, rowH, getWidth(), rowH);
     volSlider.setBounds(0, rowH * 2, getWidth(), rowH);
@@ -96,11 +96,19 @@ void DeckGUI::buttonClicked(Button *button)
     }
     if (button == &loadButton)
     {
+        // this does work in 6.1 but the syntax is a little funky
+        // https://docs.juce.com/master/classFileChooser.html#ac888983e4abdd8401ba7d6124ae64ff3
+        // - configure the dialogue
         auto fileChooserFlags =
             FileBrowserComponent::canSelectFiles;
+        // - launch out of the main thread
+        // - note how we use a lambda function which you've probably
+        // not seen before. Please do not worry too much about that.
         fChooser.launchAsync(fileChooserFlags, [this](const FileChooser &chooser)
                              {
-            player->loadURL(URL{chooser.getResult()});
+            File chosenFile = chooser.getResult();
+            player->loadURL(URL{chosenFile});
+            // player->loadURL(URL{chooser.getResult()});
             // and now the waveformDisplay as well
             waveformDisplay.loadURL(URL{chooser.getResult()}); });
     }
@@ -141,12 +149,29 @@ bool DeckGUI::isInterestedInFileDrag(const StringArray &files)
     return true;
 }
 
-void DeckGUI::filesDropped(const StringArray &files, int x, int y)
+// void DeckGUI::filesDropped(const StringArray &files, int x, int y)
+// {
+//     std::cout << "DeckGUI::filesDropped" << std::endl;
+//     std::cout << "x: " << x << " y: " << y << std::endl;
+//     if (files.size() == 1)
+//     {
+//         // player->loadURL(URL{chosenFile});
+
+//         // player->loadURL(URL{File{files[0]}});
+//         player->loadURL(URL{File{files[0]}});
+//     }
+// }
+
+void DeckGUI::filesDropped(const juce::StringArray &files, int x, int y)
 {
     std::cout << "DeckGUI::filesDropped" << std::endl;
-    if (files.size() == 1)
+
+    for (const auto &filename : files)
     {
-        player->loadURL(URL{File{files[0]}});
+        std::cout << "DeckGUI::filesNames" << filename << std::endl;
+        // This will convert the filename to a URL of file://
+        player->loadURL(juce::URL{juce::File{filename}});
+        waveformDisplay.loadURL(juce::URL{juce::File{filename}});
     }
 }
 

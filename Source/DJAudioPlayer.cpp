@@ -36,7 +36,9 @@ void DJAudioPlayer::releaseResources()
 
 void DJAudioPlayer::loadURL(URL audioURL)
 {
-    auto *reader = formatManager.createReaderFor(audioURL.createInputStream(false));
+    // auto *reader = formatManager.createReaderFor(audioURL.createInputStream(false));
+    auto *reader = this->formatManager.createReaderFor(audioURL.createInputStream(
+        URL::InputStreamOptions{URL::ParameterHandling::inAddress}));
     if (reader != nullptr) // good file!
     {
         std::unique_ptr<AudioFormatReaderSource> newSource(new AudioFormatReaderSource(reader,
@@ -47,7 +49,7 @@ void DJAudioPlayer::loadURL(URL audioURL)
 }
 void DJAudioPlayer::setGain(double gain)
 {
-    if (gain < 0 || gain > 1.0)
+    if (gain < 0 || gain > 1)
     {
         std::cout << "DJAudioPlayer::setGain gain should be between 0 and 1" << std::endl;
     }
