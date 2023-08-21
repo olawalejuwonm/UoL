@@ -36,6 +36,9 @@ public:
     /** set the relative position of the playhead*/
     void setPositionRelative(double pos);
 
+    // This sets color
+    static const int waveformColourId = 0x1005600;
+
 private:
     AudioThumbnail audioThumb;
     bool fileLoaded; 

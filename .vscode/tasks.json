@@ -6,12 +6,14 @@
             "label": "Visual Studio JUCE build run",
             // "command": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\VsDevCmd.bat",
             "command": "MSBuild.exe",
-            // "options": {
-            //     "cwd": "${workspaceRoot}/Builds/VisualStudio2022/"
-            // },
+            "options": {
+                "cwd": "${workspaceRoot}/Builds/VisualStudio2022/"
+            },
             "args": [
-                "C:\\Users\\USER\\Documents\\OOP\\Builds\\VisualStudio2022\\OtoDecks_App.vcxproj -p:Platform=x64",
+                "OtoDecks_App.vcxproj",
+                "-p:Platform=x64",
                 // "&",
+                // "x64\\Debug\\App\\OtoDecks.exe"
                 // "MSBuild OtoDecks_App.vcxproj -p:Platform=x64",
                 // "cl.exe",
                 // "/Zi",
@@ -28,97 +30,97 @@
                 "$msCompile"
             ],
         },
-        {
-            "label": "JUCE makebuild",
-            "type": "shell",
-            "command": "make",
-            "options": {
-                "cwd": "${workspaceRoot}/Builds/LinuxMakefile/"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
-            },
-            "args": [
-                "QUIET=0"
-            ],
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": [
-                    "absolute"
-                ],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
-            }
-        },
-        {
-            "label": "JUCE run",
-            "type": "shell",
-            "command": "./build/OtoDecks",
-            "options": {
-                "cwd": "${workspaceRoot}/Builds/LinuxMakefile/"
-            },
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            },
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
-            },
-            "args": [
-                "QUIET=0"
-            ],
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": [
-                    "absolute"
-                ],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
-            }
-        },
-        {
-            "type": "cppbuild",
-            "label": "C/C++: g++.exe build active file",
-            "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "*.cpp",
-                "-o",
-                "${fileDirname}\\a.exe"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-        }
+        // {
+        //     "label": "JUCE makebuild",
+        //     "type": "shell",
+        //     "command": "make",
+        //     "options": {
+        //         "cwd": "${workspaceRoot}/Builds/LinuxMakefile/"
+        //     },
+        //     "group": {
+        //         "kind": "build",
+        //         "isDefault": true
+        //     },
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "args": [
+        //         "QUIET=0"
+        //     ],
+        //     "problemMatcher": {
+        //         "owner": "cpp",
+        //         "fileLocation": [
+        //             "absolute"
+        //         ],
+        //         "pattern": {
+        //             "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+        //             "file": 1,
+        //             "line": 2,
+        //             "column": 3,
+        //             "severity": 4,
+        //             "message": 5
+        //         }
+        //     }
+        // },
+        // {
+        //     "label": "JUCE run",
+        //     "type": "shell",
+        //     "command": "./build/OtoDecks",
+        //     "options": {
+        //         "cwd": "${workspaceRoot}/Builds/LinuxMakefile/"
+        //     },
+        //     "group": {
+        //         "kind": "test",
+        //         "isDefault": true
+        //     },
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "args": [
+        //         "QUIET=0"
+        //     ],
+        //     "problemMatcher": {
+        //         "owner": "cpp",
+        //         "fileLocation": [
+        //             "absolute"
+        //         ],
+        //         "pattern": {
+        //             "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+        //             "file": 1,
+        //             "line": 2,
+        //             "column": 3,
+        //             "severity": 4,
+        //             "message": 5
+        //         }
+        //     }
+        // },
+        // {
+        //     "type": "cppbuild",
+        //     "label": "C/C++: g++.exe build active file",
+        //     "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+        //     "args": [
+        //         "-fdiagnostics-color=always",
+        //         "-g",
+        //         "*.cpp",
+        //         "-o",
+        //         "${fileDirname}\\a.exe"
+        //     ],
+        //     "options": {
+        //         "cwd": "${fileDirname}"
+        //     },
+        //     "problemMatcher": [
+        //         "$gcc"
+        //     ],
+        //     "group": {
+        //         "kind": "build",
+        //         "isDefault": true
+        //     },
+        // }
     ]
 }
