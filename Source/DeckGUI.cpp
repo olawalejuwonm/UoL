@@ -64,11 +64,11 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
     volSlider.setRotaryParameters(0.0, 3.1415 * 2.0, true);
     speedSlider.setRotaryParameters(0.0, 3.1415 * 2.0, true);
 
-    // This makes the slider move in a circular motion
-    // Reference: https://docs.juce.com/master/classSlider.html#a8f6f6f9c9b0e9e8f1c1b8b2a0e9e0b8d
-    posSlider.setVelocityBasedMode(true);
-    volSlider.setVelocityBasedMode(true);
-    speedSlider.setVelocityBasedMode(true);
+    // This align the slider to start at the left side of the knob
+    //  Reference: https://docs.juce.com/master/classSlider.html#a8f6f6f9c9b0e9e8f1c1b8b2a0e9e0b8d
+    posSlider.setRotaryParameters(0.0, 3.1415 * 2.0, false);
+    volSlider.setRotaryParameters(0.0, 3.1415 * 2.0, false);
+    speedSlider.setRotaryParameters(0.0, 3.1415 * 2.0, false);
 
     // This sets the color of the waveform
     waveformDisplay.setColour(WaveformDisplay::waveformColourId, Colours::red);
@@ -100,9 +100,13 @@ DeckGUI::~DeckGUI()
 
 void DeckGUI::paint(Graphics &g)
 {
-    g.fillAll(Colours::black); // clear the background
+    g.fillAll(Colours::brown); // clear the background
 
+    // std::cout << "DeckGUI::paint"
+    //           << "Width: " << getWidth() << "Height: " << getHeight() << std::endl;
     // Draw the turntable
+    int x = getWidth() / 8; // 50
+    int curve = getWidth() * 0.75; // 300
     g.setColour(Colours::grey);
     g.fillEllipse(50, 50, 300, 300);
     g.setColour(Colours::white);
@@ -119,16 +123,16 @@ void DeckGUI::paint(Graphics &g)
     g.fillRect(205, 250, 1, 5);
 
     // Draw the waveform
-    g.setColour(Colours::white);
-    Path waveformPath;
-    waveformPath.startNewSubPath(400, 200);
-    waveformPath.lineTo(450, 150);
-    waveformPath.lineTo(500, 250);
-    waveformPath.lineTo(550, 200);
-    waveformPath.lineTo(600, 150);
-    waveformPath.lineTo(650, 250);
-    waveformPath.lineTo(700, 200);
-    g.strokePath(waveformPath, PathStrokeType(2.0f));
+    // g.setColour(Colours::white);
+    // Path waveformPath;
+    // waveformPath.startNewSubPath(400, 200);
+    // waveformPath.lineTo(450, 150);
+    // waveformPath.lineTo(500, 250);
+    // waveformPath.lineTo(550, 200);
+    // waveformPath.lineTo(600, 150);
+    // waveformPath.lineTo(650, 250);
+    // waveformPath.lineTo(700, 200);
+    // g.strokePath(waveformPath, PathStrokeType(2.0f));
 }
 
 void DeckGUI::resized()
@@ -213,8 +217,10 @@ void DeckGUI::mouseDown(const MouseEvent &event)
         // load the file
         if (!player->isLoaded)
         {
-            loadFile();
+            return loadFile(); // this is a lambda function
+            // It return so that the rest of the code is not executed
         }
+
         std::cout << "Play button was clicked " << std::endl;
         if (player->isPlaying())
         {

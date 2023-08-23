@@ -91,6 +91,12 @@ void DJAudioPlayer::setPositionRelative(double pos)
 
 void DJAudioPlayer::start()
 {
+    // Check if the transport source can be played
+    if (transportSource.hasStreamFinished())
+    {
+        transportSource.setPosition(0);
+        std::cout << "DJAudioPlayer::start() - transportSource hasStreamFinished" << std::endl;
+    }
     transportSource.start();
 }
 void DJAudioPlayer::stop()
