@@ -45,6 +45,8 @@ void DJAudioPlayer::loadURL(URL audioURL)
                                                                                        true));
         transportSource.setSource(newSource.get(), 0, nullptr, reader->sampleRate);
         readerSource.reset(newSource.release());
+        // Set the isLoaded flag to true
+        isLoaded = true;
     }
 }
 void DJAudioPlayer::setGain(double gain)
@@ -94,6 +96,17 @@ void DJAudioPlayer::start()
 void DJAudioPlayer::stop()
 {
     transportSource.stop();
+}
+
+// This will determine if the transport source is playing
+bool DJAudioPlayer::isPlaying()
+{
+    return transportSource.isPlaying();
+}
+
+AudioTransportSource *DJAudioPlayer::getTransportSource()
+{
+    return &transportSource;
 }
 
 double DJAudioPlayer::getPositionRelative()

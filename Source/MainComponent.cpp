@@ -85,10 +85,12 @@ void MainComponent::paint (Graphics& g)
 
 void MainComponent::resized()
 {
-    deckGUI1.setBounds(0, 0, getWidth()/2, getHeight()/2);
-    deckGUI2.setBounds(getWidth()/2, 0, getWidth()/2, getHeight()/2);
+    // Sets the deckGUI1 and deckGUI2 to be the same size and take up the top half of the screen
+    // 1.4 was used to make the top half of the screen take up 70% of the screen
+    deckGUI1.setBounds(0, 0, getWidth()/2, getHeight()/1.4);
+    deckGUI2.setBounds(getWidth()/2, 0, getWidth()/2, getHeight()/1.4);
 
-    playlistComponent.setBounds(0, getHeight()/2, getWidth(), getHeight()/2);
+    playlistComponent.setBounds(0, getHeight()/1.4, getWidth(), getHeight()/1.4);
 
 }
 
