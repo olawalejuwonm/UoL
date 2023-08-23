@@ -105,22 +105,23 @@ void DeckGUI::paint(Graphics &g)
     // std::cout << "DeckGUI::paint"
     //           << "Width: " << getWidth() << "Height: " << getHeight() << std::endl;
     // Draw the turntable
-    int x = getWidth() / 8; // 50
+    int x = getWidth() / 8;        // 50
     int curve = getWidth() * 0.75; // 300
     g.setColour(Colours::grey);
-    g.fillEllipse(50, 50, 300, 300);
+    g.fillEllipse(x, x, curve, curve);
     g.setColour(Colours::white);
-    g.drawEllipse(50, 50, 300, 300, 5);
+    g.drawEllipse(x, x, curve, curve, 5);
 
     // Draw the tonearm
     g.setColour(Colours::grey);
-    g.fillRect(200, 100, 10, 150);
+    // g.fillRect(200, 100, 10, 150);
+    g.fillRect(x * 4, x * 2, x / 5, x * 3);
     g.setColour(Colours::white);
-    g.drawRect(200, 100, 10, 150, 5);
+    g.drawRect(x * 4, x * 2, x / 5, x * 3, 5);
 
     // Draw the needle
     g.setColour(Colours::red);
-    g.fillRect(205, 250, 1, 5);
+    g.fillRect(curve - x, x * 5, 1, 5);
 
     // Draw the waveform
     // g.setColour(Colours::white);
