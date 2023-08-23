@@ -21,7 +21,8 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
 
 {
     addAndMakeVisible(playButton);
-    addAndMakeVisible(loadButton);
+
+    // addAndMakeVisible(loadButton);
 
     addAndMakeVisible(volSlider);
     addAndMakeVisible(speedSlider);
@@ -29,11 +30,11 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
 
     addAndMakeVisible(waveformDisplay);
 
-    // addAndMakeVisible(playButtonIcon);
+    // addAndMakeVisible(playStopButtonIcon);
 
     // playButton.addListener(this);
     // stopButton.addListener(this);
-    loadButton.addListener(this);
+    // loadButton.addListener(this);
 
     volSlider.addListener(this);
     speedSlider.addListener(this);
@@ -77,18 +78,22 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
     //     "M 0 0 L 10 0 L 10 10 L 0 10 L 0 0 M 2 2 L 8 2 L 8 8 L 2 8 L 2 2 M 4 4 L 6 4 L 6 6 L 4 6 L 4 4 Z"));
     // filePickerIcon.setFill(juce::Colours::brown);
 
-    playButtonIcon.setPath(juce::Drawable::parseSVGPath(
+    playStopButtonIcon.setPath(juce::Drawable::parseSVGPath(
         "M 0 0 L 10 5 L 0 10 L 0 0"));
-    playButtonIcon.setFill(juce::Colours::white);
+    playStopButtonIcon.setFill(juce::Colours::white);
 
     // playButton.setColour(juce::TextButton::buttonColourId, juce::Colours::white);
 
     // playButton.setColour(juce::TextButton::buttonOnColourId, juce::Colours::green);
 
-    playButton.setImages(&playButtonIcon);
+    playButton.setImages(&playStopButtonIcon);
 
     // Add change listener to the transport source
     player->getTransportSource()->addChangeListener(this);
+
+    addAndMakeVisible(loopToggle);
+    loopToggle.setButtonText("Loop");
+    loopToggle.addListener(this);
 
     startTimer(500);
 }
@@ -98,15 +103,12 @@ DeckGUI::~DeckGUI()
     stopTimer();
 }
 
-void DeckGUI::paint(Graphics &g)
+void DeckGUI::drawTurnTable(Graphics &g, int x, int curve)
 {
-    g.fillAll(Colours::brown); // clear the background
-
     // std::cout << "DeckGUI::paint"
     //           << "Width: " << getWidth() << "Height: " << getHeight() << std::endl;
     // Draw the turntable
-    int x = getWidth() / 8;        // 50
-    int curve = getWidth() * 0.75; // 300
+
     g.setColour(Colours::grey);
     g.fillEllipse(x, x, curve, curve);
     g.setColour(Colours::white);
@@ -122,6 +124,39 @@ void DeckGUI::paint(Graphics &g)
     // Draw the needle
     g.setColour(Colours::red);
     g.fillRect(curve - x, x * 5, 1, 5);
+}
+
+void DeckGUI::paint(Graphics &g)
+{
+    // g.fillAll(Colours::brown); // clear the background
+
+    // if (player->isPlaying())
+    // {
+    //     g.fillAll(Colours::green);
+    // }
+    // else
+    // {
+    //     g.fillAll(Colours::brown);
+    // }
+
+    int x = getWidth() / 8;        // 50
+    int curve = getWidth() * 0.75; // 300
+
+    if (player->isPlaying())
+    {
+        // This will make the to rotate around the centre of the screen
+        // https://docs.juce.com/master/classAffineTransform.html
+        g.addTransform(AffineTransform::rotation(0.5, x, x));
+        g.addTransform(AffineTransform::rotation(0.5, x * 4, x * 2));
+    }
+    else
+    {
+        // This will make the to rotate around the centre of the screen
+        // https://docs.juce.com/master/classAffineTransform.html
+        // g.addTransform(AffineTransform::rotation(0.0, x, x));
+    }
+
+    drawTurnTable(g, x, curve);
 
     // Draw the waveform
     // g.setColour(Colours::white);
@@ -147,14 +182,15 @@ void DeckGUI::resized()
     std::cout << "DeckGUI::resized" << getWidth() << "rowH: " << rowH << "Height: " << getHeight() << std::endl;
     posSlider.setBounds(0, rowH * 4.4, getWidth(), rowH * 2);
 
-    // playButtonIcon.setBounds(0, 0, getWidth(), getHeight());
+    // playStopButtonIcon.setBounds(0, 0, getWidth(), getHeight());
     // playButton.setBounds(10, 10, 20, 20);
-    // playButtonIcon.setBounds(10, 10, getWidth(), rowH * 2);
+    // playStopButtonIcon.setBounds(10, 10, getWidth(), rowH * 2);
 
     // stopButton.setBounds(0, rowH / 3, getWidth(), rowH / 3);
 
-    waveformDisplay.setBounds(0, rowH * 6, getWidth(), rowH);
-    loadButton.setBounds(0, rowH * 7, getWidth(), rowH);
+    waveformDisplay.setBounds(0, rowH * 7, getWidth(), rowH);
+    loopToggle.setBounds(0, rowH * 6, getWidth(), rowH);
+    // loadButton.setBounds(0, rowH * 7, getWidth(), rowH);
     // filePickerButton.setBounds(0, rowH * 7, getWidth(), rowH);
 }
 
@@ -190,10 +226,10 @@ void DeckGUI::buttonClicked(Button *button)
     //     std::cout << "Stop button was clicked " << std::endl;
     //     player->stop();
     // }
-    if (button == &loadButton)
-    {
-        loadFile();
-    }
+    // if (button == &loadButton)
+    // {
+    //     loadFile();
+    // }
     // if (button == &loadButton)
     // {
     //     FileChooser chooser{"Select a file..."};
@@ -205,12 +241,17 @@ void DeckGUI::buttonClicked(Button *button)
     //     }
 
     // }
+    if (button == &loopToggle)
+    {
+        std::cout << "Loop button was clicked " << loopToggle.getToggleState() << std::endl;
+        loop = loopToggle.getToggleState();
+        // player->shouldLoop = loopToggle.getToggleState(); // Add this line
+    }
 }
 
 void DeckGUI::mouseDown(const MouseEvent &event)
 {
     std::cout << "DeckGUI::mouseClick" << std::endl;
-    std::cout << "event.eventComponent: " << event.eventComponent << "PlayB: " << &playButtonIcon << std::endl;
     // get which component was clicked
     if (event.eventComponent == &playButton)
     {
@@ -310,19 +351,23 @@ void DeckGUI::changeListenerCallback(ChangeBroadcaster *source)
         {
             std::cout << "DeckGUI::changeListenerCallback: isPlaying" << std::endl;
             // set Path to pause icon
-            playButtonIcon.setPath(juce::Drawable::parseSVGPath(
+            playStopButtonIcon.setPath(juce::Drawable::parseSVGPath(
                 "M 0 0 L 10 0 L 10 10 L 0 10 L 0 0 M 2 2 L 8 2 L 8 8 L 2 8 L 2 2 M 4 4 L 6 4 L 6 6 L 4 6 L 4 4 Z"));
-            playButtonIcon.setFill(juce::Colours::white);
-            playButton.setImages(&playButtonIcon);
+            playStopButtonIcon.setFill(juce::Colours::white);
+            playButton.setImages(&playStopButtonIcon);
         }
         else
         {
+            if (loop)
+            {
+                return player->start();
+            }
             std::cout << "DeckGUI::changeListenerCallback: isNotPlaying" << std::endl;
             // set Path to play icon
-            playButtonIcon.setPath(juce::Drawable::parseSVGPath(
+            playStopButtonIcon.setPath(juce::Drawable::parseSVGPath(
                 "M 0 0 L 10 5 L 0 10 L 0 0"));
-            playButtonIcon.setFill(juce::Colours::white);
-            playButton.setImages(&playButtonIcon);
+            playStopButtonIcon.setFill(juce::Colours::white);
+            playButton.setImages(&playStopButtonIcon);
         }
         // posSlider.setValue(waveformDisplay.getPositionRelative());
     }

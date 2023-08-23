@@ -33,6 +33,8 @@ public:
           AudioThumbnailCache &cacheToUse);
   ~DeckGUI();
 
+  void drawTurnTable(Graphics &g, int x, int curve);
+
   void paint(Graphics &) override;
   void resized() override;
 
@@ -56,14 +58,18 @@ public:
 private:
   DrawableButton playButton{"PLAY", DrawableButton::ImageFitted};
   // TextButton stopButton{"STOP"};
-  TextButton loadButton{"LOAD"};
+  // TextButton loadButton{"LOAD"};
 
   Slider volSlider;
   Slider speedSlider;
   Slider posSlider;
 
+  DrawablePath playStopButtonIcon;
+
+  juce::ToggleButton loopToggle; // Loop toggle button
+
   // Svg play button icon
-  DrawablePath playButtonIcon;
+  // DrawablePath playButtonIcon;
 
   // posSlider::setSliderStyle(juce::Slider::RotaryHorizontalDrag, juce::Slider::NoTextBox);
 
@@ -71,6 +77,9 @@ private:
 
   /** Load the file from the URL **/
   void loadFile();
+
+  /** Should player loop? **/
+  bool loop = false;
 
   WaveformDisplay waveformDisplay;
 

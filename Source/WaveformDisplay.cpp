@@ -59,8 +59,8 @@ void WaveformDisplay::paint(Graphics &g)
   else
   {
     g.setFont(20.0f);
-    g.drawText("File not loaded...", getLocalBounds(),
-               Justification::centred, true); // draw some placeholder text
+    g.drawText("File not loaded, Click the play button", getLocalBounds(),
+               Justification::left, true); // draw some placeholder text
   }
 }
 
