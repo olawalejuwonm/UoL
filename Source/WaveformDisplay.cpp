@@ -88,6 +88,7 @@ void WaveformDisplay::loadURL(URL audioURL)
 void WaveformDisplay::changeListenerCallback(ChangeBroadcaster *source)
 {
   std::cout << "wfd: change received! " << std::endl;
+  std::cout << "wfd: source: " << source << std::endl;
 
   repaint();
 }

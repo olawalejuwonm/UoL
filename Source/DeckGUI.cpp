@@ -146,8 +146,10 @@ void DeckGUI::paint(Graphics &g)
     {
         // This will make the to rotate around the centre of the screen
         // https://docs.juce.com/master/classAffineTransform.html
-        g.addTransform(AffineTransform::rotation(0.5, x, x));
-        g.addTransform(AffineTransform::rotation(0.5, x * 4, x * 2));
+        // g.addTransform(AffineTransform::rotation(0.5, x, x));
+        // g.addTransform(AffineTransform::rotation(0.5, x * 4, x * 2));
+        // Will rotate based on the position of the player
+        g.addTransform(AffineTransform::rotation(player->getPositionRelative() * 4, x * 4, x * 2));
     }
     else
     {
@@ -346,6 +348,7 @@ void DeckGUI::changeListenerCallback(ChangeBroadcaster *source)
     if (source == player->getTransportSource())
     {
         std::cout << "DeckGUI::changeListenerCallback" << std::endl;
+
         // If it's playing set the play button to green
         if (player->isPlaying())
         {
@@ -369,6 +372,12 @@ void DeckGUI::changeListenerCallback(ChangeBroadcaster *source)
             playStopButtonIcon.setFill(juce::Colours::white);
             playButton.setImages(&playStopButtonIcon);
         }
+
+        // while (player->isPlaying())
+        // {
+        //     // repaint();
+        //     // std::cout << "DeckGUI::DeckGUI: is still Playing" << std::endl;
+        // }
         // posSlider.setValue(waveformDisplay.getPositionRelative());
     }
 }
