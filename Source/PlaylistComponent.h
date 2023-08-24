@@ -19,7 +19,8 @@ using namespace juce;
  */
 class PlaylistComponent : public juce::Component,
                           public juce::TableListBoxModel,
-                          public Button::Listener
+                          public Button::Listener,
+                          public TextEditor::Listener
 {
 public:
   PlaylistComponent();
@@ -50,13 +51,17 @@ public:
       int columnId,
       bool isRowSelected,
       Component *existingComponentToUpdate) override;
-  
-  void buttonClicked(Button* button) override;
-  
+
+  void buttonClicked(Button *button) override;
+
+  void textEditorTextChanged(TextEditor &editor) override;
 
 private:
   TableListBox tableComponent;
   std::vector<std::string> trackTitles;
+
+  std::unique_ptr<TextEditor> searchBox;
+  std::unique_ptr<Viewport> viewport;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlaylistComponent)
 };

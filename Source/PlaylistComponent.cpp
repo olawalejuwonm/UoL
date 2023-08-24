@@ -21,12 +21,35 @@ PlaylistComponent::PlaylistComponent()
   trackTitles.push_back("Track 3");
   trackTitles.push_back("Track 4");
   trackTitles.push_back("Track 5");
-  trackTitles.push_back("Track 6");
+  trackTitles.push_back("Track 2");
+  trackTitles.push_back("Track 3");
+  trackTitles.push_back("Track 4");
+  trackTitles.push_back("Track 5");
+  // trackTitles.push_back("Track 6");
 
   tableComponent.getHeader().addColumn("Track Title", 0, 400);
   tableComponent.getHeader().addColumn("", 1, 400);
   tableComponent.setModel(this);
   addAndMakeVisible(tableComponent);
+
+  searchBox = std::make_unique<TextEditor>();
+  addAndMakeVisible(searchBox.get());
+  searchBox->setMultiLine(false);
+  searchBox->setReturnKeyStartsNewLine(false);
+  searchBox->setReadOnly(false);
+  searchBox->setScrollbarsShown(false);
+  searchBox->setCaretVisible(true);
+  searchBox->setPopupMenuEnabled(true);
+  searchBox->setColour(TextEditor::backgroundColourId, Colours::white);
+  searchBox->setColour(TextEditor::outlineColourId, Colours::grey);
+  searchBox->setColour(TextEditor::focusedOutlineColourId, Colours::lightblue);
+  searchBox->setColour(TextEditor::textColourId, Colours::black);
+  searchBox->setColour(TextEditor::shadowColourId, Colours::transparentBlack);
+  // searchBox->setText("Search...");
+  // This will set placeholder text
+  searchBox->setTextToShowWhenEmpty("Search...", juce::Colours::grey);
+
+  searchBox->addListener(this);
 }
 
 PlaylistComponent::~PlaylistComponent()
@@ -58,7 +81,8 @@ void PlaylistComponent::resized()
   // This method is where you should set the bounds of any child
   // components that your component contains..
 
-  tableComponent.setBounds(0, 0, getWidth(), getHeight());
+  tableComponent.setBounds(0, 20, getWidth(), getHeight());
+  searchBox->setBounds(0, 20, getWidth() - 20, 20);
 }
 
 int PlaylistComponent::getNumRows()
@@ -119,7 +143,7 @@ Component *PlaylistComponent::refreshComponentForCell(
   {
     if (existingComponentToUpdate == nullptr)
     {
-      TextButton* btn = new TextButton{"Play"};
+      TextButton *btn = new TextButton{"Play"};
       String id(std::to_string(rowNumber));
       btn->setComponentID(id);
       btn->addListener(this);
@@ -148,10 +172,16 @@ Component *PlaylistComponent::refreshComponentForCell(
   }
 }
 
-void PlaylistComponent::buttonClicked(Button* button)
+void PlaylistComponent::buttonClicked(Button *button)
 {
   std::cout << "button clicked" << std::endl;
   std::cout << "button id: " << button->getComponentID().getIntValue() << std::endl;
   int id = std::stoi(button->getComponentID().toStdString());
 }
 
+void PlaylistComponent::textEditorTextChanged(TextEditor &editor)
+{
+  String searchText = editor.getText();
+  // Perform search with searchText
+  std::cout << "DeckGUI::textEditorTextChanged " << searchText << std::endl;
+}
