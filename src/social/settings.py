@@ -27,8 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Update to use custom user model instead of default user model set by django
-AUTH_USER_MODEL = 'authn.User' 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,6 +43,9 @@ INSTALLED_APPS = [
     'authn' # For auth app
 ]
 
+# Update to use custom user model instead of default user model set by django
+AUTH_USER_MODEL = 'authn.User' 
+
 
 # This code sets the DEFAULT_PERMISSION_CLASSES setting to allow any user to 
 # access the API, and sets the DEFAULT_AUTHENTICATION_CLASSES setting to use 
@@ -57,7 +59,9 @@ REST_FRAMEWORK = {
     #     'rest_framework.permissions.IsAuthenticated',
     # ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'EXCEPTION_HANDLER': 'social.utils.custom_exception_handler'
+
 }
 
 MIDDLEWARE = [
@@ -68,6 +72,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social.middleware.JsonErrorHandlerMiddleware', # For custom error handling
+
 ]
 
 ROOT_URLCONF = 'social.urls'
