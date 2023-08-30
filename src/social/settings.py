@@ -52,9 +52,10 @@ AUTH_USER_MODEL = 'authn.User'
 # SessionAuthentication instead of TokenAuthentication. This allows 
 # unauthenticated access to the /register/ endpoint.
 REST_FRAMEWORK = {
-    # 'DEFAULT_AUTHENTICATION_CLASSES': [
-    #     'rest_framework.authentication.TokenAuthentication',
-    # ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'authn.token.BearerTokenAuthentication', # I used Bearer token instead of Token token
+        # 'rest_framework.authentication.TokenAuthentication',
+    ],
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.IsAuthenticated',
     # ],

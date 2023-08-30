@@ -14,3 +14,11 @@ def custom_exception_handler(exc, context):
         response.data['status_code'] = response.status_code
 
     return response
+
+# Global response format
+def response_format(message, data=None):
+    print("response_format start", message, "message", data, "data", "response_format end")
+    return {
+        'message': message,
+        'data': data,
+    }
