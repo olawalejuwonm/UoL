@@ -27,8 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'auth.User'
-
+# Update to use custom user model instead of default user model set by django
+AUTH_USER_MODEL = 'authn.User' 
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,16 +41,23 @@ INSTALLED_APPS = [
     'rest_framework', # For API
     'rest_framework.authtoken', # For authentication token
     # 'social.auth.SocialConfig', # For social app
-    'auth' # For auth app
+    'authn' # For auth app
 ]
 
+
+# This code sets the DEFAULT_PERMISSION_CLASSES setting to allow any user to 
+# access the API, and sets the DEFAULT_AUTHENTICATION_CLASSES setting to use 
+# SessionAuthentication instead of TokenAuthentication. This allows 
+# unauthenticated access to the /register/ endpoint.
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'rest_framework.authentication.TokenAuthentication',
+    # ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
 
 MIDDLEWARE = [
