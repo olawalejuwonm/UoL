@@ -29,7 +29,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('authn.urls')),
+    path('user/', include('authn.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('', include(router.urls)),
 ]

@@ -18,10 +18,11 @@ class JsonErrorHandlerMiddleware:
                 message = details[list(details.keys())[0]][0]
             if status_code == 403:
                 message = details['detail']
+            if status_code == 401:
+                message = details['detail'] if 'detail' in details else response.reason_phrase
         except:
             pass
-        print("Error start", response, "response", message, "get_response", details, "request", "Error end")
-
+        print("Error start", response, "response", message, "get_response", details, "request", "Error end", response.status_code)
 
         if response.status_code >= 400:
             data = {

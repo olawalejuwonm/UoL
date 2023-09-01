@@ -8,6 +8,7 @@ class User(AbstractUser):
     # username = models.CharField(max_length=256, unique=True)
     pass
 
+
 # from django.contrib.auth.models import User
 
 # class User(models.Model):
