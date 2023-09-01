@@ -29,6 +29,16 @@ APPEND_SLASH = False
 
 ALLOWED_HOSTS = []
 
+import cloudinary
+
+# Todo: Update cloudinary config to use environment variables
+cloudinary.config(
+  cloud_name = "dddzjpoew",
+  api_key = "426121238726195",
+  api_secret = "ZpuXFW-CBj78xEvMSwVWgvDH-UE",
+  # folder to store images
+  folder = "social"
+)
 
 # Application definition
 
@@ -42,7 +52,8 @@ INSTALLED_APPS = [
     'rest_framework', # For API
     'rest_framework.authtoken', # For authentication token
     # 'social.auth.SocialConfig', # For social app
-    'authn' # For auth app
+    'authn', # For auth app,
+    'timeline' # For timeline app
 ]
 
 # Update to use custom user model instead of default user model set by django
