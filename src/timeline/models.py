@@ -14,8 +14,7 @@ class StatusUpdate(models.Model):
     text = models.CharField(max_length=280)
     # medias = CloudinaryField('media', null=True, blank=True)
     # medias will be a list of urls
-    medias = CloudinaryField('medias', null=True, blank=True, 
-                resource_type="auto", type="list", folder="social")
+    media = CloudinaryField('media', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -26,6 +25,7 @@ class StatusUpdate(models.Model):
     # of the uploaded image
     # After save
     def save(self, *args, **kwargs):
-        if self.medias:
-            self.medias = cloudinary.uploader.upload(self.medias)['url']
+        if self.media:
+            self.media = cloudinary.uploader.upload(self.media, 
+                    resource_type="auto", type="list", folder="social" )['url']
         super(StatusUpdate, self).save(*args, **kwargs)
