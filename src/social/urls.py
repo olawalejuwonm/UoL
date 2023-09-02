@@ -18,11 +18,10 @@ from django.contrib import admin
 from django.urls import include, path
 
 from rest_framework import routers
-from authn.views import UserViewSet, login, register
+from authn.views import UserViewSet
 from friend.views import FriendViewSet
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router = routers.DefaultRouter()
+router.register(r'user', UserViewSet)
 router.register(r'friends', FriendViewSet)
 
 # myproject/urls.py
@@ -32,10 +31,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', include('authn.urls')),
+    # path('user/', include('authn.urls')),
     path('timeline/', include('timeline.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('friends/<int:pk>/confirm/', FriendViewSet.as_view({'post': 'confirm_friend_request'}), name='confirm_friend_request'),
-
     path('', include(router.urls)),
 ]
