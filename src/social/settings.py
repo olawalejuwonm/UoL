@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'authn', # For auth app,
     'timeline', # For timeline app
     'friend', # For friend app
+    'chat',
+
 ]
 
 # Update to use custom user model instead of default user model set by django
@@ -172,3 +174,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('localhost', 6379)],
+        },
+    },
+}
