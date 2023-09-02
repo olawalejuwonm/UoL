@@ -35,5 +35,7 @@ urlpatterns = [
     path('user/', include('authn.urls')),
     path('timeline/', include('timeline.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    path('friends/<int:pk>/confirm/', FriendViewSet.as_view({'post': 'confirm_friend_request'}), name='confirm_friend_request'),
+
     path('', include(router.urls)),
 ]

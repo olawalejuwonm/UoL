@@ -25,6 +25,14 @@ class FriendViewSet(viewsets.ModelViewSet):
         users = User.objects.filter(username__icontains=query).exclude(id=request.user.id)
         serializer = FriendSerializer(users, many=True)
         return Response(serializer.data)
+    
+    @action(detail=True, methods=['post'])
+    def confirm_friend_request(self, request, pk=None):
+        friend = self.get_object()
+        friend.confirmed = True
+        friend.save()
+        serializer = FriendSerializer(friend)
+        return Response(serializer.data)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
