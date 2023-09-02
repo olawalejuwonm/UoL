@@ -32,11 +32,15 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
         return obj.user == request.user
 
-class StatusUpdateViewSet(viewsets.ModelViewSet):
+class TimelineViewSet(viewsets.ModelViewSet):
     queryset = StatusUpdate.objects.all()
     serializer_class = StatusUpdateSerializer
     permission_classes = [permissions.AllowAny]
     pagination_class = StatusUpdatePagination
+    
+    def get_queryset(self):
+        queryset = StatusUpdate.objects.all().select_related('user')
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -47,11 +51,13 @@ class StatusUpdateViewSet(viewsets.ModelViewSet):
         else:
             permission_classes = [permissions.AllowAny]
         return [permission() for permission in permission_classes]
+    
+   
 
 
 
 
-class UserStatusUpdateList(generics.ListAPIView):
+class UserTimelinList(generics.ListAPIView):
     serializer_class = StatusUpdateSerializer
     permission_classes = [permissions.IsAuthenticated]
 

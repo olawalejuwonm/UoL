@@ -20,6 +20,7 @@ from django.urls import include, path
 from rest_framework import routers
 from authn.views import UserViewSet
 from friend.views import FriendViewSet
+from timeline.views import TimelineViewSet
 router = routers.DefaultRouter()
 from django.urls import path, include
 from django.views.generic import TemplateView
@@ -27,12 +28,13 @@ from chat.routing import websocket_urlpatterns
 
 router.register(r'user', UserViewSet)
 router.register(r'friends', FriendViewSet)
+router.register(r'timeline', TimelineViewSet)
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('user/', include('authn.urls')),
-    path('timeline/', include('timeline.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('friends/<int:pk>/confirm/', FriendViewSet.as_view({'post': 'confirm_friend_request'}), name='confirm_friend_request'),
     # path('ws/', include(websocket_urlpatterns)),
