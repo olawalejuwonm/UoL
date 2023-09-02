@@ -43,6 +43,7 @@ cloudinary.config(
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne', # For websocket
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'timeline', # For timeline app
     'friend', # For friend app
     'chat',
+
 
 ]
 
@@ -112,6 +114,18 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'social.wsgi.application'
+# Add this line inorder to use daphne instead of gunicorn
+ASGI_APPLICATION = "social.asgi.application"
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('localhost', 6379)],
+        },
+    },
+}
+
 
 
 # Database
@@ -176,11 +190,3 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            'hosts': [('localhost', 6379)],
-        },
-    },
-}

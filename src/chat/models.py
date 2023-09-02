@@ -3,11 +3,12 @@ from django.db import models
 # Create your models here.
 # chat/models.py
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
+
 
 class Chat(models.Model):
-    user1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='chats1')
-    user2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='chats2')
+    user1 = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='chats1')
+    user2 = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='chats2')
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -18,7 +19,7 @@ class Chat(models.Model):
 
 class ChatMessage(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='messages')
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_messages')
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='sent_messages')
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
