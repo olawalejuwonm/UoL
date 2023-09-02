@@ -52,8 +52,22 @@ class UserViewSet(viewsets.ModelViewSet):
                 'Invalid credentials',
             ), status=status.HTTP_401_UNAUTHORIZED)
 
-    @action(detail=False, methods=['GET'], permission_classes=[IsAuthenticated])
-    def profile(self, request):
-        serializer = UserSerializer(request.user)
-        return Response(serializer.data)
 
+    # Update user profile
+    @action(detail=False, methods=['GET', 'PUT'], permission_classes=[IsAuthenticated])
+    def profile(self, request):
+        if request.method == 'GET':
+            serializer = UserSerializer(request.user)
+            return Response(response_format(
+                'Profile retrieved successfully',
+                serializer.data
+            ), status=status.HTTP_200_OK)
+        elif request.method == 'PUT':
+            serializer = UserSerializer(request.user, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(response_format(
+                    'Profile updated successfully',
+                    serializer.data
+                ), status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
