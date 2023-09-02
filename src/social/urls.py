@@ -19,8 +19,11 @@ from django.urls import include, path
 
 from rest_framework import routers
 from authn.views import UserViewSet, login, register
+from friend.views import FriendViewSet
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
+router = routers.DefaultRouter()
+router.register(r'friends', FriendViewSet)
 
 # myproject/urls.py
 from django.urls import path, include

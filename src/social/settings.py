@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken', # For authentication token
     # 'social.auth.SocialConfig', # For social app
     'authn', # For auth app,
-    'timeline' # For timeline app
+    'timeline', # For timeline app
+    'friend', # For friend app
 ]
 
 # Update to use custom user model instead of default user model set by django
