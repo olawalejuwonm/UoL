@@ -2,14 +2,32 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from django.contrib.auth.models import User
+
+from friend.models import Friend
 from .models import Chat, ChatMessage
 from .serializers import ChatMessageSerializer
 
 class ChatMessageConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         print("connected")
-        self.chat_id = self.scope['url_route']['kwargs']['chat_id']
+        self.user_id = self.scope['url_route']['kwargs']['user_id']
+        self.friend_id = self.scope['url_route']['kwargs']['friend_id']
+        # check for chat with user and friend
+        # if not exists, create chat
+        chat = Chat.objects.filter(user1=self.user_id, user2=self.friend_id)
+        if not chat:
+            chat = Chat.objects.create(user1_id=self.friend_id, user2_id=self.user_id)
+            if not chat:
+                chat = Chat.objects.create(user1_id=self.user_id, user2_id=self.friend_id)
+        chat = chat[0]
+        self.chat_id = f'{chat.id}'
+        # Check if chat exists
+        chat = Chat.objects.filter(id=self.chat_id)
+       
         self.chat_group_name = f'chat_{self.chat_id}'
+
+        print(self.chat_group_name, self.chat_id, self.scope['user'])  
+
 
         # Join chat group
         await self.channel_layer.group_add(
@@ -28,30 +46,35 @@ class ChatMessageConsumer(AsyncWebsocketConsumer):
         )
 
     async def receive(self, text_data):
-        data = json.loads(text_data)
-        message = data['message']
-        sender_id = data['sender_id']
-        sender = User.objects.get(id=sender_id)
-        chat = Chat.objects.get(id=self.chat_id)
+        try: 
+            print("received", text_data)
+            data = json.loads(text_data)
+            print(data)
+            message = data['message']
+            sender_id = data['sender_id']
+            sender = User.objects.get(id=sender_id)
+            chat = Chat.objects.get(id=self.chat_id)
 
-        # Create chat message
-        chat_message = ChatMessage.objects.create(
-            chat=chat,
-            sender=sender,
-            message=message
-        )
+            # Create chat message
+            chat_message = ChatMessage.objects.create(
+                chat=chat,
+                sender=sender,
+                message=message
+            )
 
-        # Serialize chat message
-        serializer = ChatMessageSerializer(chat_message)
+            # Serialize chat message
+            serializer = ChatMessageSerializer(chat_message)
 
-        # Send chat message to group
-        await self.channel_layer.group_send(
-            self.chat_group_name,
-            {
-                'type': 'chat_message',
-                'message': serializer.data
-            }
-        )
+            # Send chat message to group
+            await self.channel_layer.group_send(
+                self.chat_group_name,
+                {
+                    'type': 'chat_message',
+                    'message': serializer.data
+                }
+            )
+        except Exception as e:
+            print(e)
 
     async def chat_message(self, event):
         message = event['message']
