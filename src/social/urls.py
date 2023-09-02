@@ -29,16 +29,15 @@ router.register(r'user', UserViewSet)
 router.register(r'friends', FriendViewSet)
 
 
-
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('user/', include('authn.urls')),
     path('timeline/', include('timeline.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('friends/<int:pk>/confirm/', FriendViewSet.as_view({'post': 'confirm_friend_request'}), name='confirm_friend_request'),
+    # path('ws/', include(websocket_urlpatterns)),
     path('', include(router.urls)),
     # url(r'^ws/$', TemplateView.as_view(template_name='chat/index.html'), name='index'),
     # url(r'^ws/', include(websocket_urlpatterns)),
+
 ]

@@ -115,7 +115,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'social.wsgi.application'
 # Add this line inorder to use daphne instead of gunicorn
-ASGI_APPLICATION = "social.asgi.application"
+# ASGI_APPLICATION = "social.asgi.application"
+ASGI_APPLICATION = "social.routing.application"
+
 
 CHANNEL_LAYERS = {
     'default': {
