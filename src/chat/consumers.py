@@ -10,6 +10,7 @@ from .serializers import ChatMessageSerializer
 from authn.models import User
 
 
+users_online = []
 
 class ChatMessageConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -38,11 +39,29 @@ class ChatMessageConsumer(AsyncWebsocketConsumer):
             self.chat_group_name,
             self.channel_name
         )
+        users_online.append(self.user_id)
+        # send users online to group
+        await self.channel_layer.group_send(
+            self.chat_group_name,
+            {
+                'type': 'users_online',
+                'users_online': users_online
+            }
+        )
 
         await self.accept()
 
     async def disconnect(self, close_code):
         print("disconnected")
+        users_online.remove(self.user_id)
+        # send users online to group
+        await self.channel_layer.group_send(
+            self.chat_group_name,
+            {
+                'type': 'users_online',
+                'users_online': users_online
+            }
+        )
         # Leave chat group
         await self.channel_layer.group_discard(
             self.chat_group_name,
@@ -88,6 +107,13 @@ class ChatMessageConsumer(AsyncWebsocketConsumer):
         # Send chat message to WebSocket
         await self.send(text_data=json.dumps({
             'message': message
+        }))
+
+    async def users_online(self, event):
+        users_online = event['users_online']
+        # Send users online to WebSocket
+        await self.send(text_data=json.dumps({
+            'users_online': users_online
         }))
 
 
