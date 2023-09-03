@@ -10,7 +10,8 @@ from cloudinary.models import CloudinaryField
 # is timeline_statusupdate
 
 class StatusUpdate(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+         null=False, blank=False)
     text = models.CharField(max_length=280)
     # medias = CloudinaryField('media', null=True, blank=True)
     # medias will be a list of urls

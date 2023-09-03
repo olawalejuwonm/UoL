@@ -33,14 +33,14 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         return obj.user == request.user
 
 class TimelineViewSet(viewsets.ModelViewSet):
-    queryset = StatusUpdate.objects.all()
+    queryset = StatusUpdate.objects.select_related().all()
     serializer_class = StatusUpdateSerializer
     permission_classes = [permissions.AllowAny]
-    pagination_class = StatusUpdatePagination
-    
-    def get_queryset(self):
-        queryset = StatusUpdate.objects.all().select_related('user')
-        return queryset
+    # pagination_class = StatusUpdatePagination
+
+    # def get_queryset(self):
+    #     print(self.request.user, "querySet")
+    #     return StatusUpdate.objects.select_related('user').all()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

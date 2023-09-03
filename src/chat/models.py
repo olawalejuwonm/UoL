@@ -4,18 +4,20 @@ from django.db import models
 # chat/models.py
 from django.db import models
 from django.conf import settings
+from authn.models import User
 
 
 class Chat(models.Model):
-    user1 = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='chats1')
-    user2 = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='chats2')
+    users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='chats')
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user1', 'user2')
+        constraints = [
+            models.UniqueConstraint(fields=['users'], name='unique_users'),
+        ]
 
     def __str__(self):
-        return f'{self.user1.username} - {self.user2.username}'
+        return f'Chat {self.id}'
 
 class ChatMessage(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='messages')

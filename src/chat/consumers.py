@@ -1,28 +1,32 @@
 # chat/consumers.py
 import json
+from asgiref.sync import sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
-from django.contrib.auth.models import User
 
 from friend.models import Friend
 from .models import Chat, ChatMessage
 from .serializers import ChatMessageSerializer
+
+from authn.models import User
+
+
 
 class ChatMessageConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         print("connected")
         self.user_id = self.scope['url_route']['kwargs']['user_id']
         self.friend_id = self.scope['url_route']['kwargs']['friend_id']
-        # check for chat with user and friend
+        # check for chat with user and friend in chat.users many to many field
         # if not exists, create chat
-        chat = Chat.objects.filter(user1=self.user_id, user2=self.friend_id)
+        self.user = await sync_to_async(User.objects.get)(id=self.user_id)
+        self.friend = await sync_to_async(User.objects.get)(id=self.friend_id)
+        chat = await sync_to_async(Chat.objects.filter(users__id=self.user.id).filter(users__id=self.friend.id).first)()
         if not chat:
-            chat = Chat.objects.create(user1_id=self.friend_id, user2_id=self.user_id)
-            if not chat:
-                chat = Chat.objects.create(user1_id=self.user_id, user2_id=self.friend_id)
-        chat = chat[0]
+            chat = await sync_to_async(Chat.objects.create)()
+            await sync_to_async(chat.users.add)(self.user, self.friend)
         self.chat_id = f'{chat.id}'
         # Check if chat exists
-        chat = Chat.objects.filter(id=self.chat_id)
+        # chat = Chat.objects.filter(id=self.chat_id)
        
         self.chat_group_name = f'chat_{self.chat_id}'
 
@@ -52,15 +56,17 @@ class ChatMessageConsumer(AsyncWebsocketConsumer):
             print(data)
             message = data['message']
             sender_id = data['sender_id']
-            sender = User.objects.get(id=sender_id)
-            chat = Chat.objects.get(id=self.chat_id)
+            sender = await sync_to_async(User.objects.get)(id=sender_id)
+            chat = await sync_to_async(Chat.objects.get)(id=self.chat_id)
 
             # Create chat message
-            chat_message = ChatMessage.objects.create(
+            chat_message = await sync_to_async(ChatMessage.objects.create)(
                 chat=chat,
                 sender=sender,
                 message=message
             )
+
+            print(chat_message, "chat_message", self.chat_group_name)
 
             # Serialize chat message
             serializer = ChatMessageSerializer(chat_message)
@@ -118,7 +124,7 @@ class ChatMessageConsumer(AsyncWebsocketConsumer):
 
     # # Receive message from room group
     # async def chat_message(self, event):
-        message = event["message"]
+        # message = event["message"]
 
-        # Send message to WebSocket
-        await self.send(text_data=json.dumps({"message": message}))
+        # # Send message to WebSocket
+        # await self.send(text_data=json.dumps({"message": message}))
