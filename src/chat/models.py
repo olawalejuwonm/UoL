@@ -10,11 +10,8 @@ from authn.models import User
 class Chat(models.Model):
     users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='chats')
     created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['users'], name='unique_users'),
-        ]
+    # Date model was last updated
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f'Chat {self.id}'

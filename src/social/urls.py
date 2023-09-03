@@ -19,6 +19,7 @@ from django.urls import include, path
 
 from rest_framework import routers
 from authn.views import UserViewSet
+from chat.views import ChatViewSet
 from friend.views import FriendViewSet
 from timeline.views import TimelineViewSet
 router = routers.DefaultRouter()
@@ -29,6 +30,7 @@ from chat.routing import websocket_urlpatterns
 router.register(r'user', UserViewSet)
 router.register(r'friends', FriendViewSet)
 router.register(r'timeline', TimelineViewSet)
+router.register(r'chat', ChatViewSet)
 
 
 
