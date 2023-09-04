@@ -8,7 +8,7 @@ from authn.models import User
 
 
 class Chat(models.Model):
-    users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='chats')
+    users = models.ManyToManyField(User, related_name='chats')
     created_at = models.DateTimeField(auto_now_add=True)
     # Date model was last updated
     updated_at = models.DateTimeField(auto_now=True)
@@ -18,7 +18,7 @@ class Chat(models.Model):
 
 class ChatMessage(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='messages')
-    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='sent_messages')
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_messages')
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
