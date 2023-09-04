@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 # Create your views here.
 # views.py
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 
 from authn.serializers import UserSerializer
@@ -40,13 +40,3 @@ class ChatViewSet(viewsets.ModelViewSet):
             chat['users'] = UserSerializer(users, many=True).data
             print(chat)
         return Response(data)
-    
-    #  def list(self, request, *args, **kwargs):
-        # print(request.user, "request.user")
-        # chat = request.user.chats.all()
-        # # data = serializers.serialize('json', chat)
-        # data = chat
-    
-
-        # # data['users'] = [user for user in chat.users.all()]
-        # return Response(data)
