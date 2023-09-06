@@ -1,7 +1,7 @@
 # Create your views here.
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from social.utils import response_format
+from social.utils import response_format, upload_file
 from .models import User
 from rest_framework import status
 from rest_framework.decorators import action
@@ -66,16 +66,11 @@ class UserViewSet(viewsets.ModelViewSet):
                 serializer.data
             ), status=status.HTTP_200_OK)
         elif request.method == 'PUT':
-            print(request.FILES, "request body", request.data)
-            # data = request.data
-            avatar = request.FILES.get('avatar')
-            if avatar:
-                avatar_url = cloudinary.uploader.upload(avatar, 
-                    resource_type="image",
-                    transformation={"quality": "auto:eco"},
-                    folder="avatar")['url']
-                print(avatar_url, "avatar_url")
-                request.data['avatar_url'] = avatar_url
+            avatar_url = upload_file(request, "avatar", 
+                resource_type="image",
+                transformation={"quality": "auto:eco"},
+                folder="avatar")
+            request.data['avatar_url'] = avatar_url
             serializer = UserSerializer(request.user, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()

@@ -1,6 +1,7 @@
 # https://www.django-rest-framework.org/api-guide/exceptions/#custom-exception-handling
 
 from rest_framework.views import exception_handler
+import cloudinary
 
 def custom_exception_handler(exc, context):
     # Call REST framework's default exception handler first,
@@ -22,3 +23,10 @@ def response_format(message, data=None):
         'message': message,
         'data': data,
     }
+
+# Upload file to cloudinary, accepts file object and options object that will be passed to cloudinary
+def upload_file(request, fileName, **kwargs):
+    file = request.FILES.get(fileName)
+    print("upload_file start", file, "file", kwargs, "options", "upload_file end")
+    return cloudinary.uploader.upload(file, **kwargs)['url']
+# def return_populatedlist
