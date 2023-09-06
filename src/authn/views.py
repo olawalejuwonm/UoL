@@ -11,6 +11,9 @@ from .serializers import UserSerializer
 from rest_framework import permissions
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
+import cloudinary
+from rest_framework.parsers import MultiPartParser, FormParser
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -63,6 +66,16 @@ class UserViewSet(viewsets.ModelViewSet):
                 serializer.data
             ), status=status.HTTP_200_OK)
         elif request.method == 'PUT':
+            print(request.FILES, "request body", request.data)
+            # data = request.data
+            avatar = request.FILES.get('avatar')
+            if avatar:
+                avatar_url = cloudinary.uploader.upload(avatar, 
+                    resource_type="image",
+                    transformation={"quality": "auto:eco"},
+                    folder="avatar")['url']
+                print(avatar_url, "avatar_url")
+                request.data['avatar_url'] = avatar_url
             serializer = UserSerializer(request.user, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()

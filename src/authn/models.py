@@ -7,11 +7,11 @@ import cloudinary
 from cloudinary.models import CloudinaryField
 
 class User(AbstractUser):
-    avatar = CloudinaryField('avatar', null=True, blank=True, overwrite=True,
-    resource_type="image",
-    transformation={"quality": "auto:eco"},
-     folder="avatar")
-    avatar_url = models.URLField(null=True, blank=True)
+    # avatar = CloudinaryField('avatar', null=True, blank=True, overwrite=True,
+    # resource_type="image",
+    # transformation={"quality": "auto:eco"},
+    #  folder="avatar")
+    avatar_url = models.URLField(blank=True, default="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg")
       
 
     # after save (post_save) this preceed avatar with https://res.cloudinary.com/dddzjpoew
@@ -21,11 +21,14 @@ class User(AbstractUser):
     #         self.avatar = 'https://res.cloudinary.com/dddzjpoew/' + self.avatar
     #     super(User, self).update(*args, **kwargs)
 
-    def save(self, *args, **kwargs):
-        if self.avatar:
-            self.avatar_url = cloudinary.uploader.upload(self.avatar, 
-                    resource_type="auto", folder="social" )['url']
-        super(User, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     print("savimng", self.avatar)
+    #     if self.avatar:
+    #         self.avatar_url = cloudinary.uploader.upload(self.avatar, 
+    #             resource_type="image",
+    #             transformation={"quality": "auto:eco"},
+    #             folder="avatar")['url']
+    #     super(User, self).save(*args, **kwargs)
 
     
 

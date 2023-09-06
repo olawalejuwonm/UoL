@@ -5,12 +5,13 @@ from django.db import models
 from django.conf import settings
 import cloudinary
 from cloudinary.models import CloudinaryField
+from authn.models import User
 
 # StatusUpdate model was used as name so that the name on the table
 # is timeline_statusupdate
 
 class StatusUpdate(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
          null=False, blank=False)
     text = models.CharField(max_length=280)
     # medias = CloudinaryField('media', null=True, blank=True)
