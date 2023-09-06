@@ -3,6 +3,8 @@
 from rest_framework.views import exception_handler
 import cloudinary
 
+from authn.serializers import UserSerializer
+
 def custom_exception_handler(exc, context):
     # Call REST framework's default exception handler first,
     # to get the standard error response.
@@ -30,11 +32,11 @@ def upload_file(request, fileName, **kwargs):
     print("upload_file start", file, "file", kwargs, "options", "upload_file end")
     return cloudinary.uploader.upload(file, **kwargs)['url']
 
-def populate_user(queryset, dataSerializer, itemSerializer):
+def populate_user(queryset, dataSerializer):
     alldata = []
     for item in queryset:
         data = dataSerializer(item).data
-        populated_data = itemSerializer(item.user).data
+        populated_data = UserSerializer(item.user).data
         data['user'] =populated_data
         alldata.append(data)
     return alldata

@@ -68,7 +68,7 @@ class TimelineViewSet(viewsets.ModelViewSet):
             # print(model_to_dict(i.user), "user", d)
             # return Response(UserSerializer(model_to_dict(i.user), many=True).data)
             # return Response(UserSerializer(u).data)
-        return Response(populate_user(queryset, StatusUpdateSerializer, UserSerializer))
+        return Response(populate_user(queryset, StatusUpdateSerializer))
         # except Exception as e:
         #     print(e, "error hereeeeeeee", e.__traceback__)
         #     message = e.args[0]
