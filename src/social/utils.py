@@ -29,4 +29,13 @@ def upload_file(request, fileName, **kwargs):
     file = request.FILES.get(fileName)
     print("upload_file start", file, "file", kwargs, "options", "upload_file end")
     return cloudinary.uploader.upload(file, **kwargs)['url']
-# def return_populatedlist
+
+def populate_user(queryset, dataSerializer, itemSerializer):
+    alldata = []
+    for item in queryset:
+        data = dataSerializer(item).data
+        populated_data = itemSerializer(item.user).data
+        data['user'] =populated_data
+        alldata.append(data)
+    return alldata
+        

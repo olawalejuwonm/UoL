@@ -6,6 +6,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
 from authn.serializers import UserSerializer
+from social.utils import  populate_user
 from .models import StatusUpdate
 from .serializers import StatusUpdateSerializer
 from rest_framework.pagination import PageNumberPagination
@@ -54,17 +55,24 @@ class TimelineViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
     def list (self, request):
+        # try:
         queryset = StatusUpdate.objects.all().select_related('user')
         # serializer = StatusUpdateSerializer(queryset, many=True)
         # data = serializer.data
         # print(queryset, "queryset")
-        for i in queryset:
-            d = model_to_dict(i)
-            u = model_to_dict(i.user)
-            print("user", u)
+        # for i in queryset:
+        #     d = StatusUpdateSerializer(i).data
+        #     u = UserSerializer(i.user).data
+        #     print("user", u)
+        #     d['user'] = u
             # print(model_to_dict(i.user), "user", d)
             # return Response(UserSerializer(model_to_dict(i.user), many=True).data)
-            return Response(UserSerializer(u).data)
+            # return Response(UserSerializer(u).data)
+        return Response(populate_user(queryset, StatusUpdateSerializer, UserSerializer))
+        # except Exception as e:
+        #     print(e, "error hereeeeeeee", e.__traceback__)
+        #     message = e.args[0]
+        #     return Response(message)
 
         # data['user'] = UserSerializer(model_to_dict(queryset.user)).data
         data = {}

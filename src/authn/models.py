@@ -11,6 +11,7 @@ class User(AbstractUser):
     # resource_type="image",
     # transformation={"quality": "auto:eco"},
     #  folder="avatar")
+    name= models.CharField(max_length=256, blank=True)
     avatar_url = models.URLField(blank=True, default="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg")
       
 
