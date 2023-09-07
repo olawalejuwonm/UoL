@@ -6,15 +6,13 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
 from authn.serializers import UserSerializer
-from social.utils import  populate_user
+from social.utils import  populate_user, upload_file
 from .models import StatusUpdate
 from .serializers import StatusUpdateSerializer
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.decorators import action
-
-
 
 
 class StatusUpdatePagination(PageNumberPagination):
@@ -42,7 +40,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         return obj.user == request.user
 
 class TimelineViewSet(viewsets.ModelViewSet):
-    queryset = StatusUpdate.objects.all().select_related('user')
+    queryset = StatusUpdate.objects.all()
     serializer_class = StatusUpdateSerializer
     # permission_classes = [permissions.IsAuthenticated]
     # pagination_class = StatusUpdatePagination
@@ -51,8 +49,8 @@ class TimelineViewSet(viewsets.ModelViewSet):
     #     print(self.request.user, "querySet")
     #     return StatusUpdate.objects.select_related('user').all()
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
     def list (self, request):
         # try:
@@ -75,7 +73,24 @@ class TimelineViewSet(viewsets.ModelViewSet):
         #     return Response(message)
 
         # data['user'] = UserSerializer(model_to_dict(queryset.user)).data
-        data = {}
+
+    def create(self, request):
+        print(request.data, "request.data")
+        try:
+            medias = upload_file(request, folder='timeline')
+            print(medias, "medias")
+            # set medias in request.data if medias is not None
+            if medias:
+                request.data['medias'] = medias
+            serializer = StatusUpdateSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save(user=request.user)
+                return Response(serializer.data)
+            return Response(serializer.errors)
+        except Exception as e:
+            print(e, "error hereeeeeeee", e.__traceback__)
+            message = e.args[0]
+            return Response(message)
 
     # def get_permissions(self):
     #     if self.action in ['update', 'partial_update', 'destroy']:

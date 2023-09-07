@@ -10,7 +10,7 @@ def custom_exception_handler(exc, context):
     # to get the standard error response.
     response = exception_handler(exc, context)
 
-    print("Util Error start", response, "response", exc, "exc", context, "context", "Util Error end")
+    # print("Util Error start", response, "response", exc, "exc", context, "context", "Util Error end")
 
     # Now add the HTTP status code to the response.
     if response is not None:
@@ -29,7 +29,7 @@ def response_format(message, data=None):
 # Upload file to cloudinary, accepts file object and options object that will be passed to cloudinary
 def upload_file(request, **kwargs):
     try:
-        fileUploaded = {}
+        fileUploaded = []
         # Iterate through files
         for fileName in request.FILES:
             # Upload file to cloudinary
@@ -38,7 +38,7 @@ def upload_file(request, **kwargs):
             upload_url = cloudinary.uploader.upload(file, **kwargs)['url']
             # assign uploaded file url to request.data
             request.data[fileName] = upload_url
-            fileUploaded[fileName] = upload_url
+            fileUploaded.append(upload_url)
         return fileUploaded
         
     except Exception as e:

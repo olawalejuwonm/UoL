@@ -1,10 +1,7 @@
 from django.db import models
 
-# Create your models here.
+from django.core.exceptions import ValidationError
 from django.db import models
-from django.conf import settings
-import cloudinary
-from cloudinary.models import CloudinaryField
 from authn.models import User
 
 # StatusUpdate model was used as name so that the name on the table
@@ -13,21 +10,21 @@ from authn.models import User
 class StatusUpdate(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,
          null=False, blank=False)
-    text = models.CharField(max_length=280)
+    text = models.TextField(blank=True)
     # medias = CloudinaryField('media', null=True, blank=True)
     # medias will be a list of urls
-    media = CloudinaryField('media', null=True, blank=True)
+    medias = models.JSONField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f'{self.user.username}: {self.text}'
     
-    # This will automatically update the medias field to the cloudinary url
-    # of the uploaded image
-    # After save
+    def clean(self):
+        if not self.text and not self.medias:
+            raise ValidationError('Either text or medias must be provided.')
+
     def save(self, *args, **kwargs):
-        if self.media:
-            self.media = cloudinary.uploader.upload(self.media, 
-                    resource_type="auto", type="list", folder="social" )['url']
+        self.full_clean()
         super(StatusUpdate, self).save(*args, **kwargs)
+    

@@ -22,7 +22,7 @@ class JsonErrorHandlerMiddleware:
                 message = details['detail'] if 'detail' in details else response.reason_phrase
         except:
             pass
-        print("Error start", response, "response", message, "get_response", details, "request", "Error end", response.status_code)
+        # print("Error start", response, "response", message, "get_response", details, "request", "Error end", response.status_code)
 
         if response.status_code >= 400:
             data = {
