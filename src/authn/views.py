@@ -66,11 +66,10 @@ class UserViewSet(viewsets.ModelViewSet):
                 serializer.data
             ), status=status.HTTP_200_OK)
         elif request.method == 'PUT':
-            avatar_url = upload_file(request, "avatar", 
-                resource_type="image",
-                transformation={"quality": "auto:eco"},
-                folder="avatar")
-            request.data['avatar_url'] = avatar_url
+            upload_file(request, 
+                    resource_type="image",
+                    transformation={"quality": "auto:eco"},
+                    folder="avatar")
             serializer = UserSerializer(request.user, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()

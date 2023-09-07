@@ -86,7 +86,8 @@ class TimelineViewSet(viewsets.ModelViewSet):
     
     @action(detail=False, methods=['get'], permission_classes=[permissions.IsAuthenticated])
     def me(self, request):
-        queryset = StatusUpdate.objects.filter(user=request.user).select_related('user').all()
+        queryset = StatusUpdate.objects.filter(user=request.user)
+        # I did not populate here since the user already has it's context
         serializer = StatusUpdateSerializer(queryset, many=True)
         return Response(serializer.data)
     

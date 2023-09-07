@@ -27,10 +27,23 @@ def response_format(message, data=None):
     }
 
 # Upload file to cloudinary, accepts file object and options object that will be passed to cloudinary
-def upload_file(request, fileName, **kwargs):
-    file = request.FILES.get(fileName)
-    print("upload_file start", file, "file", kwargs, "options", "upload_file end")
-    return cloudinary.uploader.upload(file, **kwargs)['url']
+def upload_file(request, **kwargs):
+    try:
+        fileUploaded = {}
+        # Iterate through files
+        for fileName in request.FILES:
+            # Upload file to cloudinary
+            file = request.FILES.get(fileName)
+            print("upload_file start", file, "file", kwargs, "options", "upload_file end")
+            upload_url = cloudinary.uploader.upload(file, **kwargs)['url']
+            # assign uploaded file url to request.data
+            request.data[fileName] = upload_url
+            fileUploaded[fileName] = upload_url
+        return fileUploaded
+        
+    except Exception as e:
+        print("upload_file error", e, "error", "upload_file error")
+        return None
 
 def populate_user(queryset, dataSerializer):
     alldata = []
