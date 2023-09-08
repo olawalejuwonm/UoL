@@ -4,6 +4,7 @@ from django.db import models
 # friend/models.py
 from django.db import models
 from django.conf import settings
+from django.forms import ValidationError
 
 from authn.models import User
 class Friend(models.Model):

@@ -10,17 +10,23 @@ def custom_exception_handler(exc, context):
     # to get the standard error response.
     response = exception_handler(exc, context)
 
-    # print("Util Error start", response, "response", exc, "exc", context, "context", "Util Error end")
+    print("Util Error start", response, "response", exc, "exc", context, "context", "Util Error end")
 
     # Now add the HTTP status code to the response.
     if response is not None:
         response.data['status_code'] = response.status_code
+    
+    # # check if it's ValidationError
+    # if response.status_code == 400:
+    #     response.data['message'] = response.data['detail']
+    #     del response.data['detail']
+    # Check if response is json serializable
+    
 
     return response
 
 # Global response format
 def response_format(message, data=None):
-    print("response_format start", message, "message", data, "data", "response_format end")
     return {
         'message': message,
         'data': data,
@@ -45,12 +51,22 @@ def upload_file(request, **kwargs):
         print("upload_file error", e, "error", "upload_file error")
         return None
 
-def populate_user(queryset, dataSerializer):
+def populate(queryset, key, dataSerializer):
     alldata = []
     for item in queryset:
         data = dataSerializer(item).data
-        populated_data = UserSerializer(item.user).data
-        data['user'] =populated_data
+        populated_data = UserSerializer(getattr(item, key)).data
+        data[key] =populated_data
         alldata.append(data)
     return alldata
         
+# This is used for multiple field population
+def populate_multiple(queryset, keys, dataSerializer):
+    alldata = []
+    for item in queryset:
+        data = dataSerializer(item).data
+        for key in keys:
+            populated_data = UserSerializer(getattr(item, key)).data
+            data[key] =populated_data
+        alldata.append(data)
+    return alldata

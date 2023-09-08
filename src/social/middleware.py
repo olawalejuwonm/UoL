@@ -11,6 +11,8 @@ class JsonErrorHandlerMiddleware:
         status_code = response.status_code if response.status_code >= 400 else 500
 
         details = None
+        print("Error start", response, "response", message, "get_response", details, "request", "Error end", response.status_code)
+
         try:
             details = json.loads(response.content.decode('utf-8'))
             # If message is Bad Request, get the first error detail
@@ -20,9 +22,12 @@ class JsonErrorHandlerMiddleware:
                 message = details['detail']
             if status_code == 401:
                 message = details['detail'] if 'detail' in details else response.reason_phrase
+             # if details['message] exist and it's a string (which is serializable)
+             # This will return the message from the backend
+            if 'message' in details and isinstance(details['message'], str):
+                message = details['message']
         except:
             pass
-        # print("Error start", response, "response", message, "get_response", details, "request", "Error end", response.status_code)
 
         if response.status_code >= 400:
             data = {

@@ -19,10 +19,6 @@ class StatusUpdate(models.Model):
 
     def __str__(self):
         return f'{self.user.username}: {self.text}'
-    
-    def clean(self):
-        if not self.text and not self.medias:
-            raise ValidationError('Either text or medias must be provided.')
 
     def save(self, *args, **kwargs):
         self.full_clean()
