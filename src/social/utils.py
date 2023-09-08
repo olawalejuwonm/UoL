@@ -35,7 +35,7 @@ def upload_file(request, **kwargs):
             # Upload file to cloudinary
             file = request.FILES.get(fileName)
             print("upload_file start", file, "file", kwargs, "options", "upload_file end")
-            upload_url = cloudinary.uploader.upload(file, **kwargs)['url']
+            upload_url = cloudinary.uploader.upload(file, **kwargs)['secure_url']
             # assign uploaded file url to request.data
             request.data[fileName] = upload_url
             fileUploaded.append(upload_url)

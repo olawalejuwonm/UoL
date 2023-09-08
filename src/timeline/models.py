@@ -13,7 +13,7 @@ class StatusUpdate(models.Model):
     text = models.TextField(blank=True)
     # medias = CloudinaryField('media', null=True, blank=True)
     # medias will be a list of urls
-    medias = models.JSONField(null=True, blank=True)
+    media = models.URLField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

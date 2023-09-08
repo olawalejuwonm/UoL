@@ -77,11 +77,9 @@ class TimelineViewSet(viewsets.ModelViewSet):
     def create(self, request):
         print(request.data, "request.data")
         try:
-            medias = upload_file(request, folder='timeline')
-            print(medias, "medias")
+            upload_file(request, folder='timeline', resource_type="auto")
             # set medias in request.data if medias is not None
-            if medias:
-                request.data['medias'] = medias
+          
             serializer = StatusUpdateSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save(user=request.user)
