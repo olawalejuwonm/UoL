@@ -6,7 +6,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
 from authn.serializers import UserSerializer
-from social.utils import  populate_user, upload_file
+from social.utils import  populate, upload_file
 from .models import StatusUpdate
 from .serializers import StatusUpdateSerializer
 from rest_framework.pagination import PageNumberPagination
@@ -66,7 +66,7 @@ class TimelineViewSet(viewsets.ModelViewSet):
             # print(model_to_dict(i.user), "user", d)
             # return Response(UserSerializer(model_to_dict(i.user), many=True).data)
             # return Response(UserSerializer(u).data)
-        return Response(populate_user(queryset, StatusUpdateSerializer))
+        return Response(populate(queryset, 'user', StatusUpdateSerializer))
         # except Exception as e:
         #     print(e, "error hereeeeeeee", e.__traceback__)
         #     message = e.args[0]

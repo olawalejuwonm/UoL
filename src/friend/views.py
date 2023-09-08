@@ -2,22 +2,24 @@ from django.shortcuts import render
 
 # Create your views here.
 # friend/views.py
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.contrib.auth.models import User
+
+from social.utils import populate_multiple
 from .models import Friend
 from .serializers import FriendSerializer
 
 class FriendViewSet(viewsets.ModelViewSet):
     queryset = Friend.objects.all()
     serializer_class = FriendSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
-    @action(detail=False, methods=['get'])
-    def my_friends(self, request):
+    def list(self, request):
         friends = Friend.objects.filter(user=request.user)
-        serializer = FriendSerializer(friends, many=True)
-        return Response(serializer.data)
+        # serializer = FriendSerializer(friends, many=True)
+        return Response(populate_multiple(friends, ['user', 'friend'], FriendSerializer))
 
     @action(detail=False, methods=['get'])
     def search_users(self, request):

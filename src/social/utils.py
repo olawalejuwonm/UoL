@@ -45,12 +45,22 @@ def upload_file(request, **kwargs):
         print("upload_file error", e, "error", "upload_file error")
         return None
 
-def populate_user(queryset, dataSerializer):
+def populate(queryset, key, dataSerializer):
     alldata = []
     for item in queryset:
         data = dataSerializer(item).data
-        populated_data = UserSerializer(item.user).data
-        data['user'] =populated_data
+        populated_data = UserSerializer(getattr(item, key)).data
+        data[key] =populated_data
         alldata.append(data)
     return alldata
         
+# This is used for multiple field population
+def populate_multiple(queryset, keys, dataSerializer):
+    alldata = []
+    for item in queryset:
+        data = dataSerializer(item).data
+        for key in keys:
+            populated_data = UserSerializer(getattr(item, key)).data
+            data[key] =populated_data
+        alldata.append(data)
+    return alldata
