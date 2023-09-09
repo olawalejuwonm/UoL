@@ -78,3 +78,14 @@ class UserViewSet(viewsets.ModelViewSet):
                     serializer.data
                 ), status=status.HTTP_200_OK)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+    @action(detail=False, methods=['post'], permission_classes=[permissions.IsAuthenticated])
+    def logout(self, request):
+        # Get the user's authentication token
+        token = Token.objects.get(user=request.user)
+
+        # Delete the user's authentication token
+        token.delete()
+
+        # Return a success response
+        return Response(response_format('Successfully logged out.'), status=status.HTTP_200_OK)

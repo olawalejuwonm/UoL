@@ -8,4 +8,5 @@ websocket_urlpatterns = [
     # chat_id = str(user_id) + '_' + str(friend_id)
     # example: chat_id = '123_456'
     # I use chat_id in the ChatMessageConsumer
+    # This makes the connection url defaults to 127.0.0.1:8000/ws/chat/1/1/
 ]
