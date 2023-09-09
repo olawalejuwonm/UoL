@@ -149,7 +149,7 @@ void DeckGUI::paint(Graphics &g)
         // g.addTransform(AffineTransform::rotation(0.5, x, x));
         // g.addTransform(AffineTransform::rotation(0.5, x * 4, x * 2));
         // Will rotate based on the position of the player
-        g.addTransform(AffineTransform::rotation(player->getPositionRelative() * 4, x * 4, x * 2));
+        // g.addTransform(AffineTransform::rotation(player->getPositionRelative() * 4, x * 4, x * 2));
     }
     else
     {

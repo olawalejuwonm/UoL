@@ -28,9 +28,11 @@ PlaylistComponent::PlaylistComponent()
   // trackTitles.push_back("Track 6");
 
   tableComponent.getHeader().addColumn("Track Title", 0, 400);
-  tableComponent.getHeader().addColumn("", 1, 400);
+  tableComponent.getHeader().addColumn("Deck 1", 1, 200);
+  tableComponent.getHeader().addColumn("Deck 2", 2, 200);
   tableComponent.setModel(this);
   addAndMakeVisible(tableComponent);
+  tableComponent.setMultipleSelectionEnabled(true);
 
   searchBox = std::make_unique<TextEditor>();
   addAndMakeVisible(searchBox.get());
@@ -81,8 +83,8 @@ void PlaylistComponent::resized()
   // This method is where you should set the bounds of any child
   // components that your component contains..
 
-  tableComponent.setBounds(0, 20, getWidth(), getHeight());
-  searchBox->setBounds(0, 20, getWidth() - 20, 20);
+  tableComponent.setBounds(0, 30, getWidth(), getHeight());
+  searchBox->setBounds(0, 0, getWidth(), 30);
 }
 
 int PlaylistComponent::getNumRows()
@@ -128,7 +130,7 @@ void PlaylistComponent::paintCell(
   }
   else if (columnId == 1)
   {
-    g.drawText("Artist", 2, 0, width - 4, height, juce::Justification::centredLeft, true);
+    // g.drawText("Artist", 2, 0, width - 4, height, juce::Justification::centredLeft, true);
   }
 }
 
@@ -139,12 +141,14 @@ Component *PlaylistComponent::refreshComponentForCell(
     Component *existingComponentToUpdate)
 {
 
-  if (columnId == 1)
+  if (columnId == 1 || columnId == 2)
   {
     if (existingComponentToUpdate == nullptr)
     {
-      TextButton *btn = new TextButton{"Play"};
+      TextButton *btn = new TextButton{"Load"};
       String id(std::to_string(rowNumber));
+      // String id(std::to_string(rowNumber + " " + columnId));
+
       btn->setComponentID(id);
       btn->addListener(this);
       existingComponentToUpdate = btn;
@@ -184,4 +188,30 @@ void PlaylistComponent::textEditorTextChanged(TextEditor &editor)
   String searchText = editor.getText();
   // Perform search with searchText
   std::cout << "DeckGUI::textEditorTextChanged " << searchText << std::endl;
+}
+
+bool PlaylistComponent::isInterestedInDragSource(const SourceDetails &dragSourceDetails)
+{
+  std::cout << "isInterestedInDragSource: " << dragSourceDetails.sourceComponent << std::endl;
+  return true;
+}
+
+void PlaylistComponent::itemDropped(const SourceDetails &dragSourceDetails)
+{
+  std::cout << "itemDropped: " << dragSourceDetails.sourceComponent << std::endl;
+}
+
+void PlaylistComponent::itemDragEnter(const SourceDetails &dragSourceDetails)
+{
+  std::cout << "itemDragEnter: " << dragSourceDetails.sourceComponent << std::endl;
+}
+
+void PlaylistComponent::itemDragMove(const SourceDetails &dragSourceDetails)
+{
+  std::cout << "itemDragMove: " << dragSourceDetails.sourceComponent << std::endl;
+}
+
+void PlaylistComponent::itemDragExit(const SourceDetails &dragSourceDetails)
+{
+  std::cout << "itemDragExit: " << dragSourceDetails.sourceComponent << std::endl;
 }

@@ -20,7 +20,9 @@ using namespace juce;
 class PlaylistComponent : public juce::Component,
                           public juce::TableListBoxModel,
                           public Button::Listener,
-                          public TextEditor::Listener
+                          public TextEditor::Listener,
+                          public MouseListener,
+                          public DragAndDropTarget
 {
 public:
   PlaylistComponent();
@@ -56,8 +58,19 @@ public:
 
   void textEditorTextChanged(TextEditor &editor) override;
 
+  bool isInterestedInDragSource(const SourceDetails &dragSourceDetails) override;
+
+  void itemDropped(const SourceDetails &dragSourceDetails) override;
+
+  void itemDragEnter(const SourceDetails &dragSourceDetails) override;
+
+  void itemDragMove(const SourceDetails &dragSourceDetails) override;
+
+  void itemDragExit(const SourceDetails &dragSourceDetails) override;
+
 private:
   TableListBox tableComponent;
+  DragAndDropContainer *container;
   std::vector<std::string> trackTitles;
 
   std::unique_ptr<TextEditor> searchBox;
