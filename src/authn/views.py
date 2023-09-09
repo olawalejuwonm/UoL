@@ -89,3 +89,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
         # Return a success response
         return Response(response_format('Successfully logged out.'), status=status.HTTP_200_OK)
+    
+    @action(detail=False, methods=['delete'])
+    def delete_account(self, request):
+        user = request.user
+        user.delete()
+        return Response(response_format('Account deleted successfully'), status=status.HTTP_200_OK)
