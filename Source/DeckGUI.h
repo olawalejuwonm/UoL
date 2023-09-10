@@ -13,6 +13,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "DJAudioPlayer.h"
 #include "WaveformDisplay.h"
+#include "Equalizer.h"
 
 //==============================================================================
 /*
@@ -84,6 +85,8 @@ private:
   WaveformDisplay waveformDisplay;
 
   DJAudioPlayer *player;
+
+  Equalizer eq;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DeckGUI)
 };

@@ -32,6 +32,8 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
 
     addAndMakeVisible(waveformDisplay);
 
+    addAndMakeVisible(eq);
+
     // addAndMakeVisible(playStopButtonIcon);
 
     // playButton.addListener(this);
@@ -194,6 +196,8 @@ void DeckGUI::resized()
 
     waveformDisplay.setBounds(0, rowH * 7, getWidth(), rowH);
     loopToggle.setBounds(0, rowH * 6, getWidth()/4, rowH);
+
+    eq.setBounds(0, rowH * 2, getWidth()/2, rowH * 2);
     // loadButton.setBounds(0, rowH * 7, getWidth(), rowH);
     // filePickerButton.setBounds(0, rowH * 7, getWidth(), rowH);
 }
