@@ -4,6 +4,8 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="jhF3Zh" name="OtoDecks">
     <GROUP id="{EAECADF3-1B74-C659-B103-B0D2114E2764}" name="Source">
+      <FILE id="XzUmRh" name="Equalizer.cpp" compile="1" resource="0" file="Source/Equalizer.cpp"/>
+      <FILE id="AxE5ve" name="Equalizer.h" compile="0" resource="0" file="Source/Equalizer.h"/>
       <FILE id="z50KTL" name="PlaylistComponent.cpp" compile="1" resource="0"
             file="Source/PlaylistComponent.cpp"/>
       <FILE id="tPp6hC" name="PlaylistComponent.h" compile="0" resource="0"
