@@ -149,7 +149,7 @@ void DeckGUI::paint(Graphics &g)
         // g.addTransform(AffineTransform::rotation(0.5, x, x));
         // g.addTransform(AffineTransform::rotation(0.5, x * 4, x * 2));
         // Will rotate based on the position of the player
-        // g.addTransform(AffineTransform::rotation(player->getPositionRelative() * 4, x * 4, x * 2));
+        g.addTransform(AffineTransform::rotation(player->getPositionRelative() * 4, x * 4, x * 2));
     }
     else
     {
@@ -176,13 +176,16 @@ void DeckGUI::paint(Graphics &g)
 void DeckGUI::resized()
 {
     int rowH = getHeight() / 8;
-    playButton.setBounds(getWidth() / 2, 0, getWidth() / 5, rowH / 2);
+    waveformDisplay.setBounds(0, rowH * 7, getWidth(), rowH);
+    loopToggle.setBounds(0, rowH * 6, getWidth(), rowH);
+
+    playButton.setBounds(getWidth() / 2, rowH, getWidth() / 5, rowH / 2);
     // stopButton.setBounds(0, rowH, getWidth(), rowH);
-    volSlider.setBounds(0, rowH / 1.5, getWidth(), rowH * 2);
-    speedSlider.setBounds(0, rowH * 2.5, getWidth(), rowH * 2);
+    volSlider.setBounds(0, rowH * 4.8, getWidth()/4.2, rowH * 2);
+    speedSlider.setBounds(getWidth()/8, rowH * 4.8, getWidth(), rowH * 2);
     // posSlider.setBounds(0, rowH * 4, getWidth(), rowH);
     std::cout << "DeckGUI::resized" << getWidth() << "rowH: " << rowH << "Height: " << getHeight() << std::endl;
-    posSlider.setBounds(0, rowH * 4.4, getWidth(), rowH * 2);
+    posSlider.setBounds(0, rowH * 4.8, getWidth(), rowH * 2);
 
     // playStopButtonIcon.setBounds(0, 0, getWidth(), getHeight());
     // playButton.setBounds(10, 10, 20, 20);
@@ -190,8 +193,6 @@ void DeckGUI::resized()
 
     // stopButton.setBounds(0, rowH / 3, getWidth(), rowH / 3);
 
-    waveformDisplay.setBounds(0, rowH * 7, getWidth(), rowH);
-    loopToggle.setBounds(0, rowH * 6, getWidth(), rowH);
     // loadButton.setBounds(0, rowH * 7, getWidth(), rowH);
     // filePickerButton.setBounds(0, rowH * 7, getWidth(), rowH);
 }
