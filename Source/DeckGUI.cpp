@@ -7,6 +7,8 @@
 
   ==============================================================================
 */
+// Create a Spectrum Analyzer that analyze the audio playing
+// https://docs.juce.com/master/tutorial_spectrum_analyser.html
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "DeckGUI.h"
