@@ -68,8 +68,6 @@ private:
   juce::dsp::WindowingFunction<float> window;
 
   DJAudioPlayer *player;
-
-
   // This fifo float array of size 1024 will
   // contains the incomingsetBounds audio data in samples
   float fifo[fftSize]; //
