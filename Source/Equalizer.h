@@ -19,6 +19,8 @@
 // #include "../JuceLibraryCode/JuceHeader.h"
 #include <JuceHeader.h>
 
+using namespace juce;
+
 
 class Equalizer : public juce::Component,
                   public juce::AudioAppComponent,
@@ -64,7 +66,7 @@ private:
   juce::dsp::WindowingFunction<float> window;
 
   // This fifo float array of size 1024 will
-  // contains the incoming audio data in samples
+  // contains the incomingsetBounds audio data in samples
   float fifo[fftSize]; //
   // The fftData float array of size 4096 will contain the results of our
   // FFT calculations which is basically calculated as
