@@ -45,6 +45,9 @@ public:
   /** get the relative position of the playhead */
   double getPositionRelative();
 
+  AudioSourceChannelInfo channelInfo;
+
+
 private:
   AudioFormatManager &formatManager;
   std::unique_ptr<AudioFormatReaderSource> readerSource;

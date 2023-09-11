@@ -22,16 +22,15 @@ Equalizer::Equalizer() : forwardFFT(fftOrder),                                  
 
   // In your constructor, you should add any child components, and
   // initialise any special settings that your component needs.
-  Component::setOpaque(true);
+  setOpaque(true);
   setAudioChannels(2, 0); // we want a couple of input channels but no outputs
   startTimerHz(30);
-  Component::setSize(700, 500);
+  setSize(700, 500);
 }
 
 Equalizer::~Equalizer()
 {
   shutdownAudio();
-  stopTimer();
 }
 
 void Equalizer::getNextAudioBlock(const juce::AudioSourceChannelInfo &bufferToFill)
@@ -43,6 +42,7 @@ void Equalizer::getNextAudioBlock(const juce::AudioSourceChannelInfo &bufferToFi
     for (auto i = 0; i < bufferToFill.numSamples; ++i)
       pushNextSampleIntoFifo(channelData[i]);
   }
+  
 }
 
 void Equalizer::paint(juce::Graphics &g)
@@ -137,8 +137,8 @@ void Equalizer::drawFrame(juce::Graphics &g)
 
   for (int i = 1; i < scopeSize; ++i)
   {
-    auto width = Component::getLocalBounds().getWidth();
-    auto height = Component::getLocalBounds().getHeight();
+    auto width = getLocalBounds().getWidth();
+    auto height = getLocalBounds().getHeight();
 
     g.drawLine({(float)juce::jmap(i - 1, 0, scopeSize - 1, 0, width),
                 juce::jmap(scopeData[i - 1], 0.0f, 1.0f, (float)height, 0.0f),

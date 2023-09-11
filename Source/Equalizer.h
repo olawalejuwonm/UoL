@@ -22,9 +22,8 @@
 using namespace juce;
 
 
-class Equalizer : public juce::Component,
-                  public juce::AudioAppComponent,
-                  private juce::Timer
+class Equalizer : public AudioAppComponent,
+                  private Timer
 {
 public:
   Equalizer();
@@ -48,15 +47,16 @@ public:
 
   void drawFrame(juce::Graphics &g);
 
+
   enum
   {
     // This designates the size of the FFT window and the number of points on which it will operate
-    fftOrder = 11,           // [1]
+    fftOrder = 11,           
                              // fftSize use a left bit shift operator which produces 1024 as binary number
-    fftSize = 1 << fftOrder, // [2]
+    fftSize = 1 << fftOrder, 
                              // This is the size of the scope
                              // set the number of points in the visual representation of the spectrum as a scope size of 512.
-    scopeSize = 512          // [3]
+    scopeSize = 512          
   };
 
 private:
