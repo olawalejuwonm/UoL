@@ -36,6 +36,12 @@ add_library( ${BINARY_NAME}
 
     SHARED
 
+    "../../../Source/AnalyserController.cpp"
+    "../../../Source/AnalyserController.h"
+    "../../../Source/AnalyserModel.cpp"
+    "../../../Source/AnalyserModel.h"
+    "../../../Source/AnalyserDisplay.cpp"
+    "../../../Source/AnalyserDisplay.h"
     "../../../Source/Equalizer.cpp"
     "../../../Source/Equalizer.h"
     "../../../Source/PlaylistComponent.cpp"
@@ -2057,6 +2063,9 @@ add_library( ${BINARY_NAME}
 )
 
 set_source_files_properties(
+    "../../../Source/AnalyserController.h"
+    "../../../Source/AnalyserModel.h"
+    "../../../Source/AnalyserDisplay.h"
     "../../../Source/Equalizer.h"
     "../../../Source/PlaylistComponent.h"
     "../../../Source/WaveformDisplay.h"

@@ -72,6 +72,9 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS_APP := \
+  $(JUCE_OBJDIR)/AnalyserController_62a7a364.o \
+  $(JUCE_OBJDIR)/AnalyserModel_e2c9c66b.o \
+  $(JUCE_OBJDIR)/AnalyserDisplay_e07d6044.o \
   $(JUCE_OBJDIR)/Equalizer_b6231b33.o \
   $(JUCE_OBJDIR)/PlaylistComponent_76bc332c.o \
   $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o \
@@ -106,6 +109,21 @@ $(JUCE_OUTDIR)/$(JUCE_TARGET_APP) : $(OBJECTS_APP) $(JUCE_OBJDIR)/execinfo.cmd $
 	-$(V_AT)mkdir -p $(JUCE_LIBDIR)
 	-$(V_AT)mkdir -p $(JUCE_OUTDIR)
 	$(V_AT)$(CXX) -o $(JUCE_OUTDIR)/$(JUCE_TARGET_APP) $(OBJECTS_APP) $(JUCE_LDFLAGS) $(shell cat $(JUCE_OBJDIR)/execinfo.cmd) $(JUCE_LDFLAGS_APP) $(RESOURCES) $(TARGET_ARCH)
+
+$(JUCE_OBJDIR)/AnalyserController_62a7a364.o: ../../Source/AnalyserController.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling AnalyserController.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/AnalyserModel_e2c9c66b.o: ../../Source/AnalyserModel.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling AnalyserModel.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/AnalyserDisplay_e07d6044.o: ../../Source/AnalyserDisplay.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling AnalyserDisplay.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/Equalizer_b6231b33.o: ../../Source/Equalizer.cpp
 	-$(V_AT)mkdir -p $(@D)
