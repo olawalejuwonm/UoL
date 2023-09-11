@@ -8,7 +8,6 @@
   ==============================================================================
 */
 
-
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Equalizer.h"
 
@@ -16,14 +15,15 @@ using namespace juce;
 // using namespace juce;
 
 //==============================================================================
-Equalizer::Equalizer() : forwardFFT(fftOrder),                                      // initialise the variables
-                         window(fftSize, juce::dsp::WindowingFunction<float>::hann) // initialise the windowing function
+Equalizer::Equalizer(DJAudioPlayer *_player) : forwardFFT(fftOrder),                                       // initialise the variables
+                                               window(fftSize, juce::dsp::WindowingFunction<float>::hann), // initialise the windowing function
+                                               player(_player)
 {
 
   // In your constructor, you should add any child components, and
   // initialise any special settings that your component needs.
   setOpaque(true);
-  setAudioChannels(2, 0); // we want a couple of input channels but no outputs
+  setAudioChannels(0, 0); // we want a couple of input channels but no outputs
   startTimerHz(30);
   setSize(700, 500);
 }
@@ -35,6 +35,7 @@ Equalizer::~Equalizer()
 
 void Equalizer::getNextAudioBlock(const juce::AudioSourceChannelInfo &bufferToFill)
 {
+  // bufferToFill = player->channelInfo;
   if (bufferToFill.buffer->getNumChannels() > 0)
   {
     auto *channelData = bufferToFill.buffer->getReadPointer(0, bufferToFill.startSample);
@@ -42,7 +43,16 @@ void Equalizer::getNextAudioBlock(const juce::AudioSourceChannelInfo &bufferToFi
     for (auto i = 0; i < bufferToFill.numSamples; ++i)
       pushNextSampleIntoFifo(channelData[i]);
   }
-  
+
+  // if (player->channelInfo.buffer->getNumChannels() > 0)
+  // {
+  //   auto *channelData = player->channelInfo.buffer->getReadPointer(0, bufferToFill.startSample);
+
+  //   for (auto i = 0; i < player->channelInfo.numSamples; ++i)
+  //     pushNextSampleIntoFifo(channelData[i]);
+  // }
+
+  // std::cout << "Equalizer::getNextAudioBlock" << std::endl;
 }
 
 void Equalizer::paint(juce::Graphics &g)
@@ -69,7 +79,7 @@ void Equalizer::resized()
 
 void Equalizer::timerCallback()
 {
-  if (nextFFTBlockReady)
+  if (nextFFTBlockReady && player->isPlaying())
   {
     drawNextFrameOfSpectrum();
     nextFFTBlockReady = false;

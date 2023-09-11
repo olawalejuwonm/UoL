@@ -19,6 +19,8 @@
 // #include "../JuceLibraryCode/JuceHeader.h"
 #include <JuceHeader.h>
 
+#include "DJAudioPlayer.h"
+
 using namespace juce;
 
 
@@ -26,7 +28,7 @@ class Equalizer : public AudioAppComponent,
                   private Timer
 {
 public:
-  Equalizer();
+  Equalizer(DJAudioPlayer *player);
   ~Equalizer() override;
 
   // Overrides for the AudioAppComponent class
@@ -64,6 +66,9 @@ private:
   juce::dsp::FFT forwardFFT;
   // object to apply the windowing function on the signal
   juce::dsp::WindowingFunction<float> window;
+
+  DJAudioPlayer *player;
+
 
   // This fifo float array of size 1024 will
   // contains the incomingsetBounds audio data in samples

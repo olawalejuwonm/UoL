@@ -20,7 +20,7 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
                  AudioFormatManager &formatManagerToUse,
                  AudioThumbnailCache &cacheToUse) : player(_player),
                                                     waveformDisplay(formatManagerToUse, cacheToUse),
-                                                    eq()
+                                                    eq(player)
 
 {
     addAndMakeVisible(playButton);
@@ -184,7 +184,7 @@ void DeckGUI::paint(Graphics &g)
 void DeckGUI::resized()
 {
     int rowH = getHeight() / 8;
-    // playButton.setBounds(getWidth() / 2, 0, getWidth() / 5, rowH / 2);
+    playButton.setBounds(getWidth() / 2, 0, getWidth() / 5, rowH / 2);
     // // stopButton.setBounds(0, rowH, getWidth(), rowH);
     // volSlider.setBounds(0, rowH / 1.5, getWidth()/2.5, rowH * 2);
     // speedSlider.setBounds(0, rowH * 2.5, getWidth()/2.5, rowH * 2);
@@ -201,9 +201,10 @@ void DeckGUI::resized()
     // waveformDisplay.setBounds(0, rowH * 7, getWidth(), rowH);
     // loopToggle.setBounds(0, rowH * 6, getWidth()/4, rowH);
 
-    eq.Component::setBounds(0, 0, getWidth(), getHeight());
     // loadButton.setBounds(0, rowH * 7, getWidth(), rowH);
     // filePickerButton.setBounds(0, rowH * 7, getWidth(), rowH);
+
+    eq.setBounds(0, rowH * 2, getWidth(), rowH * 5);
 }
 
 // This was wrap into it's own function because of multiple use
