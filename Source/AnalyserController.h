@@ -14,16 +14,26 @@
 
 //==============================================================================
 /*
-*/
-class AnalyserController  : public juce::Component
+ */
+class AnalyserController : public juce::AudioAppComponent,
+                           private juce::Timer
 {
 public:
-    AnalyserController();
-    ~AnalyserController() override;
+  AnalyserController();
+  ~AnalyserController() override;
 
-    void paint (juce::Graphics&) override;
-    void resized() override;
+  void paint(juce::Graphics &) override;
+  void resized() override;
+
+  // Overrides for the AudioAppComponent class
+  void prepareToPlay(int, double) override {}
+  void releaseResources() override {}
+
+  // push all the samples contained in the current audio buffer block to
+  void getNextAudioBlock(const juce::AudioSourceChannelInfo &bufferToFill) override;
+
+  void timerCallback() override;
 
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AnalyserController)
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AnalyserController)
 };
