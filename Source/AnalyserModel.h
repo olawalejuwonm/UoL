@@ -26,6 +26,10 @@ public:
 
   void pushNextSampleIntoFifo(float sample) noexcept;
 
+  void drawNextFrameOfSpectrum();
+
+  void drawFrame(juce::Graphics &g);
+
   enum
   {
     // This designates the size of the FFT window and the number of points on which it will operate
@@ -36,6 +40,10 @@ public:
     // set the number of points in the visual representation of the spectrum as a scope size of 512.
     scopeSize = 512
   };
+
+  // This temporary boolean tells whether the next
+  // FFT block is ready to be rendered.
+  bool nextFFTBlockReady = false;
 
 private:
   //  object to perform the forward FFT on
@@ -56,9 +64,7 @@ private:
   int fifoIndex = 0; // The index keeps count of the amount of samples
   // in the fifo.
 
-  // This temporary boolean tells whether the next
-  // FFT block is ready to be rendered.
-  bool nextFFTBlockReady = false;
+  
   // scopeData float array of size 512 will contain the points to display
   // on the screen
   float scopeData[scopeSize];

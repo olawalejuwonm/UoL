@@ -62,16 +62,16 @@ void AnalyserController::getNextAudioBlock(const juce::AudioSourceChannelInfo &b
     auto *channelData = bufferToFill.buffer->getReadPointer(0, bufferToFill.startSample);
 
     for (auto i = 0; i < bufferToFill.numSamples; ++i)
-      pushNextSampleIntoFifo(channelData[i]);
+      analyserModel.pushNextSampleIntoFifo(channelData[i]);
   }
 }
 
 void AnalyserController::timerCallback()
 {
-  if (nextFFTBlockReady && player->isPlaying())
+  if (analyserModel.nextFFTBlockReady)
   {
-    drawNextFrameOfSpectrum();
-    nextFFTBlockReady = false;
-    juce::Component::repaint();
+    analyserModel.drawNextFrameOfSpectrum();
+    analyserModel.nextFFTBlockReady = false;
+     analyserModel.repaint();
   }
 }

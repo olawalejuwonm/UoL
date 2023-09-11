@@ -34,7 +34,8 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
     addAndMakeVisible(waveformDisplay);
 
 
-    addAndMakeVisible(eq);
+    // addAndMakeVisible(eq);
+    addAndMakeVisible(analyser);
 
     // addAndMakeVisible(playStopButtonIcon);
 
@@ -204,8 +205,10 @@ void DeckGUI::resized()
     // loadButton.setBounds(0, rowH * 7, getWidth(), rowH);
     // filePickerButton.setBounds(0, rowH * 7, getWidth(), rowH);
 
-    eq.setBounds(0, rowH * 2, getWidth(), rowH * 5);
+    // eq.setBounds(0, rowH * 2, getWidth(), rowH * 5);
+    analyser.setBounds(0, rowH * 2, getWidth(), rowH * 5);
 }
+
 
 // This was wrap into it's own function because of multiple use
 void DeckGUI::loadFile()

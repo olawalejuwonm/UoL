@@ -12,6 +12,8 @@
 
 #include <JuceHeader.h>
 
+#include "AnalyserModel.h"
+
 //==============================================================================
 /*
  */
@@ -35,5 +37,6 @@ public:
   void timerCallback() override;
 
 private:
+  AnalyserModel analyserModel;
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AnalyserController)
 };
