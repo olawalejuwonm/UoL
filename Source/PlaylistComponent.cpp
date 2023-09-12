@@ -13,8 +13,8 @@
 
 //==============================================================================
 PlaylistComponent::PlaylistComponent(
-    DJAudioPlayer *_player1,
-    DJAudioPlayer *_player2) : player1(_player1), player2(_player2)
+    DeckGUI *_deck1,
+    DeckGUI *_deck2):deck1(_deck1), deck2(_deck2)
 {
   // In your constructor, you should add any child components, and
   // initialise any special settings that your component needs.
@@ -202,15 +202,17 @@ void PlaylistComponent::buttonClicked(Button *button)
   // gets the fileUrl of the track with the given rowNumber
   URL fileURL = fileURLs[rowNumber];
   std::cout << "fileURL: " << fileURL.toString(true) << std::endl;
-  if (columnNumber == 1 )
+  if (columnNumber == 1)
   {
     std::cout << "player1" << std::endl;
-    player1->loadURL(fileURL);
+    // player1->loadURL(fileURL);
+    deck1->loadDJ(fileURL);
   }
   else if (columnNumber == 2)
   {
     std::cout << "player2" << std::endl;
-    player2->loadURL(fileURL);
+    // player2->loadURL(fileURL);
+    deck2->loadDJ(fileURL);
   }
   // int id = std::stoi(button->getComponentID().toStdString());
 }

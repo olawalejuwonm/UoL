@@ -57,6 +57,8 @@ public:
 
   void changeListenerCallback(ChangeBroadcaster *source) override;
 
+  void loadDJ(URL audioURL);
+
 private:
   DrawableButton playButton{"PLAY", DrawableButton::ImageFitted};
   // TextButton stopButton{"STOP"};

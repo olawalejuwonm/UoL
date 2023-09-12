@@ -152,7 +152,7 @@ void DeckGUI::paint(Graphics &g)
     //     g.fillAll(Colours::brown);
     // }
 
-    int x = getWidth()/8;        // 50
+    int x = getWidth() / 8;        // 50
     int curve = getWidth() * 0.75; // 300
 
     // if (player->isPlaying())
@@ -346,8 +346,10 @@ void DeckGUI::filesDropped(const juce::StringArray &files, int x, int y)
     {
         std::cout << "DeckGUI::filesNames" << filename << std::endl;
         // This will convert the filename to a URL of file://
-        player->loadURL(juce::URL{juce::File{filename}});
-        waveformDisplay.loadURL(juce::URL{juce::File{filename}});
+        // player->loadURL(juce::URL{juce::File{filename}});
+        // waveformDisplay.loadURL(juce::URL{juce::File{filename}});
+
+        loadDJ(juce::URL{juce::File{filename}});
     }
 }
 
@@ -397,4 +399,10 @@ void DeckGUI::changeListenerCallback(ChangeBroadcaster *source)
         // }
         // posSlider.setValue(waveformDisplay.getPositionRelative());
     }
+}
+
+void DeckGUI::loadDJ(URL audioURL)
+{
+    player->loadURL(audioURL);
+    waveformDisplay.loadURL(audioURL);
 }
