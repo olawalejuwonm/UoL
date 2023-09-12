@@ -33,7 +33,6 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
 
     addAndMakeVisible(waveformDisplay);
 
-
     // addAndMakeVisible(eq);
     addAndMakeVisible(player->analyserModel);
 
@@ -95,8 +94,6 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
 
     playButton.setImages(&playStopButtonIcon);
 
-    
-
     // Add change listener to the transport source
     player->getTransportSource()->addChangeListener(this);
 
@@ -128,6 +125,13 @@ void DeckGUI::drawTurnTable(Graphics &g, int x, int curve)
     // g.fillRect(200, 100, 10, 150);
     g.fillRect(x * 4, x * 2, x / 5, x * 3);
     g.setColour(Colours::white);
+    // if player is playing
+    // will map the position of the player to the rotation of the tonearm
+    // and rotate the tonearm
+    if (player->isPlaying())
+    {
+        g.addTransform(AffineTransform::rotation(player->getPositionRelative() * 4, x * 4, x * 2));
+    }
     g.drawRect(x * 4, x * 2, x / 5, x * 3, 5);
 
     // Draw the needle
@@ -148,24 +152,24 @@ void DeckGUI::paint(Graphics &g)
     //     g.fillAll(Colours::brown);
     // }
 
-    int x = getWidth() / 8;        // 50
+    int x = getWidth()/8;        // 50
     int curve = getWidth() * 0.75; // 300
 
-    if (player->isPlaying())
-    {
-        // This will make the to rotate around the centre of the screen
-        // https://docs.juce.com/master/classAffineTransform.html
-        // g.addTransform(AffineTransform::rotation(0.5, x, x));
-        // g.addTransform(AffineTransform::rotation(0.5, x * 4, x * 2));
-        // Will rotate based on the position of the player
-        g.addTransform(AffineTransform::rotation(player->getPositionRelative() * 4, x * 4, x * 2));
-    }
-    else
-    {
-        // This will make the to rotate around the centre of the screen
-        // https://docs.juce.com/master/classAffineTransform.html
-        // g.addTransform(AffineTransform::rotation(0.0, x, x));
-    }
+    // if (player->isPlaying())
+    // {
+    //     // This will make the to rotate around the centre of the screen
+    //     // https://docs.juce.com/master/classAffineTransform.html
+    //     // g.addTransform(AffineTransform::rotation(0.5, x, x));
+    //     // g.addTransform(AffineTransform::rotation(0.5, x * 4, x * 2));
+    //     // Will rotate based on the position of the player
+    //     g.addTransform(AffineTransform::rotation(player->getPositionRelative() * 4, x * 4, x * 2));
+    // }
+    // else
+    // {
+    //     // This will make the to rotate around the centre of the screen
+    //     // https://docs.juce.com/master/classAffineTransform.html
+    //     // g.addTransform(AffineTransform::rotation(0.0, x, x));
+    // }
 
     drawTurnTable(g, x, curve);
 
@@ -187,28 +191,26 @@ void DeckGUI::resized()
     int rowH = getHeight() / 8;
     playButton.setBounds(getWidth() / 2, 0, getWidth() / 5, rowH / 2);
     // // stopButton.setBounds(0, rowH, getWidth(), rowH);
-    // volSlider.setBounds(0, rowH / 1.5, getWidth()/2.5, rowH * 2);
-    // speedSlider.setBounds(0, rowH * 2.5, getWidth()/2.5, rowH * 2);
-    // // posSlider.setBounds(0, rowH * 4, getWidth(), rowH);
-    // std::cout << "DeckGUI::resized" << getWidth() << "rowH: " << rowH << "Height: " << getHeight() << std::endl;
+    volSlider.setBounds(0, rowH / 1.5, getWidth() / 4, rowH * 2);
+    speedSlider.setBounds(0, rowH * 2.5, getWidth() / 4, rowH * 2);
+    posSlider.setBounds(0, rowH * 4.5, getWidth() / 4, rowH * 2);
+    std::cout << "DeckGUI::resized" << getWidth() << "rowH: " << rowH << "Height: " << getHeight() << std::endl;
     // posSlider.setBounds(0, rowH * 4.4, getWidth()/2.5, rowH * 2);
 
-    // // playStopButtonIcon.setBounds(0, 0, getWidth(), getHeight());
-    // // playButton.setBounds(10, 10, 20, 20);
-    // // playStopButtonIcon.setBounds(10, 10, getWidth(), rowH * 2);
+    // playStopButtonIcon.setBounds(0, 0, getWidth(), getHeight());
+    // playButton.setBounds(10, 10, 20, 20);
+    // playStopButtonIcon.setBounds(10, 10, getWidth(), rowH * 2);
 
-    // // stopButton.setBounds(0, rowH / 3, getWidth(), rowH / 3);
+    // stopButton.setBounds(0, rowH / 3, getWidth(), rowH / 3);
 
-    // waveformDisplay.setBounds(0, rowH * 7, getWidth(), rowH);
-    // loopToggle.setBounds(0, rowH * 6, getWidth()/4, rowH);
+    waveformDisplay.setBounds(0, rowH * 7, getWidth(), rowH);
+    loopToggle.setBounds(0, rowH * 6, getWidth() / 4, rowH);
 
     // loadButton.setBounds(0, rowH * 7, getWidth(), rowH);
     // filePickerButton.setBounds(0, rowH * 7, getWidth(), rowH);
 
-    // eq.setBounds(0, rowH * 2, getWidth(), rowH * 5);
-    player->analyserModel.setBounds(0, rowH * 2, getWidth(), rowH * 5);
+    player->analyserModel.setBounds(getWidth() / 2, rowH, getWidth(), rowH * 5.5);
 }
-
 
 // This was wrap into it's own function because of multiple use
 void DeckGUI::loadFile()
@@ -354,6 +356,7 @@ void DeckGUI::timerCallback()
     // std::cout << "DeckGUI::timerCallback" << std::endl;
     waveformDisplay.setPositionRelative(
         player->getPositionRelative());
+    repaint();
 }
 
 void DeckGUI::changeListenerCallback(ChangeBroadcaster *source)

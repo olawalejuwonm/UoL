@@ -39,10 +39,13 @@ void AnalyserModel::paint(juce::Graphics &g)
      drawing code..
   */
 
-  g.fillAll(juce::Colours::black);
+ // lightblue background
+  
+
+  g.fillAll(juce::Colour::fromRGB(125, 125, 125)); // fill the background with solid black
 
   g.setOpacity(1.0f);
-  g.setColour(juce::Colours::white);
+  g.setColour(juce::Colour::fromRGB(0, 255, 0)); // set color of analyser to green
   drawFrame(g);
 }
 

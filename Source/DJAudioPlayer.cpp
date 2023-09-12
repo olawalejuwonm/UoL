@@ -30,11 +30,12 @@ void DJAudioPlayer::prepareToPlay(int samplesPerBlockExpected, double sampleRate
 void DJAudioPlayer::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill)
 {
     resampleSource.getNextAudioBlock(bufferToFill);
-    // Set the channelInfo to the bufferToFill
-    channelInfo = bufferToFill;
 
     // dereference the pointer to access the member
-    analyserModel.getNextAudioBlock(bufferToFill);
+    if (isPlaying())
+    {
+        analyserModel.getNextAudioBlock(bufferToFill);
+    }
 }
 void DJAudioPlayer::releaseResources()
 {
