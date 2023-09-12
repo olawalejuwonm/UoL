@@ -17,10 +17,17 @@ AnalyserModel::AnalyserModel() : forwardFFT(fftOrder),                          
 {
   // In your constructor, you should add any child components, and
   // initialise any special settings that your component needs.
+  // In your constructor, you should add any child components, and
+  // initialise any special settings that your component needs.
+  setOpaque(true);
+  setAudioChannels(0, 0); // we want a couple of input channels but no outputs
+  startTimerHz(30);
+  setSize(700, 500);
 }
 
 AnalyserModel::~AnalyserModel()
 {
+  shutdownAudio();
 }
 
 void AnalyserModel::paint(juce::Graphics &g)
@@ -111,5 +118,27 @@ void AnalyserModel::drawFrame(juce::Graphics &g)
                 juce::jmap(scopeData[i - 1], 0.0f, 1.0f, (float)height, 0.0f),
                 (float)juce::jmap(i, 0, scopeSize - 1, 0, width),
                 juce::jmap(scopeData[i], 0.0f, 1.0f, (float)height, 0.0f)});
+  }
+}
+
+void AnalyserModel::getNextAudioBlock(const juce::AudioSourceChannelInfo &bufferToFill)
+{
+  if (bufferToFill.buffer->getNumChannels() > 0)
+  {
+    auto *channelData = bufferToFill.buffer->getReadPointer(0, bufferToFill.startSample);
+
+    for (auto i = 0; i < bufferToFill.numSamples; ++i)
+      pushNextSampleIntoFifo(channelData[i]);
+  }
+  // std::cout << "AnalyserModel::getNextAudioBlock" << std::endl;
+}
+
+void AnalyserModel::timerCallback()
+{
+  if (nextFFTBlockReady)
+  {
+    drawNextFrameOfSpectrum();
+    nextFFTBlockReady = false;
+    juce::Component::repaint();
   }
 }

@@ -11,8 +11,11 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "AnalyserModel.h"
+
 
 using namespace juce;
+
 
 
 // class AnalyserModel;
@@ -20,7 +23,7 @@ using namespace juce;
 class DJAudioPlayer : public AudioSource
 {
 public:
-  DJAudioPlayer(AudioFormatManager &_formatManager, AnalyserModel *_analyserModel);
+  DJAudioPlayer(AudioFormatManager &_formatManager);
   ~DJAudioPlayer();
 
   void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
@@ -50,12 +53,11 @@ public:
 
   AudioSourceChannelInfo channelInfo;
 
+  AnalyserModel analyserModel;
 
 private:
   AudioFormatManager &formatManager;
   std::unique_ptr<AudioFormatReaderSource> readerSource;
   AudioTransportSource transportSource;
   ResamplingAudioSource resampleSource{&transportSource, false, 2};
-
-  AnalyserModel *analyserModel;
 };

@@ -9,16 +9,14 @@ Author:  matthew
 */
 
 #include "DJAudioPlayer.h"
-#include "AnalyserModel.h"
 
 using namespace juce;
 
-
-DJAudioPlayer::DJAudioPlayer(AudioFormatManager &_formatManager, AnalyserModel _analyserModel)
+DJAudioPlayer::DJAudioPlayer(AudioFormatManager &_formatManager)
     : formatManager(_formatManager)
 {
     // let local analyserModel point to the analyserModel passed in without initialising
-    analyserModel = _analyserModel;
+    // analyserModel = _analyserModel;
 }
 DJAudioPlayer::~DJAudioPlayer()
 {
@@ -35,7 +33,8 @@ void DJAudioPlayer::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill
     // Set the channelInfo to the bufferToFill
     channelInfo = bufferToFill;
 
-    analyserModel->analyserController.pushSamplesIntoFifo(bufferToFill);
+    // dereference the pointer to access the member
+    analyserModel.getNextAudioBlock(bufferToFill);
 }
 void DJAudioPlayer::releaseResources()
 {

@@ -12,6 +12,7 @@
 #include "DJAudioPlayer.h"
 #include "DeckGUI.h"
 #include "PlaylistComponent.h"
+#include "AnalyserModel.h"
 
 //==============================================================================
 /*
@@ -41,8 +42,13 @@ private:
   AudioFormatManager formatManager;
   AudioThumbnailCache thumbCache{100};
 
+
+
+
+
   DJAudioPlayer player1{formatManager};
   DeckGUI deckGUI1{&player1, formatManager, thumbCache};
+
 
   DJAudioPlayer player2{formatManager};
   DeckGUI deckGUI2{&player2, formatManager, thumbCache};

@@ -15,14 +15,21 @@
 // class AnalyserController;
 #include "AnalyserController.h"
 
+using namespace juce;
+
 //==============================================================================
 /*
  */
-class AnalyserModel : public juce::Component
+class AnalyserModel : public AudioAppComponent,
+                      private Timer
 {
 public:
   AnalyserModel();
   ~AnalyserModel() override;
+
+  // Overrides for the AudioAppComponent class
+  void prepareToPlay(int, double) override {}
+  void releaseResources() override {}
 
   void paint(juce::Graphics &) override;
   void resized() override;
@@ -33,9 +40,12 @@ public:
 
   void drawFrame(juce::Graphics &g);
 
+  void getNextAudioBlock(const juce::AudioSourceChannelInfo &bufferToFill) override;
+
+  void timerCallback() override;
   // This
   // Initiate AnalyserController object
-  AnalyserController *analyserController;
+  // AnalyserController *analyserController;
 
   enum
   {

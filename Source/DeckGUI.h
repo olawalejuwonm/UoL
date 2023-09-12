@@ -85,8 +85,6 @@ private:
 
   WaveformDisplay waveformDisplay;
 
-  AnalyserModel analyser;
-
   DJAudioPlayer *player;
 
   Equalizer eq;

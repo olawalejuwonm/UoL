@@ -35,7 +35,7 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
 
 
     // addAndMakeVisible(eq);
-    addAndMakeVisible(analyser);
+    addAndMakeVisible(player->analyserModel);
 
     // addAndMakeVisible(playStopButtonIcon);
 
@@ -206,7 +206,7 @@ void DeckGUI::resized()
     // filePickerButton.setBounds(0, rowH * 7, getWidth(), rowH);
 
     // eq.setBounds(0, rowH * 2, getWidth(), rowH * 5);
-    analyser.setBounds(0, rowH * 2, getWidth(), rowH * 5);
+    player->analyserModel.setBounds(0, rowH * 2, getWidth(), rowH * 5);
 }
 
 
