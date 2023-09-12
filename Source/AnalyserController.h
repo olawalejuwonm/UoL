@@ -21,7 +21,8 @@ class AnalyserController : public juce::AudioAppComponent,
                            private juce::Timer
 {
 public:
-  AnalyserController();
+  AnalyserController(
+      AnalyserModel &model);
   ~AnalyserController() override;
 
   void paint(juce::Graphics &) override;
@@ -37,6 +38,6 @@ public:
   void timerCallback() override;
 
 private:
-  AnalyserModel analyserModel;
+  AnalyserModel &analyserModel;
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AnalyserController)
 };

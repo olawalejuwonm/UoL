@@ -12,6 +12,9 @@
 
 #include <JuceHeader.h>
 
+// class AnalyserController;
+#include "AnalyserController.h"
+
 //==============================================================================
 /*
  */
@@ -29,6 +32,10 @@ public:
   void drawNextFrameOfSpectrum();
 
   void drawFrame(juce::Graphics &g);
+
+  // This
+  // Initiate AnalyserController object
+  AnalyserController *analyserController;
 
   enum
   {
@@ -64,7 +71,6 @@ private:
   int fifoIndex = 0; // The index keeps count of the amount of samples
   // in the fifo.
 
-  
   // scopeData float array of size 512 will contain the points to display
   // on the screen
   float scopeData[scopeSize];

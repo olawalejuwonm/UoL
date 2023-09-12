@@ -85,11 +85,11 @@ private:
 
   WaveformDisplay waveformDisplay;
 
+  AnalyserModel analyser;
+
   DJAudioPlayer *player;
 
   Equalizer eq;
-
-  AnalyserModel analyser;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DeckGUI)
 };

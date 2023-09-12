@@ -14,10 +14,13 @@
 
 using namespace juce;
 
+
+// class AnalyserModel;
+
 class DJAudioPlayer : public AudioSource
 {
 public:
-  DJAudioPlayer(AudioFormatManager &_formatManager);
+  DJAudioPlayer(AudioFormatManager &_formatManager, AnalyserModel *_analyserModel);
   ~DJAudioPlayer();
 
   void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
@@ -53,4 +56,6 @@ private:
   std::unique_ptr<AudioFormatReaderSource> readerSource;
   AudioTransportSource transportSource;
   ResamplingAudioSource resampleSource{&transportSource, false, 2};
+
+  AnalyserModel *analyserModel;
 };

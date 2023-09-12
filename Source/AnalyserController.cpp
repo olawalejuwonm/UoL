@@ -12,7 +12,8 @@
 #include "AnalyserController.h"
 
 //==============================================================================
-AnalyserController::AnalyserController()
+AnalyserController::AnalyserController(
+    AnalyserModel &model) : analyserModel(model)
 {
   // In your constructor, you should add any child components, and
   // initialise any special settings that your component needs.
@@ -72,6 +73,6 @@ void AnalyserController::timerCallback()
   {
     analyserModel.drawNextFrameOfSpectrum();
     analyserModel.nextFFTBlockReady = false;
-     analyserModel.repaint();
+    analyserModel.repaint();
   }
 }
