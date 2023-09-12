@@ -94,8 +94,8 @@ int PlaylistComponent::getNumRows()
 
 void PlaylistComponent::paintRowBackground(
     juce::Graphics &g,
-    int rowNumber,
-    int width,
+    int /*rowNumber*/,
+    int /*width*/,
     int height,
     bool rowIsSelected)
 {
@@ -146,10 +146,21 @@ Component *PlaylistComponent::refreshComponentForCell(
     if (existingComponentToUpdate == nullptr)
     {
       TextButton *btn = new TextButton{"Load"};
-      String id(std::to_string(rowNumber));
-      // String id(std::to_string(rowNumber + " " + columnId));
 
-      btn->setComponentID(id);
+      // save the button's component ID so we know which one was clicked later
+      // a combination of the row number and column ID should be enough to uniquely identify it
+      // double id = rowNumber + " " + columnId;
+      // std::cout << "id: " << id << std::endl;
+      std::stringstream ss;
+      ss << rowNumber << " " << columnId;
+      std::cout << "ss: " << ss.str() << std::endl;
+      btn->setComponentID(String(ss.str()));
+
+      // String id(std::to_string((rowNumber + columnId)));
+      // // String id(std::to_string(rowNumber + " " + columnId));
+
+      // std ::cout << "id: " << id << std::endl;
+      // btn->setComponentID(id);
       btn->addListener(this);
       existingComponentToUpdate = btn;
     }
@@ -179,8 +190,17 @@ Component *PlaylistComponent::refreshComponentForCell(
 void PlaylistComponent::buttonClicked(Button *button)
 {
   std::cout << "button clicked" << std::endl;
-  std::cout << "button id: " << button->getComponentID().getIntValue() << std::endl;
-  int id = std::stoi(button->getComponentID().toStdString());
+  std::cout << "button id: " << button->getComponentID() << std::endl;
+  // get column id and row number from button id
+  int rowNumber = std::stoi(button->getComponentID().toStdString().substr(0, 1));
+  int columnNumber = std::stoi(button->getComponentID().toStdString().substr(2, 1));
+  std::cout << "rowNumber: " << rowNumber << std::endl;
+  std::cout << "columnNumber: " << columnNumber << std::endl;
+
+  // gets the fileUrl of the track with the given rowNumber
+  URL fileURL = fileURLs[rowNumber];
+  std::cout << "fileURL: " << fileURL.toString(true) << std::endl;
+  // int id = std::stoi(button->getComponentID().toStdString());
 }
 
 void PlaylistComponent::textEditorTextChanged(TextEditor &editor)
@@ -214,4 +234,30 @@ void PlaylistComponent::itemDragMove(const SourceDetails &dragSourceDetails)
 void PlaylistComponent::itemDragExit(const SourceDetails &dragSourceDetails)
 {
   std::cout << "itemDragExit: " << dragSourceDetails.sourceComponent << std::endl;
+}
+
+bool PlaylistComponent::isInterestedInFileDrag(const StringArray &files)
+{
+  return true;
+}
+
+void PlaylistComponent::filesDropped(const StringArray &files, int /*x*/, int /*y*/)
+{
+  trackTitles.clear();
+  for (int i = 0; i < files.size(); ++i)
+  {
+    const File file(files[i]);
+    // const int fileID = file.getFileNameWithoutExtension().getIntValue();
+    const URL fileURL(file);
+    fileURLs.set(i, fileURL);
+    // Clear all TrackTitles
+    // Add new TrackTitles
+    String fileName = file.getFileNameWithoutExtension();
+    trackTitles.push_back(fileName.toStdString());
+    // trackTitles.add(file.getFileNameWithoutExtension());
+    // trackIDs.add(fileID);
+    // trackURLs.add(fileURL);
+  }
+
+  tableComponent.updateContent();
 }

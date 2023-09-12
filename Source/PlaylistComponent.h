@@ -22,7 +22,9 @@ class PlaylistComponent : public juce::Component,
                           public Button::Listener,
                           public TextEditor::Listener,
                           public MouseListener,
-                          public DragAndDropTarget
+                          public DragAndDropTarget,
+                          public FileDragAndDropTarget
+
 {
 public:
   PlaylistComponent();
@@ -68,10 +70,15 @@ public:
 
   void itemDragExit(const SourceDetails &dragSourceDetails) override;
 
+  bool isInterestedInFileDrag(const StringArray &files) override;
+  void filesDropped(const StringArray &files, int x, int y) override;
+
 private:
   TableListBox tableComponent;
   DragAndDropContainer *container;
   std::vector<std::string> trackTitles;
+
+  HashMap<int, URL> fileURLs;
 
   std::unique_ptr<TextEditor> searchBox;
   std::unique_ptr<Viewport> viewport;
