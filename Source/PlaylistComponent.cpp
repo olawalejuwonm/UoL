@@ -12,7 +12,9 @@
 #include "PlaylistComponent.h"
 
 //==============================================================================
-PlaylistComponent::PlaylistComponent()
+PlaylistComponent::PlaylistComponent(
+    DJAudioPlayer *_player1,
+    DJAudioPlayer *_player2) : player1(_player1), player2(_player2)
 {
   // In your constructor, you should add any child components, and
   // initialise any special settings that your component needs.
@@ -200,6 +202,16 @@ void PlaylistComponent::buttonClicked(Button *button)
   // gets the fileUrl of the track with the given rowNumber
   URL fileURL = fileURLs[rowNumber];
   std::cout << "fileURL: " << fileURL.toString(true) << std::endl;
+  if (columnNumber == 1 )
+  {
+    std::cout << "player1" << std::endl;
+    player1->loadURL(fileURL);
+  }
+  else if (columnNumber == 2)
+  {
+    std::cout << "player2" << std::endl;
+    player2->loadURL(fileURL);
+  }
   // int id = std::stoi(button->getComponentID().toStdString());
 }
 

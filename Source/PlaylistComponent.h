@@ -13,6 +13,8 @@
 #include <JuceHeader.h>
 #include <vector>
 #include <string>
+#include "DJAudioPlayer.h"
+
 using namespace juce;
 //==============================================================================
 /*
@@ -27,7 +29,7 @@ class PlaylistComponent : public juce::Component,
 
 {
 public:
-  PlaylistComponent();
+  PlaylistComponent(DJAudioPlayer *player1, DJAudioPlayer *player2);
   ~PlaylistComponent() override;
 
   void paint(juce::Graphics &) override;
@@ -82,6 +84,10 @@ private:
 
   std::unique_ptr<TextEditor> searchBox;
   std::unique_ptr<Viewport> viewport;
+
+  DJAudioPlayer *player1;
+
+  DJAudioPlayer *player2;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlaylistComponent)
 };
