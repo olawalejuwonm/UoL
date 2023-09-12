@@ -88,5 +88,7 @@ private:
 
   DeckGUI *deck2;
 
+  String getSavedFileURLsFilePath();
+
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlaylistComponent)
 };
