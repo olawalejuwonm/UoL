@@ -50,7 +50,7 @@ DHT dht(temp_hum_pin, DHT11);
 
 // I2C address 0x27, 16 column and 2 rows
 LiquidCrystal_I2C lcd(0x27, 16, 2); 
-
+// 0x27 is determined by running the I2C scanner sketch
 // put your setup code here, to run once:
 void setup() {
 

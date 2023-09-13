@@ -45,6 +45,7 @@ int humidity = 0;
 
 // Initialise the DHT11 component
 DHT dht(temp_hum_pin, DHT11);
+// DHT dht(temp_hum_pin, DHT22);
 
 // put your setup code here, to run once:
 void setup() {
@@ -239,6 +240,11 @@ void setBuzzerStatus(){
      noTone(buzzer_pin);
     }
   }
+
+  String reply = "The buzzer status is: ";
+  reply += query_string;
+
+  server.send(200, "text/html", reply);
 }
 
 // Read the temperature and humidity values
@@ -248,5 +254,8 @@ void readTempHum(){
   humidity = dht.readHumidity();
   Serial.println(temperature);
   Serial.println(humidity);
+
+  Serial.println("Temperature: " + String(temperature) + " C");
+  Serial.println("Humidity: " + String(humidity) + " %");
   
 }
