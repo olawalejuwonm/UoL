@@ -8,8 +8,8 @@
 //************************************************************
 #include "painlessMesh.h"
 
-#define   MESH_PREFIX     "whateverYouLike"
-#define   MESH_PASSWORD   "somethingSneaky"
+#define   MESH_PREFIX     "homeIOT"
+#define   MESH_PASSWORD   "phyComIOT"
 #define   MESH_PORT       5555
 
 Scheduler userScheduler; // to control your personal task
