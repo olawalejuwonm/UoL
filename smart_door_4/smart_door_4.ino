@@ -122,11 +122,11 @@ void get_index() {
 void get_json(){
   
   // Create JSON data
-  jsonDistanceSensor();
+  jsonDistanceSensor(); // This adds some data to doc
 
   // Make JSON data ready for the http request
   String jsonStr;
-  serializeJsonPretty(doc, jsonStr);
+  serializeJsonPretty(doc, jsonStr); //The function is from the ArduinoJson library
   
   // Send the JSON data
   server.send(200, "application/json", jsonStr);

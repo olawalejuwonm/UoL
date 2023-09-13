@@ -48,7 +48,7 @@ void setup() {
 
   // Set the LED pin Mode and initial analogWrite state
   pinMode(ledPin,OUTPUT);
-  analogWrite(ledPin,0);
+  analogWrite(ledPin,0); // off
 
 }
 
@@ -118,6 +118,9 @@ void ledControl(){
   // Create an int variable called mappedValue
   // The variable should contain a range of 0 - 255 mapped to the ultrosound distance
   int mappedValue = map(distance, 0, 40, 255, 0);
+
+  Serial.print("Mapped Value: ");
+  Serial.println(mappedValue);
 
   // Use analogWirte to control the LED with the mapped value
   analogWrite(ledPin,mappedValue);
