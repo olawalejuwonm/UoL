@@ -169,8 +169,13 @@ void setLEDStatus(){
     // Check the value and update the blue led pin of the RGB component
     if(query_string==1){
      analogWrite(blue_led_pin, 255);
+     text = "The blue led is on";
     }else{
     analogWrite(blue_led_pin, 0);
+    text = "The blue led is off";
     }
   }
+
+  //Print the status of the blue led
+  server.send(200, "text/html", text);
 }
