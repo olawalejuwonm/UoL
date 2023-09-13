@@ -98,6 +98,29 @@ int readTemp(){
   
 }
 
+void readTempHum() {
+  int temp = 0;
+  temp = dht.readTemperature();
+
+  // Ensures range of values
+  if (temp >-50 && temp <= 50) {
+    temperature = temp;
+  }
+  int humid = 0;
+  humid = dht.readHumidity();
+  if (humid >= 0 && humid <= 100) {
+    humidity = humid;
+  }
+
+  // humidity = dht.readHumidity();
+  Serial.print("Temperature: ");
+  Serial.print(temperature);
+  Serial.print(" degrees, Humidity: ");
+  Serial.print(humidity);
+  Serial.println(" %");
+
+}
+
 // Utility function to trigger the buzzer
 void trigBuzzer(){
   
@@ -115,6 +138,7 @@ void trigBuzzer(){
     }
     
 }
+
 
 // Utility function to read the value of the potentiometer
 int potentiomerterValue(){

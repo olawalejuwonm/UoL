@@ -121,10 +121,12 @@ void loop() {
     temperatureStatus(fridgeTemperature(), fridgeOn());
     
     // Signal critical temperatures
-    trigBuzzer();
+    // trigBuzzer();
 
     // Read the temperature and humidity
     readTempHum();
+
+    trigBuzzerWhenAboveThreshold();
 
     // Display the temperature and humidity on the LCD
     displayData();
@@ -254,13 +256,39 @@ void setBuzzerStatus(){
 }
 
 // Read the temperature and humidity values
-void readTempHum(){
-  
-  temperature = dht.readTemperature();
-  humidity = dht.readHumidity();
-  Serial.println(temperature);
-  Serial.println(humidity);
-  
+void readTempHum() {
+  int temp = 0;
+  temp = dht.readTemperature();
+
+  // Ensures range of values
+  if (temp >-50 && temp <= 50) {
+    temperature = temp;
+  }
+  int humid = 0;
+  humid = dht.readHumidity();
+  if (humid >= 0 && humid <= 100) {
+    humidity = humid;
+  }
+
+  // humidity = dht.readHumidity();
+  Serial.print("Temperature: ");
+  Serial.print(temperature);
+  Serial.print(" degrees, Humidity: ");
+  Serial.print(humidity);
+  Serial.println(" %");
+
+}
+
+void trigBuzzerWhenAboveThreshold() {
+  if (temperature > 30 && !signaled) {
+    tone(buzzer_pin, 1000);
+    delay(2000);
+    noTone(buzzer_pin);
+    signaled = true;
+  }
+  if (temperature < 30) {
+    signaled = false;
+  }
 }
 
 // Display the the temperature and humidity values on the LCD
