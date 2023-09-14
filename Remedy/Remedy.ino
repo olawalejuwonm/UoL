@@ -1,10 +1,30 @@
 #include <Servo.h>
+#include <PageBuilder.h>
+#include <PageStream.h>
+#include <DHT_U.h>
+#include <DHT.h>
+#include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
+#include <ArduinoJson.h>
 
 const int relayPin = D4; // Digital pin for the relay coil
 // Trigger Pin of Ultrasonic Sensor and  Echo Pin of Ultrasonic Sensor
 const int trigPin = D2;
 const int echoPin = D1;
 const int servoPin = D3; // Digital pin for the servo motor
+
+// Initialise the DHT11 component
+
+// Allocate the JSON document
+// Allows to allocated memory to the document dinamically.
+DynamicJsonDocument doc(1024);
+
+// Set the PORT for the web server
+ESP8266WebServer server(85);
+
+// The WiFi details
+const char *ssid = "Oluseed";
+const char *password = "mic12345";
 
 // Duration and distance variables
 long duration = 0;
@@ -24,10 +44,30 @@ void setup()
   Serial.begin(9600);
   // put your setup code here, to run once:
 
+  // Connect to the WiFi network
+  WiFi.begin(ssid, password);
+
   pinMode(relayPin, OUTPUT);
 
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(echoPin, INPUT);  // Sets the echoPin as an Input
+
+  // Wait for connection
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.println("Waiting to connect... to: " + String(ssid));
+  }
+
+  // Print the board IP address
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
+
+  server.on("/", get_index);    // Get the index page on root route
+  server.on("/json", get_json); // Get the json data on the '/json' route
+
+  server.begin(); // Start the server
+  Serial.println("Server listening");
 
   // Attach the servo to pin
   myservo.attach(servoPin);
@@ -35,6 +75,8 @@ void setup()
 
 void loop()
 {
+  server.handleClient();
+
   int waterLevelValue = 0;
 
   // servoMovement();
@@ -70,7 +112,8 @@ void loop()
   }
 }
 
-void servoMovement() {
+void servoMovement()
+{
 
   // // Create an int variable called mappedValue
   // // The variable should contain a range of 0 - 180 mapped to the ultrosound distance
@@ -86,9 +129,7 @@ void servoMovement() {
   // Set the servo to 90 degrees
   myservo.write(90);
   delay(1000);
-  
 }
-
 
 bool shouldTurnOnPump(int value, int threshold)
 {
@@ -160,4 +201,71 @@ bool isSomeoneClose(int distance)
   {
     return false;
   }
+}
+
+void get_index()
+{
+
+  // Create the HTML page with the current values
+  String html = "<html><head><title>Dashboard</title></head><body>";
+  html += "<h1>Remedy</h1>";
+  // Display on or off for water pump
+  html += "<p>Water Pump: " + String(digitalRead(relayPin) == HIGH ? "ON" : "OFF") + "</p>";
+  // Check if someone is close
+  html += "<p>Someone is close: " + String(isSomeoneClose(distance) ? "YES" : "NO") + "</p>";
+  // Servo motor position
+  html += "<p>Servo Motor Position: " + String(myservo.read()) + "</p>";
+  html += "</body></html>";
+
+  // Send the HTML page to the client
+  server.send(200, "text/html", html);
+}
+
+// if water level is high, turn off the pump
+void jsonDetectorSensor()
+{
+
+  // Add JSON request data
+  doc["Content-Type"] = "application/json";
+  doc["Status"] = 200;
+
+  // // Add water level sensor JSON object data
+  // JsonObject waterLevelSensor  = doc.createNestedObject("WaterLevelSensor");
+  // waterLevelSensor["sensorName"] = "Water Level";
+  // waterLevelSensor["sensorValue"] = waterLevelValue;
+
+  // Add water pump status
+  JsonObject waterPump = doc.createNestedObject("WaterPump");
+  waterPump["description"] = "Water Pump";
+  waterPump["status"] = digitalRead(relayPin) == HIGH ? "ON" : "OFF";
+
+
+
+  // Check closeness
+  JsonObject closeness = doc.createNestedObject("Distance");
+  closeness["description"] = "Ultrasound";
+  closeness["status"] = distance;
+  closeness["someoneClose"] = isSomeoneClose(distance) ? "YES" : "NO";
+
+
+  // Add servo motor position
+  JsonObject servoMotor = doc.createNestedObject("ServoMotor");
+  servoMotor["description"] = "Servo Motor";
+  servoMotor["position"] = myservo.read();
+
+
+}
+
+void get_json()
+{
+
+  // Create JSON data
+  jsonDetectorSensor(); // This adds some data to doc
+
+  // Make JSON data ready for the http request
+  String jsonStr;
+  serializeJsonPretty(doc, jsonStr); // The function is from the ArduinoJson library
+
+  // Send the JSON data
+  server.send(200, "application/json", jsonStr);
 }
