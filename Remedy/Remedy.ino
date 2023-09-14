@@ -1,7 +1,9 @@
-const int relayPin = D2; // Digital pin for the relay coil
+#include <Servo.h>
+
+const int relayPin = D4; // Digital pin for the relay coil
 // Trigger Pin of Ultrasonic Sensor and  Echo Pin of Ultrasonic Sensor
-const int trigPin = D8;
-const int echoPin = D7;
+const int trigPin = D2;
+const int echoPin = D1;
 
 // Duration and distance variables
 long duration = 0;
