@@ -1,7 +1,3 @@
-#include <painlessMesh.h>
-#include <painlessMeshSTA.h>
-#include <painlessTaskOptions.h>
-
 #include <PageBuilder.h>
 #include <PageStream.h>
 #include <DHT_U.h>
@@ -12,13 +8,6 @@
 
 // #include <TinyDHT.h>
 // #include "DHT.h"
-
-#define MESH_PREFIX "homeIOT"
-#define MESH_PASSWORD "phyComIOT"
-#define MESH_PORT 5555
-
-Scheduler userScheduler; // to control your personal task
-painlessMesh mesh;
 
 // Define the pins for the soil moisture sensor and LED
 const int waterLevelPin = A0; // Analog pin for soil moisture sensor
@@ -48,41 +37,6 @@ int ledBrightness = 0;
 int temperature = 0;
 int humidity = 0;
 int buzzerFrequency = 0;
-
-// User stub
-void sendMessage(); // Prototype so PlatformIO doesn't complain
-
-Task taskSendMessage(TASK_SECOND * 1, TASK_FOREVER, &sendMessage);
-
-void sendMessage()
-{
-  String msg = "Hello from node ";
-  msg += mesh.getNodeId();
-  mesh.sendBroadcast(msg);
-  taskSendMessage.setInterval(random(TASK_SECOND * 1, TASK_SECOND * 5));
-}
-
-// Needed for painless library
-void receivedCallback(uint32_t from, String &msg)
-{
-  Serial.printf("startHere: Received from %u msg=%s\n", from, msg.c_str());
-}
-
-void newConnectionCallback(uint32_t nodeId)
-{
-  Serial.printf("--> startHere: New Connection, nodeId = %u\n", nodeId);
-}
-
-void changedConnectionCallback()
-{
-  Serial.printf("Changed connections\n");
-}
-
-void nodeTimeAdjustedCallback(int32_t offset)
-{
-  Serial.printf("Adjusted time %u. Offset = %d\n", mesh.getNodeTime(), offset);
-}
-
 void setup()
 {
   // Initialize Serial communication for debugging
@@ -113,24 +67,10 @@ void setup()
 
   // Start the dht component reading
   dht.begin();
-
-  // mesh.setDebugMsgTypes( ERROR | MESH_STATUS | CONNECTION | SYNC | COMMUNICATION | GENERAL | MSG_TYPES | REMOTE ); // all types on
-  mesh.setDebugMsgTypes(ERROR | STARTUP); // set before init() so that you can see startup messages
-
-  mesh.init(MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT);
-  mesh.onReceive(&receivedCallback);
-  mesh.onNewConnection(&newConnectionCallback);
-  mesh.onChangedConnections(&changedConnectionCallback);
-  mesh.onNodeTimeAdjusted(&nodeTimeAdjustedCallback);
-
-  userScheduler.addTask(taskSendMessage);
-  taskSendMessage.enable();
 }
 
 void loop()
 {
-  mesh.update();
-
   server.handleClient();
 
   waterLevelValue = analogRead(waterLevelPin);
@@ -253,7 +193,6 @@ void jsonDetectorSensor()
   buzzer["description"] = "Sound";
   buzzer["frequency"] = buzzerFrequency;
 }
-
 void get_json()
 {
   // Create JSON data

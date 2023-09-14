@@ -20,7 +20,7 @@ const int servoPin = D3; // Digital pin for the servo motor
 DynamicJsonDocument doc(1024);
 
 // Set the PORT for the web server
-ESP8266WebServer server(85);
+ESP8266WebServer server(80);
 
 // The WiFi details
 const char *ssid = "Oluseed";
@@ -30,10 +30,13 @@ const char *password = "mic12345";
 long duration = 0;
 int distance = 0;
 
+int waterLevelValue = 0;
+
 // Close distance in cm
 const int closeDistance = 30;
 
 int noWaterLevel = 900; // Minimum water level in the tank
+bool waterPumpStatus = LOW;
 
 // create a servo object
 Servo myservo;
@@ -77,10 +80,14 @@ void loop()
 {
   server.handleClient();
 
-  int waterLevelValue = 0;
+  waterPumpStatus = digitalRead(relayPin);
+
+  distanceCentimeter();
 
   // servoMovement();
 
+  Serial.print("Water Pump: ");
+  Serial.println(waterPumpStatus);
   // put your main code here, to run repeatedly:
   if (shouldTurnOnPump(waterLevelValue, noWaterLevel))
   {
@@ -102,7 +109,6 @@ void loop()
     // delay(1000); // Wait for 1 second
   }
 
-  int distance = distanceCentimeter();
   const int buzzerPin = D3; // Digital pin for the buzzer
 
   // if someone is close turn off buzzer
@@ -163,7 +169,7 @@ bool shouldTurnOnPump(int value, int threshold)
   // delay(1000); // 1 second delay
 }
 
-int distanceCentimeter()
+void distanceCentimeter()
 {
 
   // Clears the trigPin
@@ -186,8 +192,6 @@ int distanceCentimeter()
   // Prints distance to Serial Monitor
   Serial.print(distance);
   Serial.println(": Centimeters");
-
-  return distance;
 }
 
 // Check if someone is close
@@ -206,11 +210,13 @@ bool isSomeoneClose(int distance)
 void get_index()
 {
 
+  waterPumpStatus = digitalRead(relayPin);
+
   // Create the HTML page with the current values
   String html = "<html><head><title>Dashboard</title></head><body>";
   html += "<h1>Remedy</h1>";
   // Display on or off for water pump
-  html += "<p>Water Pump: " + String(digitalRead(relayPin) == HIGH ? "ON" : "OFF") + "</p>";
+  html += "<p>Water Pump: " + String(waterPumpStatus == HIGH ? "ON" : "OFF") + "</p>";
   // Check if someone is close
   html += "<p>Someone is close: " + String(isSomeoneClose(distance) ? "YES" : "NO") + "</p>";
   // Servo motor position
@@ -225,6 +231,9 @@ void get_index()
 void jsonDetectorSensor()
 {
 
+  waterPumpStatus = digitalRead(relayPin);
+  distanceCentimeter();
+
   // Add JSON request data
   doc["Content-Type"] = "application/json";
   doc["Status"] = 200;
@@ -237,23 +246,19 @@ void jsonDetectorSensor()
   // Add water pump status
   JsonObject waterPump = doc.createNestedObject("WaterPump");
   waterPump["description"] = "Water Pump";
-  waterPump["status"] = digitalRead(relayPin) == HIGH ? "ON" : "OFF";
-
-
+  waterPump["status"] = shouldTurnOnPump(waterLevelValue, noWaterLevel) ? "ON" : "OFF";
+  waterPump["value"] = waterPumpStatus;
 
   // Check closeness
   JsonObject closeness = doc.createNestedObject("Distance");
   closeness["description"] = "Ultrasound";
-  closeness["status"] = distance;
+  closeness["value"] = distance;
   closeness["someoneClose"] = isSomeoneClose(distance) ? "YES" : "NO";
-
 
   // Add servo motor position
   JsonObject servoMotor = doc.createNestedObject("ServoMotor");
   servoMotor["description"] = "Servo Motor";
   servoMotor["position"] = myservo.read();
-
-
 }
 
 void get_json()
