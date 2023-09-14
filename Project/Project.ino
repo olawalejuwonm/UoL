@@ -73,27 +73,6 @@ void loop()
 {
   server.handleClient();
 
-  float humidity = dht.readHumidity();
-  float temperatureC = dht.readTemperature();
-  float temperatureF = dht.readTemperature(true); // Read temperature in Fahrenheit
-
-  if (isnan(humidity) || isnan(temperatureC) || isnan(temperatureF))
-  {
-    Serial.println("Failed to read from DHT sensor!");
-  }
-  else
-  {
-    Serial.print("Humidity: ");
-    Serial.print(humidity);
-    Serial.print("%\t");
-    Serial.print("Temperature (C): ");
-    Serial.print(temperatureC);
-    Serial.print("°C\t");
-    Serial.print("Temperature (F): ");
-    Serial.print(temperatureF);
-    Serial.println("°F");
-  }
-
   waterLevelValue = analogRead(waterLevelPin);
 
   if (detectorOn())
@@ -191,40 +170,37 @@ void get_index()
 // Check water level
 // if water level is low, turn on the pump
 // if water level is high, turn off the pump
-void jsonDetectorSensor(){
+void jsonDetectorSensor()
+{
 
   // Add JSON request data
   doc["Content-Type"] = "application/json";
   doc["Status"] = 200;
 
   // Add water level sensor JSON object data
-  JsonObject waterLevelSensor  = doc.createNestedObject("WaterLevelSensor");
+  JsonObject waterLevelSensor = doc.createNestedObject("WaterLevelSensor");
   waterLevelSensor["sensorName"] = "Water Level";
   waterLevelSensor["sensorValue"] = waterLevelValue;
 
   // Add temperature and humidity sensor JSON object data
-  JsonObject tempHumSensor  = doc.createNestedObject("TempHum");
+  JsonObject tempHumSensor = doc.createNestedObject("TempHum");
   tempHumSensor["sensorName"] = "Temperature and Humidity Sensor";
   tempHumSensor["temperature"] = temperature;
   tempHumSensor["humidity"] = humidity;
 
   // Add buzzer frequency JSON object data
-  JsonObject buzzerSensor  = doc.createNestedObject("BuzzerSensor");
+  JsonObject buzzerSensor = doc.createNestedObject("BuzzerSensor");
   buzzerSensor["sensorName"] = "Buzzer";
   buzzerSensor["frequency"] = buzzerFrequency;
 }
 
-
-void get_json(){
-  
+void get_json()
+{
   // Create JSON data
   jsonDetectorSensor(); // This adds some data to doc
-
   // Make JSON data ready for the http request
   String jsonStr;
-  serializeJsonPretty(doc, jsonStr); //The function is from the ArduinoJson library
-  
+  serializeJsonPretty(doc, jsonStr); // The function is from the ArduinoJson library
   // Send the JSON data
   server.send(200, "application/json", jsonStr);
-  
 }
