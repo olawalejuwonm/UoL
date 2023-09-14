@@ -1,3 +1,11 @@
+//************************************************************
+// this is a simple example that uses the painlessMesh library
+//
+// 1. sends a silly message to every node on the mesh at a random time between 1 and 5 seconds
+// 2. prints anything it receives to Serial.print
+//
+//
+//************************************************************
 #include <Servo.h>
 #include <PageBuilder.h>
 #include <PageStream.h>
@@ -39,12 +47,64 @@ int noWaterLevel = 900; // Minimum water level in the tank
 
 // create a servo object
 Servo myservo;
+#include "painlessMesh.h"
+
+#define MESH_PREFIX "homeIOT"
+#define MESH_PASSWORD "phyComIOT"
+#define MESH_PORT 5555
+
+Scheduler userScheduler; // to control your personal task
+painlessMesh mesh;
+
+// User stub
+void sendMessage(); // Prototype so PlatformIO doesn't complain
+
+Task taskSendMessage(TASK_SECOND * 1, TASK_FOREVER, &sendMessage);
+
+void sendMessage()
+{
+  String msg = "Hello from node (Remedy) ";
+  msg += mesh.getNodeId();
+  mesh.sendBroadcast(msg);
+  taskSendMessage.setInterval(random(TASK_SECOND * 1, TASK_SECOND * 5));
+}
+
+// Needed for painless library
+void receivedCallback(uint32_t from, String &msg)
+{
+  Serial.printf("startHere: Received from %u msg=%s\n", from, msg.c_str());
+}
+
+void newConnectionCallback(uint32_t nodeId)
+{
+  Serial.printf("--> startHere: New Connection, nodeId = %u\n", nodeId);
+}
+
+void changedConnectionCallback()
+{
+  Serial.printf("Changed connections\n");
+}
+
+void nodeTimeAdjustedCallback(int32_t offset)
+{
+  Serial.printf("Adjusted time %u. Offset = %d\n", mesh.getNodeTime(), offset);
+}
 
 void setup()
 {
-  // Initialize Serial communication for debugging
   Serial.begin(115200);
-  // put your setup code here, to run once:
+
+  // mesh.setDebugMsgTypes( ERROR | MESH_STATUS | CONNECTION | SYNC | COMMUNICATION | GENERAL | MSG_TYPES | REMOTE ); // all types on
+  mesh.setDebugMsgTypes(ERROR | STARTUP); // set before init() so that you can see startup messages
+
+  mesh.init(MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT);
+  mesh.onReceive(&receivedCallback);
+  mesh.onNewConnection(&newConnectionCallback);
+  mesh.onChangedConnections(&changedConnectionCallback);
+  mesh.onNodeTimeAdjusted(&nodeTimeAdjustedCallback);
+
+  userScheduler.addTask(taskSendMessage);
+  taskSendMessage.enable();
 
   // Connect to the WiFi network
   WiFi.begin(ssid, password);
@@ -77,6 +137,9 @@ void setup()
 
 void loop()
 {
+  // it will run the user scheduler as well
+  mesh.update();
+
   server.handleClient();
 
   distanceCentimeter();
