@@ -36,7 +36,6 @@ int waterLevelValue = 0;
 const int closeDistance = 30;
 
 int noWaterLevel = 900; // Minimum water level in the tank
-bool waterPumpStatus = LOW;
 
 // create a servo object
 Servo myservo;
@@ -80,14 +79,12 @@ void loop()
 {
   server.handleClient();
 
-  waterPumpStatus = digitalRead(relayPin);
-
   distanceCentimeter();
 
   // servoMovement();
 
   Serial.print("Water Pump: ");
-  Serial.println(waterPumpStatus);
+  Serial.println(digitalRead(relayPin));
   // put your main code here, to run repeatedly:
   if (shouldTurnOnPump(waterLevelValue, noWaterLevel))
   {
@@ -140,18 +137,19 @@ void servoMovement()
 bool shouldTurnOnPump(int value, int threshold)
 {
 
-  if (value < threshold)
-  {
-    // Turn the relay ON (close the contacts)
-    // digitalWrite(relayPin, HIGH);
-    return true;
-  }
-  else
-  {
-    // Turn the relay OFF (open the contacts)
-    // digitalWrite(relayPin, LOW);
-    return false;
-  }
+  // if (value < threshold)
+  // {
+  //   // Turn the relay ON (close the contacts)
+  //   // digitalWrite(relayPin, HIGH);
+  //   return true;
+  // }
+  // else
+  // {
+  //   // Turn the relay OFF (open the contacts)
+  //   // digitalWrite(relayPin, LOW);
+  //   return false;
+  // }
+  return false;
 
   // // Map the sensor value to the LED brightness
   // int ledBrightness = map(waterLevelValue, 500, 1023, 255, 0);
@@ -210,15 +208,15 @@ bool isSomeoneClose(int distance)
 void get_index()
 {
 
-  waterPumpStatus = digitalRead(relayPin);
-
   // Create the HTML page with the current values
   String html = "<html><head><title>Dashboard</title></head><body>";
   html += "<h1>Remedy</h1>";
   // Display on or off for water pump
-  html += "<p>Water Pump: " + String(waterPumpStatus == HIGH ? "ON" : "OFF") + "</p>";
+  html += "<p>Water Pump: " + String(digitalRead(relayPin) != 0 ? "OFF" : "ON") + "</p>";
+  // Water Pump Value
   // Check if someone is close
   html += "<p>Someone is close: " + String(isSomeoneClose(distance) ? "YES" : "NO") + "</p>";
+  // Closeness value
   // Servo motor position
   html += "<p>Servo Motor Position: " + String(myservo.read()) + "</p>";
   html += "</body></html>";
@@ -231,7 +229,6 @@ void get_index()
 void jsonDetectorSensor()
 {
 
-  waterPumpStatus = digitalRead(relayPin);
   distanceCentimeter();
 
   // Add JSON request data
@@ -246,8 +243,8 @@ void jsonDetectorSensor()
   // Add water pump status
   JsonObject waterPump = doc.createNestedObject("WaterPump");
   waterPump["description"] = "Water Pump";
-  waterPump["status"] = shouldTurnOnPump(waterLevelValue, noWaterLevel) ? "ON" : "OFF";
-  waterPump["value"] = waterPumpStatus;
+  waterPump["status"] = digitalRead(relayPin) != 0 ? "OFF" : "ON";
+  waterPump["value"] = digitalRead(relayPin);
 
   // Check closeness
   JsonObject closeness = doc.createNestedObject("Distance");
