@@ -40,7 +40,7 @@ int buzzerFrequency = 0;
 void setup()
 {
   // Initialize Serial communication for debugging
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   // Connect to the WiFi network
   WiFi.begin(ssid, password);

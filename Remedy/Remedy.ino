@@ -43,7 +43,7 @@ Servo myservo;
 void setup()
 {
   // Initialize Serial communication for debugging
-  Serial.begin(9600);
+  Serial.begin(115200);
   // put your setup code here, to run once:
 
   // Connect to the WiFi network
