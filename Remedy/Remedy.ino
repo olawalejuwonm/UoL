@@ -208,6 +208,8 @@ bool isSomeoneClose(int distance)
 void get_index()
 {
 
+  distanceCentimeter();
+
   // Create the HTML page with the current values
   String html = "<html><head><title>Dashboard</title></head><body>";
   html += "<h1>Remedy</h1>";
