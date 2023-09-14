@@ -4,6 +4,7 @@ const int relayPin = D4; // Digital pin for the relay coil
 // Trigger Pin of Ultrasonic Sensor and  Echo Pin of Ultrasonic Sensor
 const int trigPin = D2;
 const int echoPin = D1;
+const int servoPin = D3; // Digital pin for the servo motor
 
 // Duration and distance variables
 long duration = 0;
@@ -14,26 +15,36 @@ const int closeDistance = 30;
 
 int noWaterLevel = 900; // Minimum water level in the tank
 
+// create a servo object
+Servo myservo;
+
 void setup()
 {
+  // Initialize Serial communication for debugging
+  Serial.begin(9600);
   // put your setup code here, to run once:
 
   pinMode(relayPin, OUTPUT);
 
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(echoPin, INPUT);  // Sets the echoPin as an Input
+
+  // Attach the servo to pin
+  myservo.attach(servoPin);
 }
 
 void loop()
 {
   int waterLevelValue = 0;
 
+  // servoMovement();
+
   // put your main code here, to run repeatedly:
   if (shouldTurnOnPump(waterLevelValue, noWaterLevel))
   {
     Serial.print("Should turn on pump");
     // Turn the relay ON (close the contacts)
-    delay(5000); // Wait for 5 second
+    // delay(5000); // Wait for 5 second
     digitalWrite(relayPin, HIGH);
     // delay(1000); // Wait for 1 second
 
@@ -58,6 +69,26 @@ void loop()
     noTone(buzzerPin);
   }
 }
+
+void servoMovement() {
+
+  // // Create an int variable called mappedValue
+  // // The variable should contain a range of 0 - 180 mapped to the ultrosound distance
+  // int mappedValue = map(distance, 0, 40, 0, 180);
+
+  // // Use the mapped value to control the servo
+  // myservo.write(mappedValue);
+
+  // Set the servo to 0 degrees
+  myservo.write(0);
+  delay(1000);
+
+  // Set the servo to 90 degrees
+  myservo.write(90);
+  delay(1000);
+  
+}
+
 
 bool shouldTurnOnPump(int value, int threshold)
 {
