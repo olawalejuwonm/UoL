@@ -94,7 +94,6 @@ MIDDLEWARE = [
     # Django's CommonMiddleware or Whitenoise's WhiteNoiseMiddleware. 
     # If it is not before, it will not be able to add the CORS headers to 
     # these responses.
-    "django.middleware.common.CommonMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
