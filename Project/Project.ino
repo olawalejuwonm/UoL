@@ -208,14 +208,14 @@ void loop()
   // delay(50); // Adjust delay for buzzer tone duration
 
   // If No one is close and pump is on the buzzer will sound
-  Serial.print("Pump: ");
+  Serial.println("Pump: ");
   Serial.print(pump);
-  Serial.print("Someone Close: ");
+  Serial.println("Someone Close: ");
   Serial.println(someoneClose);
   if (pump == "ON" && someoneClose == "NO")
   {
     tone(buzzerPin, 2000);
-    Serial.print("Send Message");
+    Serial.println("Send Message");
   }
   else
   {
