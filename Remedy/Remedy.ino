@@ -15,8 +15,6 @@
 #include <Servo.h>
 #include <DHT_U.h>
 #include <DHT.h>
-#include <ESP8266WiFi.h>
-#include <ESP8266WebServer.h>
 #include <ArduinoJson.h>
 
 const int relayPin = D4; // Digital pin for the relay coil
@@ -32,11 +30,11 @@ const int servoPin = D3; // Digital pin for the servo motor
 DynamicJsonDocument doc(1024);
 
 // Set the PORT for the web server
-ESP8266WebServer server(80);
+// ESP8266WebServer server(80);
 
 // The WiFi details
-const char *ssid = "Oluseed";
-const char *password = "mic12345";
+// const char *ssid = "Oluseed";
+// const char *password = "mic12345";
 
 // Duration and distance variables
 long duration = 0;
@@ -44,7 +42,8 @@ int distance = 0;
 
 int waterLevelValue = 0;
 
-bool pump = false;
+// bool pump = false;
+String pump = "OFF";
 
 // Close distance in cm
 const int closeDistance = 30;
@@ -91,8 +90,10 @@ void handleJsonMessage(const char *json)
   waterLevelValue = waterLevelSensor["value"];
   Serial.printf("Water Level Sensor: %d\n", waterLevelValue);
 
-  pump = doc["pump"];
-  Serial.printf("Pump: %s\n", pump);
+  // cast pump to string
+  pump = doc["pump"].as<String>();
+  // pump = doc["pump"];
+  // Serial.printf("Pump: %s\n", pump);
 }
 
 // Needed for painless library
@@ -122,7 +123,7 @@ void setup()
   Serial.begin(115200);
 
   // mesh.setDebugMsgTypes( ERROR | MESH_STATUS | CONNECTION | SYNC | COMMUNICATION | GENERAL | MSG_TYPES | REMOTE ); // all types on
-  mesh.setDebugMsgTypes(ERROR | STARTUP | CONNECTION); // set before init() so that you can see startup messages
+  mesh.setDebugMsgTypes(ERROR | STARTUP); // set before init() so that you can see startup messages
 
   mesh.init(MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT);
   mesh.onReceive(&receivedCallback);
@@ -134,7 +135,7 @@ void setup()
   taskSendMessage.enable();
 
   // Connect to the WiFi network
-  WiFi.begin(ssid, password);
+  // WiFi.begin(ssid, password);
 
   pinMode(relayPin, OUTPUT);
 
@@ -142,21 +143,21 @@ void setup()
   pinMode(echoPin, INPUT);  // Sets the echoPin as an Input
 
   // Wait for connection
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    Serial.println("Waiting to connect... to: " + String(ssid));
-  }
+  // while (WiFi.status() != WL_CONNECTED)
+  // {
+  //   delay(500);
+  //   Serial.println("Waiting to connect... to: " + String(ssid));
+  // }
 
   // Print the board IP address
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
+  // Serial.print("IP address: ");
+  // Serial.println(WiFi.localIP());
 
-  server.on("/", get_index);    // Get the index page on root route
-  server.on("/json", get_json); // Get the json data on the '/json' route
+  // server.on("/", get_index);    // Get the index page on root route
+  // server.on("/json", get_json); // Get the json data on the '/json' route
 
-  server.begin(); // Start the server
-  Serial.println("Server listening");
+  // server.begin(); // Start the server
+  // Serial.println("Server listening");
 
   // Attach the servo to pin
   myservo.attach(servoPin);
@@ -167,7 +168,7 @@ void loop()
   // it will run the user scheduler as well
   mesh.update();
 
-  server.handleClient();
+  // server.handleClient();
 
   distanceCentimeter();
 
@@ -176,12 +177,13 @@ void loop()
   Serial.print("Water Pump: ");
   Serial.println(digitalRead(relayPin));
   // put your main code here, to run repeatedly:
-  if (pump)
+  if (pump == "ON")
   {
     Serial.print("Should turn on pump");
     // Turn the relay ON (close the contacts)
     // delay(5000); // Wait for 5 second
     digitalWrite(relayPin, LOW);
+    servoMovement();
     // delay(1000); // Wait for 1 second
 
     // // Turn the relay OFF (open the contacts)
@@ -313,7 +315,7 @@ void get_index()
   html += "</body></html>";
 
   // Send the HTML page to the client
-  server.send(200, "text/html", html);
+  // server.send(200, "text/html", html);
 }
 
 // if water level is high, turn off the pump
@@ -326,7 +328,9 @@ void jsonDetectorSensor()
   doc["Content-Type"] = "application/json";
   doc["Status"] = 200;
   doc["nodeId"] = mesh.getNodeId();
-  doc["message"] = "Message from node (Remedy)";
+  doc["message"] = "Message from node Remedy";
+
+  doc["someoneClose"] = isSomeoneClose(distance) ? "YES" : "NO";
 
   // // Add water level sensor JSON object data
   // JsonObject waterLevelSensor  = doc.createNestedObject("WaterLevelSensor");
@@ -362,5 +366,5 @@ void get_json()
   serializeJsonPretty(doc, jsonStr); // The function is from the ArduinoJson library
 
   // Send the JSON data
-  server.send(200, "application/json", jsonStr);
+  // server.send(200, "application/json", jsonStr);
 }

@@ -7,8 +7,6 @@
 #include <PageStream.h>
 #include <DHT_U.h>
 #include <DHT.h>
-#include <ESP8266WiFi.h>
-#include <ESP8266WebServer.h>
 #include <ArduinoJson.h>
 
 // #include <TinyDHT.h>
@@ -29,11 +27,11 @@ DHT dht(tempHumPin, DHT11);
 DynamicJsonDocument doc(1024);
 
 // Set the PORT for the web server
-ESP8266WebServer server(80);
+// ESP8266WebServer server(80);
 
 // The WiFi details
-const char *ssid = "Oluseed";
-const char *password = "mic12345";
+// const char *ssid = "Oluseed";
+// const char *password = "mic12345";
 
 int switch_value;
 int waterLevelValue = 1024; // Highest value for the sensor
@@ -44,7 +42,8 @@ int humidity = 0;
 int buzzerFrequency = 0;
 
 int noWaterLevel = 900; // Minimum water level in the pot
-bool pump = false;      // Pump status
+String pump = "OFF";
+String someoneClose = "NO";
 
 Scheduler userScheduler; // to control your personal task
 painlessMesh mesh;
@@ -79,6 +78,8 @@ void handleJsonMessage(const char *json)
   int nodeId = doc["nodeId"];
   String message = doc["message"];
   Serial.printf("Received message from node %d: %s\n", nodeId, message.c_str());
+  someoneClose = doc["someoneClose"].as<String>();
+
   // Display other data
 }
 
@@ -110,7 +111,7 @@ void setup()
   Serial.begin(115200);
 
   // mesh.setDebugMsgTypes( ERROR | MESH_STATUS | CONNECTION | SYNC | COMMUNICATION | GENERAL | MSG_TYPES | REMOTE ); // all types on
-  mesh.setDebugMsgTypes(ERROR | STARTUP | CONNECTION); // set before init() so that you can see startup messages
+  mesh.setDebugMsgTypes(ERROR | STARTUP); // set before init() so that you can see startup messages
 
   mesh.init(MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT);
   mesh.onReceive(&receivedCallback);
@@ -122,27 +123,27 @@ void setup()
   taskSendMessage.enable();
 
   // Connect to the WiFi network
-  WiFi.begin(ssid, password);
+  // WiFi.begin(ssid, password);
   // Set the LED pin as an OUTPUT
   pinMode(ledPin, OUTPUT);
   pinMode(switchPin, INPUT);
 
-  // Wait for connection
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    Serial.println("Waiting to connect... to: " + String(ssid));
-  }
+  // // Wait for connection
+  // while (WiFi.status() != WL_CONNECTED)
+  // {
+  //   delay(500);
+  //   Serial.println("Waiting to connect... to: " + String(ssid));
+  // }
 
-  // Print the board IP address
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
+  // // Print the board IP address
+  // Serial.print("IP address: ");
+  // Serial.println(WiFi.localIP());
 
-  server.on("/", get_index);    // Get the index page on root route
-  server.on("/json", get_json); // Get the json data on the '/json' route
+  // server.on("/", get_index);    // Get the index page on root route
+  // server.on("/json", get_json); // Get the json data on the '/json' route
 
-  server.begin(); // Start the server
-  Serial.println("Server listening");
+  // server.begin(); // Start the server
+  // Serial.println("Server listening");
 
   // Start the dht component reading
   dht.begin();
@@ -154,7 +155,7 @@ void loop()
   // it will run the user scheduler as well
   mesh.update();
 
-  server.handleClient();
+  // server.handleClient();
 
   waterLevelValue = analogRead(waterLevelPin);
   if (shouldTurnOnPump(waterLevelValue, noWaterLevel))
@@ -163,7 +164,7 @@ void loop()
     // Turn the relay ON (close the contacts)
     // delay(5000); // Wait for 5 second
     // digitalWrite(relayPin, LOW);
-    pump = true;
+    pump = "ON";
     // delay(1000); // Wait for 1 second
 
     // // Turn the relay OFF (open the contacts)
@@ -175,7 +176,7 @@ void loop()
     Serial.print("Should turn off pump");
     // Turn the relay OFF (open the contacts)
     // digitalWrite(relayPin, HIGH);
-    pump = false;
+    pump = "OFF";
     // delay(1000); // Wait for 1 second
   }
 
@@ -197,14 +198,24 @@ void loop()
   // Set the LED brightness
   analogWrite(ledPin, ledBrightness);
 
-  buzzerFrequency = map(ledBrightness, 0, 255, 2000, 500); // Adjust frequency range as needed
+  // buzzerFrequency = map(ledBrightness, 0, 255, 2000, 500); // Adjust frequency range as needed
 
-  Serial.print("Buzzer Frequency: ");
-  Serial.print(buzzerFrequency);
+  // Serial.print("Buzzer Frequency: ");
+  // Serial.print(buzzerFrequency);
 
-  // Set the buzzer frequency and duration
-  tone(buzzerPin, buzzerFrequency);
-  delay(50); // Adjust delay for buzzer tone duration
+  // // Set the buzzer frequency and duration
+  // tone(buzzerPin, buzzerFrequency);
+  // delay(50); // Adjust delay for buzzer tone duration
+
+  // If No one is close and pump is on the buzzer will sound
+  if (pump == "ON" && someoneClose == "NO")
+  {
+    tone(buzzerPin, 2000);
+  }
+  else
+  {
+    noTone(buzzerPin);
+  }
 
   // Print the sensor value and LED brightness to the Serial Monitor
   Serial.print("Soil Moisture: ");
@@ -269,7 +280,7 @@ void get_index()
   html += "</body></html>";
 
   // Send the HTML page to the client
-  server.send(200, "text/html", html);
+  // server.send(200, "text/html", html);
 }
 // Check water level
 // if water level is low, turn on the pump
@@ -280,6 +291,10 @@ void jsonDetectorSensor()
   // Add JSON request data
   doc["Content-Type"] = "application/json";
   doc["Status"] = 200;
+  doc["nodeId"] = mesh.getNodeId();
+  doc["message"] = "Message from node Detector";
+
+  // Set flags
   doc["pump"] = pump;
 
   // Add water level sensor JSON object data
@@ -306,13 +321,13 @@ void get_json()
   String jsonStr;
   serializeJsonPretty(doc, jsonStr); // The function is from the ArduinoJson library
   // Send the JSON data
-  server.send(200, "application/json", jsonStr);
+  // server.send(200, "application/json", jsonStr);
 }
 
 bool shouldTurnOnPump(int value, int threshold)
 {
 
-  if (value < threshold)
+  if (value > threshold)
   {
     // Turn the relay ON (close the contacts)
     // digitalWrite(relayPin, HIGH);
