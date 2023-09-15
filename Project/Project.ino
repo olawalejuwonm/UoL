@@ -27,7 +27,7 @@ DHT dht(tempHumPin, DHT11);
 DynamicJsonDocument doc(1024);
 
 // Set the PORT for the web server
-// ESP8266WebServer server(80);
+ESP8266WebServer server(80);
 
 // The WiFi details
 // const char *ssid = "Oluseed";
@@ -139,11 +139,11 @@ void setup()
   // Serial.print("IP address: ");
   // Serial.println(WiFi.localIP());
 
-  // server.on("/", get_index);    // Get the index page on root route
-  // server.on("/json", get_json); // Get the json data on the '/json' route
+  server.on("/", get_index);    // Get the index page on root route
+  server.on("/json", get_json); // Get the json data on the '/json' route
 
-  // server.begin(); // Start the server
-  // Serial.println("Server listening");
+  server.begin(); // Start the server
+  Serial.println("Server listening");
 
   // Start the dht component reading
   dht.begin();
@@ -155,7 +155,7 @@ void loop()
   // it will run the user scheduler as well
   mesh.update();
 
-  // server.handleClient();
+  server.handleClient();
 
   waterLevelValue = analogRead(waterLevelPin);
   if (shouldTurnOnPump(waterLevelValue, noWaterLevel))
@@ -182,7 +182,7 @@ void loop()
 
   if (detectorOn())
   {
-    Serial.print("Detector is on");
+    Serial.print("Detector is on ");
     ledBrightness = 255;
   }
   else
@@ -208,9 +208,14 @@ void loop()
   // delay(50); // Adjust delay for buzzer tone duration
 
   // If No one is close and pump is on the buzzer will sound
+  Serial.print("Pump: ");
+  Serial.print(pump);
+  Serial.print("Someone Close: ");
+  Serial.println(someoneClose);
   if (pump == "ON" && someoneClose == "NO")
   {
     tone(buzzerPin, 2000);
+    Serial.print("Send Message");
   }
   else
   {
@@ -280,7 +285,7 @@ void get_index()
   html += "</body></html>";
 
   // Send the HTML page to the client
-  // server.send(200, "text/html", html);
+  server.send(200, "text/html", html);
 }
 // Check water level
 // if water level is low, turn on the pump
@@ -321,7 +326,7 @@ void get_json()
   String jsonStr;
   serializeJsonPretty(doc, jsonStr); // The function is from the ArduinoJson library
   // Send the JSON data
-  // server.send(200, "application/json", jsonStr);
+  server.send(200, "application/json", jsonStr);
 }
 
 bool shouldTurnOnPump(int value, int threshold)
