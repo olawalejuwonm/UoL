@@ -7,6 +7,8 @@
 #include <PageStream.h>
 #include <DHT_U.h>
 #include <DHT.h>
+#include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
 #include <ArduinoJson.h>
 
 // #include <TinyDHT.h>
