@@ -21,7 +21,6 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     @action(detail=False, methods=['POST'], permission_classes=[AllowAny])
     def register(self, request):
@@ -90,7 +89,7 @@ class UserViewSet(viewsets.ModelViewSet):
         # Return a success response
         return Response(response_format('Successfully logged out.'), status=status.HTTP_200_OK)
     
-    @action(detail=False, methods=['delete'])
+    @action(detail=False, methods=['delete'], permission_classes=[permissions.IsAuthenticated])
     def delete_account(self, request):
         user = request.user
         user.delete()

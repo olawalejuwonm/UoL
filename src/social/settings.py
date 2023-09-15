@@ -27,7 +27,10 @@ DEBUG = True
 
 APPEND_SLASH = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    # Allow localhost:3000 for the frontend
+    
+]
 
 import cloudinary
 
@@ -44,6 +47,7 @@ cloudinary.config(
 
 INSTALLED_APPS = [
     'daphne', # For websocket
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -84,6 +88,13 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    # It's recommended that CorsMiddleware should be placed as high as possible
+    # , especially before any middleware that can generate responses such as 
+    # Django's CommonMiddleware or Whitenoise's WhiteNoiseMiddleware. 
+    # If it is not before, it will not be able to add the CORS headers to 
+    # these responses.
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -191,4 +202,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+# Set cors allowed origins
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
