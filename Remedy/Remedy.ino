@@ -1,38 +1,19 @@
-#include "IPAddress.h"
-#include "painlessMesh.h"
+//************************************************************
+// this is a simple example that uses the painlessMesh library
+//
+// 1. sends a silly message to every node on the mesh at a random time between 1 and 5 seconds
+// 2. prints anything it receives to Serial.print
+//
+//
+//************************************************************
 #include <Servo.h>
-// #include <PageBuilder.h>
-// #include <PageStream.h>
+#include <PageBuilder.h>
+#include <PageStream.h>
 #include <DHT_U.h>
 #include <DHT.h>
+#include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
 #include <ArduinoJson.h>
-
-#ifdef ESP8266
-#include "Hash.h"
-#include <ESPAsyncTCP.h>
-#else
-#include <AsyncTCP.h>
-#endif
-#include <ESPAsyncWebServer.h>
-
-#define MESH_PREFIX "homeIOT"
-#define MESH_PASSWORD "phyComIOT"
-#define MESH_PORT 5555
-
-#define STATION_SSID "Oluseed"
-#define STATION_PASSWORD "mic12345"
-
-#define HOSTNAME "HTTP_BRIDGE"
-
-// Prototype
-void receivedCallback( const uint32_t &from, const String &msg );
-IPAddress getlocalIP();
-
-
-painlessMesh mesh;
-AsyncWebServer server(80);
-IPAddress myIP(0, 0, 0, 0);
-IPAddress myAPIP(0, 0, 0, 0);
 
 const int relayPin = D4; // Digital pin for the relay coil
 // Trigger Pin of Ultrasonic Sensor and  Echo Pin of Ultrasonic Sensor
@@ -45,6 +26,13 @@ const int servoPin = D3; // Digital pin for the servo motor
 // Allocate the JSON document
 // Allows to allocated memory to the document dinamically.
 DynamicJsonDocument doc(1024);
+
+// Set the PORT for the web server
+ESP8266WebServer server(80);
+
+// The WiFi details
+const char *ssid = "Oluseed";
+const char *password = "mic12345";
 
 // Duration and distance variables
 long duration = 0;
@@ -59,8 +47,14 @@ int noWaterLevel = 900; // Minimum water level in the tank
 
 // create a servo object
 Servo myservo;
+#include "painlessMesh.h"
+
+#define MESH_PREFIX "homeIOT"
+#define MESH_PASSWORD "phyComIOT"
+#define MESH_PORT 5555
 
 Scheduler userScheduler; // to control your personal task
+painlessMesh mesh;
 
 // User stub
 void sendMessage(); // Prototype so PlatformIO doesn't complain
@@ -73,6 +67,12 @@ void sendMessage()
   msg += mesh.getNodeId();
   mesh.sendBroadcast(msg);
   taskSendMessage.setInterval(random(TASK_SECOND * 1, TASK_SECOND * 5));
+}
+
+// Needed for painless library
+void receivedCallback(uint32_t from, String &msg)
+{
+  Serial.printf("startHere: Received from %u msg=%s\n", from, msg.c_str());
 }
 
 void newConnectionCallback(uint32_t nodeId)
@@ -97,58 +97,36 @@ void setup()
   // mesh.setDebugMsgTypes( ERROR | MESH_STATUS | CONNECTION | SYNC | COMMUNICATION | GENERAL | MSG_TYPES | REMOTE ); // all types on
   mesh.setDebugMsgTypes(ERROR | STARTUP | CONNECTION); // set before init() so that you can see startup messages
 
-  mesh.init(MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT, WIFI_AP_STA, 6);
+  mesh.init(MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT);
   mesh.onReceive(&receivedCallback);
-
-  mesh.stationManual(STATION_SSID, STATION_PASSWORD);
-  mesh.setHostname(HOSTNAME);
-
-  // Bridge node, should (in most cases) be a root node. See [the wiki](https://gitlab.com/painlessMesh/painlessMesh/wikis/Possible-challenges-in-mesh-formation) for some background
-  mesh.setRoot(true);
-  // This node and all other nodes should ideally know the mesh contains a root, so call this on all nodes
-  mesh.setContainsRoot(true);
-
   mesh.onNewConnection(&newConnectionCallback);
   mesh.onChangedConnections(&changedConnectionCallback);
   mesh.onNodeTimeAdjusted(&nodeTimeAdjustedCallback);
-
-  myAPIP = IPAddress(mesh.getAPIP());
-  Serial.println("My AP IP is " + myAPIP.toString());
-
-  // Async webserver
-  server.on("/", HTTP_GET, [](AsyncWebServerRequest *request)
-            {
-    request->send(200, "text/html", "<form>Text to Broadcast<br><input type='text' name='BROADCAST'><br><br><input type='submit' value='Submit'></form>");
-    if (request->hasArg("BROADCAST")){
-      String msg = request->arg("BROADCAST");
-      mesh.sendBroadcast(msg);
-    } });
-  server.begin();
 
   userScheduler.addTask(taskSendMessage);
   taskSendMessage.enable();
 
   // Connect to the WiFi network
-  // WiFi.begin(ssid, password);
+  WiFi.begin(ssid, password);
 
   pinMode(relayPin, OUTPUT);
 
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(echoPin, INPUT);  // Sets the echoPin as an Input
 
-  // // Wait for connection
-  // while (WiFi.status() != WL_CONNECTED)
-  // {
-  //   delay(500);
-  //   Serial.println("Waiting to connect... to: " + String(ssid));
-  // }
+  // Wait for connection
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.println("Waiting to connect... to: " + String(ssid));
+  }
 
-  // // Print the board IP address
-  // Serial.print("IP address: ");
-  // Serial.println(WiFi.localIP());
+  // Print the board IP address
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
 
-  // server.on("/", get_index);    // Get the index page on root route
-  // server.on("/json", get_json); // Get the json data on the '/json' route
+  server.on("/", get_index);    // Get the index page on root route
+  server.on("/json", get_json); // Get the json data on the '/json' route
 
   server.begin(); // Start the server
   Serial.println("Server listening");
@@ -161,13 +139,8 @@ void loop()
 {
   // it will run the user scheduler as well
   mesh.update();
-  if (myIP != getlocalIP())
-  {
-    myIP = getlocalIP();
-    Serial.println("My IP is " + myIP.toString());
-  }
 
-  // server.handleClient();
+  server.handleClient();
 
   distanceCentimeter();
 
@@ -205,16 +178,6 @@ void loop()
   }
 }
 
-void receivedCallback(const uint32_t &from, const String &msg)
-{
-  Serial.printf("bridge: Received from %u msg=%s\n", from, msg.c_str());
-}
-
-IPAddress getlocalIP()
-{
-  return IPAddress(mesh.getStationIP());
-}
-
 void servoMovement()
 {
 
@@ -249,7 +212,7 @@ bool shouldTurnOnPump(int value, int threshold)
   //   // digitalWrite(relayPin, LOW);
   //   return false;
   // }
-  return true;
+  return false;
 
   // // Map the sensor value to the LED brightness
   // int ledBrightness = map(waterLevelValue, 500, 1023, 255, 0);
@@ -305,27 +268,27 @@ bool isSomeoneClose(int distance)
   }
 }
 
-// void get_index()
-// {
+void get_index()
+{
 
-//   distanceCentimeter();
+  distanceCentimeter();
 
-//   // Create the HTML page with the current values
-//   String html = "<html><head><title>Dashboard</title></head><body>";
-//   html += "<h1>Remedy</h1>";
-//   // Display on or off for water pump
-//   html += "<p>Water Pump: " + String(digitalRead(relayPin) != 0 ? "OFF" : "ON") + "</p>";
-//   // Water Pump Value
-//   // Check if someone is close
-//   html += "<p>Someone is close: " + String(isSomeoneClose(distance) ? "YES" : "NO") + "</p>";
-//   // Closeness value
-//   // Servo motor position
-//   html += "<p>Servo Motor Position: " + String(myservo.read()) + "</p>";
-//   html += "</body></html>";
+  // Create the HTML page with the current values
+  String html = "<html><head><title>Dashboard</title></head><body>";
+  html += "<h1>Remedy</h1>";
+  // Display on or off for water pump
+  html += "<p>Water Pump: " + String(digitalRead(relayPin) != 0 ? "OFF" : "ON") + "</p>";
+  // Water Pump Value
+  // Check if someone is close
+  html += "<p>Someone is close: " + String(isSomeoneClose(distance) ? "YES" : "NO") + "</p>";
+  // Closeness value
+  // Servo motor position
+  html += "<p>Servo Motor Position: " + String(myservo.read()) + "</p>";
+  html += "</body></html>";
 
-//   // Send the HTML page to the client
-//   server.send(200, "text/html", html);
-// }
+  // Send the HTML page to the client
+  server.send(200, "text/html", html);
+}
 
 // if water level is high, turn off the pump
 void jsonDetectorSensor()
@@ -360,16 +323,16 @@ void jsonDetectorSensor()
   servoMotor["position"] = myservo.read();
 }
 
-// void get_json()
-// {
+void get_json()
+{
 
-//   // Create JSON data
-//   jsonDetectorSensor(); // This adds some data to doc
+  // Create JSON data
+  jsonDetectorSensor(); // This adds some data to doc
 
-//   // Make JSON data ready for the http request
-//   String jsonStr;
-//   serializeJsonPretty(doc, jsonStr); // The function is from the ArduinoJson library
+  // Make JSON data ready for the http request
+  String jsonStr;
+  serializeJsonPretty(doc, jsonStr); // The function is from the ArduinoJson library
 
-//   // Send the JSON data
-//   server.send(200, "application/json", jsonStr);
-// }
+  // Send the JSON data
+  server.send(200, "application/json", jsonStr);
+}
