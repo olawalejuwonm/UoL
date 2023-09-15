@@ -1,9 +1,12 @@
+#include "painlessMesh.h"
+
+#define MESH_PREFIX "homeIOT"
+#define MESH_PASSWORD "phyComIOT"
+#define MESH_PORT 5555
 #include <PageBuilder.h>
 #include <PageStream.h>
 #include <DHT_U.h>
 #include <DHT.h>
-#include <ESP8266WiFi.h>
-#include <ESP8266WebServer.h>
 #include <ArduinoJson.h>
 
 // #include <TinyDHT.h>
@@ -37,10 +40,84 @@ int ledBrightness = 0;
 int temperature = 0;
 int humidity = 0;
 int buzzerFrequency = 0;
+
+int noWaterLevel = 900; // Minimum water level in the pot
+bool pump = false;      // Pump status
+
+Scheduler userScheduler; // to control your personal task
+painlessMesh mesh;
+
+// User stub
+void sendMessage(); // Prototype so PlatformIO doesn't complain
+
+Task taskSendMessage(TASK_SECOND * 1, TASK_FOREVER, &sendMessage);
+
+void sendMessage()
+{
+  jsonDetectorSensor();
+
+  // Make JSON data ready for the http request
+  String jsonStr;
+  serializeJson(doc, jsonStr); // The function is from the ArduinoJson library no need for pretty
+  mesh.sendBroadcast(jsonStr);
+  Serial.println("Detector sending message: " + jsonStr);
+  taskSendMessage.setInterval(random(TASK_SECOND * 1, TASK_SECOND * 5));
+}
+
+void handleJsonMessage(const char *json)
+{
+  StaticJsonDocument<1024> doc;
+  DeserializationError error = deserializeJson(doc, json);
+  if (error)
+  {
+    Serial.print(F("deserializeJson() failed: "));
+    Serial.println(error.f_str());
+    return;
+  }
+  int nodeId = doc["nodeId"];
+  String message = doc["message"];
+  Serial.printf("Received message from node %d: %s\n", nodeId, message.c_str());
+  // Display other data
+}
+
+// Needed for painless library
+void receivedCallback(uint32_t from, String &msg)
+{
+  Serial.printf("Received from %u msg=%s\n", from, msg.c_str());
+
+  handleJsonMessage(msg.c_str());
+}
+
+void newConnectionCallback(uint32_t nodeId)
+{
+  Serial.printf("--> startHere: New Connection, nodeId = %u\n", nodeId);
+}
+
+void changedConnectionCallback()
+{
+  Serial.printf("Changed connections\n");
+}
+
+void nodeTimeAdjustedCallback(int32_t offset)
+{
+  Serial.printf("Adjusted time %u. Offset = %d\n", mesh.getNodeTime(), offset);
+}
 void setup()
 {
   // Initialize Serial communication for debugging
   Serial.begin(115200);
+
+  // mesh.setDebugMsgTypes( ERROR | MESH_STATUS | CONNECTION | SYNC | COMMUNICATION | GENERAL | MSG_TYPES | REMOTE ); // all types on
+  mesh.setDebugMsgTypes(ERROR | STARTUP | CONNECTION); // set before init() so that you can see startup messages
+
+  mesh.init(MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT);
+  mesh.onReceive(&receivedCallback);
+  mesh.onNewConnection(&newConnectionCallback);
+  mesh.onChangedConnections(&changedConnectionCallback);
+  mesh.onNodeTimeAdjusted(&nodeTimeAdjustedCallback);
+
+  userScheduler.addTask(taskSendMessage);
+  taskSendMessage.enable();
 
   // Connect to the WiFi network
   WiFi.begin(ssid, password);
@@ -71,9 +148,34 @@ void setup()
 
 void loop()
 {
+
+  // it will run the user scheduler as well
+  mesh.update();
+
   server.handleClient();
 
   waterLevelValue = analogRead(waterLevelPin);
+  if (shouldTurnOnPump(waterLevelValue, noWaterLevel))
+  {
+    Serial.print("Should turn on pump");
+    // Turn the relay ON (close the contacts)
+    // delay(5000); // Wait for 5 second
+    // digitalWrite(relayPin, LOW);
+    pump = true;
+    // delay(1000); // Wait for 1 second
+
+    // // Turn the relay OFF (open the contacts)
+    // digitalWrite(relayPin, LOW);
+    // delay(1000); // Wait for 1 second
+  }
+  else
+  {
+    Serial.print("Should turn off pump");
+    // Turn the relay OFF (open the contacts)
+    // digitalWrite(relayPin, HIGH);
+    pump = false;
+    // delay(1000); // Wait for 1 second
+  }
 
   if (detectorOn())
   {
@@ -176,11 +278,12 @@ void jsonDetectorSensor()
   // Add JSON request data
   doc["Content-Type"] = "application/json";
   doc["Status"] = 200;
+  doc["pump"] = pump;
 
   // Add water level sensor JSON object data
   JsonObject waterLevel = doc.createNestedObject("WaterLevel");
   waterLevel["description"] = "Water Level";
-  waterLevel["sensorValue"] = waterLevelValue;
+  waterLevel["value"] = waterLevelValue;
 
   // Add temperature and humidity sensor JSON object data
   JsonObject tempHumSensor = doc.createNestedObject("TempHum");
@@ -202,4 +305,21 @@ void get_json()
   serializeJsonPretty(doc, jsonStr); // The function is from the ArduinoJson library
   // Send the JSON data
   server.send(200, "application/json", jsonStr);
+}
+
+bool shouldTurnOnPump(int value, int threshold)
+{
+
+  if (value < threshold)
+  {
+    // Turn the relay ON (close the contacts)
+    // digitalWrite(relayPin, HIGH);
+    return true;
+  }
+  else
+  {
+    // Turn the relay OFF (open the contacts)
+    // digitalWrite(relayPin, LOW);
+    return false;
+  }
 }

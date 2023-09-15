@@ -24,12 +24,27 @@ void sendMessage() {
   String msg = "Hello from node (Detector) ";
   msg += mesh.getNodeId();
   mesh.sendBroadcast( msg );
-  taskSendMessage.setInterval( random( TASK_SECOND * 1, TASK_SECOND * 5 ));
+  taskSendMessage.setInterval( random( TASK_SECOND * 1, TASK_SECOND * 2 ));
+}
+
+void handleJsonMessage(const char* json) {
+  StaticJsonDocument<1024> doc;
+  DeserializationError error = deserializeJson(doc, json);
+  if (error) {
+    Serial.print(F("deserializeJson() failed: "));
+    Serial.println(error.f_str());
+    return;
+  }
+  int nodeId = doc["nodeId"];
+  String message = doc["message"];
+  Serial.printf("Received message from node %d: %s\n", nodeId, message.c_str());
+  // Display other data
+  
 }
 
 // Needed for painless library
-void receivedCallback( uint32_t from, String &msg ) {
-  Serial.printf("startHere: Received from %u msg=%s\n", from, msg.c_str());
+void receivedCallback(uint32_t from, String &msg) {
+  handleJsonMessage(msg.c_str());
 }
 
 void newConnectionCallback(uint32_t nodeId) {
@@ -48,7 +63,7 @@ void setup() {
   Serial.begin(115200);
 
 //mesh.setDebugMsgTypes( ERROR | MESH_STATUS | CONNECTION | SYNC | COMMUNICATION | GENERAL | MSG_TYPES | REMOTE ); // all types on
-  mesh.setDebugMsgTypes( ERROR | STARTUP );  // set before init() so that you can see startup messages
+  mesh.setDebugMsgTypes( ERROR | STARTUP | CONNECTION );  // set before init() so that you can see startup messages
 
   mesh.init( MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT );
   mesh.onReceive(&receivedCallback);
