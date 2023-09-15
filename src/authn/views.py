@@ -21,8 +21,10 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+    # authentication_classes = []
 
-    @action(detail=False, methods=['POST'], permission_classes=[AllowAny])
+    @action(detail=False, methods=['POST'], authentication_classes=[], permission_classes=[])
     def register(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
@@ -33,7 +35,7 @@ class UserViewSet(viewsets.ModelViewSet):
             ), status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=False, methods=['POST'], permission_classes=[AllowAny])
+    @action(detail=False, methods=['POST'], authentication_classes=[], permission_classes=[])
     def login(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
