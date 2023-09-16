@@ -237,5 +237,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Set cors allowed origins
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost:3000", # Frontend Development
+    "https://app-social-c8cda7840ad4.herokuapp.com" # Frontend Production 
 ]
