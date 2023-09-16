@@ -4,4 +4,5 @@ tmp_db
 pycache
 *.pyc
 vvv
-venv
+*.pyc
+.env*

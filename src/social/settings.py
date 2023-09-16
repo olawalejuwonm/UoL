@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+# I wrote this code to set environment variables
+import os
+import dotenv
 from pathlib import Path
+from whitenoise.middleware import WhiteNoiseMiddleware
+# end of code I wrote
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,17 +24,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+# I wrote this code
+# I used this for deployment to Heroku so as to follow the guideline stated
+# in django documentation above
+dotenv.load_dotenv()
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5$a5)bhtv%_220s8+-byf2wbmj8h-&qitsod1t0h#lx03!&!an'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'True'
 
 APPEND_SLASH = False
 
 ALLOWED_HOSTS = [
     # Allow localhost:3000 for the frontend
-    
+    '127.0.0.1',
+    'social-be-6dee029da670.herokuapp.com'
 ]
 
 import cloudinary
@@ -101,6 +112,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # For static files
     'social.middleware.JsonErrorHandlerMiddleware', # For custom error handling
 
 ]
@@ -194,7 +206,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# I wrote this code using the guideline stated in django doc above
+# Set the URL for static files
 STATIC_URL = 'static/'
+
+# Set the root directory for static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Use the CompressedManifestStaticFilesStorage storage backend for static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# end of code I wrote
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
