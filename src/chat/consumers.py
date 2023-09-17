@@ -93,19 +93,17 @@ class ChatMessageConsumer(AsyncWebsocketConsumer):
 
             print(chat_message, "chat_message", self.chat_group_name)
 
-            # Serialize chat message
-            serializer = ChatMessageSerializer(chat_message)
 
             # Send chat message to group
             await self.channel_layer.group_send(
                 self.chat_group_name,
                 {
                     'type': 'chat_message',
-                    'message': serializer.data
+                    'message': chat_message.message
                 }
             )
         except Exception as e:
-            print(e)
+            print(e, "error occured")
 
     async def chat_message(self, event):
         try:

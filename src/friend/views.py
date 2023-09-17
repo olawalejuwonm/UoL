@@ -85,6 +85,15 @@ class FriendViewSet(viewsets.ModelViewSet):
                       friend_request_exists),
                       status=status.HTTP_406_NOT_ACCEPTABLE)
         else:
-            serializer.save(user=self.request.user)
+            serialized = FriendSerializer(data=self.request.data)
+            if serialized.is_valid():
+                serialized.save(user=self.request.user)
+                return Response(
+                    response_format(
+                        'Friend request sent successfully',
+                        serialized.data),
+                        status=status.HTTP_201_CREATED)
+            else:
+                return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

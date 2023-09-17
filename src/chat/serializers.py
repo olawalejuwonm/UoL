@@ -14,8 +14,8 @@ class ChatMessageSerializer(serializers.ModelSerializer):
         fields = ['id', 'chat', 'sender', 'message', 'created_at']
         read_only_fields = ['id', 'created_at']
 
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['user_list'] = [user['id'] for user in representation['users']]
-        return representation
+    # def to_representation(self, instance):
+    #     representation = super().to_representation(instance)
+    #     representation['user_list'] = [user['id'] for user in representation['users']]
+    #     return representation
     

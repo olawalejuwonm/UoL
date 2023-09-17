@@ -45,6 +45,9 @@ APPEND_SLASH = False
 ALLOWED_HOSTS = [
     # Allow localhost:3000 for the frontend
     '127.0.0.1',
+    'localhost',
+    '192.168.43.215',
+    # Allow the frontend production url
     'social-be-6dee029da670.herokuapp.com'
 ]
 
@@ -238,5 +241,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Set cors allowed origins
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000", # Frontend Development
-    "https://app-social-c8cda7840ad4.herokuapp.com" # Frontend Production 
+    "https://app-social-c8cda7840ad4.herokuapp.com", # Frontend Production 
+    "http://192.168.43.215:3000" # Frontend Development 
 ]
