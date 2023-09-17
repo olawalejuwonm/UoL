@@ -6,7 +6,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
 from authn.serializers import UserSerializer
-from social.utils import  populate, upload_file
+from social.utils import  populate, response_format, upload_file
 from .models import StatusUpdate
 from .serializers import StatusUpdateSerializer
 from rest_framework.pagination import PageNumberPagination
@@ -83,7 +83,11 @@ class TimelineViewSet(viewsets.ModelViewSet):
             serializer = StatusUpdateSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save(user=request.user)
-                return Response(serializer.data)
+                return Response(response_format(
+                    "Status update created successfully",
+                    serializer.data
+                )
+                )
             return Response(serializer.errors)
         except Exception as e:
             print(e, "error hereeeeeeee", e.__traceback__)
