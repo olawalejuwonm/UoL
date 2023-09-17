@@ -32,12 +32,13 @@ class FriendViewSet(viewsets.ModelViewSet):
         #Q Encapsulate filters as objects that can then be combined logically (using
         # `&` and `|`).
         # ref: https://docs.djangoproject.com/en/4.2/topics/db/queries/#complex-lookups-with-q-objects
-        users = User.objects.filter(
-            Q(username__icontains=query) |
-            Q(name__icontains=query) |
-            Q(email__icontains=query)
-        ).exclude(id=request.user.id)
-        users = User.objects.filter(username__icontains=query).exclude(id=request.user.id)
+        # users = User.objects.filter(
+        #     Q(username__icontains=query) |
+        #     Q(name__icontains=query) |
+        #     Q(email__icontains=query)
+        # ).exclude(id=request.user.id)
+        # search by name only
+        users = User.objects.filter(name__icontains=query).exclude(id=request.user.id)
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
     
