@@ -148,12 +148,14 @@ WSGI_APPLICATION = 'social.wsgi.application'
 ASGI_APPLICATION = "social.asgi.application"
 # ASGI_APPLICATION = "social.routing.application"
 
+REDISCLOUD_URL = os.getenv('REDISCLOUD_URL')
 
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('localhost', 6379)],
+            # 'hosts': [('localhost', 6379)],
+            'hosts': [REDISCLOUD_URL],
         },
     },
 }
