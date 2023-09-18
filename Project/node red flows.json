@@ -1,0 +1,518 @@
+[
+    {
+        "id": "027ab7d6055bd15e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5704f99a97cb80c0",
+        "type": "serial-port",
+        "serialport": "COM3",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "6e9bf1dcbf76b455",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "",
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "af602435dead5306",
+        "type": "axios-endpoint",
+        "name": "Send Email",
+        "baseURL": "https://ifix-7ec4f5229fc0.herokuapp.com/api/v1",
+        "caCertPath": "",
+        "rejectUnauthorized": true,
+        "proxyEnabled": false,
+        "proxyProtocol": "https",
+        "proxyHost": "",
+        "proxyPort": ""
+    },
+    {
+        "id": "b6e0243a1a36a1df",
+        "type": "ui_tab",
+        "name": "Tab",
+        "icon": "dashboard",
+        "order": 0
+    },
+    {
+        "id": "877d58150ee562fd",
+        "type": "ui_group",
+        "name": "Group",
+        "tab": "b6e0243a1a36a1df",
+        "order": null,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "2b669f64ed32de78",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "b17fae13a8dd4109",
+        "type": "serial-port",
+        "serialport": "COM4",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "529b663c4a0ab683",
+        "type": "serial in",
+        "z": "027ab7d6055bd15e",
+        "name": "DETECTOR",
+        "serial": "5704f99a97cb80c0",
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "e91fbd5b05d9a353",
+                "902be7cf668fb205",
+                "9b2ebfb484d0d7f3",
+                "e88e9237164d059b",
+                "d5b7bdd8642c09d1"
+            ]
+        ]
+    },
+    {
+        "id": "e91fbd5b05d9a353",
+        "type": "ui_text",
+        "z": "027ab7d6055bd15e",
+        "group": "6e9bf1dcbf76b455",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Detetctor Text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 480,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2841ab7dc3839c3c",
+        "type": "ui_template",
+        "z": "027ab7d6055bd15e",
+        "group": "877d58150ee562fd",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 560,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "18e0befa203c0d30",
+        "type": "axios-request",
+        "z": "027ab7d6055bd15e",
+        "name": "Send Email",
+        "endpoint": "af602435dead5306",
+        "method": "post",
+        "url": "/auth/email",
+        "responseType": "json",
+        "keepAlive": false,
+        "timeout": 30000,
+        "validateStatus": true,
+        "headers": [],
+        "params": [],
+        "x": 590,
+        "y": 360,
+        "wires": [
+            [
+                "b462a4fccc1ce321"
+            ]
+        ]
+    },
+    {
+        "id": "8d1e930c205234bd",
+        "type": "debug",
+        "z": "027ab7d6055bd15e",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 220,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "902be7cf668fb205",
+        "type": "function",
+        "z": "027ab7d6055bd15e",
+        "name": "function 1",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9b2ebfb484d0d7f3",
+        "type": "ui_text",
+        "z": "027ab7d6055bd15e",
+        "group": "877d58150ee562fd",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Serial Output",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 670,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "935fdfea96df5f08",
+        "type": "http request",
+        "z": "027ab7d6055bd15e",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "persist": false,
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 690,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e88e9237164d059b",
+        "type": "switch",
+        "z": "027ab7d6055bd15e",
+        "name": "Should Send Mail",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "Send Message",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 230,
+        "y": 420,
+        "wires": [
+            [
+                "8d1e930c205234bd",
+                "26cb450eabbaca7c",
+                "bd5bdfefc0a907e6"
+            ]
+        ]
+    },
+    {
+        "id": "26cb450eabbaca7c",
+        "type": "debug",
+        "z": "027ab7d6055bd15e",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "4893a23fc476c4b8",
+        "type": "function",
+        "z": "027ab7d6055bd15e",
+        "name": "Email Body",
+        "func": "msg.payload = {\"email\":\"olawalejuwon@gmail.com\",\"message\":\"Hi Food Is Burning\",\"subject\":\"Food Is Burning\"}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 420,
+        "wires": [
+            [
+                "18e0befa203c0d30"
+            ]
+        ]
+    },
+    {
+        "id": "d5b7bdd8642c09d1",
+        "type": "delay",
+        "z": "027ab7d6055bd15e",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 400,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "924bceeb3d0c797a",
+        "type": "function",
+        "z": "027ab7d6055bd15e",
+        "name": "Sms Body",
+        "func": "msg.payload = {\"email\":\"olawalejuwon@gmail.com\",\"message\":\"Hi Food Is Burning\",\"subject\":\"Last SMS Food IS Burning\"}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 540,
+        "wires": [
+            [
+                "ab00de47b8d4f6a1"
+            ]
+        ]
+    },
+    {
+        "id": "b462a4fccc1ce321",
+        "type": "trigger",
+        "z": "027ab7d6055bd15e",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "10",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 750,
+        "y": 440,
+        "wires": [
+            [
+                "924bceeb3d0c797a"
+            ]
+        ]
+    },
+    {
+        "id": "ab00de47b8d4f6a1",
+        "type": "axios-request",
+        "z": "027ab7d6055bd15e",
+        "name": "Send Email",
+        "endpoint": "af602435dead5306",
+        "method": "post",
+        "url": "/auth/email",
+        "responseType": "json",
+        "keepAlive": false,
+        "timeout": 30000,
+        "validateStatus": true,
+        "headers": [],
+        "params": [],
+        "x": 1170,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bd5bdfefc0a907e6",
+        "type": "trigger",
+        "z": "027ab7d6055bd15e",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "10",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 430,
+        "y": 500,
+        "wires": [
+            [
+                "4893a23fc476c4b8"
+            ]
+        ]
+    }
+]
