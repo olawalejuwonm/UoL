@@ -1,3 +1,49 @@
+/*
+This is an implementation of a home automation system that uses an ESP8266
+ microcontroller to monitor and control sensors and actuators. 
+ The system uses the painlessMesh library to create a mesh network of nodes 
+ that can communicate with each other. 
+ The mesh network is used to send and receive data from various sensors and 
+ actuators, such as a soil moisture sensor, a temperature and humidity sensor, 
+ and a buzzer.
+
+It starts by including the necessary libraries, such as painlessMesh, PageBuilder,
+ PageStream, DHT_U, DHT, and ArduinoJson. It then defines some constants, 
+ such as the mesh prefix, password, and port, as well as the pins for the 
+ various sensors and actuators. T
+ he code also initializes the DHT11 component and allocates memory for the 
+ JSON document.
+
+The setup function initializes the serial communication for debugging, 
+initializes the mesh network, sets up the callbacks for receiving messages, 
+new connections, changed connections, and node time adjustments, and adds a 
+task to send messages periodically. The setup function also connects to the 
+WiFi network, sets the LED pin as an output, and starts the web server. 
+Finally, the setup function initializes the DHT component.
+
+The loop function updates the mesh network, handles client requests, reads the 
+water level value, turns on or off the pump based on the water level value, 
+reads the detector switch value, sets the LED brightness based on the water 
+level value, sets the buzzer frequency based on the LED brightness, and sounds 
+the buzzer if the pump is on and no one is close. The loop function also reads 
+the temperature and humidity values, creates an HTML page with the current 
+values, and sends the HTML page to the client.
+
+The code also includes some helper functions, such as detectorOn, readTempHum, 
+jsonDetectorSensor, get_index, get_json, and shouldTurnOnPump. 
+The detectorOn function reads the switch pin value and returns true or false 
+based on the status. The readTempHum function reads the temperature and 
+humidity values and prints them to the serial monitor. The jsonDetectorSensor 
+function adds JSON request data to the document. The get_index function creates
+an HTML page with the current values and sends it to the client. The get_json 
+function creates JSON data with the current values and sends it to the client. 
+The shouldTurnOnPump function checks the water level value and returns true or
+false based on the threshold.
+
+
+*/
+
+
 #include "painlessMesh.h"
 
 #define MESH_PREFIX "homeIOT"
@@ -149,22 +195,31 @@ void setup()
   dht.begin();
 }
 
+// The loop function runs continuously
 void loop()
 {
 
-  // it will run the user scheduler as well
+  // Update the mesh network
   mesh.update();
 
+  // Handle incoming client requests
   server.handleClient();
 
+  // Read the water level sensor value
   waterLevelValue = analogRead(waterLevelPin);
+
+  // Check if the pump should be turned on based on the water level
   if (shouldTurnOnPump(waterLevelValue, noWaterLevel))
   {
     Serial.print("Should turn on pump");
+
     // Turn the relay ON (close the contacts)
     // delay(5000); // Wait for 5 second
     // digitalWrite(relayPin, LOW);
+
+    // Set the pump status to ON
     pump = "ON";
+
     // delay(1000); // Wait for 1 second
 
     // // Turn the relay OFF (open the contacts)
@@ -174,26 +229,34 @@ void loop()
   else
   {
     Serial.print("Should turn off pump");
+
     // Turn the relay OFF (open the contacts)
     // digitalWrite(relayPin, HIGH);
+
+    // Set the pump status to OFF
     pump = "OFF";
+
     // delay(1000); // Wait for 1 second
   }
 
+  // Check if the motion detector is on
   if (detectorOn())
   {
     Serial.print("Detector is on ");
+
+    // Set the LED brightness to maximum
     ledBrightness = 255;
   }
   else
   {
     Serial.print("Detector is off");
+
+    // Set the LED brightness to minimum
     ledBrightness = 0;
   }
 
+  // Map the water level sensor value to the LED brightness
   ledBrightness = map(waterLevelValue, 500, 1023, 255, 0);
-
-  // Map the sensor value to the LED brightness
 
   // Set the LED brightness
   analogWrite(ledPin, ledBrightness);
@@ -207,7 +270,7 @@ void loop()
   // tone(buzzerPin, buzzerFrequency);
   // delay(50); // Adjust delay for buzzer tone duration
 
-  // If No one is close and pump is on the buzzer will sound
+  // If the pump is on and no one is close, sound the buzzer and print a message
   Serial.println("Pump: ");
   Serial.print(pump);
   Serial.println("Someone Close: ");
@@ -222,7 +285,7 @@ void loop()
     noTone(buzzerPin);
   }
 
-  // Print the sensor value and LED brightness to the Serial Monitor
+  // Print the water level sensor value and LED brightness to the Serial Monitor
   Serial.print("Soil Moisture: ");
   Serial.print(waterLevelValue);
   Serial.print(" | LED Brightness: ");

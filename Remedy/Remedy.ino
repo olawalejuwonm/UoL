@@ -1,11 +1,32 @@
-//************************************************************
-// this is a simple example that uses the painlessMesh library
-//
-// 1. sends a silly message to every node on the mesh at a random time between 1 and 5 seconds
-// 2. prints anything it receives to Serial.print
-//
-//
-//************************************************************
+/*
+***********************************************************
+Thiis is the remedy node code that also uses the painlessMesh library to send 
+and receive messages between dectector and itself on a mesh network. The sketch also includes 
+code to control a relay, an ultrasonic sensor, and a servo motor. The relay is 
+used to turn a water pump on and off, the ultrasonic sensor is used to detect 
+if someone is close, and the servo motor is used to move a sensor.
+
+The sketch starts by including the painlessMesh library and defining some 
+constants for the mesh network, such as the prefix, password, and port. 
+It also includes libraries for the servo motor, ultrasonic sensor, 
+and ArduinoJson, which is used to create and parse JSON data.
+
+The setup function initializes the serial communication and the mesh network. 
+It also sets the pin modes for the relay, ultrasonic sensor, and servo motor. 
+The loop function updates the mesh network and checks if the water pump should 
+be turned on or off based on the value of a variable called "pump". 
+It also checks if someone is close using the ultrasonic sensor and turns off a 
+buzzer if someone is detected.
+
+The sketch also includes functions for sending and receiving messages over the 
+mesh network, handling JSON data, and controlling the servo motor. The 
+jsonDetectorSensor function creates a JSON object with data from the ultrasonic
+sensor, water pump, and servo motor. The handleJsonMessage function parses 
+incoming JSON data and updates variables accordingly. 
+The servoMovement function moves the servo motor to different positions.
+
+***********************************************************
+*/
 #include "painlessMesh.h"
 
 #define MESH_PREFIX "homeIOT"
@@ -118,29 +139,35 @@ void nodeTimeAdjustedCallback(int32_t offset)
   Serial.printf("Adjusted time %u. Offset = %d\n", mesh.getNodeTime(), offset);
 }
 
+// This function is called once at startup to initialize the program
 void setup()
 {
-  Serial.begin(115200);
+  Serial.begin(115200); // Initialize the serial communication at a baud rate of 115200
 
+  // Set the debug message types for the mesh network
   // mesh.setDebugMsgTypes( ERROR | MESH_STATUS | CONNECTION | SYNC | COMMUNICATION | GENERAL | MSG_TYPES | REMOTE ); // all types on
   mesh.setDebugMsgTypes(ERROR | STARTUP); // set before init() so that you can see startup messages
 
+  // Initialize the mesh network with the specified prefix, password, scheduler, and port
   mesh.init(MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT);
+
+  // Set the callback functions for when a message is received, a new connection is made, connections are changed, and node time is adjusted
   mesh.onReceive(&receivedCallback);
   mesh.onNewConnection(&newConnectionCallback);
   mesh.onChangedConnections(&changedConnectionCallback);
   mesh.onNodeTimeAdjusted(&nodeTimeAdjustedCallback);
 
+  // Add a task to the user scheduler and enable it
   userScheduler.addTask(taskSendMessage);
   taskSendMessage.enable();
 
-  // Connect to the WiFi network
-  // WiFi.begin(ssid, password);
-
+  // Set the pin modes for the relay, trigger, and echo pins
   pinMode(relayPin, OUTPUT);
-
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(echoPin, INPUT);  // Sets the echoPin as an Input
+
+  // Connect to the WiFi network
+  // WiFi.begin(ssid, password);
 
   // Wait for connection
   // while (WiFi.status() != WL_CONNECTED)
@@ -159,7 +186,7 @@ void setup()
   // server.begin(); // Start the server
   // Serial.println("Server listening");
 
-  // Attach the servo to pin
+  // Attach the servo to the specified pin
   myservo.attach(servoPin);
 }
 
