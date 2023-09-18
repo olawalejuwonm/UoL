@@ -1,0 +1,8 @@
+node_modules
+.venv
+tmp_db
+pycache
+*.pyc
+vvv
+*.pyc
+.env*
