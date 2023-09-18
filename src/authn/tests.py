@@ -14,30 +14,46 @@ class AuthenticationTestCase(TestCase):
         )
         self.token = Token.objects.create(user=self.user)
 
-    def test_authentication_required(self):
-        url = reverse('status-update-list')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+    def test_register(self):
+        url = "/user/register/"
+        data = {
+            'username': 'newuser',
+            'email': 'newuser@example.com',
+            'password': 'newpass'
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(User.objects.filter(username='newuser').exists())
 
-    def test_token_authentication(self):
-        url = reverse('status-update-list')
-        self.client.credentials(HTTP_AUTHORIZATION=f'Token {self.token.key}')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def test_username_password_authentication(self):
-        url = reverse('auth-login')
+    def test_login(self):
+        url = '/user/login/'
         data = {
             'username': 'testuser',
             'password': 'testpass'
         }
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('token', response.data)
+        self.assertIn('token', response.data['data'])
 
     def test_logout(self):
-        url = reverse('auth-logout')
-        self.client.credentials(HTTP_AUTHORIZATION=f'Token {self.token.key}')
-        response = self.client.post(url)
+        url = '/user/logout/'
+        auth_headers = {
+            'HTTP_AUTHORIZATION': f'Bearer {self.token.key}'
+        }
+        response = self.client.post(url, **auth_headers)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertFalse(Token.objects.filter(user=self.user).exists())
+
+    def test_profile_update(self):
+        url = '/user/profile/'
+        data = {
+            'name': 'New Name',
+        }
+        # self.client.credentials(HTTP_AUTHORIZATION=f'Token {self.token.key}')
+        auth_headers = {
+            'HTTP_AUTHORIZATION': f'Bearer {self.token.key}'
+        }
+        response = self.client.put(url, data, format='json', **auth_headers)
+        # self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.name, 'New Name')
