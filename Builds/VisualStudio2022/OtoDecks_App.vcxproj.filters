@@ -613,13 +613,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\AnalyserController.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\AnalyserModel.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\AnalyserDisplay.cpp">
       <Filter>OtoDecks\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Equalizer.cpp">
@@ -3510,13 +3504,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\AnalyserController.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\AnalyserModel.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\AnalyserDisplay.h">
       <Filter>OtoDecks\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Equalizer.h">

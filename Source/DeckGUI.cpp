@@ -38,7 +38,6 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
 
     // addAndMakeVisible(playStopButtonIcon);
 
-    // playButton.addListener(this);
     // stopButton.addListener(this);
     // loadButton.addListener(this);
 
@@ -64,7 +63,7 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
     speedSlider.setSliderStyle(juce::Slider::RotaryVerticalDrag);
     speedSlider.setTextBoxStyle(juce::Slider::NoTextBox, true, 0, 0);
 
-    // This aligns the slider to the centre of the knob
+    // This aligns the slider to the centre of the knobD
     // It makes the slider look like an enclosed circle(oval) rather than a ring
     // Reference: https://docs.juce.com/master/classSlider.html#a8f6f6f9c9b0e9e8f1c1b8b2a0e9e0b8d
     posSlider.setRotaryParameters(0.0, 3.1415 * 2.0, true);
@@ -233,32 +232,6 @@ void DeckGUI::loadFile()
 
 void DeckGUI::buttonClicked(Button *button)
 {
-    // {
-    //     if (button == &playButton)
-    //     {
-    //         std::cout << "Play button was clicked " << std::endl;
-    //         player->start();
-    //     }
-    // if (button == &stopButton)
-    // {
-    //     std::cout << "Stop button was clicked " << std::endl;
-    //     player->stop();
-    // }
-    // if (button == &loadButton)
-    // {
-    //     loadFile();
-    // }
-    // if (button == &loadButton)
-    // {
-    //     FileChooser chooser{"Select a file..."};
-    //     if (chooser.browseForFileToOpen())
-    //     {
-    //         player->loadURL(URL{chooser.getResult()});
-    //         waveformDisplay.loadURL(URL{chooser.getResult()});
-
-    //     }
-
-    // }
     if (button == &loopToggle)
     {
         std::cout << "Loop button was clicked " << loopToggle.getToggleState() << std::endl;
@@ -292,14 +265,7 @@ void DeckGUI::mouseDown(const MouseEvent &event)
         }
         // player->start();
     }
-    // if (event.mods.isLeftButtonDown())
-    // {
-    //     player->start();
-    // }
-    // if (event.mods.isRightButtonDown())
-    // {
-    //     player->stop();
-    // }
+  
 }
 void DeckGUI::sliderValueChanged(Slider *slider)
 {

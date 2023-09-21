@@ -12,8 +12,6 @@
 
 #include <JuceHeader.h>
 
-// class AnalyserController;
-#include "AnalyserController.h"
 
 using namespace juce;
 
