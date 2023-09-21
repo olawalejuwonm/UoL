@@ -142,7 +142,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\AnalyserModel.cpp"/>
-    <ClCompile Include="..\..\Source\Equalizer.cpp"/>
     <ClCompile Include="..\..\Source\PlaylistComponent.cpp"/>
     <ClCompile Include="..\..\Source\WaveformDisplay.cpp"/>
     <ClCompile Include="..\..\Source\DeckGUI.cpp"/>
@@ -2765,7 +2764,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\AnalyserModel.h"/>
-    <ClInclude Include="..\..\Source\Equalizer.h"/>
     <ClInclude Include="..\..\Source\PlaylistComponent.h"/>
     <ClInclude Include="..\..\Source\WaveformDisplay.h"/>
     <ClInclude Include="..\..\Source\DeckGUI.h"/>

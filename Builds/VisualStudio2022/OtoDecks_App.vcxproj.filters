@@ -616,9 +616,6 @@
     <ClCompile Include="..\..\Source\AnalyserModel.cpp">
       <Filter>OtoDecks\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Equalizer.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\PlaylistComponent.cpp">
       <Filter>OtoDecks\Source</Filter>
     </ClCompile>
@@ -3505,9 +3502,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\AnalyserModel.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Equalizer.h">
       <Filter>OtoDecks\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PlaylistComponent.h">

@@ -8,19 +8,19 @@
   ==============================================================================
 */
 
+
 #include <JuceHeader.h>
 #include "AnalyserModel.h"
 
+// I wrote this code
 //==============================================================================
 AnalyserModel::AnalyserModel() : forwardFFT(fftOrder),                                      // initialise the variables
                                  window(fftSize, juce::dsp::WindowingFunction<float>::hann) // initialise the windowing function
 {
   // In your constructor, you should add any child components, and
   // initialise any special settings that your component needs.
-  // In your constructor, you should add any child components, and
-  // initialise any special settings that your component needs.
   setOpaque(true);
-  setAudioChannels(0, 0); // we want a couple of input channels but no outputs
+  setAudioChannels(0, 0); // I set this to disable the audio input
   startTimerHz(30);
   setSize(700, 500);
 }
@@ -30,6 +30,11 @@ AnalyserModel::~AnalyserModel()
   shutdownAudio();
 }
 
+// end of code I wrote
+
+// I modify this code following the juce documentation:
+// https://docs.juce.com/master/classdsp_1_1FFT.html
+// https://docs.juce.com/master/tutorial_simple_fft.html
 void AnalyserModel::paint(juce::Graphics &g)
 {
   /* This demo code just fills the component's background and
@@ -145,3 +150,5 @@ void AnalyserModel::timerCallback()
     juce::Component::repaint();
   }
 }
+
+// End of code modified from the juce documentation

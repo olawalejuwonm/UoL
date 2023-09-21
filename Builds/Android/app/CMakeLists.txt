@@ -38,8 +38,6 @@ add_library( ${BINARY_NAME}
 
     "../../../Source/AnalyserModel.cpp"
     "../../../Source/AnalyserModel.h"
-    "../../../Source/Equalizer.cpp"
-    "../../../Source/Equalizer.h"
     "../../../Source/PlaylistComponent.cpp"
     "../../../Source/PlaylistComponent.h"
     "../../../Source/WaveformDisplay.cpp"
@@ -2060,7 +2058,6 @@ add_library( ${BINARY_NAME}
 
 set_source_files_properties(
     "../../../Source/AnalyserModel.h"
-    "../../../Source/Equalizer.h"
     "../../../Source/PlaylistComponent.h"
     "../../../Source/WaveformDisplay.h"
     "../../../Source/DeckGUI.h"

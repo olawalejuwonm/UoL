@@ -7,9 +7,6 @@
 
   ==============================================================================
 */
-// Create a Spectrum Analyzer that analyze the audio playing
-// https://docs.juce.com/master/tutorial_spectrum_analyser.html
-
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "DeckGUI.h"
 
@@ -19,13 +16,11 @@ using namespace juce;
 DeckGUI::DeckGUI(DJAudioPlayer *_player,
                  AudioFormatManager &formatManagerToUse,
                  AudioThumbnailCache &cacheToUse) : player(_player),
-                                                    waveformDisplay(formatManagerToUse, cacheToUse),
-                                                    eq(player)
+                                                    waveformDisplay(formatManagerToUse, cacheToUse)
 
 {
     addAndMakeVisible(playButton);
 
-    // addAndMakeVisible(loadButton);
 
     addAndMakeVisible(volSlider);
     addAndMakeVisible(speedSlider);
@@ -33,13 +28,7 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
 
     addAndMakeVisible(waveformDisplay);
 
-    // addAndMakeVisible(eq);
     addAndMakeVisible(player->analyserModel);
-
-    // addAndMakeVisible(playStopButtonIcon);
-
-    // stopButton.addListener(this);
-    // loadButton.addListener(this);
 
     volSlider.addListener(this);
     speedSlider.addListener(this);
@@ -110,8 +99,6 @@ DeckGUI::~DeckGUI()
 
 void DeckGUI::drawTurnTable(Graphics &g, int x, int curve)
 {
-    // std::cout << "DeckGUI::paint"
-    //           << "Width: " << getWidth() << "Height: " << getHeight() << std::endl;
     // Draw the turntable
 
     g.setColour(Colours::grey);
@@ -129,6 +116,9 @@ void DeckGUI::drawTurnTable(Graphics &g, int x, int curve)
     // and rotate the tonearm
     if (player->isPlaying())
     {
+        // This will make the to rotate around the centre of the screen
+        // https://docs.juce.com/master/classAffineTransform.html
+        // g.addTransform(AffineTransform::rotation(0.0, x, x));
         g.addTransform(AffineTransform::rotation(player->getPositionRelative() * 4, x * 4, x * 2));
     }
     g.drawRect(x * 4, x * 2, x / 5, x * 3, 5);
@@ -140,73 +130,25 @@ void DeckGUI::drawTurnTable(Graphics &g, int x, int curve)
 
 void DeckGUI::paint(Graphics &g)
 {
-    // g.fillAll(Colours::brown); // clear the background
-
-    // if (player->isPlaying())
-    // {
-    //     g.fillAll(Colours::green);
-    // }
-    // else
-    // {
-    //     g.fillAll(Colours::brown);
-    // }
-
     int x = getWidth() / 8;        // 50
     int curve = getWidth() * 0.75; // 300
 
-    // if (player->isPlaying())
-    // {
-    //     // This will make the to rotate around the centre of the screen
-    //     // https://docs.juce.com/master/classAffineTransform.html
-    //     // g.addTransform(AffineTransform::rotation(0.5, x, x));
-    //     // g.addTransform(AffineTransform::rotation(0.5, x * 4, x * 2));
-    //     // Will rotate based on the position of the player
-    //     g.addTransform(AffineTransform::rotation(player->getPositionRelative() * 4, x * 4, x * 2));
-    // }
-    // else
-    // {
-    //     // This will make the to rotate around the centre of the screen
-    //     // https://docs.juce.com/master/classAffineTransform.html
-    //     // g.addTransform(AffineTransform::rotation(0.0, x, x));
-    // }
-
     drawTurnTable(g, x, curve);
-
-    // Draw the waveform
-    // g.setColour(Colours::white);
-    // Path waveformPath;
-    // waveformPath.startNewSubPath(400, 200);
-    // waveformPath.lineTo(450, 150);
-    // waveformPath.lineTo(500, 250);
-    // waveformPath.lineTo(550, 200);
-    // waveformPath.lineTo(600, 150);
-    // waveformPath.lineTo(650, 250);
-    // waveformPath.lineTo(700, 200);
-    // g.strokePath(waveformPath, PathStrokeType(2.0f));
 }
 
 void DeckGUI::resized()
 {
     int rowH = getHeight() / 8;
     playButton.setBounds(getWidth() / 2, 0, getWidth() / 5, rowH / 2);
-    // // stopButton.setBounds(0, rowH, getWidth(), rowH);
     volSlider.setBounds(0, rowH / 1.5, getWidth() / 4, rowH * 2);
     speedSlider.setBounds(0, rowH * 2.5, getWidth() / 4, rowH * 2);
     posSlider.setBounds(0, rowH * 4.5, getWidth() / 4, rowH * 2);
     std::cout << "DeckGUI::resized" << getWidth() << "rowH: " << rowH << "Height: " << getHeight() << std::endl;
-    // posSlider.setBounds(0, rowH * 4.4, getWidth()/2.5, rowH * 2);
 
-    // playStopButtonIcon.setBounds(0, 0, getWidth(), getHeight());
-    // playButton.setBounds(10, 10, 20, 20);
-    // playStopButtonIcon.setBounds(10, 10, getWidth(), rowH * 2);
-
-    // stopButton.setBounds(0, rowH / 3, getWidth(), rowH / 3);
 
     waveformDisplay.setBounds(0, rowH * 7, getWidth(), rowH);
     loopToggle.setBounds(0, rowH * 6, getWidth() / 4, rowH);
 
-    // loadButton.setBounds(0, rowH * 7, getWidth(), rowH);
-    // filePickerButton.setBounds(0, rowH * 7, getWidth(), rowH);
 
     player->analyserModel.setBounds(getWidth() / 2, rowH, getWidth(), rowH * 5.5);
 }
@@ -236,7 +178,6 @@ void DeckGUI::buttonClicked(Button *button)
     {
         std::cout << "Loop button was clicked " << loopToggle.getToggleState() << std::endl;
         loop = loopToggle.getToggleState();
-        // player->shouldLoop = loopToggle.getToggleState(); // Add this line
     }
 }
 
@@ -265,7 +206,6 @@ void DeckGUI::mouseDown(const MouseEvent &event)
         }
         // player->start();
     }
-  
 }
 void DeckGUI::sliderValueChanged(Slider *slider)
 {
@@ -291,18 +231,6 @@ bool DeckGUI::isInterestedInFileDrag(const StringArray &files)
     return true;
 }
 
-// void DeckGUI::filesDropped(const StringArray &files, int x, int y)
-// {
-//     std::cout << "DeckGUI::filesDropped" << std::endl;
-//     std::cout << "x: " << x << " y: " << y << std::endl;
-//     if (files.size() == 1)
-//     {
-//         // player->loadURL(URL{chosenFile});
-
-//         // player->loadURL(URL{File{files[0]}});
-//         player->loadURL(URL{File{files[0]}});
-//     }
-// }
 
 void DeckGUI::filesDropped(const juce::StringArray &files, int x, int y)
 {

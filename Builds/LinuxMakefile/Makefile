@@ -73,7 +73,6 @@ endif
 
 OBJECTS_APP := \
   $(JUCE_OBJDIR)/AnalyserModel_e2c9c66b.o \
-  $(JUCE_OBJDIR)/Equalizer_b6231b33.o \
   $(JUCE_OBJDIR)/PlaylistComponent_76bc332c.o \
   $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o \
   $(JUCE_OBJDIR)/DeckGUI_914d8333.o \
@@ -111,11 +110,6 @@ $(JUCE_OUTDIR)/$(JUCE_TARGET_APP) : $(OBJECTS_APP) $(JUCE_OBJDIR)/execinfo.cmd $
 $(JUCE_OBJDIR)/AnalyserModel_e2c9c66b.o: ../../Source/AnalyserModel.cpp
 	-$(V_AT)mkdir -p $(@D)
 	@echo "Compiling AnalyserModel.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/Equalizer_b6231b33.o: ../../Source/Equalizer.cpp
-	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling Equalizer.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/PlaylistComponent_76bc332c.o: ../../Source/PlaylistComponent.cpp
