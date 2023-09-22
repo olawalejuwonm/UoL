@@ -21,26 +21,38 @@ class FriendViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         friends = Friend.objects.filter(user=request.user)
-        # serializer = FriendSerializer(friends, many=True)
         return Response(populate_multiple(friends, ['user', 'friend'], FriendSerializer))
 
     @action(detail=False, methods=['get'])
     def search_users(self, request):
         query = request.query_params.get('keyword', '')
-        # print(query, "query")
-        # Allow user to search by username, name, email 
-        #Q Encapsulate filters as objects that can then be combined logically (using
-        # `&` and `|`).
-        # ref: https://docs.djangoproject.com/en/4.2/topics/db/queries/#complex-lookups-with-q-objects
-        # users = User.objects.filter(
-        #     Q(username__icontains=query) |
-        #     Q(name__icontains=query) |
-        #     Q(email__icontains=query)
-        # ).exclude(id=request.user.id)
         # search by name only
         users = User.objects.filter(name__icontains=query).exclude(id=request.user.id)
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
+    
+    def create(self):
+        # check if friend request already exists
+        friend_request_exists = Friend.objects.filter(user=self.request.user, 
+        friend=self.request.data['friend']).exists()
+        if friend_request_exists:
+            # pass
+            return Response(
+                response_format(
+                    'You have already sent a friend request to this user',
+                      friend_request_exists),
+                      status=status.HTTP_406_NOT_ACCEPTABLE)
+        else:
+            serialized = FriendSerializer(data=self.request.data)
+            if serialized.is_valid():
+                serialized.save(user=self.request.user)
+                return Response(
+                    response_format(
+                        'Friend request sent successfully',
+                        serialized.data),
+                        status=status.HTTP_201_CREATED)
+            else:
+                return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
     
     @action(detail=True, methods=['put'])
     def confirm_friend_request(self, request, pk=None):
@@ -75,26 +87,6 @@ class FriendViewSet(viewsets.ModelViewSet):
             'Friend request denied',
         ), status=status.HTTP_200_OK)
 
-    def create(self, serializer):
-        # check if friend request already exists
-        friend_request_exists = Friend.objects.filter(user=self.request.user, friend=self.request.data['friend']).exists()
-        if friend_request_exists:
-            # pass
-            return Response(
-                response_format(
-                    'You have already sent a friend request to this user',
-                      friend_request_exists),
-                      status=status.HTTP_406_NOT_ACCEPTABLE)
-        else:
-            serialized = FriendSerializer(data=self.request.data)
-            if serialized.is_valid():
-                serialized.save(user=self.request.user)
-                return Response(
-                    response_format(
-                        'Friend request sent successfully',
-                        serialized.data),
-                        status=status.HTTP_201_CREATED)
-            else:
-                return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
