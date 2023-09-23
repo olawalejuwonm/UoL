@@ -7,7 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BsChevronDoubleLeft } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { api, fetchFriends, loadPage } from "../../redux/thunks";
+import { WebSocketLink, api, fetchFriends, loadPage } from "../../redux/thunks";
 
 const ChatPage = () => {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -44,9 +44,8 @@ const ChatPage = () => {
         <FirstNav />
         <SecNav />
       </div>
-
-      <div className="bg-beentoslightblue mx-auto text-bestoswhite h-full mt-[122px] py-10 lg:px-16 md:px-16 px-7 min-h-full">
-        <div className=" bg-white fixed top-0 right-0 left-0 mt-28 w-full text-black mx-auto p-10 flex">
+      <div className="bg-beentoslightblue mx-auto relative text-bestoswhite h-full py-10 lg:px-16 md:px-16 px-7 min-h-full">
+        <div className=" w-full absolute text-black mx-auto p-10 flex">
           <div
             className={` bg-gray-300 grid h-screen  ${
               chatId ? "hidden md:block md:w-2/5" : "w-full md:w-2/5"
@@ -126,7 +125,7 @@ const ChatPage = () => {
                 alignItems: "center",
               }}
             >
-              Click on any user to chat with
+              Click on any user to start a chat
             </div>
           )}
         </div>
@@ -138,23 +137,23 @@ const ChatPage = () => {
 const constructMessage = (messages, userId) => {
   const myMessages = [];
   const otherMessages = [];
-  try {
-    (messages || []).forEach((message) => {
-      if (message.sender === userId) {
-        myMessages.push(message);
-      } else {
-        otherMessages.push(message);
-      }
-    });
-  } catch (error) {
-    console.log("error", error);
-  }
-  return { myMessages, otherMessages };
+  // try {
+  //   (messages || []).forEach((message) => {
+  //     if (message.sender === userId) {
+  //       myMessages.push(message);
+  //     } else {
+  //       otherMessages.push(message);
+  //     }
+  //   });
+  // } catch (error) {
+  //   console.log("error", error);
+  // }
+  return { myMessages, otherMessages, messages: messages || [] };
 };
 
 const connectSocket = (user_id, friend, composeMessage, onConnect) => {
   const newSocket = new WebSocket(
-    `ws://127.0.0.1:8000/ws/chat/${user_id}/${friend.id}/`
+    `${WebSocketLink}/ws/chat/${user_id}/${friend.id}/`
   );
 
   newSocket.addEventListener("open", () => {
@@ -193,7 +192,6 @@ const fetchChatMessages = async (friendId) => {
 //  Users detail when clicking on any user to chart with.
 const UserDetail = ({ user }) => {
   const [messageInput, setMessageInput] = useState("");
-  const [firstMap, setFirstMap] = useState([]);
   const [secondMap, setSecondMap] = useState([]);
   let navigate = useNavigate(),
     { chatId } = useParams();
@@ -211,28 +209,35 @@ const UserDetail = ({ user }) => {
         const theMessages = constructMessage(data, store?.user?.id);
         // setMyMessages(theMessages.myMessages);
         // setOtherMessages(theMessages.otherMessages);
-        const firstMap = theMessages.otherMessages.map((f, index) => (
-          <div key={index}>
-            <div className="bg-gray-300 px-7 py-2 mb-2 rounded-tr-3xl rounded-bl-xl">
-              <p className="text-sm font-medium">{f.message}</p>
+
+        const messages = theMessages.messages.map((m) => {
+          if (m.sender === store?.user?.id) {
+            console.log("firstMap", m);
+            return (
+              <div className="ml-auto w-fit">
+                <div className="bg-gray-300 px-7 py-2 mb-2 rounded-tr-3xl rounded-bl-xl">
+                  <p className="text-sm font-medium">{m.message}</p>
+                  <p className="text-xs text-white text-end">
+                    {moment(m.created_at).format("hh:mm A")}{" "}
+                  </p>
+                </div>
+              </div>
+            );
+          }
+          console.log("secondMap", m);
+          return (
+            <div className="mb-4 w-fit">
+              <div className="bg-gray-300 px-7 py-2 mb-2 rounded-bl-3xl rounded-tr-xl">
+                <p className="text-sm font-medium">{m.message} </p>
+                <p className="text-xs text-white text-end">
+                  {moment(m.created_at).format("hh:mm A")}{" "}
+                </p>
+              </div>
             </div>
-            <p className="text-xs text-white text-end">
-              {moment(f.created_at).format("hh:mm A")}{" "}
-            </p>
-          </div>
-        ));
-        const secondMap = theMessages.myMessages.map((s, index) => (
-          <div key={index}>
-            <div className="bg-gray-300 px-7 py-2 mb-2 rounded-bl-3xl rounded-tr-xl">
-              <p className="text-sm font-medium">{s.message}</p>
-            </div>
-            <p className="text-xs text-white text-end">
-              {moment(s.created_at).format("hh:mm A")}{" "}
-            </p>
-          </div>
-        ));
-        setSecondMap(secondMap);
-        setFirstMap(firstMap);
+          );
+        });
+
+        setSecondMap(messages);
         loadPage(false);
       })
       .catch((err) => {
@@ -339,8 +344,9 @@ const UserDetail = ({ user }) => {
 						</div> */}
 
         <div className="mt-4 px-4">
-          <div className="mb-4 w-fit">{firstMap}</div>
-          <div className="ml-auto w-fit">{secondMap}</div>
+          {/* <div className="mb-4 w-fit">{firstMap}</div> */}
+          {/* <div className="ml-auto w-fit">{secondMap}</div> */}
+          {secondMap}
         </div>
         {/* <div className="mt-4 px-4">
           <div className="mb-4 w-fit">{firstMap}</div>
@@ -378,7 +384,7 @@ export default ChatPage;
 export const MainChatSection = ({ selectedUser }) => {
   return (
     <>
-      <div className=" overflow-y-auto w-full md:w-3/5 bg-beentoslightblue h-screen">
+      <div className=" overflow-y-auto w-full md:w-3/5 h-screen">
         <div className="w-full grid overflow-y-auto">
           <div className=" w-full">
             {selectedUser && <UserDetail user={selectedUser} />}

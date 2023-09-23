@@ -1,7 +1,4 @@
 from django.db import models
-
-# Create your models here.
-# friend/models.py
 from django.db import models
 from django.conf import settings
 from django.forms import ValidationError

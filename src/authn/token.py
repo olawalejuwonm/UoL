@@ -21,7 +21,8 @@ class BearerTokenAuthentication(TokenAuthentication):
         # The expiry date for each token is set to 1 day after the token is created
         if token.created + timezone.timedelta(days=1) < timezone.now():
             # delete the token
-            token.delete()
+            # token.delete()
             # raise AuthenticationFailed('Your session has expired, please login again')
+            pass
 
         return (token.user, token)

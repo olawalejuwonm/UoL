@@ -38,7 +38,8 @@ dotenv.load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG') == 'True'
+DEBUG = os.getenv('DEBUG') == 'True'  # This check if debug set in .env is True
+# If yes it set DEBUG to true,  false if otherwise
 
 APPEND_SLASH = False
 

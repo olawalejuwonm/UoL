@@ -1,10 +1,6 @@
 from django.db import models
-
-# Create your models here.
-# auth/models.py
 from django.contrib.auth.models import AbstractUser
-import cloudinary
-from cloudinary.models import CloudinaryField
+
 
 class User(AbstractUser):
     # avatar = CloudinaryField('avatar', null=True, blank=True, overwrite=True,

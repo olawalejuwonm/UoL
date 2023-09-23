@@ -11,7 +11,7 @@ export const baseLink =
 // process.env.REACT_APP_BASE_URL || process.env.REACT_APP_USE_URL;
 export const WebSocketLink =
   process.env.REACT_APP_WEBSOCKET_URL ||
-  "wss://social-be-6dee029da670.herokuapp.com/";
+  "ws://social-be-6dee029da670.herokuapp.com/";
 // export const WebSocketLink = "127.0.0.1:8000/";
 
 const newtorkErrorAccrossBrowsers = [

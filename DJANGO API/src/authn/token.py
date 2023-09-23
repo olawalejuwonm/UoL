@@ -18,8 +18,10 @@ class BearerTokenAuthentication(TokenAuthentication):
         if not token.user.is_active:
             raise AuthenticationFailed('User inactive or deleted')
 
-        # # The expiry date for each token is set to 1 day after the token is created
-        # if token.created + timezone.timedelta(days=1) < timezone.now():
-        #     raise AuthenticationFailed('Your session has expired, please login again')
+        # The expiry date for each token is set to 1 day after the token is created
+        if token.created + timezone.timedelta(days=1) < timezone.now():
+            # delete the token
+            token.delete()
+            # raise AuthenticationFailed('Your session has expired, please login again')
 
         return (token.user, token)
