@@ -72,7 +72,7 @@ const int closeDistance = 30;
 // create a servo object
 Servo myservo;
 
-Scheduler userScheduler; // to control your personal task
+Scheduler userScheduler; // to control sending messages
 painlessMesh mesh;
 
 // User stub

@@ -29,7 +29,7 @@ the buzzer if the pump is on and no one is close. The loop function also reads
 the temperature and humidity values, creates an HTML page with the current 
 values, and sends the HTML page to the client.
 
-The code also includes some helper functions, such as detectorOn, readTempHum, 
+It also includes some helper functions, such as detectorOn, readTempHum, 
 jsonDetectorSensor, get_index, get_json, and shouldTurnOnPump. 
 The detectorOn function reads the switch pin value and returns true or false 
 based on the status. The readTempHum function reads the temperature and 
@@ -39,7 +39,6 @@ an HTML page with the current values and sends it to the client. The get_json
 function creates JSON data with the current values and sends it to the client. 
 The shouldTurnOnPump function checks the water level value and returns true or
 false based on the threshold.
-
 
 */
 
@@ -91,7 +90,7 @@ int noWaterLevel = 900; // Minimum water level in the pot
 String pump = "OFF";
 String someoneClose = "NO";
 
-Scheduler userScheduler; // to control your personal task
+Scheduler userScheduler; // to control sending messages
 painlessMesh mesh;
 
 // User stub
@@ -108,6 +107,7 @@ void sendMessage()
   serializeJson(doc, jsonStr); // The function is from the ArduinoJson library no need for pretty
   mesh.sendBroadcast(jsonStr);
   Serial.println("Detector sending message: " + jsonStr);
+  // This was set to send messages at random intervals between 1 and 5 seconds
   taskSendMessage.setInterval(random(TASK_SECOND * 1, TASK_SECOND * 5));
 }
 
