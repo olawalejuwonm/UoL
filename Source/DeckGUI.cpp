@@ -19,9 +19,8 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
                                                     waveformDisplay(formatManagerToUse, cacheToUse)
 
 {
+    // Add all component
     addAndMakeVisible(playButton);
-
-
     addAndMakeVisible(volSlider);
     addAndMakeVisible(speedSlider);
     addAndMakeVisible(posSlider);
@@ -92,7 +91,6 @@ DeckGUI::~DeckGUI()
 void DeckGUI::drawTurnTable(Graphics &g, int x, int curve)
 {
     // Draw the turntable
-
     g.setColour(Colours::grey);
     g.fillEllipse(x, x, curve, curve);
     g.setColour(Colours::white);
@@ -103,6 +101,7 @@ void DeckGUI::drawTurnTable(Graphics &g, int x, int curve)
     // g.fillRect(200, 100, 10, 150);
     g.fillRect(x * 4, x * 2, x / 5, x * 3);
     g.setColour(Colours::white);
+
     // if player is playing
     // will map the position of the player to the rotation of the tonearm
     // and rotate the tonearm
@@ -135,9 +134,6 @@ void DeckGUI::resized()
     volSlider.setBounds(0, rowH / 1.5, getWidth() / 4, rowH * 2);
     speedSlider.setBounds(0, rowH * 2.5, getWidth() / 4, rowH * 2);
     posSlider.setBounds(0, rowH * 4.5, getWidth() / 4, rowH * 2);
-    std::cout << "DeckGUI::resized" << getWidth() << "rowH: " << rowH << "Height: " << getHeight() << std::endl;
-
-
     waveformDisplay.setBounds(0, rowH * 7, getWidth(), rowH);
     loopToggle.setBounds(0, rowH * 6, getWidth() / 4, rowH);
 
@@ -187,7 +183,6 @@ void DeckGUI::mouseDown(const MouseEvent &event)
             // It return so that the rest of the code is not executed
         }
 
-        std::cout << "Play button was clicked " << std::endl;
         if (player->isPlaying())
         {
             player->stop();
@@ -196,7 +191,6 @@ void DeckGUI::mouseDown(const MouseEvent &event)
         {
             player->start();
         }
-        // player->start();
     }
 }
 void DeckGUI::sliderValueChanged(Slider *slider)
@@ -226,11 +220,8 @@ bool DeckGUI::isInterestedInFileDrag(const StringArray &files)
 
 void DeckGUI::filesDropped(const juce::StringArray &files, int x, int y)
 {
-    std::cout << "DeckGUI::filesDropped" << std::endl;
-
     for (const auto &filename : files)
     {
-        std::cout << "DeckGUI::filesNames" << filename << std::endl;
         // This will convert the filename to a URL of file://
         // player->loadURL(juce::URL{juce::File{filename}});
         // waveformDisplay.loadURL(juce::URL{juce::File{filename}});
@@ -247,15 +238,11 @@ void DeckGUI::timerCallback()
 
 void DeckGUI::changeListenerCallback(ChangeBroadcaster *source)
 {
-    std::cout << "DeckGUI::changeListenerCallback" << std::endl;
     if (source == player->getTransportSource())
     {
-        std::cout << "DeckGUI::changeListenerCallback" << std::endl;
-
         // If it's playing set the play button to green
         if (player->isPlaying())
         {
-            std::cout << "DeckGUI::changeListenerCallback: isPlaying" << std::endl;
             // set Path to pause icon
             playStopButtonIcon.setPath(juce::Drawable::parseSVGPath(
                 "M 0 0 L 10 0 L 10 10 L 0 10 L 0 0 M 2 2 L 8 2 L 8 8 L 2 8 L 2 2 M 4 4 L 6 4 L 6 6 L 4 6 L 4 4 Z"));
@@ -268,7 +255,6 @@ void DeckGUI::changeListenerCallback(ChangeBroadcaster *source)
             {
                 return player->start();
             }
-            std::cout << "DeckGUI::changeListenerCallback: isNotPlaying" << std::endl;
             // set Path to play icon
             playStopButtonIcon.setPath(juce::Drawable::parseSVGPath(
                 "M 0 0 L 10 5 L 0 10 L 0 0"));

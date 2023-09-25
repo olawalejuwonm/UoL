@@ -43,9 +43,6 @@ private:
   AudioThumbnailCache thumbCache{100};
 
 
-
-
-
   DJAudioPlayer player1{formatManager};
   DeckGUI deckGUI1{&player1, formatManager, thumbCache};
 

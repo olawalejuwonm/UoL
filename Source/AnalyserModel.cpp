@@ -42,10 +42,7 @@ void AnalyserModel::paint(juce::Graphics &g)
 
      You should replace everything in this method with your own
      drawing code..
-  */
-
- // lightblue background
-  
+  */  
 
   g.fillAll(juce::Colour::fromRGB(125, 125, 125)); // fill the background with solid black
 
@@ -89,15 +86,15 @@ void AnalyserModel::pushNextSampleIntoFifo(float sample) noexcept
 void AnalyserModel::drawNextFrameOfSpectrum()
 {
   // first apply a windowing function to our data
-  window.multiplyWithWindowingTable(fftData, fftSize); // [1]
+  window.multiplyWithWindowingTable(fftData, fftSize); 
 
   // then render our FFT data..
-  forwardFFT.performFrequencyOnlyForwardTransform(fftData); // [2]
+  forwardFFT.performFrequencyOnlyForwardTransform(fftData);
 
   auto mindB = -100.0f;
   auto maxdB = 0.0f;
 
-  // the for loop for every point in the scope width, calculate the level
+  // The for loop for every point in the scope width, calculate the level
   // proportionally to the desired minimum and maximum decibels.
   // To do this, we first need to skew the x-axis to use a logarithmic
   // scale to better represent our frequencies. We can then feed this
@@ -107,10 +104,11 @@ void AnalyserModel::drawNextFrameOfSpectrum()
   {
     auto skewedProportionX = 1.0f - std::exp(std::log(1.0f - (float)i / (float)scopeSize) * 0.2f);
     auto fftDataIndex = juce::jlimit(0, fftSize / 2, (int)(skewedProportionX * (float)fftSize * 0.5f));
-    auto level = juce::jmap(juce::jlimit(mindB, maxdB, juce::Decibels::gainToDecibels(fftData[fftDataIndex]) - juce::Decibels::gainToDecibels((float)fftSize)),
+    auto level = juce::jmap(juce::jlimit(mindB, maxdB, 
+    juce::Decibels::gainToDecibels(fftData[fftDataIndex]) - juce::Decibels::gainToDecibels((float)fftSize)),
                             mindB, maxdB, 0.0f, 1.0f);
 
-    // Finally set the appropriate point with the correct amplitude to prepare the drawing process.
+    // Finally this set the appropriate point with the correct amplitude to prepare the drawing process.
     scopeData[i] = level;
   }
 }
@@ -138,7 +136,6 @@ void AnalyserModel::getNextAudioBlock(const juce::AudioSourceChannelInfo &buffer
     for (auto i = 0; i < bufferToFill.numSamples; ++i)
       pushNextSampleIntoFifo(channelData[i]);
   }
-  // std::cout << "AnalyserModel::getNextAudioBlock" << std::endl;
 }
 
 void AnalyserModel::timerCallback()

@@ -16,10 +16,6 @@
 
 using namespace juce;
 
-
-
-// class AnalyserModel;
-
 class DJAudioPlayer : public AudioSource
 {
 public:

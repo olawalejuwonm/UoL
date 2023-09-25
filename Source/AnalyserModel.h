@@ -15,8 +15,6 @@
 using namespace juce;
 
 //==============================================================================
-/*
- */
 /**
  * @class AnalyserModel
  * @brief This class represents the model of an audio analyzer.
