@@ -2,8 +2,8 @@
   ==============================================================================
 
     DeckGUI.cpp
-    Created: 13 Mar 2020 6:44:48pm
-    Author:  matthew
+    Created: 13 Aug 2023 5:40:40pm
+    Author:  Micheal
 
   ==============================================================================
 */
@@ -68,17 +68,9 @@ DeckGUI::DeckGUI(DJAudioPlayer *_player,
     // This sets the color of the waveform
     waveformDisplay.setColour(WaveformDisplay::waveformColourId, Colours::red);
 
-    // filePickerIcon.setPath(juce::Drawable::parseSVGPath(
-    //     "M 0 0 L 10 0 L 10 10 L 0 10 L 0 0 M 2 2 L 8 2 L 8 8 L 2 8 L 2 2 M 4 4 L 6 4 L 6 6 L 4 6 L 4 4 Z"));
-    // filePickerIcon.setFill(juce::Colours::brown);
-
     playStopButtonIcon.setPath(juce::Drawable::parseSVGPath(
         "M 0 0 L 10 5 L 0 10 L 0 0"));
     playStopButtonIcon.setFill(juce::Colours::white);
-
-    // playButton.setColour(juce::TextButton::buttonColourId, juce::Colours::white);
-
-    // playButton.setColour(juce::TextButton::buttonOnColourId, juce::Colours::green);
 
     playButton.setImages(&playStopButtonIcon);
 
@@ -242,14 +234,12 @@ void DeckGUI::filesDropped(const juce::StringArray &files, int x, int y)
         // This will convert the filename to a URL of file://
         // player->loadURL(juce::URL{juce::File{filename}});
         // waveformDisplay.loadURL(juce::URL{juce::File{filename}});
-
         loadDJ(juce::URL{juce::File{filename}});
     }
 }
 
 void DeckGUI::timerCallback()
 {
-    // std::cout << "DeckGUI::timerCallback" << std::endl;
     waveformDisplay.setPositionRelative(
         player->getPositionRelative());
     repaint();
@@ -286,12 +276,6 @@ void DeckGUI::changeListenerCallback(ChangeBroadcaster *source)
             playButton.setImages(&playStopButtonIcon);
         }
 
-        // while (player->isPlaying())
-        // {
-        //     // repaint();
-        //     // std::cout << "DeckGUI::DeckGUI: is still Playing" << std::endl;
-        // }
-        // posSlider.setValue(waveformDisplay.getPositionRelative());
     }
 }
 

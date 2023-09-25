@@ -3,7 +3,7 @@
 
     PlaylistComponent.cpp
     Created: 13 Aug 2023 8:29:06pm
-    Author:  USER
+    Author:  Micheal
 
   ==============================================================================
 */

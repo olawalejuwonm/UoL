@@ -3,7 +3,7 @@
 
     AnalyserModel.h
     Created: 11 Sep 2023 7:34:59pm
-    Author:  USER
+    Author:  Micheal
 
   ==============================================================================
 */
