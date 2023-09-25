@@ -39,6 +39,8 @@ private:
   //==============================================================================
   // Your private member variables go here...
 
+  // This instantiate all the component in the project
+  
   AudioFormatManager formatManager;
   AudioThumbnailCache thumbCache{100};
 
