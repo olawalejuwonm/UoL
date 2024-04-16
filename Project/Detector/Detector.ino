@@ -107,8 +107,8 @@ void sendMessage()
   serializeJson(doc, jsonStr); // The function is from the ArduinoJson library no need for pretty
   mesh.sendBroadcast(jsonStr);
   Serial.println("Detector sending message: " + jsonStr);
-  // This was set to send messages at random intervals between 1 and 5 seconds
-  taskSendMessage.setInterval(random(TASK_SECOND * 1, TASK_SECOND * 5));
+  // This was set to send messages at random intervals between 1 and 2 seconds
+  taskSendMessage.setInterval(random(TASK_SECOND * 1, TASK_SECOND * 2));
 }
 
 void handleJsonMessage(const char *json)
