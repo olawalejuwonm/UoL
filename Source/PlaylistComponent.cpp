@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "PlaylistComponent.h"
 
+// I add additional features to the uncompleted code provided in class
 //==============================================================================
 PlaylistComponent::PlaylistComponent(
     DeckGUI *_deck1,
@@ -305,3 +306,4 @@ String PlaylistComponent::getSavedFileURLsFilePath()
   std::cout << "folder: " << folder.getFullPathName() << std::endl;
   return folder.getFullPathName() + "/savedFileURLsFile.txt";
 }
+// End of Additional features
